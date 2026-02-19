@@ -52,9 +52,15 @@ public final class StartupAutomationAdapter {
           StartupWindowAutomator.handlePostLicenseDialog(1200L);
           invokeNoArgOnEdt(appCtrl, "command_newModel");
           boolean hasDocAfterApi = waitForCurrentDoc(appCtrl, 3000L);
-          steps.append(",{\"step\":\"create_new_model\",\"ok\":").append(hasDocAfterApi)
-            .append(",\"status\":\"").append(hasDocAfterApi ? "api_command_newModel_verified" : "api_command_newModel_unverified")
-            .append("\"}");
+          if (hasDocAfterApi) {
+            steps.append(",{\"step\":\"create_new_model\",\"ok\":true,\"status\":\"api_command_newModel_verified\"}");
+          } else {
+            StartupWindowAutomator.Result forced = StartupWindowAutomator.forceCreateNewModel(2500L);
+            boolean hasDocAfterForced = waitForCurrentDoc(appCtrl, 4000L);
+            steps.append(",{\"step\":\"create_new_model\",\"ok\":").append(hasDocAfterForced)
+              .append(",\"status\":\"").append(hasDocAfterForced ? "forced_new_model_verified" : "forced_new_model_unverified")
+              .append("\",\"details\":\"").append(esc(forced.status() + ";" + forced.details())).append("\"}");
+          }
         }
       } else {
         steps.append(",{\"step\":\"create_new_model\",\"ok\":true,\"status\":\"disabled\"}");

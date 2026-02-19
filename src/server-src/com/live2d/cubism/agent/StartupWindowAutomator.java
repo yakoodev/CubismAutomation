@@ -2,6 +2,7 @@ package com.live2d.cubism.agent;
 
 import java.awt.Component;
 import java.awt.Container;
+import java.awt.Frame;
 import java.awt.Robot;
 import java.awt.Window;
 import java.lang.reflect.InvocationTargetException;
@@ -87,6 +88,26 @@ public final class StartupWindowAutomator {
       sleep(150L);
     }
     return new Result(true, "skipped", "not_found");
+  }
+
+  public static Result forceCreateNewModel(long timeoutMs) {
+    long deadline = System.currentTimeMillis() + Math.max(1200L, timeoutMs);
+    while (System.currentTimeMillis() < deadline) {
+      try {
+        ActionOutcome startupOutcome = runOnEdt(StartupWindowAutomator::tryHandleStartupDialog);
+        if (startupOutcome.handled) {
+          return new Result(true, "startup_dialog_clicked", startupOutcome.details);
+        }
+      } catch (Exception ignored) {
+        // continue to keyboard fallback
+      }
+
+      if (keyboardGlobalNewModelFallback()) {
+        return new Result(true, "keyboard_ctrl_n", "focused_main_window=true");
+      }
+      sleep(180L);
+    }
+    return new Result(false, "not_handled", snapshotWindows());
   }
 
   private static ActionOutcome tryHandleLicenseDialog(String mode) {
@@ -243,6 +264,42 @@ public final class StartupWindowAutomator {
     } catch (Throwable ignored) {
       return false;
     }
+  }
+
+  private static boolean keyboardGlobalNewModelFallback() {
+    try {
+      Frame target = findMainFrame();
+      if (target == null) {
+        return false;
+      }
+      focusWindow(target);
+      Robot r = new Robot();
+      r.setAutoDelay(80);
+      r.keyPress(KeyEvent.VK_CONTROL);
+      tap(r, KeyEvent.VK_N);
+      r.keyRelease(KeyEvent.VK_CONTROL);
+      tap(r, KeyEvent.VK_ENTER);
+      return true;
+    } catch (Throwable ignored) {
+      return false;
+    }
+  }
+
+  private static Frame findMainFrame() {
+    Frame best = null;
+    for (Frame frame : Frame.getFrames()) {
+      if (frame == null || !frame.isShowing()) {
+        continue;
+      }
+      String title = normalize(frame.getTitle());
+      if (title.contains("live2d") || title.contains("cubism")) {
+        return frame;
+      }
+      if (best == null) {
+        best = frame;
+      }
+    }
+    return best;
   }
 
   private static void focusWindow(Window window) {
