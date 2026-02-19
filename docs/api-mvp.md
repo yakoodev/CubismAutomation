@@ -2,7 +2,9 @@
 
 Base URL: `http://127.0.0.1:18080`
 
-Auth for protected endpoints (optional when auth mode is off by default):\n- `Authorization: Bearer <CUBISM_AGENT_TOKEN>`\n- or `X-Api-Token: <CUBISM_AGENT_TOKEN>`
+Auth for protected endpoints (optional when auth mode is off by default):
+- `Authorization: Bearer <CUBISM_AGENT_TOKEN>`
+- or `X-Api-Token: <CUBISM_AGENT_TOKEN>`
 
 ## GET /hello
 - Purpose: connectivity smoke endpoint.
@@ -51,15 +53,18 @@ Supported commands in this stage:
 - `cubism.redo`
 
 ## POST /startup/prepare
-- Purpose: startup orchestration entrypoint (task 090, phase 1).
+- Purpose: startup orchestration entrypoint (task 090/100).
 - Request body (optional fields):
 ```json
 {"license_mode":"free","create_new_model":true,"wait_timeout_ms":30000}
 ```
 - Current behavior:
   - waits until `CEAppCtrl` is available,
-  - startup/license dialog automation is currently reported as `skipped` placeholder,
-  - can call `command_newModel()` to create a new model document.
+  - selects license mode (`free`/`pro`) in startup dialog,
+  - handles post-license modal popup,
+  - closes `Home` window if shown,
+  - creates new model with fallback chain: startup `New` -> `command_newModel()` -> `Ctrl+N`,
+  - verifies document creation via `getCurrentDoc`.
 - Success response `200`:
 ```json
 {"ok":true,"flow":"startup_prepare","steps":[...]}
@@ -72,4 +77,5 @@ Supported commands in this stage:
 ## Method rules
 - `/version` accepts only `GET`; other methods return `405`.
 - `/command` accepts only `POST`; other methods return `405`.
+- `/startup/prepare` accepts only `POST`; other methods return `405`.
 

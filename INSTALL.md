@@ -22,6 +22,11 @@ Use the built:
 ## 4) Run Cubism and check API
 - `GET http://127.0.0.1:18080/health`
 - `GET http://127.0.0.1:18080/version`
+- `POST http://127.0.0.1:18080/startup/prepare`
+  with body:
+```json
+{"license_mode":"free","create_new_model":true,"wait_timeout_ms":30000}
+```
 
 ## 5) Optional: C# API Console
 ```powershell
