@@ -22,8 +22,8 @@ public final class StartupWindowAutomator {
     "start", "startup", "welcome", "recent", "open", "new", "cubism"
   );
 
-  private static final List<String> FREE_BUTTON_HINTS = List.of("free");
-  private static final List<String> PRO_BUTTON_HINTS = List.of("pro");
+  private static final List<String> FREE_BUTTON_HINTS = List.of("free", "\u7121\u6599", "\u0431\u0435\u0441\u043f\u043b\u0430\u0442");
+  private static final List<String> PRO_BUTTON_HINTS = List.of("pro", "\u30d7\u30ed");
   private static final List<String> NEW_BUTTON_HINTS = List.of("new", WORD_NEW_RU, WORD_NEW_JP);
   private static final List<String> CONFIRM_BUTTON_HINTS = List.of(
     "ok", "start", "continue", "next", "use", "apply", "select"
@@ -70,7 +70,7 @@ public final class StartupWindowAutomator {
 
   private static ActionOutcome tryHandleLicenseDialog(String mode) {
     for (Window window : Window.getWindows()) {
-      if (!isCandidateWindow(window, LICENSE_WINDOW_HINTS)) {
+      if (window == null || !window.isShowing()) {
         continue;
       }
 
@@ -79,8 +79,14 @@ public final class StartupWindowAutomator {
         continue;
       }
 
+      // License dialog can be titled just "Start"; prefer control-based detection.
+      boolean titleMatch = isCandidateWindow(window, LICENSE_WINDOW_HINTS);
       List<String> modeHints = "pro".equals(mode) ? PRO_BUTTON_HINTS : FREE_BUTTON_HINTS;
       AbstractButton modeButton = findButtonByHints(buttons, modeHints);
+      if (!titleMatch && modeButton == null) {
+        continue;
+      }
+
       if (modeButton != null && modeButton.isEnabled()) {
         click(modeButton);
       }
@@ -88,12 +94,18 @@ public final class StartupWindowAutomator {
       AbstractButton confirm = findButtonByHints(buttons, CONFIRM_BUTTON_HINTS);
       if (confirm != null && confirm.isEnabled()) {
         click(confirm);
-        return new ActionOutcome(true, "window=" + safeTitle(window) + ";clicked=" + text(confirm));
+        return new ActionOutcome(
+          true,
+          "window=" + safeTitle(window) + ";clicked=" + text(confirm) + ";buttons=" + buttonTexts(buttons)
+        );
       }
 
       if (modeButton != null && modeButton.isEnabled()) {
         click(modeButton);
-        return new ActionOutcome(true, "window=" + safeTitle(window) + ";clicked_mode_only=" + text(modeButton));
+        return new ActionOutcome(
+          true,
+          "window=" + safeTitle(window) + ";clicked_mode_only=" + text(modeButton) + ";buttons=" + buttonTexts(buttons)
+        );
       }
     }
     return ActionOutcome.notHandled();
@@ -113,7 +125,10 @@ public final class StartupWindowAutomator {
       AbstractButton newButton = findButtonByHints(buttons, NEW_BUTTON_HINTS);
       if (newButton != null && newButton.isEnabled()) {
         click(newButton);
-        return new ActionOutcome(true, "window=" + safeTitle(window) + ";clicked=" + text(newButton));
+        return new ActionOutcome(
+          true,
+          "window=" + safeTitle(window) + ";clicked=" + text(newButton) + ";buttons=" + buttonTexts(buttons)
+        );
       }
     }
     return ActionOutcome.notHandled();
@@ -214,7 +229,8 @@ public final class StartupWindowAutomator {
             sb.append(", ");
           }
           first = false;
-          sb.append("{title=").append(safeTitle(w)).append("}");
+          List<AbstractButton> buttons = collectButtons(w);
+          sb.append("{title=").append(safeTitle(w)).append(",buttons=").append(buttonTexts(buttons)).append("}");
         }
         sb.append("]");
         return sb.toString();
@@ -261,6 +277,25 @@ public final class StartupWindowAutomator {
 
   private static String nullToEmpty(String s) {
     return s == null ? "" : s;
+  }
+
+  private static String buttonTexts(List<AbstractButton> buttons) {
+    StringBuilder sb = new StringBuilder();
+    sb.append("[");
+    boolean first = true;
+    for (AbstractButton b : buttons) {
+      String t = text(b);
+      if (t.isBlank()) {
+        continue;
+      }
+      if (!first) {
+        sb.append(", ");
+      }
+      first = false;
+      sb.append(t);
+    }
+    sb.append("]");
+    return sb.toString();
   }
 
   @FunctionalInterface
