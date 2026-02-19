@@ -2,12 +2,14 @@ package com.live2d.cubism.agent;
 
 import java.awt.Component;
 import java.awt.Container;
+import java.awt.Robot;
 import java.awt.Window;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 import java.util.concurrent.atomic.AtomicReference;
+import java.awt.event.KeyEvent;
 import javax.swing.AbstractButton;
 import javax.swing.SwingUtilities;
 
@@ -107,6 +109,11 @@ public final class StartupWindowAutomator {
           "window=" + safeTitle(window) + ";clicked_mode_only=" + text(modeButton) + ";buttons=" + buttonTexts(buttons)
         );
       }
+
+      // Fallback for custom-drawn dialogs (no Swing buttons exposed)
+      if (titleMatch && keyboardLicenseFallback(window, mode)) {
+        return new ActionOutcome(true, "window=" + safeTitle(window) + ";keyboard_fallback=true");
+      }
     }
     return ActionOutcome.notHandled();
   }
@@ -130,8 +137,73 @@ public final class StartupWindowAutomator {
           "window=" + safeTitle(window) + ";clicked=" + text(newButton) + ";buttons=" + buttonTexts(buttons)
         );
       }
+
+      if (keyboardStartupFallback(window)) {
+        return new ActionOutcome(true, "window=" + safeTitle(window) + ";keyboard_fallback=true");
+      }
     }
     return ActionOutcome.notHandled();
+  }
+
+  private static boolean keyboardLicenseFallback(Window window, String mode) {
+    try {
+      focusWindow(window);
+      Robot r = new Robot();
+      r.setAutoDelay(80);
+
+      // Try basic navigation:
+      // 1) move to license choice controls
+      for (int i = 0; i < 3; i++) {
+        tap(r, KeyEvent.VK_TAB);
+      }
+
+      // 2) pick mode
+      if ("free".equals(mode)) {
+        tap(r, KeyEvent.VK_LEFT);
+      } else {
+        tap(r, KeyEvent.VK_RIGHT);
+      }
+      tap(r, KeyEvent.VK_SPACE);
+
+      // 3) confirm
+      tap(r, KeyEvent.VK_ENTER);
+      return true;
+    } catch (Throwable ignored) {
+      return false;
+    }
+  }
+
+  private static boolean keyboardStartupFallback(Window window) {
+    try {
+      focusWindow(window);
+      Robot r = new Robot();
+      r.setAutoDelay(80);
+
+      // Try "N" shortcut for New, then Enter.
+      tap(r, KeyEvent.VK_N);
+      tap(r, KeyEvent.VK_ENTER);
+      return true;
+    } catch (Throwable ignored) {
+      return false;
+    }
+  }
+
+  private static void focusWindow(Window window) {
+    try {
+      runOnEdt(() -> {
+        window.toFront();
+        window.requestFocus();
+        return null;
+      });
+      sleep(120L);
+    } catch (Exception ignored) {
+      // best effort
+    }
+  }
+
+  private static void tap(Robot r, int key) {
+    r.keyPress(key);
+    r.keyRelease(key);
   }
 
   private static boolean isCandidateWindow(Window w, List<String> hints) {
