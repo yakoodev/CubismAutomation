@@ -90,6 +90,28 @@ public final class StartupWindowAutomator {
     return new Result(true, "skipped", "not_found");
   }
 
+  public static Result closeHomeWindows(long timeoutMs) {
+    long deadline = System.currentTimeMillis() + Math.max(800L, timeoutMs);
+    int closed = 0;
+    while (System.currentTimeMillis() < deadline) {
+      try {
+        int now = runOnEdt(StartupWindowAutomator::closeHomeWindowsOnce);
+        if (now > 0) {
+          closed += now;
+          sleep(140L);
+          continue;
+        }
+      } catch (Exception ex) {
+        return new Result(false, "error", ex.toString());
+      }
+      sleep(120L);
+    }
+    if (closed > 0) {
+      return new Result(true, "closed", "count=" + closed);
+    }
+    return new Result(true, "skipped", "not_found");
+  }
+
   public static Result forceCreateNewModel(long timeoutMs) {
     long deadline = System.currentTimeMillis() + Math.max(1200L, timeoutMs);
     while (System.currentTimeMillis() < deadline) {
@@ -211,6 +233,30 @@ public final class StartupWindowAutomator {
     return ActionOutcome.notHandled();
   }
 
+  private static int closeHomeWindowsOnce() {
+    int closed = 0;
+    for (Window window : Window.getWindows()) {
+      if (window == null || !window.isShowing()) {
+        continue;
+      }
+      String title = normalize(safeTitle(window));
+      if (!title.contains("home")) {
+        continue;
+      }
+      try {
+        window.toFront();
+        window.requestFocus();
+        window.dispose();
+        closed++;
+      } catch (Throwable ignored) {
+        if (keyboardCloseFallback(window)) {
+          closed++;
+        }
+      }
+    }
+    return closed;
+  }
+
   private static boolean keyboardLicenseFallback(Window window, String mode) {
     try {
       focusWindow(window);
@@ -260,6 +306,20 @@ public final class StartupWindowAutomator {
       Robot r = new Robot();
       r.setAutoDelay(80);
       tap(r, KeyEvent.VK_ENTER);
+      return true;
+    } catch (Throwable ignored) {
+      return false;
+    }
+  }
+
+  private static boolean keyboardCloseFallback(Window window) {
+    try {
+      focusWindow(window);
+      Robot r = new Robot();
+      r.setAutoDelay(80);
+      r.keyPress(KeyEvent.VK_ALT);
+      tap(r, KeyEvent.VK_F4);
+      r.keyRelease(KeyEvent.VK_ALT);
       return true;
     } catch (Throwable ignored) {
       return false;

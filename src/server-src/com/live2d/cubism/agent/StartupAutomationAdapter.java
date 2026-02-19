@@ -39,6 +39,11 @@ public final class StartupAutomationAdapter {
         .append(",\"status\":\"").append(esc(postLicense.status()))
         .append("\",\"details\":\"").append(esc(postLicense.details())).append("\"}");
 
+      StartupWindowAutomator.Result home = StartupWindowAutomator.closeHomeWindows(Math.max(1200L, windowStepTimeout));
+      steps.append(",{\"step\":\"home_window\",\"ok\":").append(home.ok())
+        .append(",\"status\":\"").append(esc(home.status()))
+        .append("\",\"details\":\"").append(esc(home.details())).append("\"}");
+
       StartupWindowAutomator.Result startup = StartupWindowAutomator.handleStartupDialog(req.createNewModel, windowStepTimeout);
       steps.append(",{\"step\":\"startup_dialog\",\"ok\":").append(startup.ok())
         .append(",\"status\":\"").append(esc(startup.status()))
@@ -50,6 +55,7 @@ public final class StartupAutomationAdapter {
           steps.append(",{\"step\":\"create_new_model\",\"ok\":true,\"status\":\"verified_after_startup_dialog\"}");
         } else {
           StartupWindowAutomator.handlePostLicenseDialog(1200L);
+          StartupWindowAutomator.closeHomeWindows(1200L);
           invokeNoArgOnEdt(appCtrl, "command_newModel");
           boolean hasDocAfterApi = waitForCurrentDoc(appCtrl, 3000L);
           if (hasDocAfterApi) {
