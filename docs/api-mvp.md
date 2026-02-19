@@ -50,6 +50,25 @@ Supported commands in this stage:
 - `cubism.undo`
 - `cubism.redo`
 
+## POST /startup/prepare
+- Purpose: startup orchestration entrypoint (task 090, phase 1).
+- Request body (optional fields):
+```json
+{"license_mode":"free","create_new_model":true,"wait_timeout_ms":30000}
+```
+- Current behavior:
+  - waits until `CEAppCtrl` is available,
+  - startup/license dialog automation is currently reported as `skipped` placeholder,
+  - can call `command_newModel()` to create a new model document.
+- Success response `200`:
+```json
+{"ok":true,"flow":"startup_prepare","steps":[...]}
+```
+- Failure response `500`:
+```json
+{"ok":false,"error":"startup_timeout|startup_failed","message":"..."}
+```
+
 ## Method rules
 - `/version` accepts only `GET`; other methods return `405`.
 - `/command` accepts only `POST`; other methods return `405`.

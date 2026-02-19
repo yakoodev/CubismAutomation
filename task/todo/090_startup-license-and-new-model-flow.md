@@ -14,3 +14,7 @@
 - Конфиг стратегии старта (`license_mode`, таймауты, retry).
 - Лог трассировки шагов автозапуска.
 - Smoke test с подтверждением: после вызова открыт новый модельный документ.
+
+## Progress
+- Phase 1 started: endpoint and startup orchestrator implemented.
+- Current limitation: license/startup dialog clicking still placeholder (`skipped`), full window automation is delegated to task `100`.
