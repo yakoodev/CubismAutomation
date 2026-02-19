@@ -30,6 +30,9 @@ public final class StartupWindowAutomator {
   private static final List<String> CONFIRM_BUTTON_HINTS = List.of(
     "ok", "start", "continue", "next", "use", "apply", "select"
   );
+  private static final List<String> POST_LICENSE_BUTTON_HINTS = List.of(
+    "ok", "continue", "next", "start", "close", "agree", "accept", "skip", "later"
+  );
 
   private StartupWindowAutomator() {}
 
@@ -68,6 +71,22 @@ public final class StartupWindowAutomator {
       sleep(180L);
     }
     return new Result(false, "not_found", snapshotWindows());
+  }
+
+  public static Result handlePostLicenseDialog(long timeoutMs) {
+    long deadline = System.currentTimeMillis() + Math.max(800L, timeoutMs);
+    while (System.currentTimeMillis() < deadline) {
+      try {
+        ActionOutcome o = runOnEdt(StartupWindowAutomator::tryHandlePostLicenseDialog);
+        if (o.handled) {
+          return new Result(true, "handled", o.details);
+        }
+      } catch (Exception ex) {
+        return new Result(false, "error", ex.toString());
+      }
+      sleep(150L);
+    }
+    return new Result(true, "skipped", "not_found");
   }
 
   private static ActionOutcome tryHandleLicenseDialog(String mode) {
@@ -145,6 +164,32 @@ public final class StartupWindowAutomator {
     return ActionOutcome.notHandled();
   }
 
+  private static ActionOutcome tryHandlePostLicenseDialog() {
+    for (Window window : Window.getWindows()) {
+      if (window == null || !window.isShowing()) {
+        continue;
+      }
+      if (!(window instanceof java.awt.Dialog)) {
+        continue;
+      }
+
+      List<AbstractButton> buttons = collectButtons(window);
+      AbstractButton confirm = findButtonByHints(buttons, POST_LICENSE_BUTTON_HINTS);
+      if (confirm != null && confirm.isEnabled()) {
+        click(confirm);
+        return new ActionOutcome(
+          true,
+          "window=" + safeTitle(window) + ";clicked=" + text(confirm) + ";buttons=" + buttonTexts(buttons)
+        );
+      }
+
+      if (keyboardGenericConfirmFallback(window)) {
+        return new ActionOutcome(true, "window=" + safeTitle(window) + ";keyboard_fallback=true");
+      }
+    }
+    return ActionOutcome.notHandled();
+  }
+
   private static boolean keyboardLicenseFallback(Window window, String mode) {
     try {
       focusWindow(window);
@@ -181,6 +226,18 @@ public final class StartupWindowAutomator {
 
       // Try "N" shortcut for New, then Enter.
       tap(r, KeyEvent.VK_N);
+      tap(r, KeyEvent.VK_ENTER);
+      return true;
+    } catch (Throwable ignored) {
+      return false;
+    }
+  }
+
+  private static boolean keyboardGenericConfirmFallback(Window window) {
+    try {
+      focusWindow(window);
+      Robot r = new Robot();
+      r.setAutoDelay(80);
       tap(r, KeyEvent.VK_ENTER);
       return true;
     } catch (Throwable ignored) {

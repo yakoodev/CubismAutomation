@@ -34,16 +34,28 @@ public final class StartupAutomationAdapter {
         .append("\",\"mode\":\"").append(esc(req.licenseMode))
         .append("\",\"details\":\"").append(esc(license.details())).append("\"}");
 
+      StartupWindowAutomator.Result postLicense = StartupWindowAutomator.handlePostLicenseDialog(windowStepTimeout);
+      steps.append(",{\"step\":\"post_license_dialog\",\"ok\":").append(postLicense.ok())
+        .append(",\"status\":\"").append(esc(postLicense.status()))
+        .append("\",\"details\":\"").append(esc(postLicense.details())).append("\"}");
+
       StartupWindowAutomator.Result startup = StartupWindowAutomator.handleStartupDialog(req.createNewModel, windowStepTimeout);
       steps.append(",{\"step\":\"startup_dialog\",\"ok\":").append(startup.ok())
         .append(",\"status\":\"").append(esc(startup.status()))
         .append("\",\"details\":\"").append(esc(startup.details())).append("\"}");
 
-      if (req.createNewModel && !"handled".equals(startup.status())) {
-        invokeNoArgOnEdt(appCtrl, "command_newModel");
-        steps.append(",{\"step\":\"create_new_model\",\"ok\":true,\"status\":\"api_command_newModel\"}");
-      } else if (req.createNewModel) {
-        steps.append(",{\"step\":\"create_new_model\",\"ok\":true,\"status\":\"startup_dialog_new_clicked\"}");
+      if (req.createNewModel) {
+        boolean hasDocAfterDialog = waitForCurrentDoc(appCtrl, Math.max(800L, req.waitTimeoutMs / 6));
+        if (hasDocAfterDialog) {
+          steps.append(",{\"step\":\"create_new_model\",\"ok\":true,\"status\":\"verified_after_startup_dialog\"}");
+        } else {
+          StartupWindowAutomator.handlePostLicenseDialog(1200L);
+          invokeNoArgOnEdt(appCtrl, "command_newModel");
+          boolean hasDocAfterApi = waitForCurrentDoc(appCtrl, 3000L);
+          steps.append(",{\"step\":\"create_new_model\",\"ok\":").append(hasDocAfterApi)
+            .append(",\"status\":\"").append(hasDocAfterApi ? "api_command_newModel_verified" : "api_command_newModel_unverified")
+            .append("\"}");
+        }
       } else {
         steps.append(",{\"step\":\"create_new_model\",\"ok\":true,\"status\":\"disabled\"}");
       }
@@ -73,6 +85,18 @@ public final class StartupAutomationAdapter {
     return null;
   }
 
+  private static boolean waitForCurrentDoc(Object appCtrl, long timeoutMs) throws Exception {
+    long deadline = System.currentTimeMillis() + Math.max(600L, timeoutMs);
+    while (System.currentTimeMillis() < deadline) {
+      Object doc = invokeNoArgOnEdtResult(appCtrl, "getCurrentDoc");
+      if (doc != null) {
+        return true;
+      }
+      Thread.sleep(150L);
+    }
+    return false;
+  }
+
   private static void invokeNoArgOnEdt(Object target, String methodName) throws Exception {
     if (SwingUtilities.isEventDispatchThread()) {
       invokeNoArg(target, methodName);
@@ -92,9 +116,29 @@ public final class StartupAutomationAdapter {
     }
   }
 
-  private static void invokeNoArg(Object target, String methodName) throws Exception {
+  private static Object invokeNoArgOnEdtResult(Object target, String methodName) throws Exception {
+    if (SwingUtilities.isEventDispatchThread()) {
+      return invokeNoArg(target, methodName);
+    }
+
+    AtomicReference<Object> result = new AtomicReference<>();
+    AtomicReference<Exception> error = new AtomicReference<>();
+    SwingUtilities.invokeAndWait(() -> {
+      try {
+        result.set(invokeNoArg(target, methodName));
+      } catch (Exception ex) {
+        error.set(ex);
+      }
+    });
+    if (error.get() != null) {
+      throw error.get();
+    }
+    return result.get();
+  }
+
+  private static Object invokeNoArg(Object target, String methodName) throws Exception {
     Method m = target.getClass().getMethod(methodName);
-    m.invoke(target);
+    return m.invoke(target);
   }
 
   private static Request parseRequest(String body) {
