@@ -1,0 +1,13 @@
+*.class
+*.log
+*.tmp
+
+input/*.jar
+output/*.jar
+output/*.log
+output/release/
+work/
+
+tools/cubism-api-console/.vs/
+tools/cubism-api-console/bin/
+tools/cubism-api-console/obj/
