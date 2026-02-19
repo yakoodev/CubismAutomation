@@ -27,15 +27,23 @@ public final class StartupAutomationAdapter {
       steps.append("[");
       steps.append("{\"step\":\"wait_app_ready\",\"ok\":true}");
 
-      // Placeholder until task 100 (native window automation engine) is implemented.
-      steps.append(",{\"step\":\"license_dialog\",\"ok\":true,\"status\":\"skipped\",\"mode\":\"")
-        .append(esc(req.licenseMode))
-        .append("\"}");
-      steps.append(",{\"step\":\"startup_dialog\",\"ok\":true,\"status\":\"skipped\"}");
+      long windowStepTimeout = Math.max(1000L, req.waitTimeoutMs / 3);
+      StartupWindowAutomator.Result license = StartupWindowAutomator.handleLicenseDialog(req.licenseMode, windowStepTimeout);
+      steps.append(",{\"step\":\"license_dialog\",\"ok\":").append(license.ok())
+        .append(",\"status\":\"").append(esc(license.status()))
+        .append("\",\"mode\":\"").append(esc(req.licenseMode))
+        .append("\",\"details\":\"").append(esc(license.details())).append("\"}");
 
-      if (req.createNewModel) {
+      StartupWindowAutomator.Result startup = StartupWindowAutomator.handleStartupDialog(req.createNewModel, windowStepTimeout);
+      steps.append(",{\"step\":\"startup_dialog\",\"ok\":").append(startup.ok())
+        .append(",\"status\":\"").append(esc(startup.status()))
+        .append("\",\"details\":\"").append(esc(startup.details())).append("\"}");
+
+      if (req.createNewModel && !"handled".equals(startup.status())) {
         invokeNoArgOnEdt(appCtrl, "command_newModel");
-        steps.append(",{\"step\":\"create_new_model\",\"ok\":true}");
+        steps.append(",{\"step\":\"create_new_model\",\"ok\":true,\"status\":\"api_command_newModel\"}");
+      } else if (req.createNewModel) {
+        steps.append(",{\"step\":\"create_new_model\",\"ok\":true,\"status\":\"startup_dialog_new_clicked\"}");
       } else {
         steps.append(",{\"step\":\"create_new_model\",\"ok\":true,\"status\":\"disabled\"}");
       }
