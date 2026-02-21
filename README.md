@@ -33,6 +33,7 @@ powershell -ExecutionPolicy Bypass -File scripts/82_install_server_jar.ps1 -Rele
 - Mesh points: `GET /mesh/points`, `POST /mesh/points`
 - Mesh auto op: `POST /mesh/auto_generate`
 - Mesh capture: `GET/POST /mesh/screenshot`
+- Live screenshot stream: `GET /screenshot/current`
 - Startup automation: `POST /startup/prepare`
 
 `/startup/prepare` flow (current):
@@ -61,6 +62,28 @@ dotnet run -c Release
 ```
 Open:
 - `http://127.0.0.1:51888`
+
+Stop Cubism from repo script:
+```powershell
+powershell -ExecutionPolicy Bypass -File scripts/84_stop_cubism.ps1
+```
+
+## Screenshot Capture And Analysis
+Use automated capture loop + image analysis while developing features:
+```powershell
+powershell -ExecutionPolicy Bypass -File scripts/27_capture_analyze_screenshots.ps1 -MeshId ArtMesh78 -Count 5 -IntervalMs 700
+```
+Outputs:
+- PNG frames in `temp/screenshot-runs/run-<timestamp>/`
+- `captures.json` (raw frame metrics)
+- `report.json` (summary + frames)
+- `report.md` (human-readable report)
+
+Practical runbook:
+1. Ensure Cubism is running and model is loaded.
+2. If API returns `{"error":"no_document"}`, call:
+   `POST /startup/prepare` with `{"license_mode":"free","create_new_model":true,"wait_timeout_ms":30000}`
+3. Then call screenshot endpoint again (`/screenshot/current` or `/mesh/screenshot`).
 
 ## Documentation
 - `INSTALL.md`

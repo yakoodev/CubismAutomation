@@ -24,3 +24,11 @@
 - Cubism runtime dir: `C:\Users\Yakoo\source\Live2D Cubism 5.3`
 - Cubism editor exe: `C:\Users\Yakoo\source\Live2D Cubism 5.3\CubismEditor5.exe`
 - Тестовая модель для API/mesh: `C:\Users\Yakoo\Downloads\vt\hibiki`
+
+## Автономная валидация через UI и API
+- Разрешено запускать/закрывать Cubism из скриптов и shell-команд для интеграционных тестов.
+- Для остановки Cubism использовать `scripts/84_stop_cubism.ps1` (graceful close + force fallback).
+- Если endpoint возвращает `no_document`, сначала выполнять `POST /startup/prepare`, затем повторять API-вызов.
+- UI-кликер допускается только для тестов/временных обходов неавтоматизированных мест.
+- Код/зависимости кликера не должны попадать в production jar/релизные артефакты.
+- Для проверки фич обязательно собирать и анализировать скриншоты (серии кадров + отчет).

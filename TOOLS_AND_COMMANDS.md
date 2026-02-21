@@ -16,6 +16,8 @@
 - `scripts/12_unpack_and_unsign.ps1`
 - `scripts/40_repack.ps1`
 - `scripts/50_test_loadclass.ps1`
+- `scripts/27_capture_analyze_screenshots.ps1`
+- `scripts/84_stop_cubism.ps1`
 
 ## Точные команды (baseline)
 1. Проверка инструментов:
@@ -72,4 +74,25 @@ javap -classpath output/Live2D_Cubism_patched.jar -c -p com.live2d.cubism.CECubi
 11. Smoke-test class load:
 ```powershell
 powershell -ExecutionPolicy Bypass -File scripts/50_test_loadclass.ps1 -JarPath output/Live2D_Cubism_patched.jar -ClassName com.live2d.cubism.HelloCubism30
+```
+
+## Runtime API команды для live-проверок
+Если API отвечает `no_document`, сначала выполнить:
+```powershell
+Invoke-WebRequest -UseBasicParsing "http://127.0.0.1:18080/startup/prepare" -Method POST -ContentType "application/json" -Body '{"license_mode":"free","create_new_model":true,"wait_timeout_ms":30000}'
+```
+
+Снять текущий кадр (PNG stream):
+```powershell
+Invoke-WebRequest -UseBasicParsing "http://127.0.0.1:18080/screenshot/current?workspace_only=true" -OutFile temp/live-shot-now.png
+```
+
+Серия скриншотов + автоанализ:
+```powershell
+powershell -ExecutionPolicy Bypass -File scripts/27_capture_analyze_screenshots.ps1 -MeshId ArtMesh78 -Count 5 -IntervalMs 700
+```
+
+Остановить Cubism (graceful close + force fallback):
+```powershell
+powershell -ExecutionPolicy Bypass -File scripts/84_stop_cubism.ps1
 ```

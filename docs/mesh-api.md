@@ -15,6 +15,7 @@ Base URL: `http://127.0.0.1:18080`
 - `POST /mesh/points`
 - `POST /mesh/auto_generate`
 - `GET|POST /mesh/screenshot`
+- `GET /screenshot/current`
 
 All endpoints return `application/json`.
 
@@ -180,3 +181,18 @@ Returns:
 - image path
 - image size
 - optional `image_base64`
+
+### `GET /screenshot/current`
+Streams current Cubism screenshot as `image/png` (binary response).
+
+Query:
+```text
+/screenshot/current?mesh_id=ArtMesh78&workspace_only=true
+```
+
+Notes:
+- `workspace_only=true` tries to capture editor/work-area bounds.
+- If no document is open, endpoint returns JSON error with `no_document`.
+- Recommended fallback:
+  1. call `POST /startup/prepare`
+  2. repeat screenshot call.

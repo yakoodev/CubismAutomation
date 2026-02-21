@@ -19,6 +19,7 @@
 - Tested target: `C:\Users\Yakoo\source\Live2D Cubism 5.3\CubismEditor5.exe`
 - Default Cubism dir for install/rollback scripts: `C:\Users\Yakoo\source\Live2D Cubism 5.3`
 - Test model for mesh/API validation: `C:\Users\Yakoo\Downloads\vt\hibiki`
+- Default screenshot analysis output: `temp/screenshot-runs/`
 
 ## Runtime env vars (agent)
 - `CUBISM_AGENT_HOST` (default `127.0.0.1`)
