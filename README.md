@@ -30,6 +30,9 @@ powershell -ExecutionPolicy Bypass -File scripts/82_install_server_jar.ps1 -Rele
 - Mesh (read): `GET /mesh/list`, `GET /mesh/active`, `GET /mesh/state`
 - Mesh (write): `POST /mesh/select`, `POST /mesh/rename`, `POST /mesh/visibility`, `POST /mesh/lock`
 - Mesh edit ops: `POST /mesh/ops` (`validate_only=true|false`)
+- Mesh points: `GET /mesh/points`, `POST /mesh/points`
+- Mesh auto op: `POST /mesh/auto_generate`
+- Mesh capture: `GET/POST /mesh/screenshot`
 - Startup automation: `POST /startup/prepare`
 
 `/startup/prepare` flow (current):

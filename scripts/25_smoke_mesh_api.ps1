@@ -47,6 +47,10 @@ $cases = @(
   @{ Name = "POST /mesh/lock invalid";     Method = "POST"; Path = "/mesh/lock"; Body = '{}' },
   @{ Name = "POST /mesh/ops invalid";      Method = "POST"; Path = "/mesh/ops"; Body = '{"validate_only":true}' },
   @{ Name = "POST /mesh/ops dry-run";      Method = "POST"; Path = "/mesh/ops"; Body = '{"validate_only":true,"operations":[{"op":"auto_mesh"},{"op":"divide"},{"op":"connect"},{"op":"reset_shape"},{"op":"fit_contour"}]}' },
+  @{ Name = "GET /mesh/points";            Method = "GET";  Path = "/mesh/points" },
+  @{ Name = "POST /mesh/points invalid";   Method = "POST"; Path = "/mesh/points"; Body = '{}' },
+  @{ Name = "POST /mesh/auto_generate dry"; Method = "POST"; Path = "/mesh/auto_generate"; Body = '{"validate_only":true}' },
+  @{ Name = "GET /mesh/screenshot";        Method = "GET";  Path = "/mesh/screenshot" },
   @{ Name = "POST /mesh/select unknown";   Method = "POST"; Path = "/mesh/select"; Body = '{"mesh_name":"__definitely_missing__"}' },
   @{ Name = "POST /mesh/rename unknown";   Method = "POST"; Path = "/mesh/rename"; Body = '{"mesh_name":"__definitely_missing__","new_name":"test_name"}' }
 )

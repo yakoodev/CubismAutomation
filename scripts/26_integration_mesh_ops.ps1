@@ -35,11 +35,14 @@ Write-Host "Run this while corresponding Cubism document is opened." -Foreground
 $dryRunPayload = '{"validate_only":true,"operations":[{"op":"auto_mesh"},{"op":"divide"},{"op":"connect"},{"op":"reset_shape"},{"op":"fit_contour"}]}'
 $runPayload = '{"validate_only":false,"operations":[{"op":"auto_mesh"},{"op":"divide"},{"op":"connect"},{"op":"reset_shape"},{"op":"fit_contour"}]}'
 $mixedPayload = '{"validate_only":false,"operations":[{"op":"unknown_op"},{"op":"auto_mesh"},{"op":"fit_contour"}]}'
+$autoPayload = '{"validate_only":true}'
 
 $dryRun = Post-Capture "/mesh/ops" $dryRunPayload
 $run = Post-Capture "/mesh/ops" $runPayload
 $mixed = Post-Capture "/mesh/ops" $mixedPayload
+$auto = Post-Capture "/mesh/auto_generate" $autoPayload
 
 Write-Host "POST /mesh/ops dry-run => HTTP $($dryRun.Status) $($dryRun.Body)" -ForegroundColor Green
 Write-Host "POST /mesh/ops execute => HTTP $($run.Status) $($run.Body)" -ForegroundColor Green
 Write-Host "POST /mesh/ops mixed   => HTTP $($mixed.Status) $($mixed.Body)" -ForegroundColor Green
+Write-Host "POST /mesh/auto_generate dry => HTTP $($auto.Status) $($auto.Body)" -ForegroundColor Green

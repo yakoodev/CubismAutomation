@@ -11,6 +11,10 @@ Base URL: `http://127.0.0.1:18080`
 - `POST /mesh/visibility`
 - `POST /mesh/lock`
 - `POST /mesh/ops`
+- `GET /mesh/points`
+- `POST /mesh/points`
+- `POST /mesh/auto_generate`
+- `GET|POST /mesh/screenshot`
 
 All endpoints return `application/json`.
 
@@ -117,3 +121,62 @@ Guardrails:
 
 Practical note:
 - `auto_mesh` execute may open Cubism UI dialog (`Automatic Mesh generator`) depending on current build and document state.
+
+## Mesh Points
+### `GET /mesh/points`
+Selector via query:
+```text
+/mesh/points?mesh_id=ArtMesh78
+```
+or:
+```text
+/mesh/points?mesh_name=Upper%20Arm%20R%20A
+```
+
+Response includes:
+- `mesh`
+- `point_count`
+- `points[]` with `index/x/y`
+
+### `POST /mesh/points`
+Body:
+```json
+{
+  "mesh_id": "ArtMesh78",
+  "points": [
+    {"x": 0.0, "y": 0.0},
+    {"x": 10.0, "y": 0.0}
+  ]
+}
+```
+Also accepts pair format:
+```json
+{"mesh_id":"ArtMesh78","points":[[0,0],[10,0]]}
+```
+
+## Auto Mesh Shortcut
+### `POST /mesh/auto_generate`
+Body:
+```json
+{"mesh_id":"ArtMesh78","validate_only":false}
+```
+Equivalent to single-op `/mesh/ops` with `auto_mesh`.
+
+## Mesh Screenshot
+### `GET /mesh/screenshot`
+Query selector:
+```text
+/mesh/screenshot?mesh_id=ArtMesh78
+```
+
+### `POST /mesh/screenshot`
+Body example:
+```json
+{"mesh_id":"ArtMesh78","output_path":"C:\\temp\\mesh.png","include_base64":false}
+```
+
+Returns:
+- selected mesh metadata
+- image path
+- image size
+- optional `image_base64`
