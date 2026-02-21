@@ -72,6 +72,7 @@ public final class ServerBootstrap {
       created.createContext("/deformers/state", ServerBootstrap::handleDeformersState);
       created.createContext("/deformers/select", ServerBootstrap::handleDeformersSelect);
       created.createContext("/deformers/rename", ServerBootstrap::handleDeformersRename);
+      created.createContext("/project/open", ServerBootstrap::handleProjectOpen);
       created.createContext("/mesh/list", ServerBootstrap::handleMeshList);
       created.createContext("/mesh/active", ServerBootstrap::handleMeshActive);
       created.createContext("/mesh/state", ServerBootstrap::handleMeshState);
@@ -325,6 +326,20 @@ public final class ServerBootstrap {
     String body = readBody(exchange.getRequestBody());
     exchange.setAttribute("requestBody", body);
     CubismDeformerAdapter.ApiResponse response = CubismDeformerAdapter.deformerRename(body);
+    writeJson(exchange, response.status(), response.json());
+  }
+
+  private static void handleProjectOpen(HttpExchange exchange) throws IOException {
+    if (!"POST".equalsIgnoreCase(exchange.getRequestMethod())) {
+      writeJson(exchange, 405, "{\"ok\":false,\"error\":\"method_not_allowed\"}\n");
+      return;
+    }
+    if (!ensureAuthorized(exchange)) {
+      return;
+    }
+    String body = readBody(exchange.getRequestBody());
+    exchange.setAttribute("requestBody", body);
+    CubismProjectAdapter.ApiResponse response = CubismProjectAdapter.projectOpen(body);
     writeJson(exchange, response.status(), response.json());
   }
 

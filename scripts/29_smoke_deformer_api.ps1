@@ -1,5 +1,6 @@
 param(
-  [string]$BaseUrl = "http://127.0.0.1:18080"
+  [string]$BaseUrl = "http://127.0.0.1:18080",
+  [string]$ModelDir = "C:\Users\Yakoo\Downloads\vt\hibiki"
 )
 
 $ErrorActionPreference = "Stop"
@@ -16,7 +17,7 @@ function Invoke-HttpJson {
   $handler = New-Object System.Net.Http.HttpClientHandler
   $client = New-Object System.Net.Http.HttpClient($handler)
   try {
-    $client.Timeout = [TimeSpan]::FromSeconds(120)
+    $client.Timeout = [TimeSpan]::FromSeconds(300)
     try {
       $req = New-Object System.Net.Http.HttpRequestMessage([System.Net.Http.HttpMethod]::new($Method), $url)
       if ($null -ne $Body -and $Method -ne "GET") {
@@ -63,6 +64,17 @@ function Wait-DocumentReady {
   return $false
 }
 
+function Find-OpenCandidate {
+  param([string]$Dir)
+  if (!(Test-Path $Dir)) { return $null }
+  $patterns = @("*.cmo3", "*.can3", "*.model3.json", "*.cmox")
+  foreach ($p in $patterns) {
+    $f = Get-ChildItem -Path $Dir -Recurse -File -Filter $p -ErrorAction SilentlyContinue | Select-Object -First 1
+    if ($f) { return $f.FullName }
+  }
+  return $null
+}
+
 Write-Host "== Deformer API smoke ==" -ForegroundColor Cyan
 Ensure-ServerHealthy
 
@@ -87,6 +99,27 @@ if ($stateRes.StatusCode -eq 409 -and $stateRes.Body -match "no_document") {
 if ($stateRes.StatusCode -ne 200) { throw "/deformers/state failed: $($stateRes.Body)" }
 $state = $stateRes.Body | ConvertFrom-Json
 if (-not $state.ok) { throw "/deformers/state returned ok=false: $($stateRes.Body)" }
+if ($state.count -lt 1) {
+  $candidate = Find-OpenCandidate -Dir $ModelDir
+  if (-not [string]::IsNullOrWhiteSpace($candidate)) {
+    Write-Host "No deformers in current doc. Trying project/open: $candidate" -ForegroundColor Yellow
+    $payload = '{"path":"' + ($candidate -replace '\\','\\') + '","close_current_first":true}'
+    $openRes = Invoke-HttpJson -Method "POST" -Path "/project/open" -Body $payload
+    if ($openRes.StatusCode -eq 200 -or $openRes.StatusCode -eq 599) {
+      if ($openRes.StatusCode -eq 599) {
+        Write-Host "project/open timed out at client side, waiting for async completion..." -ForegroundColor Yellow
+        Start-Sleep -Seconds 12
+      }
+      Start-Sleep -Seconds 2
+      $stateRes = Invoke-HttpJson -Method "GET" -Path "/deformers/state"
+      if ($stateRes.StatusCode -eq 200) {
+        $state = $stateRes.Body | ConvertFrom-Json
+      }
+    } else {
+      Write-Host "project/open failed: $($openRes.StatusCode) $($openRes.Body)" -ForegroundColor Yellow
+    }
+  }
+}
 if ($state.count -lt 1) { throw "/deformers/state returned empty deformer list" }
 
 $first = $state.deformers | Select-Object -First 1

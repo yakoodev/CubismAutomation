@@ -370,6 +370,9 @@ record ApiCatalog(List<ApiGroup> Groups)
                 new ApiAction("GET /deformers/state", "GET", "/deformers/state"),
                 new ApiAction("POST /deformers/select", "POST", "/deformers/select", """{"deformer_id":"WarpDeformer1"}"""),
                 new ApiAction("POST /deformers/rename", "POST", "/deformers/rename", """{"deformer_id":"WarpDeformer1","new_name":"WarpDeformer1_Renamed"}""")
+            ]),
+            new ApiGroup("project", "Project Open API", [
+                new ApiAction("POST /project/open", "POST", "/project/open", """{"path":"C:\\Users\\Yakoo\\Downloads\\vt\\hibiki\\model.cmo3"}""")
             ])
         ]);
     }
