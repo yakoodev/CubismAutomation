@@ -32,7 +32,6 @@ public final class ServerBootstrap {
       created.createContext("/health", ex -> writeText(ex, 200, "ok\n"));
       created.createContext("/version", ServerBootstrap::handleVersion);
       created.createContext("/command", ServerBootstrap::handleCommand);
-      created.createContext("/startup/prepare", ServerBootstrap::handleStartupPrepare);
       created.createContext("/state", ServerBootstrap::handleStateAll);
       created.createContext("/state/project", ServerBootstrap::handleStateProject);
       created.createContext("/state/document", ServerBootstrap::handleStateDocument);
@@ -145,19 +144,6 @@ public final class ServerBootstrap {
       return;
     }
     writeJson(exchange, 200, CubismStateAdapter.stateSelectionJson());
-  }
-
-  private static void handleStartupPrepare(HttpExchange exchange) throws IOException {
-    if (!"POST".equalsIgnoreCase(exchange.getRequestMethod())) {
-      writeJson(exchange, 405, "{\"ok\":false,\"error\":\"method_not_allowed\"}\n");
-      return;
-    }
-    if (!ensureAuthorized(exchange)) {
-      return;
-    }
-    String body = readBody(exchange.getRequestBody());
-    String json = StartupAutomationAdapter.prepare(body);
-    writeJson(exchange, json.startsWith("{\"ok\":true") ? 200 : 500, json);
   }
 
   private static boolean ensureAuthorized(HttpExchange exchange) throws IOException {
