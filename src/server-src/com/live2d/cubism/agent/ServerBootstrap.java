@@ -51,6 +51,7 @@ public final class ServerBootstrap {
       created.createContext("/state/project", ServerBootstrap::handleStateProject);
       created.createContext("/state/document", ServerBootstrap::handleStateDocument);
       created.createContext("/state/selection", ServerBootstrap::handleStateSelection);
+      created.createContext("/state/ui", ServerBootstrap::handleStateUi);
       created.createContext("/mesh/list", ServerBootstrap::handleMeshList);
       created.createContext("/mesh/active", ServerBootstrap::handleMeshActive);
       created.createContext("/mesh/state", ServerBootstrap::handleMeshState);
@@ -174,6 +175,17 @@ public final class ServerBootstrap {
       return;
     }
     writeJson(exchange, 200, CubismStateAdapter.stateSelectionJson());
+  }
+
+  private static void handleStateUi(HttpExchange exchange) throws IOException {
+    if (!"GET".equalsIgnoreCase(exchange.getRequestMethod())) {
+      writeJson(exchange, 405, "{\"ok\":false,\"error\":\"method_not_allowed\"}\n");
+      return;
+    }
+    if (!ensureAuthorized(exchange)) {
+      return;
+    }
+    writeJson(exchange, 200, CubismStateAdapter.stateUiJson());
   }
 
   private static void handleStartupPrepare(HttpExchange exchange) throws IOException {

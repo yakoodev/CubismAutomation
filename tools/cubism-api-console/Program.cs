@@ -250,7 +250,8 @@ record ApiCatalog(List<ApiGroup> Groups)
                 new ApiAction("GET /state", "GET", "/state"),
                 new ApiAction("GET /state/project", "GET", "/state/project"),
                 new ApiAction("GET /state/document", "GET", "/state/document"),
-                new ApiAction("GET /state/selection", "GET", "/state/selection")
+                new ApiAction("GET /state/selection", "GET", "/state/selection"),
+                new ApiAction("GET /state/ui", "GET", "/state/ui")
             ]),
             new ApiGroup("startup", "Startup Flow", [
                 new ApiAction(
