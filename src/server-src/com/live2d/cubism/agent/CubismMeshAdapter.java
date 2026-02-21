@@ -1,10 +1,21 @@
 package com.live2d.cubism.agent;
 
+import java.awt.Frame;
+import java.awt.GraphicsConfiguration;
+import java.awt.Rectangle;
+import java.awt.Robot;
+import java.awt.Window;
+import java.awt.image.BufferedImage;
 import java.lang.reflect.Array;
 import java.lang.reflect.Method;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.time.Instant;
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.Collection;
+import java.util.Comparator;
 import java.util.IdentityHashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -13,12 +24,16 @@ import java.util.concurrent.Callable;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import javax.imageio.ImageIO;
 import javax.swing.SwingUtilities;
 
 public final class CubismMeshAdapter {
   private static final Pattern STRING_FIELD = Pattern.compile("\"([a-zA-Z0-9_]+)\"\\s*:\\s*\"([^\"]*)\"");
   private static final Pattern BOOL_FIELD = Pattern.compile("\"([a-zA-Z0-9_]+)\"\\s*:\\s*(true|false)", Pattern.CASE_INSENSITIVE);
+  private static final Pattern NUMBER_FIELD = Pattern.compile("\"([a-zA-Z0-9_]+)\"\\s*:\\s*(-?\\d+(?:\\.\\d+)?)");
   private static final Pattern OPS_FIELD = Pattern.compile("\"operations\"\\s*:\\s*\\[(.*)]", Pattern.DOTALL);
+  private static final Pattern POINT_PAIR_FIELD = Pattern.compile("\\[\\s*(-?\\d+(?:\\.\\d+)?)\\s*,\\s*(-?\\d+(?:\\.\\d+)?)\\s*]");
+  private static final Pattern POINTS_FIELD = Pattern.compile("\"points\"\\s*:\\s*\\[(.*)]", Pattern.DOTALL);
 
   private CubismMeshAdapter() {}
 
@@ -29,7 +44,7 @@ public final class CubismMeshAdapter {
         if (ctx.doc == null) {
           return error(409, "no_document", "current document is null");
         }
-        List<MeshSnapshot> meshes = readMeshes(ctx.doc, ctx.activeMesh);
+        List<MeshSnapshot> meshes = readMeshes(ctx.doc, ctx.viewCtx, ctx.activeMesh);
         return ok("{\"ok\":true,\"timestamp\":\"" + esc(Instant.now().toString()) + "\",\"meshes\":" + meshesJson(meshes) + "}\n");
       });
     } catch (Throwable t) {
@@ -63,7 +78,7 @@ public final class CubismMeshAdapter {
         if (ctx.doc == null) {
           return error(409, "no_document", "current document is null");
         }
-        List<MeshSnapshot> meshes = readMeshes(ctx.doc, ctx.activeMesh);
+        List<MeshSnapshot> meshes = readMeshes(ctx.doc, ctx.viewCtx, ctx.activeMesh);
         return ok(
           "{\"ok\":true,\"mesh_edit_mode\":" + boolOrNull(isMeshEditMode(ctx.appCtrl, ctx.doc)) +
           ",\"active_mesh\":" + meshJson(ctx.activeMesh == null ? null : snapshot(ctx.activeMesh, true)) +
@@ -158,6 +173,134 @@ public final class CubismMeshAdapter {
 
   public static ApiResponse meshLock(String body) {
     return meshBoolMutation(body, "locked", "lock", "setLocked", "setLock", "setMeshLocked");
+  }
+
+  public static ApiResponse meshPointsGet(String selectorPayload) {
+    try {
+      return onEdt(() -> {
+        DocContext ctx = docContext();
+        if (ctx.doc == null) {
+          return error(409, "no_document", "current document is null");
+        }
+        Object target = resolveTargetMesh(ctx, parseMeshRef(selectorPayload));
+        if (target == null) {
+          return error(409, "no_selected_mesh", "target mesh not found");
+        }
+        List<MeshPoint> points = readMeshPoints(target);
+        if (points.isEmpty()) {
+          return error(400, "unsupported_action", "reading mesh points is not supported");
+        }
+        return ok(
+          "{\"ok\":true,\"mesh\":" + meshJson(snapshot(target, sameMesh(target, ctx.activeMesh))) +
+          ",\"point_count\":" + points.size() +
+          ",\"points\":" + meshPointsJson(points) + "}\n"
+        );
+      });
+    } catch (Throwable t) {
+      return error(500, "operation_failed", t.toString());
+    }
+  }
+
+  public static ApiResponse meshPointsSet(String body) {
+    try {
+      return onEdt(() -> {
+        DocContext ctx = docContext();
+        if (ctx.doc == null) {
+          return error(409, "no_document", "current document is null");
+        }
+        List<MeshPoint> points = parsePoints(body);
+        if (points.isEmpty()) {
+          return error(400, "invalid_request", "points[] is required");
+        }
+        Object target = resolveTargetMesh(ctx, parseMeshRef(body));
+        if (target == null) {
+          return error(409, "no_selected_mesh", "target mesh not found");
+        }
+        boolean applied = writeMeshPoints(target, points);
+        if (!applied) {
+          return error(400, "unsupported_action", "writing mesh points is not supported");
+        }
+        return ok(
+          "{\"ok\":true,\"action\":\"set_points\",\"mesh\":" + meshJson(snapshot(target, sameMesh(target, ctx.activeMesh))) +
+          ",\"point_count\":" + points.size() + "}\n"
+        );
+      });
+    } catch (Throwable t) {
+      return error(500, "operation_failed", t.toString());
+    }
+  }
+
+  public static ApiResponse meshAutoGenerate(String body) {
+    try {
+      return onEdt(() -> {
+        DocContext ctx = docContext();
+        if (ctx.doc == null) {
+          return error(409, "no_document", "current document is null");
+        }
+        Boolean validateOnly = parseBool(body, "validate_only");
+        boolean dryRun = validateOnly != null && validateOnly;
+
+        Object target = resolveTargetMesh(ctx, parseMeshRef(body));
+        if (target == null) {
+          return error(409, "no_selected_mesh", "target mesh not found");
+        }
+        if (!dryRun && !selectMesh(ctx, target)) {
+          return error(400, "unsupported_action", "select mesh not supported");
+        }
+        if (dryRun) {
+          return ok("{\"ok\":true,\"validate_only\":true,\"result\":{\"op\":\"auto_mesh\",\"status\":\"validated\"}}\n");
+        }
+        boolean invoked = invokeAction(ctx, opMethodCandidates("auto_mesh"));
+        if (!invoked) {
+          return error(400, "unsupported_action", "operation not supported by current Cubism build");
+        }
+        return ok("{\"ok\":true,\"validate_only\":false,\"result\":{\"op\":\"auto_mesh\",\"status\":\"executed\"}}\n");
+      });
+    } catch (Throwable t) {
+      return error(500, "operation_failed", t.toString());
+    }
+  }
+
+  public static ApiResponse meshScreenshot(String body) {
+    try {
+      return onEdt(() -> {
+        DocContext ctx = docContext();
+        if (ctx.doc == null) {
+          return error(409, "no_document", "current document is null");
+        }
+
+        Object target = resolveTargetMesh(ctx, parseMeshRef(body));
+        if (target == null) {
+          return error(409, "no_selected_mesh", "target mesh not found");
+        }
+
+        // Ensure target mesh is selected before capture.
+        selectMesh(ctx, target);
+
+        Path outPath = screenshotPath(parseString(body, "output_path"));
+        BufferedImage img = captureCubismWindow();
+        if (img == null) {
+          return error(400, "unsupported_action", "unable to capture Cubism window");
+        }
+        Files.createDirectories(outPath.getParent());
+        ImageIO.write(img, "png", outPath.toFile());
+
+        Boolean includeBase64 = parseBool(body, "include_base64");
+        StringBuilder sb = new StringBuilder();
+        sb.append("{\"ok\":true");
+        sb.append(",\"mesh\":").append(meshJson(snapshot(target, true)));
+        sb.append(",\"image_path\":").append(q(outPath.toString()));
+        sb.append(",\"width\":").append(img.getWidth());
+        sb.append(",\"height\":").append(img.getHeight());
+        if (Boolean.TRUE.equals(includeBase64)) {
+          sb.append(",\"image_base64\":").append(q(Base64.getEncoder().encodeToString(Files.readAllBytes(outPath))));
+        }
+        sb.append("}\n");
+        return ok(sb.toString());
+      });
+    } catch (Throwable t) {
+      return error(500, "operation_failed", t.toString());
+    }
   }
 
   public static ApiResponse meshOps(String body) {
@@ -275,8 +418,8 @@ public final class CubismMeshAdapter {
     }
   }
 
-  private static List<MeshSnapshot> readMeshes(Object doc, Object activeMesh) {
-    List<Object> meshObjects = discoverMeshObjects(doc, null, activeMesh);
+  private static List<MeshSnapshot> readMeshes(Object doc, Object viewCtx, Object activeMesh) {
+    List<Object> meshObjects = discoverMeshObjects(doc, viewCtx, activeMesh);
     List<MeshSnapshot> out = new ArrayList<>(meshObjects.size());
     for (Object mesh : meshObjects) {
       out.add(snapshot(mesh, sameMesh(mesh, activeMesh)));
@@ -417,8 +560,10 @@ public final class CubismMeshAdapter {
 
     // Reflective fallback for Cubism builds with different method names.
     addMeshesFromNoArgMethods(unique, visited, doc);
+    scanObjectGraphForMeshes(unique, visited, doc, 3);
     if (viewCtx != null) {
       addMeshesFromNoArgMethods(unique, visited, viewCtx);
+      scanObjectGraphForMeshes(unique, visited, viewCtx, 3);
     }
 
     if (activeMesh != null && isMeshObject(activeMesh)) {
@@ -443,6 +588,62 @@ public final class CubismMeshAdapter {
       Object result = invokeNoArgSafe(target, method.getName());
       addMeshesFromCandidate(unique, visited, result);
     }
+  }
+
+  private static void scanObjectGraphForMeshes(
+    LinkedHashMap<String, Object> unique,
+    IdentityHashMap<Object, Boolean> visited,
+    Object root,
+    int depth
+  ) {
+    if (root == null || depth < 0) {
+      return;
+    }
+    if (visited.put(root, Boolean.TRUE) != null) {
+      return;
+    }
+
+    if (isMeshObject(root)) {
+      addMesh(unique, root);
+      return;
+    }
+
+    for (Method method : root.getClass().getMethods()) {
+      if (method.getParameterCount() != 0) {
+        continue;
+      }
+      String name = method.getName();
+      if (!name.startsWith("get")) {
+        continue;
+      }
+      String lc = name.toLowerCase();
+      if (
+        !(lc.contains("mesh") || lc.contains("drawable") || lc.contains("model") || lc.contains("part") ||
+          lc.contains("selection") || lc.contains("deformer") || lc.contains("source") || lc.contains("list") ||
+          lc.contains("objects"))
+      ) {
+        continue;
+      }
+      Object child = invokeNoArgSafe(root, name);
+      for (Object item : flattenDeep(child, 2, new IdentityHashMap<>())) {
+        if (isMeshObject(item)) {
+          addMesh(unique, item);
+        } else if (depth > 0 && shouldRecurse(item)) {
+          scanObjectGraphForMeshes(unique, visited, item, depth - 1);
+        }
+      }
+    }
+  }
+
+  private static boolean shouldRecurse(Object obj) {
+    if (obj == null) {
+      return false;
+    }
+    String className = obj.getClass().getName().toLowerCase();
+    if (className.startsWith("java.") || className.startsWith("javax.")) {
+      return false;
+    }
+    return className.contains("live2d") || className.contains("cubism");
   }
 
   private static void addMeshesFromCandidate(LinkedHashMap<String, Object> unique, IdentityHashMap<Object, Boolean> visited, Object candidate) {
@@ -484,6 +685,353 @@ public final class CubismMeshAdapter {
       return true;
     }
     return false;
+  }
+
+  private static List<MeshPoint> readMeshPoints(Object mesh) {
+    for (Object target : meshObjectCandidates(mesh)) {
+      List<Object> candidates = new ArrayList<>();
+      candidates.add(invokeNoArgSafe(target, "getPositions"));
+      candidates.add(invokeNoArgSafe(target, "getVertices"));
+      candidates.add(invokeNoArgSafe(target, "getVertexPoints"));
+      candidates.add(invokeNoArgSafe(target, "getPoints"));
+      candidates.add(invokeNoArgSafe(target, "getMeshPoints"));
+      candidates.add(invokeNoArgSafe(target, "getControlPoints"));
+      candidates.add(invokeNoArgSafe(target, "getVertexList"));
+      candidates.add(invokeNoArgSafe(target, "getGlPositions"));
+      for (Object candidate : candidates) {
+        List<MeshPoint> parsed = toPoints(candidate);
+        if (!parsed.isEmpty()) {
+          return parsed;
+        }
+      }
+    }
+    return List.of();
+  }
+
+  private static boolean writeMeshPoints(Object mesh, List<MeshPoint> points) {
+    float[] coordsF = toFloatArray(points);
+    double[] coordsD = toDoubleArray(points);
+    List<Object> targets = meshObjectCandidates(mesh);
+    for (Object target : targets) {
+      boolean replaced = invokeAny(
+        List.of(target),
+        new String[]{"setPositions", "setVertices", "setMeshVertices", "setPoints", "setVertexPoints"},
+        new Object[][]{{coordsF}, {coordsD}}
+      );
+      if (replaced) {
+        markMeshUpdated(targets);
+        return true;
+      }
+
+      boolean moved = setPointsByIndex(
+        target,
+        points,
+        "movePoint",
+        "setPoint",
+        "setVertex",
+        "setVertexPoint"
+      );
+      if (moved) {
+        markMeshUpdated(targets);
+        return true;
+      }
+    }
+    return false;
+  }
+
+  private static boolean setPointsByIndex(Object mesh, List<MeshPoint> points, String... methodNames) {
+    boolean used = false;
+    for (int i = 0; i < points.size(); i++) {
+      MeshPoint p = points.get(i);
+      boolean ok = invokeAny(
+        List.of(mesh),
+        methodNames,
+        new Object[][]{
+          {i, (float) p.x, (float) p.y},
+          {i, p.x, p.y}
+        }
+      );
+      if (!ok) {
+        return used;
+      }
+      used = true;
+    }
+    return used;
+  }
+
+  private static List<MeshPoint> toPoints(Object value) {
+    List<MeshPoint> out = new ArrayList<>();
+    if (value == null) {
+      return out;
+    }
+
+    if (value instanceof float[] arr) {
+      for (int i = 0; i + 1 < arr.length; i += 2) {
+        out.add(new MeshPoint(arr[i], arr[i + 1]));
+      }
+      return out;
+    }
+    if (value instanceof double[] arr) {
+      for (int i = 0; i + 1 < arr.length; i += 2) {
+        out.add(new MeshPoint(arr[i], arr[i + 1]));
+      }
+      return out;
+    }
+    if (value instanceof Collection<?> coll) {
+      if (!coll.isEmpty() && coll.iterator().next() instanceof Number) {
+        List<Double> nums = new ArrayList<>(coll.size());
+        for (Object item : coll) {
+          if (item instanceof Number n) {
+            nums.add(n.doubleValue());
+          }
+        }
+        appendNumberPairs(out, nums);
+        if (!out.isEmpty()) {
+          return out;
+        }
+      }
+      for (Object item : coll) {
+        MeshPoint p = pointFromObject(item);
+        if (p != null) {
+          out.add(p);
+        }
+      }
+      return out;
+    }
+    if (value.getClass().isArray()) {
+      int len = Array.getLength(value);
+      for (int i = 0; i < len; i++) {
+        MeshPoint p = pointFromObject(Array.get(value, i));
+        if (p != null) {
+          out.add(p);
+        }
+      }
+      return out;
+    }
+    MeshPoint single = pointFromObject(value);
+    if (single != null) {
+      out.add(single);
+      return out;
+    }
+
+    List<Double> nums = readNumericSequence(value);
+    if (!nums.isEmpty()) {
+      appendNumberPairs(out, nums);
+      if (!out.isEmpty()) {
+        return out;
+      }
+    }
+    return out;
+  }
+
+  private static MeshPoint pointFromObject(Object pointObj) {
+    if (pointObj == null) {
+      return null;
+    }
+    if (pointObj instanceof List<?> nums && nums.size() >= 2 && nums.get(0) instanceof Number && nums.get(1) instanceof Number) {
+      return new MeshPoint(((Number) nums.get(0)).doubleValue(), ((Number) nums.get(1)).doubleValue());
+    }
+    Object x = firstNonNull(invokeNoArgSafe(pointObj, "getX"), invokeNoArgSafe(pointObj, "x"));
+    Object y = firstNonNull(invokeNoArgSafe(pointObj, "getY"), invokeNoArgSafe(pointObj, "y"));
+    if (x instanceof Number xn && y instanceof Number yn) {
+      return new MeshPoint(xn.doubleValue(), yn.doubleValue());
+    }
+    return null;
+  }
+
+  private static List<Object> meshObjectCandidates(Object mesh) {
+    List<Object> out = new ArrayList<>();
+    IdentityHashMap<Object, Boolean> seen = new IdentityHashMap<>();
+    addCandidate(out, seen, mesh);
+
+    Object source = invokeNoArgSafe(mesh, "getSource");
+    addCandidate(out, seen, source);
+    addCandidate(out, seen, invokeNoArgSafe(mesh, "getInstance"));
+    addCandidate(out, seen, invokeNoArgSafe(mesh, "getEditableMesh"));
+
+    Object editableExt = firstNonNull(
+      invokeNoArgSafe(mesh, "getEditableMeshExtension"),
+      source == null ? null : invokeNoArgSafe(source, "getEditableMeshExtension")
+    );
+    addCandidate(out, seen, editableExt);
+    addCandidate(out, seen, invokeNoArgSafe(editableExt, "getEditableMesh"));
+
+    addCandidate(out, seen, invokeNoArgSafe(mesh, "getCurrentKeyform"));
+    addCandidate(out, seen, invokeNoArgSafe(mesh, "getCurrentKeyForm"));
+    addCandidate(out, seen, invokeNoArgSafe(mesh, "getDefaultKeyForm"));
+    addCandidate(out, seen, invokeNoArgSafe(mesh, "getDefaultKeyform"));
+    addCandidate(out, seen, invokeNoArgSafe(mesh, "getInterpolatedForm"));
+    addCandidate(out, seen, invokeNoArgSafe(mesh, "getDeformedForm"));
+    addCandidate(out, seen, invokeNoArgSafe(mesh, "getAffectedForm"));
+    addCandidate(out, seen, invokeNoArgSafe(mesh, "getCalculatedForm"));
+    addCandidate(out, seen, invokeNoArgSafe(mesh, "getAnimatedForm"));
+    addCandidate(out, seen, invokeNoArgSafe(mesh, "getLocalAnimatedForm"));
+    addCandidate(out, seen, invokeNoArgSafe(mesh, "getCurrentForm"));
+    addCandidate(out, seen, invokeNoArgSafe(mesh, "getForm"));
+    addCandidatesFromContainer(out, seen, invokeNoArgSafe(mesh, "getKeyforms"));
+    addCandidatesFromContainer(out, seen, invokeNoArgSafe(mesh, "getForms"));
+
+    if (source != null) {
+      addCandidate(out, seen, invokeNoArgSafe(source, "getEditableMesh"));
+      addCandidate(out, seen, invokeNoArgSafe(source, "getCurrentKeyform"));
+      addCandidate(out, seen, invokeNoArgSafe(source, "getCurrentKeyForm"));
+      addCandidate(out, seen, invokeNoArgSafe(source, "getDefaultKeyForm"));
+      addCandidate(out, seen, invokeNoArgSafe(source, "getDefaultKeyform"));
+      addCandidate(out, seen, invokeNoArgSafe(source, "getInterpolatedForm"));
+      addCandidate(out, seen, invokeNoArgSafe(source, "getDeformedForm"));
+      addCandidate(out, seen, invokeNoArgSafe(source, "getAffectedForm"));
+      addCandidate(out, seen, invokeNoArgSafe(source, "getCalculatedForm"));
+      addCandidate(out, seen, invokeNoArgSafe(source, "getAnimatedForm"));
+      addCandidate(out, seen, invokeNoArgSafe(source, "getLocalAnimatedForm"));
+      addCandidate(out, seen, invokeNoArgSafe(source, "getCurrentForm"));
+      addCandidate(out, seen, invokeNoArgSafe(source, "getForm"));
+      addCandidatesFromContainer(out, seen, invokeNoArgSafe(source, "getKeyforms"));
+      addCandidatesFromContainer(out, seen, invokeNoArgSafe(source, "getForms"));
+    }
+
+    return out;
+  }
+
+  private static void addCandidate(List<Object> out, IdentityHashMap<Object, Boolean> seen, Object value) {
+    if (value == null || seen.put(value, Boolean.TRUE) != null) {
+      return;
+    }
+    out.add(value);
+  }
+
+  private static void addCandidatesFromContainer(List<Object> out, IdentityHashMap<Object, Boolean> seen, Object container) {
+    for (Object value : flattenDeep(container, 2, new IdentityHashMap<>())) {
+      addCandidate(out, seen, value);
+    }
+  }
+
+  private static void markMeshUpdated(List<Object> targets) {
+    invokeAny(
+      targets,
+      new String[]{"setPositionUpdated", "setMeshUpdatedFlag__testImpl", "setMeshUpdated", "setUpdated", "updateMesh", "clearCache"},
+      new Object[][]{{}}
+    );
+  }
+
+  private static List<Double> readNumericSequence(Object value) {
+    List<Double> out = new ArrayList<>();
+    if (value == null) {
+      return out;
+    }
+    Object asArray = invokeNoArgSafe(value, "toArray");
+    if (asArray != null && asArray != value) {
+      List<MeshPoint> points = toPoints(asArray);
+      if (!points.isEmpty()) {
+        for (MeshPoint p : points) {
+          out.add(p.x);
+          out.add(p.y);
+        }
+        return out;
+      }
+    }
+
+    Integer size = firstNonNullInt(
+      asInt(invokeNoArgSafe(value, "size")),
+      asInt(invokeNoArgSafe(value, "getCount")),
+      asInt(invokeNoArgSafe(value, "length"))
+    );
+    if (size == null || size <= 1) {
+      return out;
+    }
+    for (int i = 0; i < size; i++) {
+      Object cell = firstNonNull(
+        invokeWithCompatibleArgs(value, "get", new Object[]{i}),
+        invokeWithCompatibleArgs(value, "getFloat", new Object[]{i}),
+        invokeWithCompatibleArgs(value, "getDouble", new Object[]{i}),
+        invokeWithCompatibleArgs(value, "at", new Object[]{i})
+      );
+      if (!(cell instanceof Number n)) {
+        return List.of();
+      }
+      out.add(n.doubleValue());
+    }
+    return out;
+  }
+
+  private static void appendNumberPairs(List<MeshPoint> out, List<Double> nums) {
+    for (int i = 0; i + 1 < nums.size(); i += 2) {
+      out.add(new MeshPoint(nums.get(i), nums.get(i + 1)));
+    }
+  }
+
+  private static String meshPointsJson(List<MeshPoint> points) {
+    StringBuilder sb = new StringBuilder();
+    sb.append('[');
+    for (int i = 0; i < points.size(); i++) {
+      if (i > 0) {
+        sb.append(',');
+      }
+      MeshPoint p = points.get(i);
+      sb.append("{\"index\":").append(i).append(",\"x\":").append(p.x).append(",\"y\":").append(p.y).append('}');
+    }
+    sb.append(']');
+    return sb.toString();
+  }
+
+  private static float[] toFloatArray(List<MeshPoint> points) {
+    float[] out = new float[points.size() * 2];
+    for (int i = 0; i < points.size(); i++) {
+      out[i * 2] = (float) points.get(i).x;
+      out[i * 2 + 1] = (float) points.get(i).y;
+    }
+    return out;
+  }
+
+  private static double[] toDoubleArray(List<MeshPoint> points) {
+    double[] out = new double[points.size() * 2];
+    for (int i = 0; i < points.size(); i++) {
+      out[i * 2] = points.get(i).x;
+      out[i * 2 + 1] = points.get(i).y;
+    }
+    return out;
+  }
+
+  private static Path screenshotPath(String requested) {
+    if (requested != null && !requested.isBlank()) {
+      return Paths.get(requested);
+    }
+    String dir = System.getenv("CUBISM_AGENT_SCREENSHOT_DIR");
+    if (dir == null || dir.isBlank()) {
+      dir = System.getProperty("user.home") + "\\cubism-agent-screenshots";
+    }
+    return Paths.get(dir, "mesh-" + Instant.now().toEpochMilli() + ".png");
+  }
+
+  private static BufferedImage captureCubismWindow() throws Exception {
+    Window target = List.of(Window.getWindows()).stream()
+      .filter(w -> w != null && w.isShowing() && w.getWidth() > 120 && w.getHeight() > 120)
+      .filter(CubismMeshAdapter::looksLikeCubismWindow)
+      .max(Comparator.comparingInt(w -> w.getWidth() * w.getHeight()))
+      .orElse(null);
+
+    if (target == null) {
+      target = List.of(Window.getWindows()).stream()
+        .filter(w -> w != null && w.isShowing() && w.getWidth() > 120 && w.getHeight() > 120)
+        .max(Comparator.comparingInt(w -> w.getWidth() * w.getHeight()))
+        .orElse(null);
+    }
+    if (target == null) {
+      return null;
+    }
+    GraphicsConfiguration gc = target.getGraphicsConfiguration();
+    Robot robot = gc != null ? new Robot(gc.getDevice()) : new Robot();
+    Rectangle bounds = target.getBounds();
+    return robot.createScreenCapture(bounds);
+  }
+
+  private static boolean looksLikeCubismWindow(Window w) {
+    String title = null;
+    if (w instanceof Frame frame) {
+      title = frame.getTitle();
+    }
+    String className = w.getClass().getName().toLowerCase();
+    String t = title == null ? "" : title.toLowerCase();
+    return className.contains("cubism") || className.contains("live2d") || t.contains("cubism") || t.contains("live2d");
   }
 
   private static boolean selectMesh(DocContext ctx, Object mesh) {
@@ -843,6 +1391,55 @@ public final class CubismMeshAdapter {
     return out;
   }
 
+  private static List<MeshPoint> parsePoints(String body) {
+    if (body == null || body.isBlank()) {
+      return List.of();
+    }
+    Matcher matcher = POINTS_FIELD.matcher(body);
+    if (!matcher.find()) {
+      return List.of();
+    }
+    String content = matcher.group(1);
+    List<MeshPoint> out = new ArrayList<>();
+    for (String pointObject : parseObjects(content)) {
+      Double x = parseNumber(pointObject, "x");
+      Double y = parseNumber(pointObject, "y");
+      if (x != null && y != null) {
+        out.add(new MeshPoint(x, y));
+      }
+    }
+    if (!out.isEmpty()) {
+      return out;
+    }
+    Matcher pairMatcher = POINT_PAIR_FIELD.matcher(content);
+    while (pairMatcher.find()) {
+      out.add(new MeshPoint(Double.parseDouble(pairMatcher.group(1)), Double.parseDouble(pairMatcher.group(2))));
+    }
+    return out;
+  }
+
+  private static List<String> parseObjects(String content) {
+    List<String> out = new ArrayList<>();
+    int depth = 0;
+    int start = -1;
+    for (int i = 0; i < content.length(); i++) {
+      char c = content.charAt(i);
+      if (c == '{') {
+        if (depth == 0) {
+          start = i;
+        }
+        depth++;
+      } else if (c == '}') {
+        depth--;
+        if (depth == 0 && start >= 0) {
+          out.add(content.substring(start, i + 1));
+          start = -1;
+        }
+      }
+    }
+    return out;
+  }
+
   private static MeshRef parseMeshRef(String body) {
     String id = firstNonBlank(
       parseString(body, "mesh_id"),
@@ -865,6 +1462,19 @@ public final class CubismMeshAdapter {
     while (m.find()) {
       if (key.equals(m.group(1))) {
         return m.group(2);
+      }
+    }
+    return null;
+  }
+
+  private static Double parseNumber(String body, String key) {
+    if (body == null) {
+      return null;
+    }
+    Matcher m = NUMBER_FIELD.matcher(body);
+    while (m.find()) {
+      if (key.equals(m.group(1))) {
+        return Double.parseDouble(m.group(2));
       }
     }
     return null;
@@ -947,6 +1557,19 @@ public final class CubismMeshAdapter {
 
   private static Boolean asBool(Object value) {
     return value instanceof Boolean b ? b : null;
+  }
+
+  private static Integer asInt(Object value) {
+    return value instanceof Number n ? n.intValue() : null;
+  }
+
+  private static Integer firstNonNullInt(Integer... values) {
+    for (Integer value : values) {
+      if (value != null) {
+        return value;
+      }
+    }
+    return null;
   }
 
   private static String asString(Object value) {
@@ -1044,10 +1667,10 @@ public final class CubismMeshAdapter {
     }
 
     boolean matches(String id, String name) {
-      if (meshId != null && !meshId.isBlank() && id != null && meshId.equals(id)) {
+      if (meshId != null && !meshId.isBlank() && id != null && meshId.equalsIgnoreCase(id)) {
         return true;
       }
-      return meshName != null && !meshName.isBlank() && name != null && meshName.equals(name);
+      return meshName != null && !meshName.isBlank() && name != null && meshName.equalsIgnoreCase(name);
     }
 
     boolean matchesSnapshot(MeshSnapshot snap) {
@@ -1059,6 +1682,8 @@ public final class CubismMeshAdapter {
   }
 
   private record MeshSnapshot(String id, String name, Boolean visible, Boolean locked, String className, boolean active) {}
+
+  private record MeshPoint(double x, double y) {}
 
   public record ApiResponse(int status, String json) {}
 }
