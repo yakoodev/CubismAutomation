@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.InetSocketAddress;
+import java.net.URLDecoder;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -58,6 +59,12 @@ public final class ServerBootstrap {
       created.createContext("/mesh/visibility", ServerBootstrap::handleMeshVisibility);
       created.createContext("/mesh/lock", ServerBootstrap::handleMeshLock);
       created.createContext("/mesh/ops", ServerBootstrap::handleMeshOps);
+      created.createContext("/mesh/points", ServerBootstrap::handleMeshPoints);
+      created.createContext("/mesh/points/add", ServerBootstrap::handleMeshPointAdd);
+      created.createContext("/mesh/points/remove", ServerBootstrap::handleMeshPointRemove);
+      created.createContext("/mesh/auto_generate", ServerBootstrap::handleMeshAutoGenerate);
+      created.createContext("/mesh/screenshot", ServerBootstrap::handleMeshScreenshot);
+      created.createContext("/screenshot/current", ServerBootstrap::handleScreenshotCurrent);
       created.setExecutor(Executors.newSingleThreadExecutor(r -> {
         Thread t = new Thread(r, "cubism-agent-http");
         t.setDaemon(true);
@@ -239,6 +246,71 @@ public final class ServerBootstrap {
     handleMeshPost(exchange, CubismMeshAdapter::meshOps);
   }
 
+  private static void handleMeshPoints(HttpExchange exchange) throws IOException {
+    if (!ensureAuthorized(exchange)) {
+      return;
+    }
+    if ("GET".equalsIgnoreCase(exchange.getRequestMethod())) {
+      String selector = selectorPayloadFromQuery(exchange);
+      CubismMeshAdapter.ApiResponse response = CubismMeshAdapter.meshPointsGet(selector);
+      writeJson(exchange, response.status(), response.json());
+      return;
+    }
+    if ("POST".equalsIgnoreCase(exchange.getRequestMethod())) {
+      String body = readBody(exchange.getRequestBody());
+      exchange.setAttribute("requestBody", body);
+      CubismMeshAdapter.ApiResponse response = CubismMeshAdapter.meshPointsSet(body);
+      writeJson(exchange, response.status(), response.json());
+      return;
+    }
+    writeJson(exchange, 405, "{\"ok\":false,\"error\":\"method_not_allowed\"}\n");
+  }
+
+  private static void handleMeshAutoGenerate(HttpExchange exchange) throws IOException {
+    handleMeshPost(exchange, CubismMeshAdapter::meshAutoGenerate);
+  }
+
+  private static void handleMeshPointAdd(HttpExchange exchange) throws IOException {
+    handleMeshPost(exchange, CubismMeshAdapter::meshPointAdd);
+  }
+
+  private static void handleMeshPointRemove(HttpExchange exchange) throws IOException {
+    handleMeshPost(exchange, CubismMeshAdapter::meshPointRemove);
+  }
+
+  private static void handleMeshScreenshot(HttpExchange exchange) throws IOException {
+    if ("GET".equalsIgnoreCase(exchange.getRequestMethod())) {
+      if (!ensureAuthorized(exchange)) {
+        return;
+      }
+      String selector = selectorPayloadFromQuery(exchange);
+      exchange.setAttribute("requestBody", selector);
+      CubismMeshAdapter.ApiResponse response = CubismMeshAdapter.meshScreenshot(selector);
+      writeJson(exchange, response.status(), response.json());
+      return;
+    }
+    handleMeshPost(exchange, CubismMeshAdapter::meshScreenshot);
+  }
+
+  private static void handleScreenshotCurrent(HttpExchange exchange) throws IOException {
+    if (!"GET".equalsIgnoreCase(exchange.getRequestMethod())) {
+      writeJson(exchange, 405, "{\"ok\":false,\"error\":\"method_not_allowed\"}\n");
+      return;
+    }
+    if (!ensureAuthorized(exchange)) {
+      return;
+    }
+    String selector = selectorPayloadFromQuery(exchange);
+    exchange.setAttribute("requestBody", selector);
+    boolean workspaceOnly = boolQueryParam(exchange, "workspace_only", true);
+    CubismMeshAdapter.PngResponse response = CubismMeshAdapter.screenshotCurrent(selector, workspaceOnly);
+    if (response.bytes() != null) {
+      writeBinary(exchange, response.status(), "image/png", response.bytes());
+      return;
+    }
+    writeJson(exchange, response.status(), response.errorJson() == null ? "{\"ok\":false,\"error\":\"capture_failed\"}\n" : response.errorJson());
+  }
+
   private static void handleMeshPost(HttpExchange exchange, MeshPostHandler handler) throws IOException {
     if (!"POST".equalsIgnoreCase(exchange.getRequestMethod())) {
       writeJson(exchange, 405, "{\"ok\":false,\"error\":\"method_not_allowed\"}\n");
@@ -295,6 +367,66 @@ public final class ServerBootstrap {
     return baos.toString(StandardCharsets.UTF_8);
   }
 
+  private static String selectorPayloadFromQuery(HttpExchange exchange) {
+    String raw = exchange.getRequestURI() == null ? null : exchange.getRequestURI().getRawQuery();
+    if (raw == null || raw.isBlank()) {
+      return "{}";
+    }
+    String meshId = null;
+    String meshName = null;
+    for (String pair : raw.split("&")) {
+      int pos = pair.indexOf('=');
+      String key = pos >= 0 ? pair.substring(0, pos) : pair;
+      String value = pos >= 0 ? pair.substring(pos + 1) : "";
+      String decodedKey = URLDecoder.decode(key, StandardCharsets.UTF_8);
+      String decodedValue = URLDecoder.decode(value, StandardCharsets.UTF_8);
+      if ("mesh_id".equals(decodedKey) || "id".equals(decodedKey) || "target_id".equals(decodedKey)) {
+        meshId = decodedValue;
+      } else if ("mesh_name".equals(decodedKey) || "name".equals(decodedKey) || "target_name".equals(decodedKey)) {
+        meshName = decodedValue;
+      }
+    }
+    StringBuilder sb = new StringBuilder();
+    sb.append('{');
+    boolean has = false;
+    if (meshId != null && !meshId.isBlank()) {
+      sb.append("\"mesh_id\":\"").append(meshId.replace("\\", "\\\\").replace("\"", "\\\"")).append('"');
+      has = true;
+    }
+    if (meshName != null && !meshName.isBlank()) {
+      if (has) {
+        sb.append(',');
+      }
+      sb.append("\"mesh_name\":\"").append(meshName.replace("\\", "\\\\").replace("\"", "\\\"")).append('"');
+      has = true;
+    }
+    sb.append('}');
+    return sb.toString();
+  }
+
+  private static boolean boolQueryParam(HttpExchange exchange, String key, boolean fallback) {
+    String raw = exchange.getRequestURI() == null ? null : exchange.getRequestURI().getRawQuery();
+    if (raw == null || raw.isBlank()) {
+      return fallback;
+    }
+    for (String pair : raw.split("&")) {
+      int pos = pair.indexOf('=');
+      String k = pos >= 0 ? pair.substring(0, pos) : pair;
+      if (!key.equals(URLDecoder.decode(k, StandardCharsets.UTF_8))) {
+        continue;
+      }
+      String v = pos >= 0 ? pair.substring(pos + 1) : "";
+      String d = URLDecoder.decode(v, StandardCharsets.UTF_8).trim().toLowerCase();
+      if ("1".equals(d) || "true".equals(d) || "yes".equals(d) || "on".equals(d)) {
+        return true;
+      }
+      if ("0".equals(d) || "false".equals(d) || "no".equals(d) || "off".equals(d)) {
+        return false;
+      }
+    }
+    return fallback;
+  }
+
   private static void writeJson(HttpExchange exchange, int statusCode, String body) throws IOException {
     logExchange(exchange, statusCode, body);
     byte[] bytes = body.getBytes(StandardCharsets.UTF_8);
@@ -311,6 +443,19 @@ public final class ServerBootstrap {
     logExchange(exchange, statusCode, body);
     byte[] bytes = body.getBytes(StandardCharsets.UTF_8);
     exchange.getResponseHeaders().set("Content-Type", "text/plain; charset=utf-8");
+    exchange.sendResponseHeaders(statusCode, bytes.length);
+    try (OutputStream os = exchange.getResponseBody()) {
+      os.write(bytes);
+    } finally {
+      exchange.close();
+    }
+  }
+
+  private static void writeBinary(HttpExchange exchange, int statusCode, String contentType, byte[] body) throws IOException {
+    String safeType = contentType == null || contentType.isBlank() ? "application/octet-stream" : contentType;
+    logExchange(exchange, statusCode, "<binary " + (body == null ? 0 : body.length) + " bytes; " + safeType + ">");
+    byte[] bytes = body == null ? new byte[0] : body;
+    exchange.getResponseHeaders().set("Content-Type", safeType);
     exchange.sendResponseHeaders(statusCode, bytes.length);
     try (OutputStream os = exchange.getResponseBody()) {
       os.write(bytes);

@@ -4,10 +4,14 @@ import java.awt.Frame;
 import java.awt.GraphicsConfiguration;
 import java.awt.Rectangle;
 import java.awt.Robot;
+import java.awt.Component;
+import java.awt.Container;
 import java.awt.Window;
 import java.awt.image.BufferedImage;
+import java.io.ByteArrayOutputStream;
 import java.lang.reflect.Array;
 import java.lang.reflect.Method;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -34,6 +38,9 @@ public final class CubismMeshAdapter {
   private static final Pattern OPS_FIELD = Pattern.compile("\"operations\"\\s*:\\s*\\[(.*)]", Pattern.DOTALL);
   private static final Pattern POINT_PAIR_FIELD = Pattern.compile("\\[\\s*(-?\\d+(?:\\.\\d+)?)\\s*,\\s*(-?\\d+(?:\\.\\d+)?)\\s*]");
   private static final Pattern POINTS_FIELD = Pattern.compile("\"points\"\\s*:\\s*\\[(.*)]", Pattern.DOTALL);
+  private static final boolean ENABLE_TOPOLOGY_MUTATION = "true".equalsIgnoreCase(
+    System.getenv().getOrDefault("CUBISM_AGENT_ENABLE_TOPOLOGY_MUTATION", "false")
+  );
 
   private CubismMeshAdapter() {}
 
@@ -216,13 +223,140 @@ public final class CubismMeshAdapter {
         if (target == null) {
           return error(409, "no_selected_mesh", "target mesh not found");
         }
+        if (!ensureMeshEditModeForWrite(ctx, target)) {
+          return error(409, "guardrail_violation", "mesh edit mode required (double-click selected mesh)");
+        }
+        Boolean allowPartial = parseBool(body, "allow_partial");
+        if (!Boolean.TRUE.equals(allowPartial)) {
+          List<MeshPoint> existing = readMeshPoints(target);
+          if (!existing.isEmpty() && existing.size() != points.size()) {
+            return error(
+              400,
+              "invalid_request",
+              "points size mismatch: expected " + existing.size() + ", got " + points.size() + " (set allow_partial=true to override)"
+            );
+          }
+        }
         boolean applied = writeMeshPoints(target, points);
         if (!applied) {
           return error(400, "unsupported_action", "writing mesh points is not supported");
         }
+        List<MeshPoint> after = readMeshPoints(target);
+        if (!after.isEmpty() && !matchesPoints(after, points, 0.01)) {
+          return error(409, "no_effect", "points write request did not apply in current mode");
+        }
         return ok(
           "{\"ok\":true,\"action\":\"set_points\",\"mesh\":" + meshJson(snapshot(target, sameMesh(target, ctx.activeMesh))) +
           ",\"point_count\":" + points.size() + "}\n"
+        );
+      });
+    } catch (Throwable t) {
+      return error(500, "operation_failed", t.toString());
+    }
+  }
+
+  public static ApiResponse meshPointAdd(String body) {
+    try {
+      return onEdt(() -> {
+        if (!ENABLE_TOPOLOGY_MUTATION) {
+          return error(409, "guardrail_violation", "topology mutation disabled; set CUBISM_AGENT_ENABLE_TOPOLOGY_MUTATION=true to enable");
+        }
+        DocContext ctx = docContext();
+        if (ctx.doc == null) {
+          return error(409, "no_document", "current document is null");
+        }
+        Object target = resolveTargetMesh(ctx, parseMeshRef(body));
+        if (target == null) {
+          return error(409, "no_selected_mesh", "target mesh not found");
+        }
+        Double x = parseNumber(body, "x");
+        Double y = parseNumber(body, "y");
+        if (x == null || y == null) {
+          return error(400, "invalid_request", "x and y are required");
+        }
+        int beforeCount = countMeshPoints(target);
+        Object editable = findEditableMesh(target);
+        boolean changed = false;
+        if (editable != null) {
+          changed = addEditablePoint(editable, x.floatValue(), y.floatValue());
+        }
+        if (!changed) {
+          List<MeshPoint> points = readMeshPoints(target);
+          if (!points.isEmpty()) {
+            List<MeshPoint> next = new ArrayList<>(points);
+            next.add(new MeshPoint(x, y));
+            changed = writeMeshPoints(target, next);
+          }
+        }
+        if (!changed) {
+          return error(400, "unsupported_action", "add point is not supported by current Cubism build");
+        }
+        markMeshUpdated(meshObjectCandidates(target));
+        int count = countMeshPoints(target);
+        if (count <= beforeCount) {
+          return error(409, "no_effect", "add point call finished but point count did not increase");
+        }
+        return ok(
+          "{\"ok\":true,\"action\":\"add_point\",\"mesh\":" + meshJson(snapshot(target, sameMesh(target, ctx.activeMesh))) +
+          ",\"point_count\":" + count + "}\n"
+        );
+      });
+    } catch (Throwable t) {
+      return error(500, "operation_failed", t.toString());
+    }
+  }
+
+  public static ApiResponse meshPointRemove(String body) {
+    try {
+      return onEdt(() -> {
+        if (!ENABLE_TOPOLOGY_MUTATION) {
+          return error(409, "guardrail_violation", "topology mutation disabled; set CUBISM_AGENT_ENABLE_TOPOLOGY_MUTATION=true to enable");
+        }
+        DocContext ctx = docContext();
+        if (ctx.doc == null) {
+          return error(409, "no_document", "current document is null");
+        }
+        Object target = resolveTargetMesh(ctx, parseMeshRef(body));
+        if (target == null) {
+          return error(409, "no_selected_mesh", "target mesh not found");
+        }
+        Double indexNumber = parseNumber(body, "index");
+        if (indexNumber == null) {
+          return error(400, "invalid_request", "index is required");
+        }
+        Boolean force = parseBool(body, "force");
+        if (!Boolean.TRUE.equals(force)) {
+          return error(409, "guardrail_violation", "remove point is destructive; pass force=true to continue");
+        }
+        int index = indexNumber.intValue();
+        int beforeCount = countMeshPoints(target);
+        if (index < 0 || (beforeCount > 0 && index >= beforeCount)) {
+          return error(400, "invalid_request", "index out of range");
+        }
+        Object editable = findEditableMesh(target);
+        boolean changed = false;
+        if (editable != null) {
+          changed = invokeAny(List.of(editable), new String[]{"removePoint"}, new Object[][]{{index}});
+        }
+        if (!changed) {
+          List<MeshPoint> points = readMeshPoints(target);
+          if (index >= 0 && index < points.size()) {
+            List<MeshPoint> next = new ArrayList<>(points);
+            next.remove(index);
+            changed = writeMeshPoints(target, next);
+          }
+        }
+        if (!changed) {
+          return error(400, "unsupported_action", "remove point is not supported by current Cubism build");
+        }
+        markMeshUpdated(meshObjectCandidates(target));
+        int count = countMeshPoints(target);
+        if (count >= beforeCount) {
+          return error(409, "no_effect", "remove point call finished but point count did not decrease");
+        }
+        return ok(
+          "{\"ok\":true,\"action\":\"remove_point\",\"mesh\":" + meshJson(snapshot(target, sameMesh(target, ctx.activeMesh))) +
+          ",\"point_count\":" + count + "}\n"
         );
       });
     } catch (Throwable t) {
@@ -277,8 +411,9 @@ public final class CubismMeshAdapter {
         // Ensure target mesh is selected before capture.
         selectMesh(ctx, target);
 
+        boolean workspaceOnly = !Boolean.FALSE.equals(parseBool(body, "workspace_only"));
         Path outPath = screenshotPath(parseString(body, "output_path"));
-        BufferedImage img = captureCubismWindow();
+        BufferedImage img = captureCubismWindow(workspaceOnly);
         if (img == null) {
           return error(400, "unsupported_action", "unable to capture Cubism window");
         }
@@ -290,6 +425,7 @@ public final class CubismMeshAdapter {
         sb.append("{\"ok\":true");
         sb.append(",\"mesh\":").append(meshJson(snapshot(target, true)));
         sb.append(",\"image_path\":").append(q(outPath.toString()));
+        sb.append(",\"image_url\":").append(q("/screenshot/current?mesh_id=" + esc(urlEncode(idOrName(snapshot(target, true)))) + "&workspace_only=" + workspaceOnly));
         sb.append(",\"width\":").append(img.getWidth());
         sb.append(",\"height\":").append(img.getHeight());
         if (Boolean.TRUE.equals(includeBase64)) {
@@ -300,6 +436,30 @@ public final class CubismMeshAdapter {
       });
     } catch (Throwable t) {
       return error(500, "operation_failed", t.toString());
+    }
+  }
+
+  public static PngResponse screenshotCurrent(String selectorPayload, boolean workspaceOnly) {
+    try {
+      return onEdt(() -> {
+        DocContext ctx = docContext();
+        if (ctx.doc == null) {
+          return PngResponse.error(409, "{\"ok\":false,\"error\":\"no_document\",\"message\":\"current document is null\"}\n");
+        }
+        Object target = resolveTargetMesh(ctx, parseMeshRef(selectorPayload));
+        if (target != null) {
+          selectMesh(ctx, target);
+        }
+        BufferedImage img = captureCubismWindow(workspaceOnly);
+        if (img == null) {
+          return PngResponse.error(400, "{\"ok\":false,\"error\":\"unsupported_action\",\"message\":\"unable to capture Cubism window\"}\n");
+        }
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        ImageIO.write(img, "png", baos);
+        return PngResponse.ok(baos.toByteArray());
+      });
+    } catch (Throwable t) {
+      return PngResponse.error(500, "{\"ok\":false,\"error\":\"operation_failed\",\"message\":\"" + esc(t.toString()) + "\"}\n");
     }
   }
 
@@ -892,6 +1052,23 @@ public final class CubismMeshAdapter {
     return out;
   }
 
+  private static Object findEditableMesh(Object mesh) {
+    for (Object target : meshObjectCandidates(mesh)) {
+      if (target == null) {
+        continue;
+      }
+      String n = target.getClass().getName().toLowerCase();
+      if (n.contains("geditablemesh2")) {
+        return target;
+      }
+      Object direct = invokeNoArgSafe(target, "getEditableMesh");
+      if (direct != null) {
+        return direct;
+      }
+    }
+    return null;
+  }
+
   private static void addCandidate(List<Object> out, IdentityHashMap<Object, Boolean> seen, Object value) {
     if (value == null || seen.put(value, Boolean.TRUE) != null) {
       return;
@@ -911,6 +1088,101 @@ public final class CubismMeshAdapter {
       new String[]{"setPositionUpdated", "setMeshUpdatedFlag__testImpl", "setMeshUpdated", "setUpdated", "updateMesh", "clearCache"},
       new Object[][]{{}}
     );
+  }
+
+  private static boolean addEditablePoint(Object editableMesh, float x, float y) {
+    if (editableMesh == null) {
+      return false;
+    }
+    // First try direct numeric overloads if they exist.
+    if (invokeAny(List.of(editableMesh), new String[]{"addPoint"}, new Object[][]{{x, y}, {(double) x, (double) y}})) {
+      return true;
+    }
+    // Then adapt to addPoint(x, y, pointType, uid) signature.
+    for (Method method : editableMesh.getClass().getMethods()) {
+      if (!"addPoint".equals(method.getName())) {
+        continue;
+      }
+      Class<?>[] params = method.getParameterTypes();
+      if (params.length < 2) {
+        continue;
+      }
+      if (!isNumberType(params[0]) || !isNumberType(params[1])) {
+        continue;
+      }
+      Object[] args = new Object[params.length];
+      args[0] = coerceNumber(x, params[0]);
+      args[1] = coerceNumber(y, params[1]);
+      for (int i = 2; i < params.length; i++) {
+        Class<?> p = params[i];
+        if (p.isEnum()) {
+          Object[] constants = p.getEnumConstants();
+          if (constants == null || constants.length == 0) {
+            args = null;
+            break;
+          }
+          args[i] = constants[0];
+        } else if (p == long.class || p == Long.class) {
+          args[i] = 0L;
+        } else if (p == int.class || p == Integer.class) {
+          args[i] = 0;
+        } else if (p == boolean.class || p == Boolean.class) {
+          args[i] = false;
+        } else if (!p.isPrimitive()) {
+          args[i] = null;
+        } else {
+          args = null;
+          break;
+        }
+      }
+      if (args == null) {
+        continue;
+      }
+      try {
+        method.invoke(editableMesh, args);
+        return true;
+      } catch (Throwable ignored) {
+        // keep trying other overloads
+      }
+    }
+    return false;
+  }
+
+  private static boolean isNumberType(Class<?> type) {
+    Class<?> w = wrapPrimitive(type);
+    return Number.class.isAssignableFrom(w);
+  }
+
+  private static Object coerceNumber(float value, Class<?> targetType) {
+    if (targetType == float.class || targetType == Float.class) {
+      return value;
+    }
+    if (targetType == double.class || targetType == Double.class) {
+      return (double) value;
+    }
+    if (targetType == int.class || targetType == Integer.class) {
+      return (int) value;
+    }
+    if (targetType == long.class || targetType == Long.class) {
+      return (long) value;
+    }
+    return value;
+  }
+
+  private static int countMeshPoints(Object mesh) {
+    List<MeshPoint> points = readMeshPoints(mesh);
+    if (!points.isEmpty()) {
+      return points.size();
+    }
+    Object editable = findEditableMesh(mesh);
+    if (editable == null) {
+      return 0;
+    }
+    Object count = firstNonNull(
+      invokeNoArgSafe(editable, "getPointCount"),
+      invokeNoArgSafe(editable, "size")
+    );
+    return count instanceof Number n ? n.intValue() : 0;
   }
 
   private static List<Double> readNumericSequence(Object value) {
@@ -959,6 +1231,20 @@ public final class CubismMeshAdapter {
     }
   }
 
+  private static boolean matchesPoints(List<MeshPoint> actual, List<MeshPoint> expected, double eps) {
+    if (actual.size() != expected.size()) {
+      return false;
+    }
+    for (int i = 0; i < actual.size(); i++) {
+      MeshPoint a = actual.get(i);
+      MeshPoint b = expected.get(i);
+      if (Math.abs(a.x - b.x) > eps || Math.abs(a.y - b.y) > eps) {
+        return false;
+      }
+    }
+    return true;
+  }
+
   private static String meshPointsJson(List<MeshPoint> points) {
     StringBuilder sb = new StringBuilder();
     sb.append('[');
@@ -1002,7 +1288,7 @@ public final class CubismMeshAdapter {
     return Paths.get(dir, "mesh-" + Instant.now().toEpochMilli() + ".png");
   }
 
-  private static BufferedImage captureCubismWindow() throws Exception {
+  private static BufferedImage captureCubismWindow(boolean workspaceOnly) throws Exception {
     Window target = List.of(Window.getWindows()).stream()
       .filter(w -> w != null && w.isShowing() && w.getWidth() > 120 && w.getHeight() > 120)
       .filter(CubismMeshAdapter::looksLikeCubismWindow)
@@ -1018,10 +1304,65 @@ public final class CubismMeshAdapter {
     if (target == null) {
       return null;
     }
+
+    Component captureTarget = workspaceOnly ? findWorkspaceComponent(target) : target;
+    Rectangle captureBounds = componentBoundsOnScreen(captureTarget);
+    if (captureBounds == null) {
+      captureBounds = target.getBounds();
+    }
     GraphicsConfiguration gc = target.getGraphicsConfiguration();
     Robot robot = gc != null ? new Robot(gc.getDevice()) : new Robot();
-    Rectangle bounds = target.getBounds();
-    return robot.createScreenCapture(bounds);
+    return robot.createScreenCapture(captureBounds);
+  }
+
+  private static Component findWorkspaceComponent(Window window) {
+    Container container = window;
+    Component best = null;
+    int bestScore = -1;
+    for (Component c : allDescendants(container)) {
+      if (c == null || !c.isShowing() || c.getWidth() < 80 || c.getHeight() < 80) {
+        continue;
+      }
+      int area = c.getWidth() * c.getHeight();
+      String name = c.getClass().getName().toLowerCase();
+      int score = area;
+      if (name.contains("canvas") || name.contains("view") || name.contains("editor") || name.contains("gl")) {
+        score += 10_000_000;
+      }
+      if (score > bestScore) {
+        bestScore = score;
+        best = c;
+      }
+    }
+    return best == null ? window : best;
+  }
+
+  private static List<Component> allDescendants(Container root) {
+    List<Component> out = new ArrayList<>();
+    List<Container> queue = new ArrayList<>();
+    queue.add(root);
+    for (int i = 0; i < queue.size(); i++) {
+      Container current = queue.get(i);
+      for (Component child : current.getComponents()) {
+        out.add(child);
+        if (child instanceof Container next) {
+          queue.add(next);
+        }
+      }
+    }
+    return out;
+  }
+
+  private static Rectangle componentBoundsOnScreen(Component c) {
+    if (c == null || c.getWidth() <= 0 || c.getHeight() <= 0) {
+      return null;
+    }
+    try {
+      java.awt.Point p = c.getLocationOnScreen();
+      return new Rectangle(p.x, p.y, c.getWidth(), c.getHeight());
+    } catch (Throwable ignored) {
+      return null;
+    }
   }
 
   private static boolean looksLikeCubismWindow(Window w) {
@@ -1057,6 +1398,29 @@ public final class CubismMeshAdapter {
         {ctx.doc, mesh}
       }
     );
+  }
+
+  private static boolean ensureMeshEditModeForWrite(DocContext ctx, Object targetMesh) {
+    Boolean mode = isMeshEditMode(ctx.appCtrl, ctx.doc);
+    if (Boolean.TRUE.equals(mode)) {
+      return true;
+    }
+    selectMesh(ctx, targetMesh);
+    invokeAction(
+      ctx,
+      List.of(
+        "command_enterMeshEditMode",
+        "command_startMeshEdit",
+        "command_meshEditMode",
+        "command_openMeshEditor",
+        "command_editMesh",
+        "command_setMeshEditMode"
+      )
+    );
+    mode = isMeshEditMode(ctx.appCtrl, ctx.doc);
+    // Some Cubism builds do not expose this mode reliably and return null.
+    // Block only when mode is explicitly false.
+    return !Boolean.FALSE.equals(mode);
   }
 
   private static boolean invokeAction(DocContext ctx, List<String> methods) {
@@ -1640,6 +2004,24 @@ public final class CubismMeshAdapter {
     return value == null ? "null" : "\"" + esc(value) + "\"";
   }
 
+  private static String idOrName(MeshSnapshot mesh) {
+    if (mesh == null) {
+      return "";
+    }
+    if (mesh.id != null && !mesh.id.isBlank()) {
+      return mesh.id;
+    }
+    return mesh.name == null ? "" : mesh.name;
+  }
+
+  private static String urlEncode(String value) {
+    try {
+      return java.net.URLEncoder.encode(value == null ? "" : value, StandardCharsets.UTF_8);
+    } catch (Throwable ignored) {
+      return "";
+    }
+  }
+
   private static String esc(String value) {
     if (value == null) {
       return "";
@@ -1686,4 +2068,8 @@ public final class CubismMeshAdapter {
   private record MeshPoint(double x, double y) {}
 
   public record ApiResponse(int status, String json) {}
+  public record PngResponse(int status, byte[] bytes, String errorJson) {
+    static PngResponse ok(byte[] bytes) { return new PngResponse(200, bytes, null); }
+    static PngResponse error(int status, String errorJson) { return new PngResponse(status, null, errorJson); }
+  }
 }
