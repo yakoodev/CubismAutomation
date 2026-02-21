@@ -17,16 +17,23 @@ function Invoke-HttpJson {
   $client = New-Object System.Net.Http.HttpClient($handler)
   try {
     $client.Timeout = [TimeSpan]::FromSeconds(120)
-    $req = New-Object System.Net.Http.HttpRequestMessage([System.Net.Http.HttpMethod]::new($Method), $url)
-    if ($null -ne $Body -and $Method -ne "GET") {
-      $req.Content = New-Object System.Net.Http.StringContent($Body, [Text.Encoding]::UTF8, "application/json")
-    }
-    $res = $client.SendAsync($req).GetAwaiter().GetResult()
-    $text = $res.Content.ReadAsStringAsync().GetAwaiter().GetResult()
-    if ($null -eq $text) { $text = "" }
-    return @{
-      StatusCode = [int]$res.StatusCode
-      Body = $text.Trim()
+    try {
+      $req = New-Object System.Net.Http.HttpRequestMessage([System.Net.Http.HttpMethod]::new($Method), $url)
+      if ($null -ne $Body -and $Method -ne "GET") {
+        $req.Content = New-Object System.Net.Http.StringContent($Body, [Text.Encoding]::UTF8, "application/json")
+      }
+      $res = $client.SendAsync($req).GetAwaiter().GetResult()
+      $text = $res.Content.ReadAsStringAsync().GetAwaiter().GetResult()
+      if ($null -eq $text) { $text = "" }
+      return @{
+        StatusCode = [int]$res.StatusCode
+        Body = $text.Trim()
+      }
+    } catch {
+      return @{
+        StatusCode = 599
+        Body = [string]$_.Exception.Message
+      }
     }
   } finally {
     $client.Dispose()
@@ -34,15 +41,46 @@ function Invoke-HttpJson {
   }
 }
 
+function Ensure-ServerHealthy {
+  $health = Invoke-HttpJson -Method "GET" -Path "/health"
+  if ($health.StatusCode -eq 200) { return }
+  Write-Host "API is down, starting Cubism..." -ForegroundColor Yellow
+  powershell -ExecutionPolicy Bypass -File scripts/85_start_cubism.ps1 -BaseUrl $BaseUrl -WaitSec 160
+}
+
+function Wait-DocumentReady {
+  param([int]$TimeoutSec = 90)
+  for ($i = 0; $i -lt $TimeoutSec; $i++) {
+    $doc = Invoke-HttpJson -Method "GET" -Path "/state/document"
+    if ($doc.StatusCode -eq 200 -and $doc.Body) {
+      try {
+        $o = $doc.Body | ConvertFrom-Json
+        if ($o.ok -and $o.document -and $o.document.present -eq $true) { return $true }
+      } catch {}
+    }
+    Start-Sleep -Seconds 1
+  }
+  return $false
+}
+
 Write-Host "== Deformer API smoke ==" -ForegroundColor Cyan
+Ensure-ServerHealthy
 
 $stateRes = Invoke-HttpJson -Method "GET" -Path "/deformers/state"
 if ($stateRes.StatusCode -eq 409 -and $stateRes.Body -match "no_document") {
-  Write-Host "No document, running startup/prepare..." -ForegroundColor Yellow
-  $prepBody = '{"license_mode":"free","create_new_model":true,"wait_timeout_ms":30000}'
-  $prepRes = Invoke-HttpJson -Method "POST" -Path "/startup/prepare" -Body $prepBody
-  if ($prepRes.StatusCode -ne 200) { throw "startup/prepare failed: $($prepRes.Body)" }
-  Start-Sleep -Seconds 2
+  Write-Host "No document, running startup/prepare with retries..." -ForegroundColor Yellow
+  $prepared = $false
+  for ($attempt = 1; $attempt -le 3; $attempt++) {
+    $prepBody = '{"license_mode":"free","create_new_model":true,"wait_timeout_ms":45000}'
+    $prepRes = Invoke-HttpJson -Method "POST" -Path "/startup/prepare" -Body $prepBody
+    if ($prepRes.StatusCode -eq 200 -or (Wait-DocumentReady -TimeoutSec 70)) {
+      $prepared = $true
+      break
+    }
+    Write-Host "startup/prepare attempt $attempt failed: $($prepRes.StatusCode) $($prepRes.Body)" -ForegroundColor Yellow
+    Start-Sleep -Seconds 2
+  }
+  if (-not $prepared) { throw "startup/prepare did not produce ready document" }
   $stateRes = Invoke-HttpJson -Method "GET" -Path "/deformers/state"
 }
 

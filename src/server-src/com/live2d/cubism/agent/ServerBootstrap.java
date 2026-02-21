@@ -15,9 +15,13 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.time.Instant;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.Executors;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicLong;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public final class ServerBootstrap {
   private static final String AGENT_VERSION = "0.1.0-mvp";
@@ -28,8 +32,16 @@ public final class ServerBootstrap {
     System.getProperty("user.home") + File.separator + "cubism-agent-api.log"
   );
   private static final int LOG_BODY_LIMIT = 4000;
+  private static final Pattern COMMAND_FIELD = Pattern.compile("\"command\"\\s*:\\s*\"([^\"]+)\"");
   private static final AtomicBoolean STARTED = new AtomicBoolean(false);
   private static final AtomicLong REQUEST_SEQ = new AtomicLong(0);
+  private static final AtomicLong STARTED_AT_MS = new AtomicLong(0);
+  private static final AtomicLong TOTAL_REQUESTS = new AtomicLong(0);
+  private static final AtomicLong TOTAL_2XX = new AtomicLong(0);
+  private static final AtomicLong TOTAL_4XX = new AtomicLong(0);
+  private static final AtomicLong TOTAL_5XX = new AtomicLong(0);
+  private static final ConcurrentHashMap<String, AtomicLong> PATH_COUNTS = new ConcurrentHashMap<>();
+  private static final ConcurrentHashMap<String, AtomicLong> COMMAND_COUNTS = new ConcurrentHashMap<>();
   private static volatile HttpServer server;
 
   private ServerBootstrap() {}
@@ -46,6 +58,7 @@ public final class ServerBootstrap {
       created.createContext("/health", ex -> writeText(ex, 200, "ok\n"));
       created.createContext("/version", ServerBootstrap::handleVersion);
       created.createContext("/command", ServerBootstrap::handleCommand);
+      created.createContext("/metrics", ServerBootstrap::handleMetrics);
       created.createContext("/startup/prepare", ServerBootstrap::handleStartupPrepare);
       created.createContext("/state", ServerBootstrap::handleStateAll);
       created.createContext("/state/project", ServerBootstrap::handleStateProject);
@@ -80,6 +93,7 @@ public final class ServerBootstrap {
       }));
       created.start();
       server = created;
+      STARTED_AT_MS.set(System.currentTimeMillis());
       STARTED.set(true);
     } catch (Throwable ignored) {
       // fail-safe: server bootstrap must not break host application
@@ -136,8 +150,37 @@ public final class ServerBootstrap {
 
     String body = readBody(exchange.getRequestBody());
     exchange.setAttribute("requestBody", body);
+    String command = parseCommandField(body);
+    if (command != null && !command.isBlank()) {
+      incrementCounter(COMMAND_COUNTS, command);
+    }
     CubismCommandAdapter.CommandResponse result = CubismCommandAdapter.execute(body);
     writeJson(exchange, result.status(), result.json());
+  }
+
+  private static void handleMetrics(HttpExchange exchange) throws IOException {
+    if (!"GET".equalsIgnoreCase(exchange.getRequestMethod())) {
+      writeJson(exchange, 405, "{\"ok\":false,\"error\":\"method_not_allowed\"}\n");
+      return;
+    }
+    if (!ensureAuthorized(exchange)) {
+      return;
+    }
+    long now = System.currentTimeMillis();
+    long startedAt = STARTED_AT_MS.get();
+    long uptimeMs = startedAt <= 0 ? 0 : Math.max(0, now - startedAt);
+    String json =
+      "{\"ok\":true" +
+      ",\"agent\":\"cubism-agent-server\"" +
+      ",\"version\":\"" + AGENT_VERSION + "\"" +
+      ",\"uptime_ms\":" + uptimeMs +
+      ",\"requests\":{\"total\":" + TOTAL_REQUESTS.get() +
+      ",\"status_2xx\":" + TOTAL_2XX.get() +
+      ",\"status_4xx\":" + TOTAL_4XX.get() +
+      ",\"status_5xx\":" + TOTAL_5XX.get() + "}" +
+      ",\"paths\":" + countersJson(PATH_COUNTS) +
+      ",\"commands\":" + countersJson(COMMAND_COUNTS) + "}\n";
+    writeJson(exchange, 200, json);
   }
 
   private static void handleStateAll(HttpExchange exchange) throws IOException {
@@ -581,7 +624,18 @@ public final class ServerBootstrap {
       String requestBody = reqBodyAttr instanceof String ? (String) reqBodyAttr : "";
       String method = exchange.getRequestMethod();
       String path = exchange.getRequestURI() != null ? exchange.getRequestURI().toString() : "";
+      String pathOnly = exchange.getRequestURI() != null ? exchange.getRequestURI().getPath() : "";
       String remote = exchange.getRemoteAddress() != null ? exchange.getRemoteAddress().toString() : "";
+
+      TOTAL_REQUESTS.incrementAndGet();
+      if (statusCode >= 200 && statusCode < 300) {
+        TOTAL_2XX.incrementAndGet();
+      } else if (statusCode >= 400 && statusCode < 500) {
+        TOTAL_4XX.incrementAndGet();
+      } else if (statusCode >= 500) {
+        TOTAL_5XX.incrementAndGet();
+      }
+      incrementCounter(PATH_COUNTS, pathOnly == null || pathOnly.isBlank() ? "<unknown>" : pathOnly);
 
       String line =
         Instant.now() +
@@ -638,6 +692,43 @@ public final class ServerBootstrap {
       .replace("\\", "\\\\")
       .replace("\r", "\\r")
       .replace("\n", "\\n");
+  }
+
+  private static void incrementCounter(ConcurrentHashMap<String, AtomicLong> counters, String key) {
+    counters.computeIfAbsent(key, k -> new AtomicLong(0)).incrementAndGet();
+  }
+
+  private static String countersJson(Map<String, AtomicLong> counters) {
+    StringBuilder sb = new StringBuilder();
+    sb.append('{');
+    boolean first = true;
+    for (Map.Entry<String, AtomicLong> e : counters.entrySet()) {
+      if (!first) {
+        sb.append(',');
+      }
+      first = false;
+      sb.append("\"").append(escJsonKey(e.getKey())).append("\":").append(e.getValue().get());
+    }
+    sb.append('}');
+    return sb.toString();
+  }
+
+  private static String parseCommandField(String body) {
+    if (body == null) {
+      return null;
+    }
+    Matcher m = COMMAND_FIELD.matcher(body);
+    if (!m.find()) {
+      return null;
+    }
+    return m.group(1).trim();
+  }
+
+  private static String escJsonKey(String value) {
+    if (value == null) {
+      return "";
+    }
+    return value.replace("\\", "\\\\").replace("\"", "\\\"");
   }
 
   @FunctionalInterface

@@ -247,6 +247,7 @@ record ApiCatalog(List<ApiGroup> Groups)
             new ApiGroup("state", "State and Health", [
                 new ApiAction("GET /health", "GET", "/health"),
                 new ApiAction("GET /version", "GET", "/version"),
+                new ApiAction("GET /metrics", "GET", "/metrics"),
                 new ApiAction("GET /state", "GET", "/state"),
                 new ApiAction("GET /state/project", "GET", "/state/project"),
                 new ApiAction("GET /state/document", "GET", "/state/document"),

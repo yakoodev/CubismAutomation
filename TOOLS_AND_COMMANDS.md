@@ -19,7 +19,9 @@
 - `scripts/27_capture_analyze_screenshots.ps1`
 - `scripts/28_smoke_parameters_api.ps1`
 - `scripts/29_smoke_deformer_api.ps1`
+- `scripts/30_smoke_metrics_api.ps1`
 - `scripts/84_stop_cubism.ps1`
+- `scripts/85_start_cubism.ps1`
 
 ## Точные команды (baseline)
 1. Проверка инструментов:
@@ -104,7 +106,17 @@ Smoke для Deformer API:
 powershell -ExecutionPolicy Bypass -File scripts/29_smoke_deformer_api.ps1
 ```
 
+Smoke для Metrics API:
+```powershell
+powershell -ExecutionPolicy Bypass -File scripts/30_smoke_metrics_api.ps1
+```
+
 Остановить Cubism (graceful close + force fallback):
 ```powershell
 powershell -ExecutionPolicy Bypass -File scripts/84_stop_cubism.ps1
+```
+
+Запустить Cubism и дождаться API health:
+```powershell
+powershell -ExecutionPolicy Bypass -File scripts/85_start_cubism.ps1
 ```
