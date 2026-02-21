@@ -17,6 +17,34 @@ var catalog = ApiCatalog.Default();
 
 app.MapGet("/", () => Results.Content(Html.Page, "text/html; charset=utf-8"));
 app.MapGet("/api/catalog", () => Results.Json(catalog));
+app.MapGet("/api/screenshot/current", async (HttpContext ctx) =>
+{
+    var query = ctx.Request.QueryString.HasValue ? ctx.Request.QueryString.Value : "";
+    var startedAt = DateTimeOffset.UtcNow;
+    try
+    {
+        var response = await proxy.GetBinaryAsync("/screenshot/current" + query, null);
+        var callId = callLogger.LogSuccess(
+            startedAt,
+            new ProxyRequest("GET", "/screenshot/current" + query, null, null),
+            response.StatusCode,
+            $"<binary {response.Bytes.Length} bytes; {response.ContentType}>"
+        );
+        ctx.Response.Headers["X-Call-Id"] = callId;
+        if (response.StatusCode >= 200 && response.StatusCode < 300 && response.ContentType.StartsWith("image/", StringComparison.OrdinalIgnoreCase))
+        {
+            return Results.File(response.Bytes, response.ContentType);
+        }
+        var text = Encoding.UTF8.GetString(response.Bytes);
+        return Results.Content(text, response.ContentType, Encoding.UTF8, response.StatusCode);
+    }
+    catch (Exception ex)
+    {
+        var callId = callLogger.LogError(startedAt, new ProxyRequest("GET", "/screenshot/current" + query, null, null), ex);
+        ctx.Response.Headers["X-Call-Id"] = callId;
+        return Results.Json(new { ok = false, call_id = callId, error = "screenshot_proxy_failed", message = ex.Message }, statusCode: 502);
+    }
+});
 
 app.MapPost("/api/call", async (ProxyRequest request) =>
 {
@@ -83,6 +111,21 @@ sealed class CubismProxy(string baseUrl, string token)
         using var res = await _http.SendAsync(req);
         var text = await res.Content.ReadAsStringAsync();
         return ((int)res.StatusCode, text);
+    }
+
+    public async Task<(int StatusCode, string ContentType, byte[] Bytes)> GetBinaryAsync(string path, string? tokenOverride)
+    {
+        using var req = new HttpRequestMessage(HttpMethod.Get, _baseUrl + path);
+        var effectiveToken = string.IsNullOrWhiteSpace(tokenOverride) ? _token : tokenOverride.Trim();
+        if (!string.IsNullOrEmpty(effectiveToken))
+        {
+            req.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", effectiveToken);
+        }
+
+        using var res = await _http.SendAsync(req);
+        var bytes = await res.Content.ReadAsByteArrayAsync();
+        var contentType = res.Content.Headers.ContentType?.ToString() ?? "application/octet-stream";
+        return ((int)res.StatusCode, contentType, bytes);
     }
 }
 
@@ -237,9 +280,29 @@ record ApiCatalog(List<ApiGroup> Groups)
             ]),
             new ApiGroup("mesh_write", "Mesh Write API", [
                 new ApiAction("POST /mesh/select (by name)", "POST", "/mesh/select", """{"mesh_name":"MeshName"}"""),
+                new ApiAction("POST /mesh/select (by id)", "POST", "/mesh/select", """{"mesh_id":"ArtMesh78"}"""),
                 new ApiAction("POST /mesh/rename", "POST", "/mesh/rename", """{"mesh_name":"MeshName","new_name":"MeshRenamed"}"""),
                 new ApiAction("POST /mesh/visibility", "POST", "/mesh/visibility", """{"mesh_name":"MeshName","visible":true}"""),
                 new ApiAction("POST /mesh/lock", "POST", "/mesh/lock", """{"mesh_name":"MeshName","locked":true}""")
+            ]),
+            new ApiGroup("mesh_points", "Mesh Points API", [
+                new ApiAction("GET /mesh/points", "GET", "/mesh/points?mesh_id=ArtMesh78"),
+                new ApiAction(
+                    "POST /mesh/points",
+                    "POST",
+                    "/mesh/points",
+                    """
+                    {
+                      "mesh_id": "ArtMesh78",
+                      "points": [
+                        {"x": 0.0, "y": 0.0},
+                        {"x": 12.0, "y": 0.0},
+                        {"x": 12.0, "y": 12.0},
+                        {"x": 0.0, "y": 12.0}
+                      ]
+                    }
+                    """
+                )
             ]),
             new ApiGroup("mesh_ops", "Mesh Edit Operations", [
                 new ApiAction(
@@ -276,6 +339,11 @@ record ApiCatalog(List<ApiGroup> Groups)
                     }
                     """
                 )
+            ]),
+            new ApiGroup("mesh_capture", "Mesh Auto/Capture API", [
+                new ApiAction("POST /mesh/auto_generate (dry-run)", "POST", "/mesh/auto_generate", """{"mesh_id":"ArtMesh78","validate_only":true}"""),
+                new ApiAction("POST /mesh/auto_generate (execute)", "POST", "/mesh/auto_generate", """{"mesh_id":"ArtMesh78","validate_only":false}"""),
+                new ApiAction("GET /mesh/screenshot", "GET", "/mesh/screenshot?mesh_id=ArtMesh78")
             ])
         ]);
     }
@@ -311,6 +379,10 @@ static class Html
     input, textarea, select { width:100%; border:1px solid var(--line); border-radius:8px; padding:8px; font:inherit; background:#fff; }
     input, select { max-width:340px; }
     textarea { min-height:170px; white-space:pre; }
+    .mesh-editor { min-height:200px; }
+    .label { font-size:12px; color:var(--muted); min-width:88px; }
+    .pill { display:inline-block; border:1px solid var(--line); border-radius:999px; padding:2px 8px; font-size:12px; color:#0f172a; background:#f8fafc; }
+    .shot { max-width:100%; border:1px solid var(--line); border-radius:10px; }
     pre { background:var(--out); color:var(--outink); border-radius:12px; padding:12px; min-height:220px; overflow:auto; }
   </style>
 </head>
@@ -323,6 +395,59 @@ static class Html
       <h2>Connection</h2>
       <div class="row">
         <input id="token" placeholder="Bearer token override (optional)" />
+      </div>
+      <div class="row">
+        <span id="lastCallMeta" class="pill">call: -</span>
+      </div>
+
+      <h2>Mesh Lab</h2>
+      <div class="group">
+        <div class="row">
+          <button onclick="refreshMeshList()">Refresh Mesh List</button>
+          <button onclick="loadActiveMesh()">Load Active Mesh</button>
+          <span id="meshStats" class="pill">meshes: -</span>
+        </div>
+
+        <div class="row">
+          <span class="label">Mesh</span>
+          <select id="meshSelect"></select>
+          <input id="meshIdManual" placeholder="Or enter mesh_id manually (e.g. ArtMesh78)" />
+          <label class="pill"><input id="useActiveMesh" type="checkbox" checked /> use active mesh for ops</label>
+        </div>
+
+        <div class="row">
+          <button onclick="meshSelectById()">Select Mesh</button>
+          <button onclick="meshGetPoints()">Get Points</button>
+          <button onclick="meshRevertPoints()">Revert Points</button>
+          <button onclick="meshSetActiveFromSelection()">Set Active From Selection</button>
+        </div>
+
+        <div class="row">
+          <span class="label">Point Edit</span>
+          <input id="pointIndex" type="number" value="0" />
+          <input id="pointDx" type="number" value="1" step="0.1" />
+          <input id="pointDy" type="number" value="0" step="0.1" />
+          <button onclick="meshNudgePoint()">Nudge Point</button>
+        </div>
+
+        <div class="row">
+          <button onclick="meshApplyPointsFromEditor()">Apply Points JSON</button>
+          <button onclick="meshAutoGenerate(true)">Auto Mesh Dry-Run</button>
+          <button onclick="meshAutoGenerate(false)">Auto Mesh Execute</button>
+          <button onclick="meshScreenshot()">Current Screenshot</button>
+          <label class="pill"><input id="workspaceOnly" type="checkbox" checked /> workspace only</label>
+        </div>
+
+        <div class="row">
+          <textarea id="meshPointsEditor" class="mesh-editor" placeholder='Points JSON. Expected: [{"x":123.0,"y":456.0}, ...]'></textarea>
+        </div>
+        <div class="row">
+          <a id="shotLink" href="#" target="_blank">screenshot link</a>
+        </div>
+        <div class="row">
+          <img id="shotPreview" class="shot" alt="screenshot preview" />
+        </div>
+        <div class="small" id="meshInfo">No mesh data loaded yet.</div>
       </div>
 
       <h2>Presets</h2>
@@ -352,11 +477,67 @@ static class Html
 
   <script>
     let catalog = { groups: [] };
+    let meshList = [];
+    let loadedPoints = [];
+    let originalPointsByMeshId = {};
+    let currentMeshId = '';
+    let loadedMeshId = '';
 
     function setRequestFields(action) {
       document.getElementById('method').value = action.method || 'GET';
       document.getElementById('path').value = action.path || '/health';
       document.getElementById('body').value = action.body || '';
+    }
+
+    function selectedMeshId() {
+      const manual = (document.getElementById('meshIdManual').value || '').trim();
+      if (manual) return manual;
+      const selected = (document.getElementById('meshSelect').value || '').trim();
+      if (selected) return selected;
+      return currentMeshId || '';
+    }
+
+    async function getActiveMeshId() {
+      const result = await callApi('GET', '/mesh/active', null);
+      const payload = parseProxyPayload(result);
+      const active = payload && payload.active_mesh ? payload.active_mesh : null;
+      if (active && active.id) {
+        currentMeshId = active.id;
+        document.getElementById('meshIdManual').value = active.id;
+        const select = document.getElementById('meshSelect');
+        if (select) {
+          select.value = active.id;
+        }
+        return active.id;
+      }
+      return '';
+    }
+
+    async function resolveMeshIdForOps() {
+      const useActive = !!document.getElementById('useActiveMesh').checked;
+      if (!useActive) {
+        if (loadedMeshId) return loadedMeshId;
+        return selectedMeshId();
+      }
+      return await getActiveMeshId();
+    }
+
+    function setMeshInfo(text) {
+      document.getElementById('meshInfo').textContent = text;
+    }
+
+    function tryParseJson(text) {
+      try {
+        return JSON.parse(text);
+      } catch {
+        return null;
+      }
+    }
+
+    function setLastCallMeta(result) {
+      const callId = result && result.call_id ? result.call_id : '-';
+      const file = result && result.log_file ? result.log_file : '-';
+      document.getElementById('lastCallMeta').textContent = `call: ${callId} | log: ${file}`;
     }
 
     async function callApi(method, path, body = null) {
@@ -367,7 +548,233 @@ static class Html
         body: JSON.stringify({ method, path, body, tokenOverride })
       });
       const json = await res.json();
+      setLastCallMeta(json);
       document.getElementById('out').textContent = JSON.stringify(json, null, 2);
+      return json;
+    }
+
+    function parseProxyPayload(result) {
+      if (!result || !result.response) return null;
+      const raw = result.response.content || '';
+      const parsed = tryParseJson(raw);
+      return parsed || raw;
+    }
+
+    function updateMeshSelect() {
+      const select = document.getElementById('meshSelect');
+      select.innerHTML = '';
+      for (const mesh of meshList) {
+        const opt = document.createElement('option');
+        opt.value = mesh.id || '';
+        const namePart = mesh.name ? ` | ${mesh.name}` : '';
+        const activePart = mesh.active ? ' *active' : '';
+        opt.textContent = `${mesh.id || '<no-id>'}${namePart}${activePart}`;
+        select.appendChild(opt);
+      }
+      if (currentMeshId) {
+        select.value = currentMeshId;
+      }
+    }
+
+    async function refreshMeshList() {
+      const result = await callApi('GET', '/mesh/list', null);
+      const payload = parseProxyPayload(result);
+      if (!payload || !payload.meshes) {
+        setMeshInfo('Failed to read mesh list from response.');
+        return;
+      }
+      meshList = payload.meshes || [];
+      const active = meshList.find(m => m.active);
+      if (active && active.id) {
+        currentMeshId = active.id;
+        document.getElementById('meshIdManual').value = active.id;
+      }
+      updateMeshSelect();
+      document.getElementById('meshStats').textContent = `meshes: ${meshList.length}`;
+      setMeshInfo(`Mesh list loaded. Active: ${active ? (active.id || '<unknown>') : 'none'}.`);
+    }
+
+    async function loadActiveMesh() {
+      const result = await callApi('GET', '/mesh/active', null);
+      const payload = parseProxyPayload(result);
+      const active = payload && payload.active_mesh ? payload.active_mesh : null;
+      if (!active || !active.id) {
+        setMeshInfo('No active mesh returned by API.');
+        return;
+      }
+      currentMeshId = active.id;
+      document.getElementById('meshIdManual').value = active.id;
+      if (!meshList.length) {
+        await refreshMeshList();
+      } else {
+        updateMeshSelect();
+      }
+      setMeshInfo(`Active mesh: ${active.id}`);
+    }
+
+    async function meshSelectById() {
+      const meshId = selectedMeshId();
+      if (!meshId) {
+        setMeshInfo('Select or enter mesh_id first.');
+        return;
+      }
+      const result = await callApi('POST', '/mesh/select', JSON.stringify({ mesh_id: meshId }));
+      const payload = parseProxyPayload(result);
+      if (payload && payload.mesh && payload.mesh.id) {
+        currentMeshId = payload.mesh.id;
+        document.getElementById('meshIdManual').value = currentMeshId;
+        updateMeshSelect();
+      }
+      setMeshInfo(`Select mesh request sent for: ${meshId}`);
+    }
+
+    async function meshSetActiveFromSelection() {
+      const meshId = selectedMeshId();
+      if (!meshId) {
+        setMeshInfo('Select or enter mesh_id first.');
+        return;
+      }
+      const result = await callApi('POST', '/mesh/select', JSON.stringify({ mesh_id: meshId }));
+      const payload = parseProxyPayload(result);
+      if (payload && payload.ok) {
+        currentMeshId = meshId;
+      }
+      setMeshInfo(`Set active requested for ${meshId}.`);
+      await refreshMeshList();
+    }
+
+    async function meshGetPoints() {
+      const meshId = await resolveMeshIdForOps();
+      if (!meshId) {
+        setMeshInfo('No target mesh resolved.');
+        return;
+      }
+      const result = await callApi('GET', `/mesh/points?mesh_id=${encodeURIComponent(meshId)}`, null);
+      const payload = parseProxyPayload(result);
+      if (!payload || !Array.isArray(payload.points)) {
+        setMeshInfo('Points response has no points[] array.');
+        return;
+      }
+      currentMeshId = meshId;
+      loadedMeshId = meshId;
+      document.getElementById('meshIdManual').value = meshId;
+      const select = document.getElementById('meshSelect');
+      if (select) {
+        select.value = meshId;
+      }
+      loadedPoints = payload.points.map(p => ({ x: Number(p.x), y: Number(p.y) }));
+      if (!originalPointsByMeshId[meshId]) {
+        originalPointsByMeshId[meshId] = loadedPoints.map(p => ({ x: p.x, y: p.y }));
+      }
+      document.getElementById('meshPointsEditor').value = JSON.stringify(loadedPoints, null, 2);
+      setMeshInfo(`Loaded ${loadedPoints.length} points for ${meshId}.`);
+    }
+
+    function readPointsFromEditor() {
+      const txt = document.getElementById('meshPointsEditor').value || '';
+      const parsed = tryParseJson(txt);
+      if (!parsed) return null;
+      const arr = Array.isArray(parsed) ? parsed : (Array.isArray(parsed.points) ? parsed.points : null);
+      if (!arr) return null;
+      const points = [];
+      for (const p of arr) {
+        const x = Number(p.x);
+        const y = Number(p.y);
+        if (!Number.isFinite(x) || !Number.isFinite(y)) return null;
+        points.push({ x, y });
+      }
+      return points;
+    }
+
+    async function meshApplyPointsFromEditor() {
+      const meshId = await resolveMeshIdForOps();
+      if (!meshId) {
+        setMeshInfo('No target mesh resolved.');
+        return;
+      }
+      const stateResult = await callApi('GET', '/mesh/state', null);
+      const statePayload = parseProxyPayload(stateResult);
+      if (!statePayload || statePayload.mesh_edit_mode !== true) {
+        setMeshInfo('Mesh edit mode is OFF. Double-click selected mesh in Cubism, then retry Apply.');
+        return;
+      }
+      const points = readPointsFromEditor();
+      if (!points || !points.length) {
+        setMeshInfo('Invalid points JSON in editor.');
+        return;
+      }
+      if (points.length < 2) {
+        setMeshInfo('Too few points. Provide full points list from Get Points.');
+        return;
+      }
+      const body = JSON.stringify({ mesh_id: meshId, points });
+      await callApi('POST', '/mesh/points', body);
+      loadedPoints = points.map(p => ({ x: p.x, y: p.y }));
+      loadedMeshId = meshId;
+      setMeshInfo(`Applied ${points.length} points to ${meshId}.`);
+    }
+
+    async function meshNudgePoint() {
+      const points = readPointsFromEditor();
+      const meshId = await resolveMeshIdForOps();
+      if (!meshId) {
+        setMeshInfo('No target mesh resolved.');
+        return;
+      }
+      if (!points || !points.length) {
+        setMeshInfo('Load points first or provide valid points JSON.');
+        return;
+      }
+      const idx = Number(document.getElementById('pointIndex').value);
+      const dx = Number(document.getElementById('pointDx').value);
+      const dy = Number(document.getElementById('pointDy').value);
+      if (!Number.isInteger(idx) || idx < 0 || idx >= points.length) {
+        setMeshInfo(`pointIndex out of range. Expected 0..${points.length - 1}`);
+        return;
+      }
+      points[idx].x += dx;
+      points[idx].y += dy;
+      document.getElementById('meshPointsEditor').value = JSON.stringify(points, null, 2);
+      await meshApplyPointsFromEditor();
+      setMeshInfo(`Point #${idx} nudged by dx=${dx}, dy=${dy}.`);
+    }
+
+    async function meshRevertPoints() {
+      const meshId = await resolveMeshIdForOps();
+      const orig = meshId ? originalPointsByMeshId[meshId] : null;
+      if (!meshId || !orig || !orig.length) {
+        setMeshInfo('No original snapshot to revert. Load points first.');
+        return;
+      }
+      document.getElementById('meshPointsEditor').value = JSON.stringify(orig, null, 2);
+      await meshApplyPointsFromEditor();
+      setMeshInfo(`Reverted points for ${meshId}.`);
+    }
+
+    async function meshAutoGenerate(validateOnly) {
+      const meshId = await resolveMeshIdForOps();
+      if (!meshId) {
+        setMeshInfo('No target mesh resolved.');
+        return;
+      }
+      const body = JSON.stringify({ mesh_id: meshId, validate_only: !!validateOnly });
+      await callApi('POST', '/mesh/auto_generate', body);
+      setMeshInfo(`Auto mesh ${validateOnly ? 'dry-run' : 'execute'} sent for ${meshId}.`);
+    }
+
+    async function meshScreenshot() {
+      const meshId = await resolveMeshIdForOps();
+      if (!meshId) {
+        setMeshInfo('No target mesh resolved.');
+        return;
+      }
+      const workspaceOnly = !!document.getElementById('workspaceOnly').checked;
+      const route = `/api/screenshot/current?mesh_id=${encodeURIComponent(meshId)}&workspace_only=${workspaceOnly ? 'true' : 'false'}`;
+      const imgUrl = `${route}&_t=${Date.now()}`;
+      document.getElementById('shotLink').href = imgUrl;
+      document.getElementById('shotLink').textContent = route;
+      document.getElementById('shotPreview').src = imgUrl;
+      setMeshInfo(`Screenshot loaded for ${meshId} (${workspaceOnly ? 'workspace' : 'full window'}).`);
     }
 
     async function runPreset(groupIndex, actionIndex) {
@@ -416,6 +823,7 @@ static class Html
       const res = await fetch('/api/catalog');
       catalog = await res.json();
       renderCatalog();
+      await refreshMeshList();
     }
 
     init();
