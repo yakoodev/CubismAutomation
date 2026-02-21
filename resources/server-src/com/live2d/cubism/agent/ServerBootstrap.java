@@ -55,6 +55,10 @@ public final class ServerBootstrap {
       created.createContext("/parameters", ServerBootstrap::handleParametersList);
       created.createContext("/parameters/state", ServerBootstrap::handleParametersState);
       created.createContext("/parameters/set", ServerBootstrap::handleParametersSet);
+      created.createContext("/deformers", ServerBootstrap::handleDeformersList);
+      created.createContext("/deformers/state", ServerBootstrap::handleDeformersState);
+      created.createContext("/deformers/select", ServerBootstrap::handleDeformersSelect);
+      created.createContext("/deformers/rename", ServerBootstrap::handleDeformersRename);
       created.createContext("/mesh/list", ServerBootstrap::handleMeshList);
       created.createContext("/mesh/active", ServerBootstrap::handleMeshActive);
       created.createContext("/mesh/state", ServerBootstrap::handleMeshState);
@@ -226,6 +230,58 @@ public final class ServerBootstrap {
     String body = readBody(exchange.getRequestBody());
     exchange.setAttribute("requestBody", body);
     CubismParameterAdapter.ApiResponse response = CubismParameterAdapter.parametersSet(body);
+    writeJson(exchange, response.status(), response.json());
+  }
+
+  private static void handleDeformersList(HttpExchange exchange) throws IOException {
+    if (!"GET".equalsIgnoreCase(exchange.getRequestMethod())) {
+      writeJson(exchange, 405, "{\"ok\":false,\"error\":\"method_not_allowed\"}\n");
+      return;
+    }
+    if (!ensureAuthorized(exchange)) {
+      return;
+    }
+    CubismDeformerAdapter.ApiResponse response = CubismDeformerAdapter.deformersList();
+    writeJson(exchange, response.status(), response.json());
+  }
+
+  private static void handleDeformersState(HttpExchange exchange) throws IOException {
+    if (!"GET".equalsIgnoreCase(exchange.getRequestMethod())) {
+      writeJson(exchange, 405, "{\"ok\":false,\"error\":\"method_not_allowed\"}\n");
+      return;
+    }
+    if (!ensureAuthorized(exchange)) {
+      return;
+    }
+    CubismDeformerAdapter.ApiResponse response = CubismDeformerAdapter.deformersState();
+    writeJson(exchange, response.status(), response.json());
+  }
+
+  private static void handleDeformersSelect(HttpExchange exchange) throws IOException {
+    if (!"POST".equalsIgnoreCase(exchange.getRequestMethod())) {
+      writeJson(exchange, 405, "{\"ok\":false,\"error\":\"method_not_allowed\"}\n");
+      return;
+    }
+    if (!ensureAuthorized(exchange)) {
+      return;
+    }
+    String body = readBody(exchange.getRequestBody());
+    exchange.setAttribute("requestBody", body);
+    CubismDeformerAdapter.ApiResponse response = CubismDeformerAdapter.deformerSelect(body);
+    writeJson(exchange, response.status(), response.json());
+  }
+
+  private static void handleDeformersRename(HttpExchange exchange) throws IOException {
+    if (!"POST".equalsIgnoreCase(exchange.getRequestMethod())) {
+      writeJson(exchange, 405, "{\"ok\":false,\"error\":\"method_not_allowed\"}\n");
+      return;
+    }
+    if (!ensureAuthorized(exchange)) {
+      return;
+    }
+    String body = readBody(exchange.getRequestBody());
+    exchange.setAttribute("requestBody", body);
+    CubismDeformerAdapter.ApiResponse response = CubismDeformerAdapter.deformerRename(body);
     writeJson(exchange, response.status(), response.json());
   }
 

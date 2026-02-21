@@ -18,6 +18,7 @@
 - `scripts/50_test_loadclass.ps1`
 - `scripts/27_capture_analyze_screenshots.ps1`
 - `scripts/28_smoke_parameters_api.ps1`
+- `scripts/29_smoke_deformer_api.ps1`
 - `scripts/84_stop_cubism.ps1`
 
 ## Точные команды (baseline)
@@ -96,6 +97,11 @@ powershell -ExecutionPolicy Bypass -File scripts/27_capture_analyze_screenshots.
 Smoke для Parameter API:
 ```powershell
 powershell -ExecutionPolicy Bypass -File scripts/28_smoke_parameters_api.ps1
+```
+
+Smoke для Deformer API:
+```powershell
+powershell -ExecutionPolicy Bypass -File scripts/29_smoke_deformer_api.ps1
 ```
 
 Остановить Cubism (graceful close + force fallback):

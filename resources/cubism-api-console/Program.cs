@@ -363,6 +363,12 @@ record ApiCatalog(List<ApiGroup> Groups)
                     }
                     """
                 )
+            ]),
+            new ApiGroup("deformers", "Deformer API", [
+                new ApiAction("GET /deformers", "GET", "/deformers"),
+                new ApiAction("GET /deformers/state", "GET", "/deformers/state"),
+                new ApiAction("POST /deformers/select", "POST", "/deformers/select", """{"deformer_id":"WarpDeformer1"}"""),
+                new ApiAction("POST /deformers/rename", "POST", "/deformers/rename", """{"deformer_id":"WarpDeformer1","new_name":"WarpDeformer1_Renamed"}""")
             ])
         ]);
     }
