@@ -7,13 +7,14 @@ powershell -ExecutionPolicy Bypass -File scripts/81_verify_release.ps1 -ReleaseD
 ```
 
 ## 2) Install `cubism-agent-server.jar` into Cubism
-Run PowerShell as Administrator:
+Run PowerShell:
 ```powershell
 powershell -ExecutionPolicy Bypass -File scripts/82_install_server_jar.ps1 -ReleaseDir output/release/v0.8.0
 ```
 
 This modifies only:
-- `C:\Program Files\Live2D Cubism 5.3\cubism-agent-server.jar`
+- `C:\Users\Yakoo\source\Live2D Cubism 5.3\cubism-agent-server.jar`
+- Backup dir: `C:\Users\Yakoo\source\Live2D Cubism 5.3\agent-backups\`
 
 ## 3) Ensure patched Cubism jar is used
 Use the built:
@@ -35,6 +36,9 @@ dotnet run -c Release
 ```
 Open:
 - `http://127.0.0.1:51888`
+
+## Test model
+- Default integration model: `C:\Users\Yakoo\Downloads\vt\hibiki`
 
 ## Rollback
 ```powershell

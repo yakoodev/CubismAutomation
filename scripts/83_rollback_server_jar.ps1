@@ -1,5 +1,5 @@
 param(
-  [string]$CubismDir = "C:\Program Files\Live2D Cubism 5.3",
+  [string]$CubismDir = "C:\Users\Yakoo\source\Live2D Cubism 5.3",
   [string]$BackupFile = ""
 )
 
