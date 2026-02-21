@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import com.live2d.ui.container.CBorderPane?>
+<?import com.live2d.ui.container.CVBox?>
+<CVBox xmlns="http://live2d.com/cxui/1.0" xmlns:cx="http://live2d.com/cx/1.0" cx:id="root" prefHeight="600" prefWidth="900">
+  <children>
+    <CBorderPane cx:id="scrollOwner" CVBox.vgrow="ALWAYS" />
+  </children>
+</CVBox>
+

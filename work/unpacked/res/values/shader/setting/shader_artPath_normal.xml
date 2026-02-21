@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<shader language="GLSL" name="ArtPath Normal">
+
+    <!-- public property
+    ユーザがインスペクタ上で指定できるようにしたいプロパティのみココに記載します。
+    ここに記載がなくても、uniform / in(attribute) / out は自動的に利用できるようになります。
+    -->
+    <properties>
+        <property name="_MainTex" text="Texture" default="red" />
+    </properties>
+    <blend srcColor="ONE" dstColor="ONE_MINUS_SRC_ALPHA" srcAlpha="ONE" dstAlpha="ONE_MINUS_SRC_ALPHA" />
+    <cull mode="OFF" />
+    <transparent type="TRANSPARENT" />
+
+    <!-- ======================== Vertex Shader ======================== -->
+    <vertex><![CDATA[
+#version 150
+
+#if __VERSION__ >= 130
+  #define attribute in
+  #define varying out
+#endif
+
+#ifdef GL_ES
+precision mediump float;
+precision mediump int;
+#endif
+
+attribute vec4 	positions;
+attribute vec4 colors;
+attribute vec2 	uvs;
+attribute float alphas;
+varying vec2 	v_texCoord;
+varying vec4 v_color;
+varying float v_alpha;
+
+uniform mat4 worldToCameraMatrix , projectionMatrix , localToWorldMatrix  ;
+
+
+void main(void)
+{
+	gl_Position = projectionMatrix * worldToCameraMatrix * localToWorldMatrix  * positions;
+	v_texCoord = uvs;
+	v_color = colors;
+	v_alpha = alphas;
+}
+
+
+
+    ]]></vertex>
+    <!-- ======================== Fragment Shader ======================== -->
+    <fragment><![CDATA[
+#version 150
+
+//#extension GL_EXT_gpu_shader4 : enable
+
+#if __VERSION__ >= 130
+  #define varying in
+  out vec4 mgl_FragColor;
+  #define texture2D texture
+  #define gl_FragColor mgl_FragColor
+#endif
+
+#ifdef GL_ES
+precision mediump float;
+precision mediump int;
+#endif
+
+varying vec2 		v_texCoord ;
+varying vec4        v_color;
+uniform sampler2D 	_MainTex ;
+uniform vec4 		baseColor ;
+uniform vec4        multiplyColor = vec4(1.0 , 1.0 , 1.0 , 0.0);
+uniform vec4        screenColor = vec4(0.0 , 0.0 , 0.0 , 0.0);
+uniform vec4 		testColor ;//TEST SELECTION
+varying float       v_alpha;
+
+void main (void)
+{
+    vec4 texColor = texture2D(_MainTex , v_texCoord);
+
+    // PointColorとTextureのブレンド。(PMA)
+    float t0 = 1.0 - v_color.a;
+    float t1 = v_color.a;
+    texColor.rgb = texColor.rgb * t0 + v_color.rgb * texColor.a * t1;  // texColorはPMA、なのでv_colorにもtexColor.aをかけてPMA化する。
+    // vertexが持つAlphaの反映。
+    texColor = texColor * v_alpha;
+
+    // diffuse
+    // straight : out = A * B
+    texColor.rgb = texColor.rgb * multiplyColor.rgb;
+    // screen
+    // straight : out = (A + B) - (A * B);
+    texColor.rgb = (texColor.rgb + screenColor.rgb * texColor.a) - (texColor.rgb * screenColor.rgb);
+
+    // 編集用色調整の反映。baseColorはPMA変換済み。SDKでは不要。
+    gl_FragColor = texColor * baseColor + testColor;
+}
+
+    ]]></fragment>
+
+
+</shader>

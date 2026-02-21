@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<shader language="GLSL" name="Canvas">
+
+    <!-- public property
+    ユーザがインスペクタ上で指定できるようにしたいプロパティのみココに記載します。
+    ここに記載がなくても、uniform / in(attribute) / out は自動的に利用できるようになります。
+    -->
+    <properties>
+        <property name="_MainTex" text="Texture" default="red" />
+    </properties>
+    <blend srcColor="ONE" dstColor="ZERO" srcAlpha="ONE" dstAlpha="ZERO" />
+    <cull mode="OFF" />
+    <transparent type="OPAQUE" />
+
+    <!-- ======================== Vertex Shader ======================== -->
+    <vertex><![CDATA[
+#version 150
+
+#if __VERSION__ >= 130
+  #define attribute in
+  #define varying out
+#endif
+
+#ifdef GL_ES
+  precision mediump float;
+  precision mediump int;
+#endif
+
+attribute vec4     positions;
+attribute vec2     uvs;
+varying vec2     v_texCoord;
+
+uniform mat4 worldToCameraMatrix , projectionMatrix , localToWorldMatrix  ;
+
+void main(void)
+{
+    gl_Position = projectionMatrix * worldToCameraMatrix * localToWorldMatrix  * positions;
+    v_texCoord = uvs;
+}
+
+    ]]></vertex>
+    <!-- ======================== Fragment Shader ======================== -->
+    <fragment><![CDATA[
+#version 150
+
+//#extension GL_EXT_gpu_shader4 : enable
+
+#if __VERSION__ >= 130
+  #define varying in
+  out vec4 mgl_FragColor;
+  #define texture2D texture
+  #define gl_FragColor mgl_FragColor
+#endif
+
+#ifdef GL_ES
+  precision mediump float;
+  precision mediump int;
+#endif
+
+varying vec2         v_texCoord ;
+uniform sampler2D    _MainTex ;
+
+void main (void)
+{
+    //------ Cs  (Premultiplied) ------
+    vec4 Cs = texture2D(_MainTex , v_texCoord) ;
+    float As = clamp(Cs.a, 0.0, 1.0);
+
+    if (abs(As) < 0.000001) {
+        gl_FragColor = vec4(0.0);
+    }
+    else {
+        gl_FragColor.rgb = clamp(Cs.rgb / As, 0.0, 1.0);
+        gl_FragColor.a = As;
+    }
+}
+
+    ]]></fragment>
+
+
+</shader>

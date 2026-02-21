@@ -1,0 +1,5 @@
+FLAS-0000=Illegal State :３次のベジェはあらかじめ排除して下さい
+FLAS-0001=Illegal State : このクラスは古いモード用にフラグをセットしてから使ってください
+FLAS-0002=Illegal State : このクラスは新しいモード用にフラグをセットしてから使ってください
+FLAS-0003=Illegal State : 16以上のLineStyleは定義できません
+FLAS-0004=Illegal State : 適切に初期化されていません : \n[ 

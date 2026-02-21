@@ -1,0 +1,2 @@
+8430fb1040bbf50994ad91b004ee7c3a05548c2257a6a8155377ddc9d86bcf2e *Live2D_Cubism_patched.jar
+bd5f69bc07f45c1ca64cbcd2085f2161319a976281e882d30e6cff4d0354a00f *cubism-agent-server.jar

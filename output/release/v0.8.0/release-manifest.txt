@@ -1,0 +1,6 @@
+version=v0.8.0
+built_at=2026-02-19T16:34:34
+live2d_patched_jar=Live2D_Cubism_patched.jar
+live2d_patched_sha256=8430fb1040bbf50994ad91b004ee7c3a05548c2257a6a8155377ddc9d86bcf2e
+agent_server_jar=cubism-agent-server.jar
+agent_server_sha256=bd5f69bc07f45c1ca64cbcd2085f2161319a976281e882d30e6cff4d0354a00f

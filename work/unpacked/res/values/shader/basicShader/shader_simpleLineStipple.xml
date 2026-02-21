@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<shader language="GLSL">
+    <properties>
+        <property name="s_texture0" text="Texture" default="red" />
+    </properties>
+    <blend srcColor="ONE" dstColor="ONE_MINUS_SRC_ALPHA" srcAlpha="ONE" dstAlpha="ONE_MINUS_SRC_ALPHA" />
+    <cull mode="OFF" />
+    <transparent type="TRANSPARENT" />
+    <!--#############################  VERTEX  #############################-->
+    <vertex><![CDATA[
+
+#version 330
+
+#if __VERSION__ >= 130
+  #define attribute in
+  #define varying out
+#endif
+
+#ifdef GL_ES
+precision mediump float;
+precision mediump int;
+#endif
+
+uniform mat4 worldToCameraMatrix , projectionMatrix ;
+uniform mat4 localToWorldMatrix ;// TEST IMPL
+
+attribute vec4 positions;
+
+void main(void)
+{
+ 	gl_Position = projectionMatrix * worldToCameraMatrix * localToWorldMatrix * positions ;
+}
+
+]]></vertex>
+    <!--############################  GEOMETRY  ############################-->
+    <geometry><![CDATA[
+
+#version 330
+
+// #if __VERSION__ >= 130
+//   #define attribute in
+//   #define varying out
+// #endif
+// 
+// #ifdef GL_ES
+// precision mediump float;
+// precision mediump int;
+// #endif
+
+layout( lines ) in ;
+layout( line_strip, max_vertices = 2 ) out ;
+
+uniform vec2 screenSize;
+
+noperspective out float texCoord;
+
+void main(void)
+{
+    // vec2 screenSize = vec2(1000.0, 1000.0) ;
+
+    vec2 winPos0 = screenSize.xy * gl_in[0].gl_Position.xy / gl_in[0].gl_Position.w;
+    vec2 winPos1 = screenSize.xy * gl_in[1].gl_Position.xy / gl_in[1].gl_Position.w;
+    gl_Position = gl_in[0].gl_Position;
+    texCoord = 0.0;
+    EmitVertex();
+    gl_Position = gl_in[1].gl_Position;
+    texCoord = 0.5f * length(winPos1-winPos0) ;
+    EmitVertex();
+    EndPrimitive() ;
+}
+
+]]></geometry>
+    <!--############################  FRAGMENT  ############################-->
+    <fragment><![CDATA[
+
+#version 330
+//#extension GL_EXT_gpu_shader4 : enable
+
+#if __VERSION__ >= 130
+  #define varying in
+  out vec4 mgl_FragColor;
+  #define gl_FragColor mgl_FragColor
+#endif
+
+#ifdef GL_ES
+precision mediump float;
+precision mediump int;
+#endif
+
+uniform vec4	lineColor ;
+uniform vec4	lineColor2 ;
+uniform float   stippleRepeatLength; //px
+uniform float   stippleColor1Length; //px
+
+noperspective in float texCoord;
+
+void main (void)
+{
+//    if( mod(texCoord ,2.0) < 1.0)     gl_FragColor =vec4(1.0 ,1.0 , 1.0 , 1.0) ;// lineColor ;
+//    else gl_FragColor = vec4(0.0 , 0.0 , 0.0 , 1.0) ;
+
+
+    if( mod(texCoord ,stippleRepeatLength) < stippleColor1Length )  gl_FragColor = lineColor ;
+    else  gl_FragColor = lineColor2 ;
+}
+
+]]></fragment>
+</shader>
+

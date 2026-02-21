@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rules>
+	<part n="Face" >
+		<rules>
+			<rule_color />
+		</rules>
+	</part>
+
+	<part n="EyeBall_L" >
+		<rules>
+			<rule_pos type="InsideOf" target="Face" />
+		</rules>
+	</part>
+
+</rules>

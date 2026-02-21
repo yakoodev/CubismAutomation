@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ====================================================================
+    CXファイルの仕様書は [ CX_Document.md ] を参照
+
+    このコメントはユーザ配布前に削除します
+  ==================================================================== -->
+<?import com.live2d.ui.container.CHBox?>
+<?import com.live2d.ui.container.CSpacer?>
+<?import com.live2d.ui.container.CVBox?>
+<?import com.live2d.ui.control.CLabel?>
+<?import com.live2d.ui.control.CTextField?>
+<CVBox xmlns="http://live2d.com/cxui/1.0" xmlns:cx="http://live2d.com/cx/1.0" prefHeight="36" prefWidth="-1" spacing="1">
+  <children>
+    <CHBox spacing="6" >
+      <children>
+        <CTextField prefWidth="30" name="top"    cx:id="tfTop" />
+        <CTextField prefWidth="30" name="left"   cx:id="tfLeft" />
+        <CTextField prefWidth="30" name="bottom" cx:id="tfBottom" />
+        <CTextField prefWidth="30" name="right"  cx:id="tfRight" />
+      </children>
+    </CHBox>
+    <CHBox spacing="6">
+      <children>
+        <CLabel text="top     left    bottom   right" prefWidth="-1"/>
+      </children>
+    </CHBox>
+  </children>
+</CVBox>
+

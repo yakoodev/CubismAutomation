@@ -1,0 +1,197 @@
+MOVI-0000=Scene
+MOVI-0001=Illegal State : IMvAttr is Abstract
+MOVI-0002=Illegal State : Not initialized
+MOVI-0003=Change parameter value
+MOVI-0004=Change color setting
+#「°」2バイトでよろしいでしょうか
+MOVI-0005=°
+MOVI-0006=Error tolerance for Animator interpolation (default 0.01)
+MOVI-0007=Sample
+MOVI-0008=Illegal State :_Infinite loop
+MOVI-0009=Failed to reflect the following settings\n\n
+MOVI-0010=The following settings were skipped:
+MOVI-0011=Sound
+MOVI-0012=Volume
+MOVI-0013=Volume
+MOVI-0014=Placement & Transparency
+MOVI-0015=Position
+MOVI-0016=Scale X
+MOVI-0017=Scale Y
+#「°」2バイトでよろしいでしょうか
+MOVI-0018=Rotate (°)
+MOVI-0019=Anchor Point
+MOVI-0020=Tilt
+MOVI-0021=Opacity
+MOVI-0022=Position
+MOVI-0023=Scale
+MOVI-0024=Rotation
+MOVI-0025=Insert the effect
+MOVI-0026=Delete the effect
+MOVI-0027=Illegal State : appears to be an infinite loop.
+MOVI-0028=Lip-sync//Offset
+MOVI-0029=Lip-sync//Levels
+MOVI-0030=Sound//Volume Scale (new method)
+MOVI-0031=Sound//Volume Offset (new method)
+MOVI-0032=Sleep
+MOVI-0033=Playback rate
+#SKIP
+MOVI-0034=□
+MOVI-0035=>
+MOVI-0036=<<
+MOVI-0037=>>
+MOVI-0038=Acquire Volume (only calculated the first time)
+MOVI-0039=Volume acquisition for platforms other than Quicktime is not supported.
+MOVI-0040=Currently "QuickTime" is not available\n\n
+MOVI-0041=If you want to output videos,\n
+MOVI-0042=Please execute after installing.
+MOVI-0043=Currently "QuickTime" you need to output videos is not available.\n\n
+MOVI-0044=Do you want to try the automatic setting?
+MOVI-0045=Currently Quicktime is not available. \n
+MOVI-0046=Videos cannot be exported.\n\nGIF animations can be exported.
+MOVI-0047=Automatic setting failed! \n\n
+MOVI-0048=Try switching to a different Quicktime Player compatible codec.
+MOVI-0049=Verify
+MOVI-0050=The system attempted to execute automatic setup. \n\n Please restart the application.
+MOVI-0051=Automatic setup failed! \n\n
+MOVI-0052=QuickTime is installed,\n
+MOVI-0053=but it is not associated with Java.\n\n
+MOVI-0054=If you want to output videos (.mov),
+MOVI-0055=you need to reinstall QuickTime.
+MOVI-0056=The video path includes Japanese. Quicktime does not support Japanese. \n\n
+MOVI-0057=Do you want to duplicate and load it into the cache folder?\n\n
+#次の2行、全角スペースが入っています
+MOVI-0058=　Original File : 
+MOVI-0059=\n　Duplicated File : 
+MOVI-0060=Failed to duplicate the file\n\n
+MOVI-0061=QuickTime is installed, but it is not set up properly.\n\n
+MOVI-0062=Do you want to try the automatic setup?
+MOVI-0063=Resources
+MOVI-0064=Material Data
+MOVI-0065=Name
+MOVI-0066=Group
+MOVI-0067=Tried to drop a file into a location other than directory.
+#SrcとDstの性質によって、「Src and Dst are on/in/at the same node.」などの可能性も考えられます
+MOVI-0068=Src and Dst are the same node.
+MOVI-0069=Edit?
+MOVI-0070=New folder
+MOVI-0071=Reload data
+MOVI-0072=Replace Data
+MOVI-0073=Rename
+MOVI-0074=Delete
+MOVI-0075=Open the parent folder
+MOVI-0076=Enter a new filename (.txt is not required)
+MOVI-0077=New file
+MOVI-0078=Enter a new folder name
+MOVI-0079=Enter a new name \n\n
+MOVI-0080=The original file does not exist\n\n
+MOVI-0081=Failed to re-load
+MOVI-0082=Do you want to delete? \n\n
+MOVI-0083= 
+MOVI-0084=Material Load Error!
+MOVI-0085=Failed to load\n\n
+MOVI-0086=Replace file using relative reference. \n
+MOVI-0087=Select the file corresponding to " %s "
+MOVI-0088=Cannot find " %s ."\n\n
+MOVI-0089=Do you want to replace with a different file?
+MOVI-0090=Illegal State : Duplicate ID
+MOVI-0091=Avoid in advance to prevent this
+MOVI-0092=Illegal State : Avoid accessing here
+MOVI-0093=Should be avoided in advance to prevent this
+MOVI-0094=Repeat
+MOVI-0095=Fast
+MOVI-0096=High-quality
+MOVI-0097=Velocity
+MOVI-0098=Quality
+MOVI-0099=Sample Frame
+MOVI-0100=Logical size has not been initialized.
+MOVI-0101=must be placed in JScrollPane.
+MOVI-0102=Override this "paint()" instead of calling it. \n At subclass "paint()", call "preparePaint()" first.
+MOVI-0103=Duration %s / Total Number of Frames %,d 
+MOVI-0104=Curve (C)
+MOVI-0105=Move Track
+MOVI-0106=Change the track length
+MOVI-0107=Change the work area
+MOVI-0108=<html><center>%s of work area<br>%s</center></html>
+MOVI-0109=Start Frame
+MOVI-0110=End Frame
+MOVI-0111=Delete track
+MOVI-0112=Insert Track
+MOVI-0113=Edit Keyframe
+MOVI-0114=Edit Setting
+MOVI-0115=Shorten Track
+MOVI-0116=Translate Keyframe
+MOVI-0117=Add Keyframe
+MOVI-0118=Delete Keyframes
+#以降数行、行末に全角スペースが入っています
+MOVI-0119=Insert Frame　　　　　
+MOVI-0120=Delete Frame　　　　　
+MOVI-0121=Insert Keyframe　　　
+MOVI-0122=Click
+MOVI-0123=Delete Keyframe　　　
+MOVI-0124=Copy Keyframe　　
+MOVI-0125=Cut Keyframe
+MOVI-0126=Paste Keyframe　
+MOVI-0127=Adjust Interval
+#「β」2バイトでよろしいでしょうか
+MOVI-0128=Set Marker (beta)
+MOVI-0129=Paste Keyframe
+MOVI-0130=Copy Keyframes
+MOVI-0131=Cut Keyframe
+MOVI-0132=Insert
+MOVI-0133=Change Velocity
+MOVI-0134=You cannot delete this effect
+MOVI-0135=Illegal State: Main component must be registered using "setComponent()" in "ITrackPanel".
+#「＋」2バイトでよろしいでしょうか
+MOVI-0136=＋
+#「－」2バイトでよろしいでしょうか
+MOVI-0137=－
+MOVI-0138=Linear interpolation is in beta, and you cannot Undo this action. Execute anyway?
+MOVI-0139=View Track Guide
+MOVI-0140=Change Track Name
+MOVI-0141=Translate Track
+MOVI-0142=Change Visibility Setting
+MOVI-0143=Change Lock
+MOVI-0144=Bring to Front
+MOVI-0145=Bring Forward
+MOVI-0146=Bring Backward
+MOVI-0147=Bring to Back
+MOVI-0148=Number of Frames for Drawing Motion Path
+MOVI-0149=Edit Layer
+MOVI-0150=Change Draw Order
+MOVI-0151=Text Editing
+MOVI-0152=Frame Number
+MOVI-0153=Insert Layer
+MOVI-0154=Delete Layer
+MOVI-0155=%d hours %2d minutes %2d seconds %2d frames
+MOVI-0156=%d minutes %2d seconds %2d frames
+MOVI-0157=%d seconds %2d frames
+MOVI-0158=Audio Output Test
+
+#----------- 2013/04/26(金) -----------
+MOVI-0159=Not impl : goToBeginning()					@@MvMovieJavaSound\n
+MOVI-0160=Not impl : goToEnd()					@@MvMovieJavaSound\n
+
+#----------- 2014/07/10(木) -----------
+
+MOVI-0172=Replace
+MOVI-0174=  [Broken link]
+MOVI-0176=Fade In/Out Setting
+MOVI-0177=Linearize
+MOVI-0178=Color
+
+MOVI-0164=Error Detail\n
+MOVI-0167=Skip
+MOVI-0168=Skip All
+MOVI-0169=Cancel
+
+
+#----------- 2014/07/10(木) -----------
+MOVI-0161=Load sound file
+MOVI-0162=Failed to load the sound file in JavaSound format. File codec may not be compatible with JavaSound.\n
+MOVI-0163=QuickTime may recover but also may cause some delay or deletion of beginning part.\n
+MOVI-0165=Duplicate and load
+MOVI-0166=Duplicate and load all
+MOVI-0170=Don’t ask me again
+MOVI-0171=c:\\フォルダA\\fileA日本語.mov
+MOVI-0173=<html>There is a track using this material. <br><br>Delete anyway? <br><span class='caution'>Please pay heed to that if you delete the source file, previous operation will not be able to be undone.</span></html>
+MOVI-0175=Edit with bounding box.

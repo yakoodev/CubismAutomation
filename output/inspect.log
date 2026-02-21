@@ -1,0 +1,547 @@
+﻿== Inspect: C:\Users\Yakoo\source\sandbox\cubism-jar-agent-env\output\workflow\input\Live2D_Cubism.jar ==
+
+7-Zip 25.00 (x64) : Copyright (c) 1999-2025 Igor Pavlov : 2025-07-05
+
+Scanning the drive for archives:
+1 file, 41859315 bytes (40 MiB)
+
+Listing archive: C:\Users\Yakoo\source\sandbox\cubism-jar-agent-env\output\workflow\input\Live2D_Cubism.jar
+
+--
+Path = C:\Users\Yakoo\source\sandbox\cubism-jar-agent-env\output\workflow\input\Live2D_Cubism.jar
+Type = zip
+Physical Size = 41859315
+
+   Date      Time    Attr         Size   Compressed  Name
+------------------- ----- ------------ ------------  ------------------------
+2026-01-13 17:52:28 .....      3457696      1271984  META-INF\MANIFEST.MF
+2026-01-13 17:52:28 .....      3457891      1272829  META-INF\GMO-CODE.SF
+2026-01-13 17:52:28 .....        12577         9223  META-INF\GMO-CODE.RSA
+2026-01-13 17:52:06 .....         1315          663  META-INF\core.kotlin_module
+2026-01-13 17:52:06 .....           98           73  META-INF\org\apache\logging\log4j\core\config\plugins\Log4j2Plugins.dat
+2026-01-13 17:52:06 .....         1232          572  META-INF\cubism.kotlin_module
+------------------- ----- ------------ ------------  ------------------------
+2026-01-13 17:52:28            6930809      2555344  6 files
+
+== MANIFEST.MF ==
+Manifest-Version: 1.0
+
+Name: jp/noids/movie/c/b.class
+SHA-256-Digest: 3uSn9IT4g36WHkeRztAYEoQZBrzCb8ZEVRn4b8gM1u8=
+
+Name: res/image/icon/palette/timeline/icon_LockTangent_Selected_22x22.pn
+ g
+SHA-256-Digest: mxyX5q8oOHUrNHb4sWpf9+m/BnY0pVUozuRvYAbZ6fs=
+
+Name: res/image_light/others/BorderLeft-Red.scale-150.png
+SHA-256-Digest: m6ir6gu+iQ5vSQP8qER5hwEcqFpd4GmoFZxBJjUOJ9I=
+
+Name: com/live2d/graphics3d/mesh/MeshUtils.class
+SHA-256-Digest: T+qr8Ac1wjoKM8DDSF2QvE2ZChV3aw6ab3EmfvYkXls=
+
+Name: res/image_dark/icons/FrameToggle_24x24_Disabled.scale-200.png
+SHA-256-Digest: /wtcBWc+0CDrMxbW3TI6Hdy9runp37xj58wXJrxgMeQ=
+
+Name: res/image_light/icons/ScreenShotToPartsView_24x24_Disabled.scale-1
+ 50.png
+SHA-256-Digest: uTt5nrb3d22+QqbfgmAueXCZcY1rOHJx4wJ1Wfa5u3E=
+
+Name: com/live2d/cubism/view/palette/tool/toolMode/artPath/y.class
+SHA-256-Digest: I2xHR3Aws8Nbsrox3iicP1QzpCepaCrTNAn+uMt7VQ8=
+
+Name: res/image/cursor/pen_close.scale-100.png
+SHA-256-Digest: Y+dNnwI8V5zzNq/P4bj8RtY9lfnXs6j1NcXOPwk3lU0=
+
+Name: com/live2d/cubism/doc/model/param/h.class
+SHA-256-Digest: nhrSzNU5pdywnu3oHf4s1wCIK+zdWGuNuQhaJpQbu1c=
+
+Name: res/image_dark/icons/Dot_20x20_Default.scale-100.png
+SHA-256-Digest: a7SpC9WXro0c16yZdlASgtYZX5HsNU2ew45oIAuObPE=
+
+Name: com/live2d/cubism/appCtrlImpl/ba.class
+SHA-256-Digest: l4zXS7zCOo7tI4hCR719Tr7tnhlv8UgFm1SKtEnTNeI=
+
+Name: com/live2d/ui/event/CKeyCode$VK_E.class
+SHA-256-Digest: g8RuKFALE8Ewn9vuA8q81HJjVChqfd/QpePsOOCybr4=
+
+Name: res/image_dark/icons/OverlapConjointOver_16x16_Default.scale-200.p
+ ng
+SHA-256-Digest: gZwpC0k9rLqpr6tPeIO8WFxH0fvFGPI0fLipHYYvPTo=
+
+Name: com/live2d/cubism/view/palette/tool/toolMode/IBrushSetting.class
+SHA-256-Digest: b8LneQu93oUR/wc3Gbpw943x7aP/BYLB9n16+w83NKc=
+
+Name: jp/live2d/cubism/ui/morphEditor/TextureManager.class
+SHA-256-Digest: bl44i7J4aHGbDkwTeGlvGUn252xxsGrEgWLOc8WT4lg=
+
+Name: res/image_light/icons/Lock-Center_20x20_Disabled.scale-200.png
+SHA-256-Digest: HzyJPWiTk/OQ3/x2GCd/W3fX2/wzYNVKwT9MISnR9tk=
+
+Name: com/live2d/type/CRect.class
+SHA-256-Digest: dDQB6xUIG4WsCPg8Ep6ni1dlCd9pSDIpCx9lD2RXNxE=
+
+Name: com/live2d/cubism/view/w.class
+SHA-256-Digest: xMrST2le+5ALnbgh8P1R2fQx4bwKi6ogoY8L0BfpWLQ=
+
+Name: com/live2d/cubism/view/palette/inspector/editPalette/properties/mo
+ rphTarget/debug/z.class
+SHA-256-Digest: YmSNnI+jWXAoIxRijO+6cuRVSExF0Jsiw7wPOmBT9wc=
+
+Name: res/image_light/icons/DisplayParamController_24x24_Default.scale-1
+ 75.png
+SHA-256-Digest: uzGTyb+C/mBke7GBvoGAvpNB1w/G85E7Oo1nbUff610=
+
+Name: jp/noids/graphics/d/a/a$b.class
+SHA-256-Digest: BKoWyK2bUbS+GpxDLydfGPJhIgAAx3B41IX/9haahqA=
+
+Name: com/live2d/cubism/view/palette/timeline/insidePanel/attribute/G.cl
+ ass
+SHA-256-Digest: 0zvaVP7/+NOaEmlFlDUUd4/Fo4mIBNsWbzohlcY7vCA=
+
+Name: com/live2d/ui/control/p.class
+SHA-256-Digest: GgFlPnXCJHBO0MrqU6h21/L6TST36qUw07wkjHkEdYg=
+
+Name: com/live2d/cubism/appCtrlImpl/ui/b/a/D.class
+SHA-256-Digest: xw1/2mmvWh2D+NJAlYC6Fw7j+RsNRD7Z5COLwfPDpUs=
+
+Name: res/image_light/parameter/ParamKeyNotLine-BS_Default.scale-125.png
+SHA-256-Digest: VVtUzQvuQeFjPB3i+KtxGBZZ1S2AQzgqZnv6yqv8tWs=
+
+Name: res/image_dark/icons/FreeCursor_24x24_Disabled.scale-125.png
+SHA-256-Digest: EXGE0rz+IjS5apJwU8J0fGXke4qOHOuFrSBa/ynH3TI=
+
+Name: jp/live2d/cubism/ui/k/k.class
+SHA-256-Digest: eCMAJymY5I7X3pKuBsYqigMDZPgXqzneJBC0S2pzcTM=
+
+Name: jp/noids/framework/property/s.class
+SHA-256-Digest: Gtag7pGmLNs1ybO3xqsRSzf3g9ZbVLUBI4AUHyrH97A=
+
+Name: com/live2d/cubism/view/palette/timeline/ai.class
+SHA-256-Digest: CULs1d1xwNRomeIDrJ/qvN3hP/9zuaUrcSaqVmxyeQI=
+
+Name: com/live2d/cubism/view/palette/timeline/bJ.class
+SHA-256-Digest: xN2jiem5cZwLaB/orD0OBLUbUjQSwtV8DJBANpsFloY=
+
+Name: com/live2d/cubism/setting/N.class
+SHA-256-Digest: R57kU5x88G3yfeyxNXKTl2NAG3mAhFv+cucardsAe5s=
+
+Name: res/image_dark/icons/Dot_20x20_Disabled.scale-175.png
+SHA-256-Digest: TudiXKU4QgbbzP+fPEOfkD1+CON+8Fim1mfAtPNcaWo=
+
+Name: com/live2d/cubism/doc/animation/paramCtrl/paramCtrlTargetAssessor/
+ DirectionParamCtrlTargetAssessor.class
+SHA-256-Digest: tVKD+u7IOP1CwUv4D7/FtRIXqVcPCYCsXf0wgyj4qJ4=
+
+Name: res/image_light/icons/4ViewsRtSplit_24x24_Default.scale-175.png
+SHA-256-Digest: xB53zHVBsaq47IP6dSU3DWdCNvdglARNhl8MLU6RNfs=
+
+Name: com/live2d/cubism/view/palette/parts/R.class
+SHA-256-Digest: 7UYIVlp2iwgC2Z1pcNrv9mZAWbXwBUEOukgRoZt7XRo=
+
+Name: res/image_light/icons/BrushSelection_32x32_Disabled.scale-175.png
+SHA-256-Digest: FCP7XMGAg/IO2fV8rRWh7x9ppZCkt/W8BftY/c+mVaI=
+
+Name: com/live2d/cubism/view/context/actionManager/aA.class
+SHA-256-Digest: cpWcIdDYJhATWjXM4QOf3fCoe64YTGQtWV66JQF7dEg=
+
+Name: res/image_light/icons/Freeze_16x16_Default.scale-150.png
+SHA-256-Digest: TpyAFQWtqwe32YelN65TR6h+SVhyPFcgkUeT5Sjj8pw=
+
+Name: com/live2d/cubism/setting/dr.class
+SHA-256-Digest: OjErquUhVi6ljrkZhAmCKub9WE2ft6dJslOb+ocw4Pk=
+
+Name: com/live2d/cubism/doc/model/interpolator/n.class
+SHA-256-Digest: ce71Siw5Xp3qnbN0clLn7SgmPf6rYW4ZMkBRoUDhiKs=
+
+Name: jp/live2d/cubism/view/event/aC.class
+SHA-256-Digest: T6xQSdmTFOmG2ZKDFxzYgHrSzLebgY3WPx7ABxJa+3Y=
+
+Name: res/image_light/icons/BrushAdd_32x32_Default.scale-125.png
+SHA-256-Digest: gUyD26Sx5EblrKMdyMFdpBtnylIjo2RqRAGJY5p+ccY=
+
+Name: com/live2d/cubism/doc/model/extension/rotate3d/B.class
+SHA-256-Digest: 4BxUTXGVF8AEA4tdlLIyNrwQRlwH1mCEErZdtJtEknk=
+
+Name: jp/live2d/cubism/N.class
+SHA-256-Digest: REm300EuNKHtpp14HeFSExuS6WV3YmBA6qlF3AtvMbQ=
+
+Name: com/live2d/cubism/view/palette/timeline/L.class
+SHA-256-Digest: dBtYBaQrlgUU+ZvkWxNQSezuRFVB4JXcTsjwwYlU7gM=
+
+Name: jp/noids/util/ab.class
+SHA-256-Digest: xWmFfyR0P+VMRJg1W5Evdx9/dKqbbgEzeplDqYNPt6k=
+
+Name: res/image_light/icons/ArrowLeft_16x16_Default.scale-150.png
+SHA-256-Digest: A51A5v9AItF+JBgJGIjc3Mn2XeGOEqbEa9GWKntNZf4=
+
+Name: res/image_dark/icons/RotDef-Colored_24x24_Disabled.scale-100.png
+SHA-256-Digest: Ng6fY3Te2IWchzl3cIDI8RoXIm7mns91b7qwXhV5SeQ=
+
+Name: com/live2d/cubism/doc/modeling/ui/viewer/motion/ViewerMotionManage
+ r.class
+SHA-256-Digest: vyY7DO+o7sbn59ZWElMhv5+Rs+WCT5kdhtXdF8R0ybI=
+
+Name: com/live2d/cubism/view/dialog/ObjectTemplateDialog/ObjectTemplateR
+ owWidget.class
+SHA-256-Digest: OcaUXtSd7WKVvP4ODYVxUm0fSJm17ea+Hk94YY86T20=
+
+Name: com/live2d/cubism/doc/modeling/ui/viewerForOriginalWorkflow/C.clas
+ s
+SHA-256-Digest: /PQPSq4v2gZt7g3pboCGhC5rYJa8i6WojmnEO1HxxNI=
+
+Name: com/live2d/ui/control/CButtonGroup.class
+SHA-256-Digest: NFk89uwYs86lnKHAiAIbdfz0V/MXD7n1eljuatRwc0Q=
+
+Name: com/live2d/cubism/doc/model/deformer/warp/grid/CGridTransform$a.cl
+ ass
+SHA-256-Digest: 40+PXX+m6NyTQUh4StCqwA8ZdGd4ko7AKQ7ZV3pu5Lc=
+
+Name: com/live2d/cubism/view/palette/u.class
+SHA-256-Digest: K/qWmW+R8toFWK/VkCs2wFwAZ7EOgVUnFQu5Z1cCbXM=
+
+Name: com/live2d/cubism/doc/model/deformer/autoYure/aa.class
+SHA-256-Digest: XFI5/WqbreKNBpzecucsm+z2Y93d4xeuliQcZkZq/zs=
+
+Name: com/live2d/cubism/doc/modeling/ui/viewer/physics/bu.class
+SHA-256-Digest: tVqMCLplkqjOK5IqDQ+rdqaV14mdaACS2+kx+M5FImc=
+
+Name: com/live2d/cubism/doc/modeling/ui/viewer/physics/cV.class
+SHA-256-Digest: UsMTxI2vlbD7cuWhdMmWqv8bV1a3sQxhx7qVTu0vAf8=
+
+Name: com/live2d/cubism/doc/animation/movie/track/UndoAddOrRemove_Track.
+ class
+SHA-256-Digest: ADH25kc7QeyPNL+ZeliTwuD1TL77LG2y7L7xXoN2PME=
+
+Name: res/image_light/icons/EditFAOff-Strong_32x20_Disabled.scale-125.pn
+ g
+SHA-256-Digest: A+BWgPzbYdNIl8VrB2IYOzU5HQY058eK1ixL8NxTmOw=
+
+Name: com/live2d/cubism/doc/modeling/ui/viewer/physics/fr.class
+SHA-256-Digest: FM8gHQO9WHyqrteNCC0l2t0+mZeSzJtiN5QNgyNOSPs=
+
+Name: com/live2d/cubism/doc/model/deformer/autoYure/g.class
+SHA-256-Digest: /fSIbfYsk3saGNhxPv36NbeDL3LTvWVF0iyc0TQyENE=
+
+Name: res/image_dark/icons/Arrow_32x32_Disabled.scale-150.png
+SHA-256-Digest: VDh4iTPgL5YsRuYFDSHyljVry5dFnP4787tmCP33wlw=
+
+Name: com/live2d/cubism/view/palette/timeline/Utils/p.class
+SHA-256-Digest: ThK+1YpISXYA95uwVautx6XobYYY0yLcSMr5ZUD8Y1k=
+
+Name: res/image_dark/viewport/BoundingBox-Tilt_Hover.scale-150.png
+SHA-256-Digest: 0ag+1D7yad/JGVc1Fey6Buz6l3N65USao/xDIuA8cro=
+
+Name: res/image/cursor/cursor_ArrowDirectNo.scale-200.png
+SHA-256-Digest: 8zsNt/yzeghWwdUi+p5kt7wpXFvAarXLlL05B66A9oA=
+
+Name: com/live2d/cubism/doc/model/morphTarget/an.class
+SHA-256-Digest: KywAiKY9yjmYuogoVWVp81Y5HuoFv1AQ7+pfeaRkXLc=
+
+Name: com/live2d/ui/event/i.class
+SHA-256-Digest: L1yuZbqAcbaBwRvJYbhveqXB4Sqtu7k8loMeNEUw++8=
+
+Name: com/live2d/cubism/setting/aV.class
+SHA-256-Digest: tdEf3uP6uOSe8RMwSqZy4E1DyAkV1BWVqaTlORzZXLg=
+
+Name: com/live2d/cubism/view/palette/timeline/insidePanel/attribute/fold
+ able/h.class
+SHA-256-Digest: 8b+SSf1hbFDYp0fSup/X+yL194lJFvhNUBtPtFzWcFw=
+
+Name: res/image_light/icons/Dot-Strong_16x16_Disabled.scale-125.png
+SHA-256-Digest: mSOXJc8dUp1ZWVJ8QnRKQFlCTYHVhCgqEu2DtWPtr18=
+
+Name: res/image_dark/icons/FilterDeformer-Colored_40x24_Disabled.scale-1
+ 75.png
+SHA-256-Digest: CwR7DntS5WLwzttYYlEqdhcZglWrp/gGbu65cTjuRic=
+
+Name: jp/live2d/cubism/ui/avatarColorSetting/c/j.class
+SHA-256-Digest: SdLj94kVOUVGtOaxuPSiGDOJ28fpjRxY9LzQ4RVZ0f0=
+
+Name: com/live2d/cubism/setting/OnionskinSetting$g.class
+SHA-256-Digest: r14f2VsXKYox8UC99JGP8S/FFwkzURuQGv1z0j/NQOU=
+
+Name: res/image_light/icons/Unlock_20x20_Disabled.scale-150.png
+SHA-256-Digest: whyRwmI9YgjT6lRL/R34Ry5adkm7I88e6NH9UzrgE6s=
+
+Name: com/live2d/graphics3d/shader/b.class
+SHA-256-Digest: KRS6kb5zheVPXPDJ2Ef54pVftkFe92Ubp1H9pIhxAgE=
+
+Name: res/image_dark/icons/PenPlus_32x32_Disabled.scale-175.png
+SHA-256-Digest: 0JKN8tcGaDH564tjHyfPS3A37q6jQiBebVL9XcTHNIg=
+
+Name: res/image_dark/icons/FolderRenderingGroupSketch-Colored_16x16_Defa
+ ult.scale-150.png
+SHA-256-Digest: d1ppg0AfIGeBM4wCcP1Jtuf0s4L1K3q7DaKnRkD/UdY=
+
+Name: res/image/cursor/cursor_LassoPlus.scale-150.png
+SHA-256-Digest: fHgmdBAmNKXgHx3V8Tp15IiHcOPGn5F4FtNpbFFaVck=
+
+Name: com/live2d/cubism/doc/animation/movie/core/a.class
+SHA-256-Digest: 6inWSexs1TGTFBTkoJay/aias0y3n7NauPqRtrp49ts=
+
+Name: res/image_light/icons/FilterArtMesh-Colored_40x24_Disabled.scale-2
+ 00.png
+SHA-256-Digest: 0Qn9N0ZXTnYFyTbYct4Nhs9CYseIB0vzRJU39ZNXPU4=
+
+Name: com/live2d/cubism/view/palette/scene/parameterBookmark/adapters/l.
+ class
+SHA-256-Digest: d/OlN6jYZi4ijCpgP3eifGL5D7tZL4uodbRcqiQCOP4=
+
+Name: res/image_dark/icons/Artmesh-Colored_24x24_Disabled.scale-125.png
+SHA-256-Digest: 2kOcpebnHyHRCcPdKFbJWN5OBpm34URTP7TlMqRoMt0=
+
+Name: res/image_dark/others/Indicator_Data2_Default.scale-175.png
+SHA-256-Digest: 2sUe802Q55OsE+6FO/2u3ZkiQ0M8pX8unzY5zBPbFVM=
+
+Name: com/live2d/cubism/doc/model/extension/meshGenerator/ui/u.class
+SHA-256-Digest: Hrg+1A5o71fn3E/wCVNzDYZonBk5b23VBHaQhnVvqWM=
+
+Name: com/live2d/cubism/doc/model/drawable/artPath/t$b.class
+SHA-256-Digest: Qt8uBLNTwX2kbvXoS4NefZmZG+dxhUmsyxPhcDSAexg=
+
+Name: com/live2d/cubism/view/palette/timeline/insidePanel/ARowEditPanel.
+ class
+SHA-256-Digest: HoGVeyd+28yrOrdDjPsh2+1dBDIo6QRRE3Nc+wXwD+A=
+
+Name: res/image_light/icons/DirectionControllerUngroup_16x16_Default.sca
+ le-175.png
+SHA-256-Digest: vhtBBNo8qIqScUv890P6c/IfCnOXyrhvauJPJDb1gAU=
+
+Name: com/live2d/cubism/process/b/a.class
+SHA-256-Digest: Lk/Uwv+cXxu5HzcxzCwJu3cukRHXiE2WkhoH7CRqOg4=
+
+Name: com/live2d/cubism/view/palette/timeline/insidePanel/attribute/ap$a
+ .class
+SHA-256-Digest: k4+H/96pjib0KwjkL5TeBYX60zBLbZdynM7USBVZdok=
+
+Name: jp/noids/grid/grid3d/GridData.class
+SHA-256-Digest: Hjs3lFXjRFYQdBDu9HH5tH4gBVz+9SyR+DcOC4OGBis=
+
+Name: com/live2d/inspector/ByteDef.class
+SHA-256-Digest: oiLWvotoEzaE0unyffTPWZevY340/WhXLar4WEEtwDc=
+
+Name: res/jp_noids_model3Dp_parts_draw_data/shader_hsl_F.txt
+SHA-256-Digest: Ebc8H1A/mOdpkKPGGFCDB+PATcnJhiFAlam6dvME02s=
+
+Name: com/live2d/cubism/view/palette/timeline/insidePanel/graphEditor/q.
+
+== META-INF/services ==
+
+7-Zip 25.00 (x64) : Copyright (c) 1999-2025 Igor Pavlov : 2025-07-05
+
+Scanning the drive for archives:
+1 file, 41859315 bytes (40 MiB)
+
+Listing archive: C:\Users\Yakoo\source\sandbox\cubism-jar-agent-env\output\workflow\input\Live2D_Cubism.jar
+
+--
+Path = C:\Users\Yakoo\source\sandbox\cubism-jar-agent-env\output\workflow\input\Live2D_Cubism.jar
+Type = zip
+Physical Size = 41859315
+
+   Date      Time    Attr         Size   Compressed  Name
+------------------- ----- ------------ ------------  ------------------------
+------------------- ----- ------------ ------------  ------------------------
+                                     0            0  0 files
+
+== Hints (BOOT-INF/WEB-INF/com/org/jp/net) ==
+2026-01-13 17:52:28 .....      3457696      1271984  META-INF\MANIFEST.MF
+2026-01-13 17:52:28 .....      3457891      1272829  META-INF\GMO-CODE.SF
+2026-01-13 17:52:28 .....        12577         9223  META-INF\GMO-CODE.RSA
+2026-01-13 17:52:06 .....         1315          663  META-INF\core.kotlin_module
+2026-01-13 17:52:06 .....           98           73  META-INF\org\apache\logging\log4j\core\config\plugins\Log4j2Plugins.dat
+2026-01-13 17:52:06 .....         1232          572  META-INF\cubism.kotlin_module
+2026-01-13 17:52:06 .....         1086          652  com\live2d\a\a.class
+2026-01-13 17:52:06 .....          797          532  com\live2d\a\b.class
+2026-01-13 17:52:06 .....         1037          637  com\live2d\a\c.class
+2026-01-13 17:52:06 .....          750          499  com\live2d\a\d.class
+2026-01-13 17:52:06 .....         1063          644  com\live2d\a\e.class
+2026-01-13 17:52:06 .....          873          571  com\live2d\a\f.class
+2026-01-13 17:52:06 .....          753          517  com\live2d\a\g.class
+2026-01-13 17:52:06 .....          977          599  com\live2d\a\h.class
+2026-01-13 17:52:06 .....          943          583  com\live2d\a\i.class
+2026-01-13 17:52:06 .....          839          552  com\live2d\a\j.class
+2026-01-13 17:52:06 .....         1077          648  com\live2d\a\k.class
+2026-01-13 17:52:06 .....         1731          860  com\live2d\a\l.class
+2026-01-13 17:52:06 .....         1371          792  com\live2d\core\a$a.class
+2026-01-13 17:52:06 .....         4672         2248  com\live2d\core\a$b.class
+2026-01-13 17:52:06 .....         1109          666  com\live2d\core\a$c.class
+2026-01-13 17:52:06 .....         8696         3670  com\live2d\core\a.class
+2026-01-13 17:52:06 .....         1413          685  com\live2d\core\b.class
+2026-01-13 17:52:06 .....         1609          782  com\live2d\core\CoreSetting$RenderSetting.class
+2026-01-13 17:52:06 .....         1839          883  com\live2d\core\c.class
+2026-01-13 17:52:06 .....         1360          649  com\live2d\core\CoreSetting.class
+2026-01-13 17:52:06 .....         1275          675  com\live2d\core\IBlendable$a.class
+2026-01-13 17:52:06 .....         1459          616  com\live2d\core\IBlendable$b.class
+2026-01-13 17:52:06 .....         1067          584  com\live2d\core\IBlendable.class
+2026-01-13 17:52:06 .....         1187          609  com\live2d\core\d.class
+2026-01-13 17:52:06 .....         2123         1123  com\live2d\core\ICopyable$a.class
+2026-01-13 17:52:06 .....         1704          794  com\live2d\core\ICopyable$b.class
+2026-01-13 17:52:06 .....          975          533  com\live2d\core\ICopyable.class
+2026-01-13 17:52:06 .....          951          450  com\live2d\core\ICopyableForUndo$a.class
+2026-01-13 17:52:06 .....          761          447  com\live2d\core\ICopyableForUndo.class
+2026-01-13 17:52:06 .....          297          238  com\live2d\core\e.class
+2026-01-13 17:52:06 .....         1913         1019  com\live2d\core\f.class
+2026-01-13 17:52:06 .....         1479          777  com\live2d\core\g.class
+2026-01-13 17:52:06 .....         4898         2109  com\live2d\core\id\a.class
+2026-01-13 17:52:06 .....         1409          811  com\live2d\core\id\b.class
+2026-01-13 17:52:06 .....         5095         2438  com\live2d\core\id\c.class
+2026-01-13 17:52:06 .....          685          454  com\live2d\core\id\DummyId$a.class
+2026-01-13 17:52:06 .....         2882         1465  com\live2d\core\id\DummyId.class
+2026-01-13 17:52:06 .....          458          343  com\live2d\core\id\Id$Companion$NOT_INITIALIZED$1.class
+2026-01-13 17:52:06 .....          811          527  com\live2d\core\id\Id$a.class
+2026-01-13 17:52:06 .....         3937         1761  com\live2d\core\id\Id.class
+2026-01-13 17:52:06 .....         1207          694  com\live2d\core\id\d$a.class
+2026-01-13 17:52:06 .....          655          430  com\live2d\core\id\d$b.class
+2026-01-13 17:52:06 .....         2042          963  com\live2d\core\id\e.class
+2026-01-13 17:52:06 .....         4643         2066  com\live2d\core\id\d.class
+2026-01-13 17:52:06 .....          646          459  com\live2d\core\id\f$a.class
+2026-01-13 17:52:06 .....         2588         1277  com\live2d\core\id\f.class
+2026-01-13 17:52:06 .....         2293         1173  com\live2d\core\id\IdWord$a.class
+2026-01-13 17:52:06 .....         1223          686  com\live2d\core\id\IdWord$b.class
+2026-01-13 17:52:06 .....         3868         1844  com\live2d\core\id\IdWord.class
+2026-01-13 17:52:06 .....         1007          583  com\live2d\doc\CoordType$a.class
+2026-01-13 17:52:06 .....         2018         1067  com\live2d\doc\CoordType.class
+2026-01-13 17:52:06 .....         3238         1418  com\live2d\doc\IEditMode$Companion$NOT_INTIALIZED$1.class
+2026-01-13 17:52:06 .....          914          547  com\live2d\doc\IEditMode$a.class
+2026-01-13 17:52:06 .....         2096          906  com\live2d\doc\IEditMode$b.class
+2026-01-13 17:52:06 .....         2524         1191  com\live2d\doc\IEditMode.class
+2026-01-13 17:52:06 .....         1664          951  com\live2d\doc\a.class
+2026-01-13 17:52:06 .....         1056          619  com\live2d\doc\selection\b.class
+2026-01-13 17:52:06 .....         2815         1454  com\live2d\doc\selection\a.class
+2026-01-13 17:52:06 .....          421          323  com\live2d\doc\selection\c.class
+2026-01-13 17:52:06 .....         2068          907  com\live2d\doc\selection\e.class
+2026-01-13 17:52:06 .....          983          550  com\live2d\doc\selection\d$a.class
+2026-01-13 17:52:06 .....         3543         1568  com\live2d\doc\selection\d$b.class
+2026-01-13 17:52:06 .....         1585          695  com\live2d\doc\selection\d.class
+2026-01-13 17:52:06 .....         1564          822  com\live2d\doc\selection\f.class
+2026-01-13 17:52:06 .....          903          530  com\live2d\doc\selection\IPointRef$a.class
+2026-01-13 17:52:06 .....          772          482  com\live2d\doc\selection\IPointRef$b.class
+2026-01-13 17:52:06 .....         1395          724  com\live2d\doc\selection\IPointRef.class
+2026-01-13 17:52:06 .....          759          478  com\live2d\doc\selection\IPointRefEx$a.class
+2026-01-13 17:52:06 .....          954          522  com\live2d\doc\selection\IPointRefEx.class
+2026-01-13 17:52:06 .....          613          364  com\live2d\doc\selection\ISelectableObject.class
+2026-01-13 17:52:06 .....         1150          573  com\live2d\doc\selection\ISelection$a.class
+2026-01-13 17:52:06 .....          828          472  com\live2d\doc\selection\ISelection.class
+2026-01-13 17:52:06 .....          360          273  com\live2d\doc\selection\g.class
+2026-01-13 17:52:06 .....         2375         1056  com\live2d\doc\selection\ISelector$a.class
+2026-01-13 17:52:06 .....         2544         1018  com\live2d\doc\selection\ISelector.class
+2026-01-13 17:52:06 .....         1100          568  com\live2d\doc\selection\ITransformBetweenLocalAndCanvas$a.class
+2026-01-13 17:52:06 .....         1751          694  com\live2d\doc\selection\ITransformBetweenLocalAndCanvas$b.class
+2026-01-13 17:52:06 .....         2054          882  com\live2d\doc\selection\ITransformBetweenLocalAndCanvas$Identity.class
+2026-01-13 17:52:06 .....         2023          842  com\live2d\doc\selection\h.class
+2026-01-13 17:52:06 .....         2023          841  com\live2d\doc\selection\i.class
+2026-01-13 17:52:06 .....         1667          724  com\live2d\doc\selection\ITransformBetweenLocalAndCanvas.class
+2026-01-13 17:52:06 .....         1523          808  com\live2d\doc\selection\j.class
+2026-01-13 17:52:06 .....         1994          978  com\live2d\doc\selection\PointSelector$a.class
+2026-01-13 17:52:06 .....         1295          682  com\live2d\doc\selection\k.class
+2026-01-13 17:52:06 .....         1988         1005  com\live2d\doc\selection\l.class
+2026-01-13 17:52:06 .....        10468         4070  com\live2d\doc\selection\PointSelector.class
+2026-01-13 17:52:06 .....         1221          685  com\live2d\doc\selection\n.class
+2026-01-13 17:52:06 .....         3097         1507  com\live2d\doc\selection\m.class
+2026-01-13 17:52:06 .....         1509          804  com\live2d\doc\selection\o.class
+2026-01-13 17:52:06 .....         2567         1150  com\live2d\doc\a\a.class
+2026-01-13 17:52:06 .....         2975         1256  com\live2d\doc\a\b.class
+2026-01-13 17:52:06 .....         1081          623  com\live2d\graphics\a.class
+2026-01-13 17:52:06 .....         3725         1702  com\live2d\graphics\CImage$a.class
+2026-01-13 17:52:06 .....         4500         2096  com\live2d\graphics\CImage.class
+2026-01-13 17:52:06 .....         1919         1037  com\live2d\graphics\CImageCanvas$a.class
+2026-01-13 17:52:06 .....         5581         2397  com\live2d\graphics\CImageCanvas.class
+2026-01-13 17:52:06 .....          696          417  com\live2d\graphics\b.class
+2026-01-13 17:52:06 .....         1715          863  com\live2d\graphics\c.class
+2026-01-13 17:52:06 .....          680          430  com\live2d\graphics\d.class
+2026-01-13 17:52:06 .....         7623         3592  com\live2d\graphics\CImageResource$a.class
+2026-01-13 17:52:06 .....         1386          694  com\live2d\graphics\CImageResource$b.class
+2026-01-13 17:52:06 .....         2793         1337  com\live2d\graphics\CImageResource$c.class
+2026-01-13 17:52:06 .....         1661          875  com\live2d\graphics\e.class
+2026-01-13 17:52:06 .....         1361          749  com\live2d\graphics\f.class
+2026-01-13 17:52:06 .....         1310          694  com\live2d\graphics\g.class
+2026-01-13 17:52:06 .....         1310          695  com\live2d\graphics\h.class
+2026-01-13 17:52:06 .....         1310          695  com\live2d\graphics\i.class
+2026-01-13 17:52:06 .....         1310          695  com\live2d\graphics\j.class
+2026-01-13 17:52:06 .....         1516          724  com\live2d\graphics\k.class
+2026-01-13 17:52:06 .....         1106          654  com\live2d\graphics\l.class
+2026-01-13 17:52:06 .....         1106          653  com\live2d\graphics\m.class
+2026-01-13 17:52:06 .....        24756         9522  com\live2d\graphics\CImageResource.class
+2026-01-13 17:52:06 .....         1645          935  com\live2d\graphics\n$a.class
+2026-01-13 17:52:06 .....         2041         1139  com\live2d\graphics\n.class
+2026-01-13 17:52:06 .....         2260         1144  com\live2d\graphics\o.class
+2026-01-13 17:52:06 .....         1766          942  com\live2d\graphics\CWritableImage$a.class
+2026-01-13 17:52:06 .....         1199          610  com\live2d\graphics\p.class
+2026-01-13 17:52:06 .....         1197          609  com\live2d\graphics\q.class
+2026-01-13 17:52:06 .....         1199          610  com\live2d\graphics\r.class
+2026-01-13 17:52:06 .....         1197          610  com\live2d\graphics\s.class
+2026-01-13 17:52:06 .....         1197          610  com\live2d\graphics\t.class
+2026-01-13 17:52:06 .....         5712         2004  com\live2d\graphics\CWritableImage$b.class
+2026-01-13 17:52:06 .....         1478          794  com\live2d\graphics\CWritableImage$c.class
+2026-01-13 17:52:06 .....         1292          721  com\live2d\graphics\u.class
+2026-01-13 17:52:06 .....         1392          790  com\live2d\graphics\v.class
+2026-01-13 17:52:06 .....         1391          727  com\live2d\graphics\x.class
+2026-01-13 17:52:06 .....         1840          912  com\live2d\graphics\w.class
+2026-01-13 17:52:06 .....        23991         8978  com\live2d\graphics\CWritableImage.class
+2026-01-13 17:52:06 .....          775          436  com\live2d\graphics\y.class
+2026-01-13 17:52:06 .....          976          642  com\live2d\graphics\z$a.class
+2026-01-13 17:52:06 .....         4629         2331  com\live2d\graphics\z.class
+2026-01-13 17:52:06 .....          821          487  com\live2d\graphics\HiDPIUtils$a$a.class
+2026-01-13 17:52:06 .....         2870         1350  com\live2d\graphics\HiDPIUtils$a.class
+2026-01-13 17:52:06 .....          963          550  com\live2d\graphics\HiDPIUtils$StretchFilterMode$a.class
+2026-01-13 17:52:06 .....         1829          919  com\live2d\graphics\HiDPIUtils$StretchFilterMode.class
+2026-01-13 17:52:06 .....         5831         2435  com\live2d\graphics\HiDPIUtils.class
+2026-01-13 17:52:06 .....          368          267  com\live2d\graphics\ICImageResourceUser.class
+2026-01-13 17:52:06 .....         1025          665  com\live2d\graphics\a\a.class
+2026-01-13 17:52:06 .....          763          516  com\live2d\graphics\A$a.class
+2026-01-13 17:52:06 .....         3265         1603  com\live2d\graphics\A$b.class
+2026-01-13 17:52:06 .....         7957         3976  com\live2d\graphics\A.class
+2026-01-13 17:52:06 .....         4717         2305  com\live2d\graphics\B.class
+2026-01-13 17:52:06 .....         2598         1371  com\live2d\graphics\C.class
+2026-01-13 17:52:06 .....          595          399  com\live2d\graphics\cachedImage\CCachedImage$a.class
+2026-01-13 17:52:06 .....         7331         2901  com\live2d\graphics\cachedImage\CCachedImage.class
+2026-01-13 17:52:06 .....         1351          723  com\live2d\graphics\cachedImage\a.class
+2026-01-13 17:52:06 .....         8006         3511  com\live2d\graphics\cachedImage\CCachedImageManager.class
+2026-01-13 17:52:06 .....         1001          564  com\live2d\graphics\cachedImage\CachedImageParam$a.class
+2026-01-13 17:52:06 .....         2334         1090  com\live2d\graphics\cachedImage\CachedImageParam.class
+2026-01-13 17:52:06 .....         1478          868  com\live2d\graphics\cachedImage\CachedImageType$a.class
+2026-01-13 17:52:06 .....         2404         1241  com\live2d\graphics\cachedImage\CachedImageType.class
+2026-01-13 17:52:06 .....         1223          701  com\live2d\graphics\curve\a$a.class
+2026-01-13 17:52:06 .....         2825         1391  com\live2d\graphics\curve\a.class
+2026-01-13 17:52:06 .....         2148         1030  com\live2d\graphics\curve\CPointCurve$CCurvePt.class
+2026-01-13 17:52:06 .....         2430         1227  com\live2d\graphics\curve\CPointCurve$a.class
+2026-01-13 17:52:06 .....         5640         2637  com\live2d\graphics\curve\CPointCurve.class
+2026-01-13 17:52:06 .....         4286         1753  com\live2d\graphics\curve\b.class
+2026-01-13 17:52:06 .....          705          444  com\live2d\graphics\curve\c.class
+2026-01-13 17:52:06 .....         2900         1460  com\live2d\graphics\curve\d.class
+2026-01-13 17:52:06 .....         4477         1818  com\live2d\graphics\curve\e.class
+2026-01-13 17:52:06 .....         2712         1260  com\live2d\graphics\curve\f$a.class
+2026-01-13 17:52:06 .....         2774         1321  com\live2d\graphics\curve\f$b.class
+2026-01-13 17:52:06 .....         8567         3660  com\live2d\graphics\curve\f.class
+2026-01-13 17:52:06 .....         3771         1703  com\live2d\graphics\curve\g.class
+2026-01-13 17:52:06 .....         1756          895  com\live2d\graphics\filter\a.class
+2026-01-13 17:52:06 .....          891          540  com\live2d\graphics\filter\AFilterDef$a.class
+2026-01-13 17:52:06 .....          849          536  com\live2d\graphics\filter\b.class
+2026-01-13 17:52:06 .....          841          529  com\live2d\graphics\filter\c.class
+2026-01-13 17:52:06 .....          842          530  com\live2d\graphics\filter\d.class
+2026-01-13 17:52:06 .....          849          535  com\live2d\graphics\filter\e.class
+2026-01-13 17:52:06 .....          841          528  com\live2d\graphics\filter\f.class
+2026-01-13 17:52:06 .....          842          530  com\live2d\graphics\filter\g.class
+2026-01-13 17:52:06 .....         9203         3068  com\live2d\graphics\filter\AFilterDef.class
+2026-01-13 17:52:06 .....         1150          629  com\live2d\graphics\filter\AStaticFilterDef$a.class
+2026-01-13 17:52:06 .....         2933         1353  com\live2d\graphics\filter\AStaticFilterDef.class
+2026-01-13 17:52:06 .....         1810          841  com\live2d\graphics\filter\AValueConnector.class
+2026-01-13 17:52:06 .....          715          450  com\live2d\graphics\filter\FilterEnv$a.class
+2026-01-13 17:52:06 .....         3407         1546  com\live2d\graphics\filter\FilterEnv$EnvValueSet.class
+2026-01-13 17:52:06 .....         1374          736  com\live2d\graphics\filter\FilterEnv$b.class
+2026-01-13 17:52:06 .....        10974         3925  com\live2d\graphics\filter\FilterEnv.class
+2026-01-13 17:52:06 .....          886          540  com\live2d\graphics\filter\FilterSet$a.class
+2026-01-13 17:52:06 .....         2220          943  com\live2d\graphics\filter\h.class
+2026-01-13 17:52:06 .....         6034         2064  com\live2d\graphics\filter\FilterSet$EnvConnection.class
+2026-01-13 17:52:06 .....         1944          845  com\live2d\graphics\filter\i.class
+2026-01-13 17:52:06 .....         2030          874  com\live2d\graphics\filter\j.class
+2026-01-13 17:52:06 .....         2031          874  com\live2d\graphics\filter\k.class
+2026-01-13 17:52:06 .....         1911          895  com\live2d\graphics\filter\l.class
+2026-01-13 17:52:06 .....         3061         1394  com\live2d\graphics\filter\m.class
+2026-01-13 17:52:06 .....        14533         4644  com\live2d\graphics\filter\FilterSet.class
+2026-01-13 17:52:06 .....         4766         1801  com\live2d\graphics\filter\n.class
+2026-01-13 17:52:06 .....         1070          594  com\live2d\graphics\filter\FilterValue$a.class
+2026-01-13 17:52:06 .....         7259         2641  com\live2d\graphics\filter\FilterValue.class
+2026-01-13 17:52:06 .....         3148         1305  com\live2d\graphics\filter\StaticFilterLibrary.class
+2026-01-13 17:52:06 .....         3574         1538  com\live2d\graphics\filter\concreteConnector\ConstValueConnector.class

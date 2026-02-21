@@ -1,0 +1,281 @@
+
+#----------- 2017/03/04(土) -----------
+COR3-0004=Rendering settings
+COR3-0005=Core settings
+COR3-0008=ID exceeds the maximum length of 63 characters.
+COR3-0043=Overlay
+COR3-0044=Screen
+COR3-0062=Data analysis error
+COR3-0067=Scale
+COR3-0069=degree
+COR3-0070=2D Transform
+COR3-0073=Vertex
+COR3-0074=Edge
+COR3-0201=Parameter settings
+COR3-0222=Switch workspace
+COR3-0223=Radio button
+COR3-0224=Slider
+COR3-0247=Image file (*.png|*.jpg)
+COR3-0249=Change background color
+COR3-0276=History
+
+
+#----------- 2017/04/12(水) -----------
+COR3-0277=The ID must contain at least one character.
+COR3-0278=The ID contains invalid characters.
+
+
+
+#----------- 2017/04/19(水) -----------
+COR3-0279=Start PRO Version Free Trial
+COR3-0280= (Coming soon)
+COR3-0281=<html><head/><body><p>The license will be deactivated from this PC.<br/>If you deactivate the license, you will no longer have access to the editor.<br/>Please ensure that you save any data in the active editor and close all editor applications before proceeding.</p><p><span class='caution'>Deactivating the license does not cancel the automatic renewal and billing of your subscription plan.<br/>To stop the automatic renewal, please visit the online store.</span></p><p>Are you sure you want to deactivate the license key?<br/></p></body></html>
+
+
+
+#----------- 2017/04/25(火) -----------
+COR3-0282=Unable to connect to the Internet
+COR3-0283=Unable to connect to server
+COR3-0284=Failed to update license 
+COR3-0285=Continue
+
+
+#----------- 2017/05/08(月) (手作業にて抽出) -----------
+COR3-0289=Scale
+
+
+
+#----------- 2017/07/06(木) -----------
+COR3-0290=Please close the mesh, or turn off the "Protect Edge Exterior" setting.
+COR3-0291=Mesh is opened.
+
+
+
+#----------- 2017/09/05(火) -----------
+COR3-0292=Image link breakage has occurred. It might be solved with "Set as Input Image for the Model Image of Selected ArtMeshes"\nby selecting the object and right-clicking the related layer from the source image in the Project palette.
+
+
+
+#----------- 2017/11/21(火) -----------
+COR3-0293=You can change the size of the input area by pressing and dragging the button.
+
+
+
+#----------- 2018/03/02(金) -----------
+
+
+
+#----------- 2018/04/23(Mon) -----------
+COR3-0295=##翻訳しない##推奨されるクラスの詳細については、本クラスの同階層に配置された「COkCancelDialogについての修正.md」を確認してください
+
+
+
+#----------- 2018/06/12(Tue) -----------
+COR3-0296=Row %3s  Column %3s
+
+
+
+#----------- 2018/08/28(Tue) -----------
+COR3-0297=Export PSD
+COR3-0298=AEIOU.txt
+
+
+
+#----------- 2018/12/18(Tue) -----------
+COR3-0299=Point Division
+
+
+
+#----------- 2019/02/08(Fri) -----------
+COR3-0300=<br>The Education Purpose license restricts exporting videos with AAC audio.
+
+
+
+#----------- 2019/04/12(Fri) -----------
+COR3-0301=Live2D Cubism PRO (Perpetual License)
+COR3-0302=License already registered. Please deactivate the license and try again.
+COR3-0303=Trial License has expired. <br>
+COR3-0305=Online Authentication
+COR3-0306=License Authentication
+COR3-0307=<html>Offline use is available for up to %d days after the last online license authentication.<br>
+COR3-0308=Please run with an internet connection.<br></html>
+COR3-0309=<html>Current License: %s</html>
+COR3-0310=<html>You can use Cubism Editor offline until this date.<br>Then, online authentication is required.</html>
+COR3-0311=<html>Offline Expiration Date: Unlimited</html>
+COR3-0312=<html><div align="right">Offline Expiration Date: %s<br>Last updated: %s</div></html>
+COR3-0313=<html>Online authentication is successful.</html>
+COR3-0314=The license has expired.
+COR3-0315=Retry
+COR3-0316=Launch FREE Version
+COR3-0317=<html>The online license authentication has failed.<br>Please ensure that you are connected to the internet.</html>
+COR3-0318=Deactivate License
+COR3-0319=<html>The following license has expired. Deactivate the license.<br>
+COR3-0320=The new license cannot be activated until the current license is deactivated.<br>
+COR3-0321=Please execute with the internet connected.</html>
+COR3-0322=License deactivation successful.
+COR3-0323=Do you want to close it?
+
+
+#----------- 2019/05/30(Thu) -----------
+COR3-0325=<br>Please note that initializing or updating your operating system during the trial period<br>may terminate the trial version.<br>
+
+
+
+#----------- 2019/12/04(水) -----------
+COR3-0326=Load
+COR3-0327=The file you are trying to load was created using a newer version of the editor currently in use.<br><br>
+COR3-0328=Model files or animation files created or saved with a newer version of the editor<br>
+COR3-0329=may not open correctly or <span class='caution'>may be damaged</span> when opened with an older version.<br>
+COR3-0330=The editing of newer version data on an older editor version should be done at<br>
+COR3-0331=<span class='caution'>one&#x27;s own risk.</span><br><br>
+COR3-0332=Current editor version: %s <br>
+COR3-0333=Version of the file you are trying to load: %s
+COR3-0334=Failed to load
+
+
+
+#----------- 2020/07/10(金) -----------
+COR3-0335=The specified path cannot be found
+COR3-0336=A period (".") cannot be used at the beginning of the filename.
+COR3-0337=There are character strings that cannot be used for the filename\n%s
+
+
+
+#----------- 2020/09/03(木) -----------
+COR3-0338=Failed to save due to lack of access privileges to the selected folder.\nPlease select another folder.
+
+
+
+#----------- 2020/11/04(水) -----------
+COR3-0339=The File Lock check has failed.
+COR3-0340=There are unnecessary cache files. Would you like to clean up the cache folder?
+COR3-0341=Cleaning up the cache folder.
+
+
+
+#----------- 2021/02/01(月) -----------
+COR3-0342=Activate PRO or Trial license
+COR3-0343=Purchase PRO license
+COR3-0344=Start as FREE version
+COR3-0345=Register License
+COR3-0346=<html><h3>Live2D Cubism Editor</h3>Enter a license key</html>
+COR3-0347=<h3>Live2D Cubism Editor</h3>
+COR3-0348=Welcome!<br>
+COR3-0349=Trial license will expire in %d day(s)<br>
+COR3-0350=License activation successful<br>
+COR3-0351=Start as FREE version with limited functions<br>
+
+
+#----------- 2021/02/03(水) -----------
+COR3-0352=Does not work properly on a Mac
+
+
+#----------- 2021/02/04(木) -----------
+COR3-0353=Deactivate License
+
+
+#----------- 2021/03/02(火) -----------
+COR3-0354=<span class='caution'>This will run the version with restricted functions</span>, without the ability to save or export.<br>
+
+
+
+#----------- 2021/03/31(水) -----------
+COR3-0355=Unauthorized ID format
+COR3-0356=Color burn
+COR3-0357=Color dodge
+COR3-0358=Darken
+COR3-0359=Darker color
+COR3-0360=Difference
+COR3-0361=Dissolve
+COR3-0362=Division
+COR3-0363=Exclusion
+COR3-0364=Hard light
+COR3-0365=Threshold / Normal
+COR3-0366=Hue
+COR3-0367=Lighten
+COR3-0368=Lighter color
+COR3-0369=Linear burn
+COR3-0370=Linear light
+COR3-0371=Luminosity
+COR3-0372=Transparent
+COR3-0373=Pin light
+COR3-0374=Saturation
+COR3-0375=Soft light
+COR3-0376=Subtraction
+COR3-0377=Vivid light
+
+
+
+#----------- 2021/10/06(水) -----------
+COR3-0378=The Trial for the PRO version is available for a limited period of 42 days.\nAfter 42 days, it will automatically switch to the FREE version.\nIf you would like to continue using the PRO version, please purchase a license.\n<html><span class='caution'>Once the Trial is activated, you cannot pause the Trial period.</span></html>\n\nWould you like to start the Trial?
+
+
+
+#----------- 2022/04/18(月) -----------
+COR3-0379=Changes to the language take effect after restarting %s.
+COR3-0380=Changing the language will affect all %2$s of the same %1$s version.\nAre you sure you want to change?
+COR3-0381=Revert to Language of Installation
+COR3-0382=Revert to OS System Language
+
+
+
+#----------- 2022/12/15(木) -----------
+COR3-0383=Copy Error Message
+COR3-0384=Please attach a capture of this screen, or copy & paste the error message including the red ( ) into the inquiry form.
+COR3-0385=Refer to the Help page
+
+
+
+#----------- 2023/01/19(木) -----------
+COR3-0386=The maximum number of license files has been reached.
+
+
+
+#----------- 2023/07/28(金) -----------
+COR3-0387=None
+COR3-0388=Light
+COR3-0389=Dark
+COR3-0390=Changes to the color theme take effect after restarting.
+COR3-0391=Color Theme
+
+
+#----------- 2023/11/02(木) -----------
+COR3-0392=The validity of the license cannot be confirmed due to incorrect system time.
+COR3-0393=License Error
+COR3-0394=Failed to verify the license.
+
+
+
+#----------- 2024/06/07(金) -----------
+COR3-0395=Deformer Shortcuts
+
+
+#----------- 2024/10/09(水) -----------
+COR3-0396=Notes Regarding macOS
+COR3-0397=In macOS Sequoia, if you activated your license with Cubism Editor 5.1.02 or later, your license will not be available for use in previous versions.
+COR3-0398=If you want to use a previous version of Cubism Editor, please deactivate your license and then reactivate it in the preferred version.
+COR3-0399=The free trial for the PRO version is available for a limited period of 42 days.
+COR3-0400=After 42 days, it will automatically switch to the FREE version.
+COR3-0401=Please purchase a license to continue using the PRO version.
+COR3-0402=You cannot pause the trial period once the trial version is activated.
+COR3-0403=In macOS Sequoia, if you started your trial with Cubism Editor 5.1.02 or later, the trial will not be available to previous versions.
+COR3-0404=Would you like to start the trial?
+
+
+
+#----------- 2025/11/26(水) -----------
+COR3-0405=If you activate your license with Cubism Editor 5.1.02 or later, the license will not be available in earlier versions.
+COR3-0406=If you start your trial with Cubism Editor 5.1.02 or later, the trial will not be available in earlier versions.
+
+
+
+#----------- 2026/01/09(金) -----------
+COR3-0407=Example: CEAA-1234-5678-9012-3456
+COR3-0408=You have %d days remaining on your trial.
+COR3-0409=The trial period will continue to be deducted based on the number of days that have passed. Would you like to proceed?
+COR3-0410=License activation failed.
+COR3-0411=Invalid license key.
+COR3-0412=License deactivation failed.
+COR3-0413=This license cannot be deactivated.
+COR3-0414=Buy Now
+

@@ -1,0 +1,22 @@
+#if __VERSION__ >= 130
+  #define attribute in 
+  #define varying out 
+#endif
+
+#ifdef GL_ES
+precision mediump float;
+precision mediump int;
+#endif
+
+attribute vec4 	a_position;
+attribute vec2 	a_texCoord;
+varying vec2 	v_texCoord;
+
+uniform mat4 	modelViewProjectionMatrix;
+
+                    
+void main(void)
+{
+  gl_Position = modelViewProjectionMatrix * a_position;
+  v_texCoord = a_texCoord;
+} 

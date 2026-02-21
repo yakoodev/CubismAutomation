@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<shortcut>
+    <mode name="Main">
+        <group tr_name="ファイル" name="##IMAG-0053">
+            <item command="CMD_EXIT" shortcut="Alt+F4" />
+        </group>
+        <group tr_name="編集" name="##CORE-0039">
+            <item command="CMD_REDO" shortcut="Ctrl+Y" shortcut2="Ctrl+Shift+Z" />
+        </group>
+    </mode>
+</shortcut>

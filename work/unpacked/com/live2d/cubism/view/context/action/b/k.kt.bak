@@ -1,0 +1,69 @@
+package com.live2d.cubism.view.context.action.view
+
+import com.live2d.cubism.view.context.CEViewContext_ModelingView
+import com.live2d.cubism.view.context.action.Condition
+import com.live2d.cubism.view.context.action.ICEAct_View
+import com.live2d.cubism.view.context.actionManager.ACEAction
+import com.live2d.cubism.view.context.actionManager.CEActionPack
+import com.live2d.cubism.view.context.actionManager.CEPriority
+import com.live2d.cubism.view.context.actionManager.ICEActionFactory
+import com.live2d.type.CCursor
+import com.live2d.util.UUMath
+import com.live2d.util.log.Log
+
+/**
+ * 画面の回転（注視点の周りを3D的にぐるぐる回るタイプ）
+ *
+ * Created by joe on 2016/08/09.
+ */
+object CEAct_ViewLayerDepth : ICEAct_View
+{
+    val SHORTCUT_TO_REGISTER_ACTION = CEViewContext_ModelingView::initAction
+
+    override val factories = listOf(Factory)
+
+    object Factory
+        : ICEActionFactory<CEActionPack>
+    {
+        // 事前判定条件
+        override val conditions =
+                listOf(Condition(CEPriority.VIEW , "W+MouseLeft" ))
+
+        override fun getAvailableAction(pack : CEActionPack ,
+                                        cond : Condition ,
+                                        ignoreMouseLeft : Boolean) : ACEAction? {
+            return ActionViewLayerDepth()
+        }
+    }
+
+
+    //=====================================================================================
+    //=====================================================================================
+    class ActionViewLayerDepth : ACEAction()
+    {
+        override val priority = CEPriority.VIEW
+
+        override fun mouseAction(pack : CEActionPack) {
+
+            pack.mouseDrag?.let{ mouseDragEvent ->
+
+                (pack.viewContext as? CEViewContext_ModelingView)?.let{
+                    val ldv = it.layerDepthVisualizer
+                    ldv.offset = UUMath.clamp( ldv.offset - pack.diffOnCanvasWithShift.x * 0.0005f , 
+                                               0.000001f , // 0f より少し大きければオフセット描画になる 
+                                               2f )
+Log.i(( ldv.offset ).let{ "ldv.offset : ${it}" } )                    
+                    ldv.depth  = UUMath.clamp( ldv.depth  + pack.diffOnCanvasWithShift.y * 0.01f , 0.001f , 1000f )
+                }
+                
+//                pack.viewContext.cameraManager.cameraWrapper.cameraWork_ArcAround(mouseDragEvent)
+            }
+        }
+
+
+        override fun getCursor(pack : CEActionPack) : CCursor {
+            return CursorSetting.slide
+        }
+
+    }
+}

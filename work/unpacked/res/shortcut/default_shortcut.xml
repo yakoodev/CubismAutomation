@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ShortcutSetting version="1">
+	<menu>
+		<new v="Ctrl+N" />
+		<open v="Ctrl+O" />
+		<save v="Ctrl+S" />
+		<save_as v="Ctrl+Shift+S" />
+		<save_image v="Ctrl+Alt+Shift+S" />
+		<doc_setting />
+		<exit v="Alt+F4" />
+		<undo v="Ctrl+Z" />
+		<redo v="Ctrl+Y" />
+		<select_all v="Ctrl+A" />
+		<cut v="Ctrl+X" />
+		<copy v="Ctrl+C" />
+		<paste v="Ctrl+V" />
+		<delete v="Delete" />
+
+		<template v="Ctrl+Shift+T" />
+
+		<copy_shape v="Ctrl+Shift+C" />
+		<paste_shape v="Ctrl+Shift+V" />
+		<blend_shape v="Ctrl+Shift+B" />
+
+		<shortcut_setting />
+		<show_canvas_grid />
+		<hide_selection v="Ctrl+H" />
+		<show_deform_path v="Ctrl+Alt+D" />
+		<show_mode_hiq />
+		<show_mode_std />
+		<show_mode_outline />
+		
+		<object_lock v="Ctrl+2" />
+		<object_lock_else v="Ctrl+Shift+2" />
+		<object_unlock v="Ctrl+Alt+2" />
+		
+		<object_hide v="Ctrl+3" />
+		<object_hide_else v="Ctrl+Shift+3" />
+		<object_show v="Ctrl+Alt+3" />
+		
+		<morph v="Ctrl+T" />
+		
+		<edge_width_zero v="Ctrl+Q" />
+		<reflect_h />
+		<reflect_v />
+		<arrange_top v="Ctrl+Shift+]" />
+		<arrange_front v="Ctrl+]" />
+		<arrange_back v="Ctrl+[" />
+		<arrange_bottom v="Ctrl+Shift+[" />
+		<brush_path_close />
+		<set_deform_path v="Ctrl+D" />
+		<deform_path_enabled v="Ctrl+Shift+D" />
+
+		<delete_grid_and_child v="Ctrl+Delete" />
+
+		<resize_with_scale v="Ctrl+R" />
+		<parts_edit />
+		<new_grid v="Ctrl+G" />
+		<convert_to_same_range />
+
+		<auto_blend v="Ctrl+Alt+B" />
+
+		<param_setting />
+		<reset_param v="Ctrl+P" />
+		
+		<reset_layout />
+		<lib_open />
+		<help />
+		<open_hp />
+		<license_reg />
+		<license_hp />
+		<log />
+	</menu>
+	<mode>
+		<mode_edit v="A" />
+		<mode_lasso v="S" />
+		<mode_brush v="B" />
+		<mode_grid v="G" />
+		<mode_change v="F" />
+
+		<mode_drag_scale v="D" />
+
+		<stroke_width_plus v="Z" />
+		<stroke_width_minus v="X" />
+		<change_param_set v="C" />
+		<param_set_1 v="1" />
+		<param_set_2 v="2" />
+	</mode>
+</ShortcutSetting>
+

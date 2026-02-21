@@ -1,0 +1,211 @@
+DESI-0000=Sample
+DESI-0001=Illegal State : Internal division is not possible for "ColorParam" with different IDs.
+DESI-0002=Filter interpolation of "Not Implemented".
+DESI-0003=Illegal State : Pallets with the same ID are being registered.
+DESI-0004=Illegal State : The mainFrame is not registered
+DESI-0005=Close
+DESI-0006=History
+DESI-0007=Material
+DESI-0008=Insert the text
+DESI-0009=Main frame is not registered to the PaletteManager.
+DESI-0010=Original Image
+#SKIP
+DESI-0011= 3D_あひる_400.png
+DESI-0012=Editing with the same image is not officially supported : \n	jp.noids.design.image.ImageSmoother#smooth( )
+DESI-0013=Illegal State : Axis of rotation must always be a unit vector.
+DESI-0014=Attempting to generate pBuffer a second time without discarding.
+#位置関係としての前後であれば「Front Normal」でしょうか
+DESI-0015=Previous Normal ZZ0 :
+DESI-0016=Target Normal ZZ1 :
+#「法線」と判断しましたが法制なら「Next Legislation」でしょうか。また、この後出てくる「次の法線」と同じものと判断しましたが、位置関係としての前後であれば「Back Normal」かと思われます
+DESI-0017=Next Normal ZZ2 :
+DESI-0018=QQ01 = %.2f (angular variation against previous normal) \n
+DESI-0019= # QQ01 < T1 = %b (if true, composite two angles)\n
+DESI-0020=QQ02 = %.2f (angular variation against next normal) \n
+DESI-0021= # QQ02 < T1 = %b (if true, composite two angles) \n
+DESI-0022=Rotation Angle of Normal Q1 : %.2f\n
+DESI-0023=Rotation Angle of Normal Q2 : %.2f\n
+DESI-0024=Reference Normal a :
+DESI-0025=Reference Normal b :
+DESI-0026=You need HIERARCHY : 
+DESI-0027=You need ROOT : 
+DESI-0028=You need { : 
+DESI-0029=You need OFFSET : 
+DESI-0030=You need CHANNELS : 
+DESI-0031=You need } : 
+DESI-0032=You need MOTION : 
+DESI-0033=You need Frames : 
+DESI-0034=You need Frame Time : 
+DESI-0035=Elements are missing
+DESI-0036=Incorrect CHANNEL value : 
+DESI-0037=Illegal State : Cannot find the file
+DESI-0038=Strange state 	@jp.noids.design.joglGLManager#initGL_exe()\n
+DESI-0039=Illegal State :_Not initialized properly
+DESI-0040=Illegal State : May not have been released
+DESI-0041=Light Source/Position of Light Source X
+DESI-0042=Light Source/Position of Light Source Y
+DESI-0043=Light Source/Position of Light Source Z
+DESI-0044=Texture / Light Source Diffusion
+DESI-0045=Texture / Light Source Specular Component
+DESI-0046=Texture / Light Source Environment Component
+DESI-0047=Texture / Object Color
+DESI-0048=Texture / Object Specular Component
+DESI-0049=Texture / Object Diffuse Component
+DESI-0050=Texture / Object Environment Component
+DESI-0051=Texture / Object Specular Index
+DESI-0052=Illegal State :_Initialized twice
+DESI-0053=Illegal State : A process was underway before initialization.
+DESI-0054=You cannot use the DeepClone of ContainerNode
+DESI-0055=You cannot use the init of ContainerNode
+DESI-0056=Illegal State : Should be avoided in advance
+DESI-0057=Number of Vertices :
+DESI-0058=Drop the Obj file here
+DESI-0059=Reflect the face
+DESI-0060=Generate the normal
+DESI-0061=Reflect the normal vector
+DESI-0062=Reflect the normal vector in Y direction
+DESI-0063=Open Obj Folder
+DESI-0064=Relative reference for Index has not been implemented.
+DESI-0065=Save the properties
+DESI-0066=Load the properties
+DESI-0067=Show the grid
+DESI-0068=Show the axis
+DESI-0069=Parallel Projections
+DESI-0070=Angle of View 
+DESI-0071=Background color
+DESI-0072=Make Background Transparent
+DESI-0073=Rotate in XYZ Order
+DESI-0074=View point X
+DESI-0075=View point Y
+DESI-0076=View point Z
+DESI-0077=Focal Point X
+DESI-0078=Focal Point Y
+DESI-0079=Focal Point Z
+DESI-0080=Translate X
+DESI-0081=Translate Y
+DESI-0082=Translate Z
+DESI-0083=Rotate X
+DESI-0084=Rotate Y
+DESI-0085=Rotate Z
+DESI-0086=Upper Vector X
+DESI-0087=Upper Vector Y
+DESI-0088=Upper Vector Z
+DESI-0089=Zoom In
+DESI-0090=Sample
+DESI-0091=Illegal State : Trying to close the polygon from
+DESI-0092=This is not a file for cube map
+DESI-0093=Not verified!! jp.noids.design.layer.core.ContainerLayer#init( )
+DESI-0094=//0::Opacity
+DESI-0095=Text Settings
+DESI-0096=Horizontal Text
+DESI-0097=Vertical Text
+DESI-0098=Left
+DESI-0099=Middle
+DESI-0100=Right
+DESI-0101=Preview
+DESI-0102=Sentence
+DESI-0103=Font
+DESI-0104=Size
+DESI-0105=Line Spacing
+DESI-0106=Character Orientation
+DESI-0107=Justification
+DESI-0108=Fill Color
+DESI-0109=Line Color
+DESI-0110=Line Width
+DESI-0111=Setting
+DESI-0112=Character
+DESI-0113=Fill Color
+DESI-0114=Line Color
+DESI-0115=Horizontal Text / Vertical Text
+DESI-0116=Bring to Front
+DESI-0117=Bring Forward
+DESI-0118=Bring Backward
+DESI-0119=Bring to Back
+DESI-0120=Edit Layer
+DESI-0121=Change Draw Order
+DESI-0122=Insert Layer
+DESI-0123=Delete Layer
+DESI-0124=Angle
+DESI-0125=Transparency
+DESI-0126=Illegal State : The viewWidth and viewHeight are unset
+DESI-0127=3D X Axis Rotation
+DESI-0128=3D Y Axis Rotation
+DESI-0129=3D Z Axis Rotation
+DESI-0130=Avoid in advance to prevent this.
+DESI-0131=Illegal State : Avoid accessing here.
+DESI-0132=Should be avoided in advance to prevent this.
+DESI-0133=Polygon Tolerance
+DESI-0134=Illegal State : Call updatePolygon first
+DESI-0135=Illegal State : deepClone internal class cannot be called.
+DESI-0136=No Solution
+DESI-0137=Provide support for various colors!
+DESI-0138=Only RGB colors are supported.
+DESI-0139=Data Analysis Error
+DESI-0140=Drawing In Progress
+DESI-0141=IndexColor Generation
+DESI-0142=GIF Output
+DESI-0143=Start
+DESI-0144=Cancel
+DESI-0145=Range Designation
+DESI-0146=Open a folder
+DESI-0147=Delete Folder Contents
+DESI-0148=Save
+DESI-0149=Resize this window to match the size of the area to be captured.
+DESI-0150=The specified folder does not exist\n\n
+DESI-0151=Do you want to delete the contents of this folder?\n\n
+DESI-0152=Questions
+DESI-0153=Save To
+#倍率を保存するのではなく保存するものの倍率のことだと判断しました
+DESI-0154=Magnification for Saved File
+DESI-0155=Number of Frames
+DESI-0156=Failed to parse curves 
+DESI-0157=Components without support of SVGPath [
+DESI-0158=Failed to parse polygon 
+DESI-0159=Failed to parse polylines 
+DESI-0160=SVG Load
+DESI-0161=Failed to parse Transform : 
+DESI-0162=Failed to parse Style : 
+DESI-0163=Failed to analyse Color :
+#SKIP
+DESI-0164=i, u , e abcdefghij Who are you?
+#SKIP
+DESI-0165=～ー-－―＝
+#SKIP
+DESI-0166=…‥「」[]［］【】『』{}｛｝()（）
+#SKIP
+DESI-0167=。、．
+#SKIP
+DESI-0168=a, e, i, o, u
+#SKIP
+DESI-0169=A12
+DESI-0170=Select Image
+DESI-0171=Hold the button and move the mouse.\n\n Get the color of the position you released the button
+
+#----------- 2013/04/26(金) -----------
+DESI-0172=Illegal state :_
+
+#----------- 2013/07/09(火) -----------
+DESI-0173=\nOpenGL must called from Event dispatch thread 					@@LDGLManager\n
+DESI-0174=data/psd_sample/screen.psd
+
+#----------- 2014/01/29(水) -----------
+DESI-0176=An error occurred with OpenGL (3D library).\n\nThis error is known to occur \nwhen driver of your GPU (graphics card) is outdated. \n\nGo to GPU manufacturer’s website and \nmake sure you have the latest driver.
+
+#----------- 2014/07/10(木) -----------
+DESI-0177=Multiply
+DESI-0178=Normal
+DESI-0179=Overlay
+DESI-0180=Screen
+
+DESI-0181=PSD Image
+DESI-0182=Created Image
+DESI-0183=PSD Preview Image
+DESI-0184=Differential Image
+DESI-0175=Confirm
+
+#----------- 2014/08/29(金) -----------
+DESI-0185=Triangulation
+
+#----------- 2015/04/24(金) -----------
+DESI-0186=Multiple Event Setting %s					@@PMPaletteFrame.RawWindowDlg\n
+DESI-0187=Debug OpenGL

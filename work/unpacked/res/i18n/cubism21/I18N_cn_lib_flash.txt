@@ -1,0 +1,5 @@
+FLAS-0000=Illegal State : Delete third dimension Bezier curve in advance.
+FLAS-0001=Illegal State : Set the flag to old mode before using this class.
+FLAS-0002=Illegal State : Set the flag to new mode before using this class.
+FLAS-0003=Illegal State : You cannot define 16 or more LineStyles.
+FLAS-0004=Illegal State : Not initialized properly : \n[ 

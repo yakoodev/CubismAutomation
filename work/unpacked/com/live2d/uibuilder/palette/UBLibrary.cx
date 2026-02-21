@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import com.live2d.type.CInsets?>
+<?import com.live2d.ui.control.CLabel?>
+<?import com.live2d.ui.menu.CMenu?>
+<?import com.live2d.ui.menu.CMenuBar?>
+<?import com.live2d.ui.menu.CMenuItem?>
+<?import com.live2d.ui.menu.CButtonMenu?>
+<?import com.live2d.ui.container.CSplitPane?>
+<?import com.live2d.ui.menu.CSeparatorMenuItem?>
+<?import com.live2d.ui.container.CSplitPane?>
+<?import com.live2d.ui.container.CBorderPane?>
+<?import com.live2d.ui.container.CHBox?>
+<?import com.live2d.ui.container.CVBox?>
+<?import com.live2d.ui.container.CSpacer?>
+<?import com.live2d.ui.control.CTextField?>
+<?import com.live2d.ui.tree.CTree?>
+<?import com.live2d.type.CColor?>
+<?import com.live2d.type.CFont?>
+<CVBox xmlns="http://live2d.com/cgui/0.1.00" xmlns:cx="http://live2d.com/cxml/1" cx:id="root" prefHeight="600.0" prefWidth="900.0">
+	<children>
+		<CHBox CVBox.vgrow="NEVER">
+			<children>
+				<CLabel tr_text="ライブラリ" text="##CUB3-0683" />
+				<CSpacer prefWidth="5" />
+				<CTextField cx:id="tfSearchBox" prefHeight="20" prefWidth="20.0" CHBox.hgrow="ALWAYS" />
+				<CButtonMenu prefWidth="20" prefHeight="20">
+					<items>
+						<!-- actionCommandの受け取り先は、UBAppCtrlなどのCtrl -->
+						<CMenuItem tr_text="IDEでライブラリ・アイテムの定義ファイルを開く" text="##COR3-0282" actionCommand="CMD_OPEN_LIBRARY_ITEMS_CX" />
+						<CMenuItem tr_text="IDEでライブラリ・パレットのクラスを開く" text="##COR3-0283" actionCommand="CMD_OPEN_LIBRARY_CTRL" />
+						<CMenuItem text="Library Setting" />
+						<CMenuItem text="Library Setting" />
+						<CMenuItem text="Library Setting" />
+					</items>
+				</CButtonMenu>
+			</children>
+			<padding>
+				<CInsets bottom="3" left="3" right="0" top="3" />
+			</padding>
+		</CHBox>
+		<CTree cx:id="libraryTree" CVBox.vgrow="ALWAYS" rowHeight="19" rootVisible="false">
+			<!--textSelectionColor="#000000" textNonSelectionColor="#000000"-->
+			<!--backgroundSelectionColor="#A0FFFF" backgroundNonSelectionColor="#FFFFFF"-->
+		</CTree>
+	</children>
+</CVBox>
+

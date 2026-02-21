@@ -1,0 +1,3907 @@
+
+#----------- 2017/03/04(土) -----------
+CUB3-0000=Animation initializing
+CUB3-0001=Model initializing
+CUB3-0002=Scene initializing
+CUB3-0004=No recent file
+CUB3-0006=Opening model file
+CUB3-0007=Opening animation file
+CUB3-0009=Are you sure you want to Cancel Mesh editing?
+CUB3-0010=Opening Model
+CUB3-0011=Preparing model display
+CUB3-0012=Creating model instance
+CUB3-0013=Please call this function after exiting the Mesh Edit mode.
+CUB3-0014=Mesh edit
+// %s は ON または OFFが入る
+CUB3-0017=Apply Glue to %s  
+CUB3-0019=Grid spacing (px)
+CUB3-0022=Show Texture Atlas   Switch with [%s] key
+CUB3-0023=Show Model Image (%s)   Switch with [%s] key
+CUB3-0024=Please execute after selecting an ArtMesh.
+CUB3-0025=Set Background Color
+CUB3-0026=New view
+CUB3-0037=Update Inspector
+CUB3-0038=Update Tool Settings
+CUB3-0039=Update Project
+CUB3-0040=Update Parameter Palette
+CUB3-0041=Reconstruction of Parameter Palette
+CUB3-0042=Redraw Canvas
+CUB3-0043=Do you want to save file for %s ?
+CUB3-0046=Save as
+CUB3-0051=Open Scene
+CUB3-0052=History 
+CUB3-0055=Selected Object
+CUB3-0056=Scene edit mode
+CUB3-0065=Document file
+CUB3-0066=Colorize boundaries
+CUB3-0067=Show Collision Detection
+CUB3-0068=Show Canvas Window
+CUB3-0069=Show Interior
+CUB3-0070=Fullscreen
+CUB3-0071=Change Background Color
+CUB3-0072=Apply Expression
+CUB3-0073=Automatic Eye-Blinking
+CUB3-0074=Physics On / Off
+CUB3-0075=Idle Motion
+CUB3-0076=Track cursor
+CUB3-0078=Enable live function
+CUB3-0080=Part
+CUB3-0081=Game data mode
+CUB3-0084=Coordinate system
+CUB3-0087=Relocate tab
+CUB3-0088=No ArtMesh selected
+CUB3-0089=Select Vertex
+CUB3-0090=Move selected Vertex
+CUB3-0091=Glue Weight
+CUB3-0094=Update flag
+CUB3-0099=Scale
+CUB3-0102=Default settings
+CUB3-0103=Edit Keyform Grid
+CUB3-0105=Weight A
+CUB3-0106=Weight B
+CUB3-0108=Glue Vertices
+CUB3-0111=Please select two ArtMeshes while in the Mesh Edit mode.
+CUB3-0112=Please select the vertices you want to bind.
+CUB3-0113=The Meshes are not associated
+CUB3-0114=Add Glue Vertex
+CUB3-0115=It already contains the same points
+CUB3-0116=Please select 2 Vertices you would like to glue then call.
+CUB3-0117=New Glue
+CUB3-0118=Register Glue
+CUB3-0133=Create Rotation Deformer
+CUB3-0138=Rotation Deformer does not exist
+CUB3-0139=Rotation Deformer selection
+CUB3-0140=Rotation Deformer edit
+CUB3-0142=Rotation Deformer scale
+CUB3-0146=degree
+CUB3-0147=Show Bone
+CUB3-0148=Handle length
+CUB3-0149=Circle radius
+CUB3-0150=Edit keyform
+CUB3-0152=Rotation center @%s
+CUB3-0197=For SDK 3.0 / Cubism3.0(3.2)
+CUB3-0201=Export hidden ArtMeshes
+CUB3-0203=Center of model X
+CUB3-0204=Center of model Y
+CUB3-0205=Canvas scale (Unit)
+CUB3-0206=Canvas height (Unit)
+CUB3-0208=Export settings
+CUB3-0209=Deform Path width
+CUB3-0210=Deform Path hardness
+CUB3-0211=<html>Path range reduction<br><br>0 for Path range to reduce gradually<br>1 for Path range to greatly affect the surrounding 
+CUB3-0212=Control Extension ( Control Point/Path )
+CUB3-0213=Control Point
+CUB3-0214=Join Paths
+CUB3-0215=Affected target
+CUB3-0216=Rebind 
+CUB3-0217=Reset(Data reconstruction)
+CUB3-0218=Curve
+CUB3-0219=Deform Path edit
+
+CUB3-0220=Control Point Vertex edit
+CUB3-0221=Control Point dragged 
+CUB3-0222=Control Point wrapper
+CUB3-0223=Mesh expand
+CUB3-0224=Mesh settings
+CUB3-0229=Boundary margin (inside) 
+CUB3-0234=Atlas is not compatible with Mesh conversion 
+CUB3-0235=Change Inspector
+CUB3-0236=Apply changes
+CUB3-0237=Division number
+CUB3-0238=Refine Edge
+CUB3-0239=Expand Texture
+CUB3-0240=Currently selected Texture source
+CUB3-0241=Texture list
+CUB3-0242=Recalculate UV
+CUB3-0243=Replace Texture
+CUB3-0244=Model Image
+CUB3-0245=Texture Atlas
+CUB3-0246=Import Layer list
+CUB3-0247=Output Image (Resource Format)
+CUB3-0248=Output image
+CUB3-0251=Import Layer selection
+CUB3-0252=GUID of Selected Source Image
+CUB3-0253=Select Layer
+CUB3-0254=Layer Import
+CUB3-0255=Import Layer
+CUB3-0256=Current GUID
+CUB3-0257=Bezier division number (Horizontal)
+CUB3-0258=Bezier division number (Vertical)
+CUB3-0259=Smooth1
+CUB3-0260=Smooth2
+CUB3-0261=Smooth3
+CUB3-0262=Smooth All
+CUB3-0263=Cubism 2.1 Mode
+CUB3-0264=Retain Control structure
+CUB3-0265=Default State (Undefined)
+CUB3-0267=No Interpolation
+CUB3-0268=Linear Interpolation
+CUB3-0269=Ellipse Interpolation 12 points
+CUB3-0270=Ellipse Interpolation 16 points
+CUB3-0271=Interpolation data
+CUB3-0272=Add Key
+CUB3-0273=Add Parameter
+CUB3-0274=Delete Key
+CUB3-0275=Delete all keys
+CUB3-0276=Not applicable to current View. 
+CUB3-0277=Add Parameter Key
+CUB3-0286=The ID is already in use 
+CUB3-0287=Simple Model
+CUB3-0295=  - If the first character in the ID is a number, an underscore symbol will be added in front.\n
+CUB3-0296=  - All symbols in the ID will be replaced with an underscore symbol.\n
+CUB3-0297=The parts tree display has changed since Cubism 3.0.\n
+CUB3-0298=Parts tree displays the upper element in front of the lower one (The opposite of Cubism2.1)\n
+CUB3-0299=This order of display is in-sync with the display in Photoshop according to the layer order.
+CUB3-0300=Deformer
+CUB3-0301=Definition
+CUB3-0302=Parameter Value
+CUB3-0303=Angle X
+CUB3-0304=-Direction is facing left
+CUB3-0305=( Parts Settings )
+CUB3-0306=Edit TextureAtlas in Editor
+CUB3-0307=Texture Manager
+CUB3-0308=Source Image
+CUB3-0309=Model Image
+CUB3-0310=Atlas
+CUB3-0311=Import history
+CUB3-0312=Update history
+CUB3-0313=   # Replacement completed #
+CUB3-0314=Switch to current
+CUB3-0315=Source Image list
+CUB3-0316= [Material group]
+CUB3-0317= [Model Image]
+CUB3-0321= [Texture Atlas]
+CUB3-0323=Model Name
+CUB3-0324=File Name
+CUB3-0325=Update history
+CUB3-0326=Delete Control Point
+CUB3-0327=Model
+CUB3-0329=Modeling mode
+CUB3-0330=Please delete when Modeling View is selected
+CUB3-0332=Delete Vertex
+CUB3-0333=Mesh Edit mode
+CUB3-0334=Mesh Data for editing
+CUB3-0335=Texture Edit mode
+CUB3-0336=Free transform Deformer
+CUB3-0340=Automatic layout
+CUB3-0341=Margin
+CUB3-0343=New Texture Atlas setting
+CUB3-0344=Edit Texture Atlas
+CUB3-0345=Do you want to Cancel Texture Atlas edit?
+CUB3-0347=Automatic Mesh generator
+CUB3-0354=Change Parameter
+CUB3-0360=Parameter
+CUB3-0370=Unable to copy
+CUB3-0371=Paste
+CUB3-0372=%s cannot be pasted。 Duplicating image material between different models is not supported.
+CUB3-0373=Modeling View is not selected
+CUB3-0374=Unable to find the target object to paste form
+CUB3-0375=Please copy form before calling
+CUB3-0377=Paste the shape of the Vertices
+CUB3-0379=Blend settings
+CUB3-0381=Compatibility
+CUB3-0382=Show Select Mode
+CUB3-0392=Clipping Mask
+CUB3-0393=Memory usage
+CUB3-0394=Unable to open file
+CUB3-0401=Update
+CUB3-0405=Project
+CUB3-0418=< Create new model from PSD file >
+CUB3-0419=<Open PSD file as a separate document (testing function)>
+CUB3-0420=Select an action or a model to integrate PSD
+CUB3-0421=Model settings
+CUB3-0422=Add all layers as new ArtMesh
+CUB3-0423=Register PSD file without adding ArtMeshes
+CUB3-0424= Update
+CUB3-0427=Select an action or an existing PSD file to replace
+CUB3-0428=Re-import settings
+// Corresponding layer not found during PSD re-import
+CUB3-0430= (Corresponding layer not found)
+CUB3-0436=Optimize Parameter changes
+CUB3-0437=Use Clipping Mask
+CUB3-0438=Profiler settings
+CUB3-0441=Edit Range
+CUB3-0442=Register edit when cursor is in this edit target's range
+CUB3-0443=Pass hit-test when cursor is in this edit target's range 
+CUB3-0444=Mesh Edit range
+CUB3-0445=Undo steps
+CUB3-0446=Tool Settings(testing)
+CUB3-0447=Control Point is effective when cursor is far away from normal range. \n Processing effectiveness scales correspondingly
+CUB3-0448=Control Point/Path
+CUB3-0450=Test settings (testing)
+CUB3-0451=Glue settings (testing)
+CUB3-0462=Smoothing settings
+CUB3-0464=Rotation Deformer
+CUB3-0465=Warp Deformer
+CUB3-0467=Unify Bone display
+CUB3-0468=Unify as 2.1 display method
+CUB3-0469=Bone display settings
+CUB3-0470=2.1 mode display settings
+CUB3-0482=Auto-backup interval
+CUB3-0484=Auto-backup capacity
+CUB3-0506=Selection/Editing tool 
+CUB3-0507=Used for selecting objects\n
+CUB3-0508=(Shift+Drag multiple selections)\n
+CUB3-0509=(Select Drag rectangle)
+CUB3-0510=Lasso Tool
+CUB3-0511=Adjust Range size by dragging.\n
+CUB3-0512=Brush Selection tool
+CUB3-0513=Change the weight (effectiveness) of the brush to adjust the selection area\n
+CUB3-0514=(Shift+Drag to fill multiple areas) \n
+CUB3-0515=Manual Mesh Edit
+CUB3-0516=Edit Mesh shape \n
+CUB3-0517=Create Warp Deformer
+CUB3-0522=Display and edit the applied part of glue
+CUB3-0523=Edit Glue
+CUB3-0526=Selected objects cannot be edited with the same parameter value.
+CUB3-0527=Move vertex
+CUB3-0528=The selected object is locked
+CUB3-0529=Edit with Bounding Box
+CUB3-0530=Vertex move
+CUB3-0531=Add Vertex
+CUB3-0533=Add Vertex on Edge
+CUB3-0535=Edge swap
+CUB3-0536=Edge delete
+CUB3-0537=Drag select
+CUB3-0538=Drag rectangle
+CUB3-0539=Lasso
+CUB3-0540=Select Object
+CUB3-0541=Skip the Drag move (Prioritize rectangle selection)
+CUB3-0542=Drag the mouse and release over the new parent deformer
+CUB3-0543=Source image (default value) is locked
+CUB3-0550= X
+CUB3-0551= O
+CUB3-0553=Margin of Rectangular Boundary
+CUB3-0554=Resize Range 
+CUB3-0555=Rotate Range
+CUB3-0556=Bounding Box settings
+CUB3-0558=Add Dragging Point to the center
+CUB3-0559=Margin(px)
+CUB3-0561=Display settings
+CUB3-0565=Undo
+CUB3-0566=Redo
+CUB3-0567=Game Data(testing)
+CUB3-0568=Select ArtMesh
+CUB3-0583=Show Modeling 
+CUB3-0584=Show Model Image
+CUB3-0585=Show Atlas
+CUB3-0587=Edit Level 1 (refine)
+CUB3-0588=Edit Level 2 (normal)
+CUB3-0589=Edit Level 3 (rough)
+CUB3-0591=Temporary object for editing
+CUB3-0593=Not implemented yet
+CUB3-0598=Original illustration
+CUB3-0599=Texture Atlas (for game implementation)
+CUB3-0600=New Texture Atlas
+CUB3-0601=Texture Atlas settings 
+CUB3-0602=Synthesized Texture
+CUB3-0604=Change Parent Deformer
+CUB3-0605=Level edit
+CUB3-0606=Start Mesh editing
+CUB3-0607=Auto generate Mesh
+CUB3-0608=Select Mode update
+CUB3-0614=Add To
+CUB3-0617=Specify deformer
+CUB3-0618=Please create after selecting objects with the same parent deformer.
+CUB3-0619=Please create after selecting a deformer
+CUB3-0620=Cannot be created when multiple objects are selected.
+CUB3-0621=Parent Deformer is not selected.
+CUB3-0622=%s Rotation
+CUB3-0623=Create rotation deformer
+CUB3-0624=Continuous creation
+CUB3-0626=Set as parent of selected object
+CUB3-0627=Set as child of selected deformer
+CUB3-0631=Create Warp Deformer
+CUB3-0632=%s Warp
+CUB3-0633=Create Warp Deformer
+CUB3-0639=Tab closed
+CUB3-0658=Inspector
+CUB3-0659=Show previous data
+CUB3-0660=Show user data
+CUB3-0661=Edit of
+CUB3-0662=Clipping ID
+CUB3-0664=Smoothing (For movie creation) Beta
+CUB3-0665=Show sub-mesh (all settings)
+CUB3-0666=Original data
+CUB3-0667=Drag and release on the deformer you want to set
+CUB3-0670=Freeze Angle
+CUB3-0671=Set the current perspective as the default
+CUB3-0672=Freeze Rotation
+CUB3-0674=Display method (temporary)
+CUB3-0675=< Editing Level settings > 
+CUB3-0676=Bezier Division
+CUB3-0677=Bezier Type
+CUB3-0678=Reset bezier controllers
+CUB3-0679=Bezier Controls Information
+CUB3-0680=(Width x Height)
+CUB3-0683=Library
+CUB3-0684=Log
+CUB3-0685=Outliner
+CUB3-0686=Outliner Settings
+CUB3-0687=Floating
+CUB3-0701=[ Open ] 
+CUB3-0703=Eye blinking
+CUB3-0704=Lip-sync
+CUB3-0705=Parameter Settings
+CUB3-0709=Would you like to close without applying changes?
+CUB3-0710=Parameter edit
+CUB3-0712=Please select a Parameter
+CUB3-0713=Edit keyform -
+CUB3-0714=Snap to Rounded Number
+CUB3-0717= value 
+CUB3-0718=Would you like to delete key?
+CUB3-0720=Reset to default values
+CUB3-0721=Settings for Eye Blinking and Lip-sync
+CUB3-0722=Modeling View must be active to use.
+CUB3-0723=Parameter sorting
+CUB3-0725=New Parameter
+CUB3-0726=Minimum
+CUB3-0728=Maximum
+CUB3-0730=Add new Parameter
+CUB3-0731=Would you like to delete %s?
+CUB3-0732=Delete Parameter
+CUB3-0733=Create Parameter
+CUB3-0734=Create folder
+CUB3-0739=Part Settings
+CUB3-0743=Edit Part
+CUB3-0744=Create new part
+CUB3-0745=Name
+CUB3-0746=Modeling View must be active to delete.
+CUB3-0747=Parts cannot be deleted in the current view.
+CUB3-0748=Group by Draw Order
+CUB3-0750=Movement of object
+CUB3-0751=Project tree settings
+CUB3-0752=PSD layer
+CUB3-0753=Material
+CUB3-0756= Tag
+CUB3-0761=Would you like to delete scene [%s]?
+CUB3-0763=Insert Keyframe
+CUB3-0765=Cut Keyframes
+CUB3-0767=Paste Keyframes
+CUB3-0771=Marker settings
+CUB3-0773=Open the animation file
+CUB3-0774=No Vertical Grid
+CUB3-0776=Every 5 Frames
+CUB3-0780=Tool Details
+CUB3-0781=Arrow
+CUB3-0782=Mesh line color
+CUB3-0783=Mesh line thickness
+CUB3-0784=Weight
+CUB3-0787=Weight color
+CUB3-0790=Initialized improperly 
+CUB3-0791=Weight brush A
+CUB3-0792=Weight brush A:B
+CUB3-0793=Weight brush B
+CUB3-0794=Please call in the normal Modeling View
+CUB3-0796=Manual Mesh edit
+CUB3-0798=Auto attach Edge (line) [Ctrl+R]
+CUB3-0800=Auto connect
+CUB3-0801=Mesh reconstruction
+CUB3-0802=Protect Edge exterior
+CUB3-0805=Control Point edit
+CUB3-0806=Add point
+CUB3-0807=Delete edge
+CUB3-0808=Delete point
+CUB3-0810=Addition of Rotation Deformer 
+CUB3-0811=Add new Rotation Deformer
+CUB3-0812=Please drag-and-drop
+
+
+#----------- 2017/03/05(日) -----------
+CUB3-0814=New
+CUB3-0815=Animation
+CUB3-0817=Open Recent File
+CUB3-0818=Recent Files
+CUB3-0819=Export Image/Video
+CUB3-0821=Export For Runtime
+// CUB3-0822=Model Settings File 
+CUB3-0823=Physics
+// CUB3-0824=Parts settings
+CUB3-0826=Canvas Background color
+CUB3-0829=Deselect
+CUB3-0831=Display Quality
+CUB3-0832=Modeling
+// CUB3-0833=Select the fastest possible deformer by delete
+CUB3-0834=Switch between Source Image and Texture Atlas
+CUB3-0835=Synthesize corners 
+CUB3-0836=Lock Default Form 
+CUB3-0837=Show/Hide
+CUB3-0838=Edit Form
+CUB3-0839=Revert to Original
+
+CUB3-0841=Paste Form 
+CUB3-0842=Edit Level
+ 
+#CAUTION!! Don't delete white spaces at the end of Level ? (??)____  . These spaces are the margin to shortcut string. 
+CUB3-0843=Level 1 (refine)      
+CUB3-0844=Level 2 (normal)      
+CUB3-0845=Level 3 (rough)      
+
+CUB3-0846=Mesh
+CUB3-0847=Glue
+CUB3-0850=Glue On/Off
+CUB3-0851=Show ArtMesh's Vertex Number
+CUB3-0852=Show ArtMesh Vertex ID 
+CUB3-0855=New Scene
+CUB3-0872=Window
+CUB3-0873=Switch Workspace
+CUB3-0874=Hide Palette
+CUB3-0875=View area
+CUB3-0877=Add Tab
+CUB3-0878=Close Tab
+CUB3-0880=Deactivate License
+CUB3-0881=Display Operation
+CUB3-0884=Finish Mesh editing
+CUB3-0885=Auto attach Edge (line)
+CUB3-0886=Glue / bind the selected vertices
+CUB3-0887=Unglue / unbind the selected vertices
+CUB3-0889=Open CEMainFrame source code [debug]
+CUB3-0890=Test[Nakajo]
+CUB3-0891=Reflect(For temporary shortcuts)
+CUB3-0892=Center view at the selected object
+CUB3-0893=Test[Shimazaki]
+CUB3-0899=Arrow tool
+CUB3-0900=Lock all Deformers
+CUB3-0901=Test[Kou]
+CUB3-0902=Hello
+CUB3-0903=Test[Satoh]
+CUB3-0904=Export Model Data (moc3)
+CUB3-0905=Test[Kaneko]
+CUB3-0906=Preview model with Viewer
+CUB3-0907=Open Viewer
+CUB3-0908=Toggle Glue mode
+CUB3-0909=Show Selected Object in Project Tree
+CUB3-0911=Edit Level: 
+// CUB3-0912=Edit Level 1 (Detail)
+// CUB3-0913=Edit Level 2 (Moderate)
+// CUB3-0914=Edit Level 3 (Vast)
+CUB3-0915=Auto slice Texture
+CUB3-0916=Open source code(Debug)
+CUB3-0917=Floating
+CUB3-0919=Open related class of the selected object
+CUB3-0923=Glue Weight A : B
+CUB3-0924=Glue Weight A
+CUB3-0925=Glue Weight B
+
+#----------- 2017/04/12(水) -----------
+CUB3-0929=Animation View must be active to use.
+CUB3-0930=Adjust Size
+CUB3-0931=Please call in Modeling View
+CUB3-0932=Importing Parts file
+CUB3-0933=Invoke after texture atlas is generated.
+CUB3-0934=Failed to export \n\n   
+CUB3-0939=Unable to change division status in mesh edit mode
+CUB3-0940=Unable to change division status in texture edit mode
+CUB3-0941=Unable to add tab in mesh edit mode
+CUB3-0942=Unable to add tab in texture edit mode
+CUB3-0943=Not installed
+CUB3-0944=Please select the model track.
+CUB3-0951=Physics settings name
+CUB3-0952=Model Option Settings
+CUB3-0953=Ms. Simple
+CUB3-0954=Export Physics settings file (physics3.json) 
+CUB3-0955=Assign a value designated for canvas width at 1.0
+CUB3-0956=Assign a value designated for canvas height at 1.0
+CUB3-0957=Set center
+CUB3-0958=Physics settings must be configured before proceeding.
+CUB3-0959=Modeling View must be active to use.
+CUB3-0960=Preset
+CUB3-0961=Open the save location for settings
+CUB3-0962=Set the name of the preset
+CUB3-0965=  - When the ID is taken, a number will be automatically added the end of the ID
+CUB3-0966=2.1->3.0 ID conversion chart
+CUB3-0967=Source images are in use. \n\n -Number of model images in use: %d\n -Number of visible ArtMeshes: %d\n -Number of hidden ArtMeshes: %d\n\nWould you like to delete the source images?
+CUB3-0968=Motion for preview
+CUB3-0969=Delete source image
+CUB3-0970=Change texture size
+CUB3-0971=  Number of Warp Deformers : %d \n
+CUB3-0972=  Number of Rotation Deformers : %d \n
+CUB3-0973=<< ArtMesh Related  >>\n
+CUB3-0974=  Number of ArtMesh  : %d\n
+CUB3-0975=  Number of Interpolation ArtMesh : %d\n
+CUB3-0976=  Number of Vertices : %d\n
+CUB3-0980=Mesh transform/Automatically divide
+CUB3-0983=Physics Settings
+CUB3-0984=Delete Physics Settings 
+CUB3-1013=Motion
+CUB3-1014=Apply Physics
+CUB3-1016=Please copy and paste one of the ArtMesh.
+CUB3-1017=Paste when editing only one mesh.
+CUB3-1018=Invoke when an ArtMesh or Deformer is selected.
+CUB3-1019=Cannot edit all objects with the current parameter settings.
+CUB3-1020=An included object cannot be edited due to the current parameter settings.\n\n Do you want to proceed with the action?
+CUB3-1021=Invoke when an ArtMesh is selected.
+CUB3-1022=Unable to edit all the selected ArtMeshes in the current condition.\n\n To do so, set the parameter value to an editable value. 
+CUB3-1026=Edit ArtMesh vertices. \n Edit Warp Deformer's division points.
+CUB3-1027=Detail edit of Deform Path\n Edit Warp Deformer control points
+CUB3-1028=Rough edit of Deform Path\n Edit Warp Deformer frame
+CUB3-1029=(Shift+drag to select multiple areas) \n
+CUB3-1030=(Shift+ctrl+drag to unselect an area) \n
+CUB3-1031=(Shift+ctrl+drag to delete area) \n
+CUB3-1032=(B+drag to change the brush size)
+CUB3-1033=(Texture will not be deformed)
+CUB3-1034=Generate mesh base on the settings\n
+CUB3-1035=(Value can be changed by dragging left or right)
+CUB3-1036=can edit texture list 
+CUB3-1039=Link the transform path to the ArtMesh and do a rough transform
+CUB3-1040=The function is constrained by the chosen SDK version.
+CUB3-1041=Display : 
+CUB3-1044=Lock the unselected objects
+CUB3-1045=Unlock all
+CUB3-1047=Hide the unselected objects
+CUB3-1048=Show all
+CUB3-1049=Flip horizontally
+CUB3-1050=Flip vertically
+CUB3-1054=Switch Glue on/off
+CUB3-1055=Show/hide Grid
+CUB3-1056=Show/hide selected ArtMesh
+CUB3-1057=Randomize parameters
+CUB3-1058=Random Pose menu
+CUB3-1059=Takes a snapshot that can be used as a guide to the amount of deformation when creating keyforms.
+CUB3-1060=Show/hide snapshot
+CUB3-1061=Send snapshot to palette and save as image
+CUB3-1062=Invoke after taking a snapshot
+CUB3-1065=Random pose
+CUB3-1077=Group the tabs
+CUB3-1078=Close all tabs except the current one
+CUB3-1079=Set name for the tab
+CUB3-1080=Enter tab name
+CUB3-1083=Change background color or opacity of the canvas
+CUB3-1084=Zoom in
+CUB3-1085=Zoom out
+CUB3-1086=Focus on selected element
+CUB3-1087=Display as original size
+CUB3-1088=Show/hide all
+CUB3-1089=Lock/unlock all
+CUB3-1090=Expand all
+CUB3-1093=Not to draw the backside of polygons.
+CUB3-1094=Grouped
+CUB3-1095=Types
+CUB3-1099=degree (fixed)
+CUB3-1100=Size (height)
+CUB3-1101=Size (width)
+CUB3-1102=Duration
+CUB3-1105=Automatically add maximum and minimum key value when Repeat is activated.
+CUB3-1106=Add key
+CUB3-1107=Unable to delete maximum and minimum key value when Repeat is active.
+CUB3-1108=Delete key
+CUB3-1109=Cannot set an existing value.
+CUB3-1110=Please select the new parameter location for parameter "%s".
+CUB3-1112=No.%s %s contains invalid characters.
+CUB3-1113=ID: "%s" is duplicated.
+CUB3-1114=No.%s needs to have a minimum value smaller than the maximum value.
+CUB3-1115=No.%s has a default value that is out of range.
+CUB3-1117=A minimum and maximum value key is required when Repeat is active.
+CUB3-1118=Add 2 keys
+CUB3-1119=Add 3 keys
+CUB3-1120=Delete all keys
+CUB3-1121=Edit keys manually
+CUB3-1122=Show only the parameters active for selected objects
+CUB3-1123=Show palette menu
+CUB3-1124=Create new parameter
+CUB3-1125=Create new folder
+CUB3-1126=Delete selected element
+CUB3-1127=Add Single Keyform
+CUB3-1128=Delete Keyform
+CUB3-1129=Link Parameters
+CUB3-1130=Show/hide all
+CUB3-1131=Show/hide ArtMesh
+CUB3-1132=Show/hide Warp Deformers
+CUB3-1133=Show/hide Rotation Deformers
+CUB3-1135=Enter a new name
+CUB3-1136=Create ArtMesh
+CUB3-1137=Copy selected scene
+CUB3-1138=Create new scene
+CUB3-1139=Delete selected scenes
+CUB3-1140=Select a scene in the animation mode.
+CUB3-1142=Select a model
+CUB3-1143=When using "Generate Scenes Automatically from Audio Files", model's lip-sync settings is required.
+CUB3-1145=Please drag and drop audio track to timeline.
+CUB3-1146=Select an audio clip
+CUB3-1148=Edit Timeline
+CUB3-1149=Edit Keyframes
+CUB3-1150=Shy
+CUB3-1151=Release merging
+CUB3-1152=Currently only wav files are supported.
+CUB3-1154=First frame
+CUB3-1155=Previous frame
+CUB3-1156=Next frame
+CUB3-1157=Last frame
+CUB3-1159=Playback speed
+CUB3-1160=Show / Hide object with 'Shy' attribute
+CUB3-1161=Toggle free / fixed cursor timeline navigation
+CUB3-1162=Toggle between frames / timecode
+CUB3-1163=Switch Edit Mode
+CUB3-1164=Linear
+CUB3-1165=Set the selected key to Linear Interpolation
+CUB3-1166=Smooth
+CUB3-1167=Set the selected key to auto Bezier Interpolation
+CUB3-1168=Step
+CUB3-1169=Set the selected key to Step Interpolation
+CUB3-1170=Inverse step
+CUB3-1171=Set the selected key to inverse Step Interpolation
+CUB3-1172=Set the selected key to Easy Ease Interpolation
+CUB3-1173=Create new group
+CUB3-1174=Zoom out (timeline)
+CUB3-1175=Zoom in (timeline)
+CUB3-1176=Adjust spacing of the selected keyframe
+CUB3-1177=Revert curve's scale ratio (vertical) to default
+CUB3-1178=Grid
+CUB3-1179=Every Frame
+CUB3-1180=Creating Model Track
+CUB3-1181=Creating Image Track
+CUB3-1182=Creating Audio Track
+CUB3-1183=Add/Delete track
+CUB3-1184=Adjust spacing
+CUB3-1187=Brush weight B:A
+CUB3-1188=Re-merge Glue Vertices Tool
+CUB3-1190=Selection/edit tool\n
+CUB3-1191=(Select vertex and move by dragging) \n
+CUB3-1192=Note: In Mesh Edit Mode, deformation does not affect the texture
+CUB3-1193=Add Point Tool
+CUB3-1194=Delete Point/Edge Tool 
+CUB3-1195=Eraser Tool \n
+CUB3-1196=(Alt+drag to delete edges (line) only )
+CUB3-1197=Automatically join vertices
+CUB3-1198=Add a creating method
+CUB3-1199=Bind
+CUB3-1200=Unbind
+CUB3-1201=Glue :
+CUB3-1204=Add control point
+CUB3-1205=Delete control point
+CUB3-1206=Delete path
+CUB3-1208=Close all
+CUB3-1211=Export motion file
+CUB3-1212=Export as moc3 file
+CUB3-1214=Export Physics settings
+CUB3-1215=Canvas Settings
+CUB3-1216=Show Grid (Modeling View)
+CUB3-1217=Show Guide (Animation view)
+CUB3-1218=Highlight Deformer's Child Elements
+CUB3-1219=Focus on Selected Object
+CUB3-1220=Effect settings
+CUB3-1222=Apply Lip-sync from the Audio File
+CUB3-1223=Scene List
+CUB3-1224=Reset Status
+CUB3-1228=Toggle Version Information Display
+
+
+
+#----------- 2017/04/19(水) -----------
+CUB3-1231=Invoke with a model track selected
+CUB3-1232=The file is loaded : %s
+CUB3-1233=Command not recognized
+CUB3-1234=If this is in the test command group, processing is required
+CUB3-1235=Dark color difference
+CUB3-1236=Check pattern size
+CUB3-1237=Object is locked. Do you want to unlock and select it?
+CUB3-1238=It is dragged out of the table's boundary
+CUB3-1239=Parts%s
+CUB3-1240=Open document
+CUB3-1241=(File is not yet saved)
+CUB3-1242=Select scene to delete
+CUB3-1243=Model needs to be saved before adding into the track\n(Reference link to the model file is saved in the Animation file)\n\n Do you want to save?
+CUB3-1244=Playing all scenes may result in unnatural transitions. 
+CUB3-1245=Rotation Deformer Creation Tool
+CUB3-1248=Lock ArtMesh
+CUB3-1249=Lock Deformer
+CUB3-1250=Save snapshot guide image
+
+
+
+#----------- 2017/04/25(火) -----------
+CUB3-1251= Warning : Not all Cubism 3.0 features are backward compatible to Cubism 2.1. Your model's performance may be affected.
+# CUB3-1251=Please note that new Cubism 2.0 features aren't available in Cubism2.1 and your model might look different.
+
+CUB3-1252=Compatibility
+CUB3-1253=Reset instance
+CUB3-1254=(Skipping not possible)
+CUB3-1255=Data Validation Failed\n\n%s
+CUB3-1256=Deformation (Little)
+CUB3-1257=Deformation (Heavy)
+CUB3-1258=Would you like to initialize the texture atlas?\n\nThis process cannot be undone.
+CUB3-1260=Initialize Texture Atlas
+CUB3-1262=Please deactivate license through Euclid Launcher.
+CUB3-1264=Create Rotation Deformer directly
+CUB3-1265=Objects at Cursor
+CUB3-1266=The object is hidden and locked. Change settings and select?
+CUB3-1267=The object is hidden. Change settings and select?
+CUB3-1268=Please select at least one object.
+CUB3-1269=Following rules apply to IDs:\n
+CUB3-1270= - Only letters, numbers, and underscores allowed\n
+CUB3-1271= - Maximum length is 63 characters\n
+CUB3-1272= - First character must not be a number\n
+CUB3-1273=  Note: '@' is reserved for template objects\n
+CUB3-1274=About IDs
+CUB3-1275=View needs to be reset
+CUB3-1280=Click here for ID naming rules
+CUB3-1281=Invalid ID
+CUB3-1282=The corresponding parameter properties in the animation mode will also be deleted.\nKeyframes of the properties in the timeline cannot be undone after this operation.\n
+CUB3-1283=The corresponding part properties in the animation mode will also be deleted.\nKeyframes of the properties in the timeline cannot be undone after this operation.\n
+CUB3-1286=Sync
+
+
+
+#----------- 2017/04/25(火) -----------
+CUB3-1289=Standard
+
+
+
+#----------- 2017/04/25(火) -----------
+CUB3-1290=Open In Finder
+CUB3-1291=This audio file is not supported \n\n[WAV format is recommended] \n16bit or less PCM 44100Hz
+
+
+#----------- 2017/05/08(月) -----------
+CUB3-1292=Separate Parameters
+
+
+#----------- 2017/05/09(火) -----------
+
+
+
+#----------- 2017/06/02(金) -----------
+CUB3-1294=Image for collision detection.
+CUB3-1295=%d visible object(s) not placed in texture atlas (shown in red)
+CUB3-1296=%d visible object(s) without model image (shown in green)
+CUB3-1297=ArtMesh which do not placed into texture atlas will be deleted.
+CUB3-1298=ArtMesh which do not placed into texture atlas might cause display improperly.
+CUB3-1299=%d artMesh not placed into texture atlas yet.
+CUB3-1300=For display to work normally, please place it in "Texture atlas edit" in advance, then invoke \n\n
+CUB3-1301=Continue exporting?
+CUB3-1302=Unset Model Images
+CUB3-1303=Model Image List
+CUB3-1304=Place selected objects to texture atlas
+CUB3-1305=Set textures only
+CUB3-1306=Unset textures only
+CUB3-1307=Edit input info
+CUB3-1308=Segment
+CUB3-1309=Edit segment info
+CUB3-1310=Output
+CUB3-1311=Edit output info
+CUB3-1312=Input magnification
+CUB3-1313=Influence
+CUB3-1314=Input parameter can be added by right clicking on menu.
+CUB3-1315=Input settings
+CUB3-1316=Pendulum length
+CUB3-1317=Shaking influence
+CUB3-1318=Reaction time 
+CUB3-1320=Can add by accessing right click menu.
+CUB3-1321=Segment settings
+CUB3-1323=Segment number
+CUB3-1324=Output magnification
+CUB3-1325=Output parameter can be added by right click menu.
+CUB3-1326=There is no target intermediate setting. Add intermediate settings in the Intermediate tab.
+CUB3-1327=There is no target intermediate setting. Add intermediate settings in the Intermediate tab.
+CUB3-1328=Draw order should be within 0 and 1000
+CUB3-1329=Synchronize palette contents
+CUB3-1330=New template
+CUB3-1331=Warning:This file name cant not be used.
+CUB3-1332=All template files inside this folder will be deleted.\nWould you like to continue?
+CUB3-1333=Delete %S?
+CUB3-1334=Glue allows making vertices from different artMesh stick together.\n
+CUB3-1335=Please check how to use glue tool at「<a href='%s'> Manual</a>」
+CUB3-1336=ArtMesh
+CUB3-1337=Create artMesh for collision detection
+
+
+
+#----------- 2017/06/03(土) -----------
+CUB3-1344=Conversion Options
+CUB3-1345=Format
+CUB3-1346=Convert Parameter IDs
+CUB3-1347=Convert Part IDs
+CUB3-1348=IDs Preview
+CUB3-1349=ID conversion finished.\nPlease verify results.
+CUB3-1350=ID Conversion Tool
+CUB3-1351=[ Unregistered ]
+CUB3-1352=This feature is only available in the PRO version.
+CUB3-1353=\n\nDelete existing ArtMeshes to add new ArtMeshes.
+CUB3-1354=\n\nPlease ungroup the existing drawing order to enable
+CUB3-1355=\n\nPlease turn off existing repeat to activate
+CUB3-1356=FREE version - The additional ArtMesh has exceeded the limitation(
+CUB3-1357=FREE version - The additional Draw Order Groups have exceeded the limitation(
+CUB3-1358= Draw Order Groups are existing.
+CUB3-1359=FREE version - The max number of Draw Order Group is 
+CUB3-1360=FREE version - The additional Parameter Repeat has exceeded the limitation(
+CUB3-1361= Parameter Repeats are existing.
+CUB3-1362=FREE version - The max number of Parameter Repeat is 
+CUB3-1363=Convert Model ID
+
+#----------- 2017/06/07(水) -----------
+CUB3-1364=Every Second
+
+#----------- 2017/06/09(金) -----------
+
+
+#----------- 2017/06/19(月) -----------
+CUB3-1366= More than 3 points are needed for ArtMesh.
+CUB3-1367= Change  Part <-> PARTS on the head of parts ID's characters.
+CUB3-1368= This function is to automatically convert an object ID's format included in a model.\n
+CUB3-1369= * If the ID consists of lowercase letters, it would be recognized as a 3.0 ID. \n
+CUB3-1370= * More detailed process can be set with Option. \n
+CUB3-1371= This is not a template file.
+CUB3-1372= Import 2.1-format file
+CUB3-1373= No objects for this ID to apply \n\n
+
+
+
+
+#----------- 2017/06/21(水) -----------
+CUB3-1380=show/hidden
+CUB3-1381=Lock unselected objects
+CUB3-1382=Show unselected objects
+CUB3-1383=Call with elements on the Canvas on the left, plus one element from the list on the right.
+CUB3-1384=%s model images on the Texture Atlas do not have a corresponding ArtMesh. \nDo you want to delete them?\n\n%s
+CUB3-1385=%s model images on the Texture Atlas do not have a corresponding ArtMesh. \nDo you want to replace them with model images of the same name which have a corresponding ArtMesh?\n\n%s
+CUB3-1386=Invalid Parent- Child hierarchy
+
+
+#----------- 2017/07/04(火) -----------
+CUB3-1388=Please check out details at "<a href='%s'>Manual</a>".
+CUB3-1389=Couldn't find any physics setting to export.\nPlease invoke after physics settings are done.
+CUB3-1390=Select child objects
+CUB3-1391=The following object(s) are locked.\n\n %s \n\n Would you like to unlock them?\n
+CUB3-1392=Restriction for SDK
+CUB3-1393=Restrict bezier controllers' x movements.
+CUB3-1394=Restrict bezier controllers' x movements.\n
+CUB3-1395=All bezier controllers' position will be reset to SDK's default value.\n
+CUB3-1396=Curve shapes might be different.\n\nMake restriction?
+CUB3-1397=Unrestrict bezier controllers' x movements.\n
+CUB3-1398=Depend on controllers' positions,Might cause display improperly on SDK. \n
+CUB3-1399=In order to display correctly on SDK、Please make sure[Restriction for SDK]is valid.
+CUB3-1400=Delete unused model images
+CUB3-1401=Delete empty groups
+CUB3-1402=Delete %d unused model images?\n\n%s
+CUB3-1403=Group for model images
+CUB3-1404=Select related ArtMesh
+CUB3-1405=Disconnect from source images except in use
+CUB3-1406=Delete group
+CUB3-1407=ArtMesh count
+CUB3-1408=Texture atlas count
+CUB3-1409=Delete model images
+CUB3-1410= (in use)
+CUB3-1411=Connect Source Image to Model Image
+CUB3-1412=Disconnect from source image
+
+
+#----------- 2017/07/05(水) -----------
+CUB3-1413=At least one scene in animation is necessary.\nThe last scene can't be deleted.
+
+
+
+#----------- 2017/07/06(木) -----------
+CUB3-1414=Inappropriate Meshes
+
+
+
+#----------- 2017/07/18(火) -----------
+CUB3-1415=Sub
+CUB3-1416=You cannot use Automatic Mesh Generation on ArtMesh with Glue enabled.
+CUB3-1417=Do you want to overwrite it?\n\nThis is unrestorable.
+CUB3-1418=The last one can't be deleted.
+CUB3-1419=The selected object does not have two parameters set.\n\nPlease see "<a href='%s'> Official Manual </a>" for more information on how to use this tool
+CUB3-1420=Please choose different parameters
+CUB3-1421=No object is selected
+CUB3-1424=This texture atlas is locked.\n\nWould you like to unlock it?
+
+
+#----------- 2017/08/16(水) -----------
+CUB3-1425=Loading PSD file
+CUB3-1427=1/2 preview
+CUB3-1428=1/4 preview
+CUB3-1429=1/8 preview
+CUB3-1430=Please select the resolution for displaying the model image
+CUB3-1431=Creating model data
+CUB3-1432=Some keyforms are out of range of %s. Would you like to continue?
+CUB3-1433=Display Type
+CUB3-1434=Display Quality (Model Image)
+CUB3-1436=<Display Type>
+CUB3-1437=Display Quality (Model Image Display)
+
+
+
+#----------- 2017/08/16(水) -----------
+CUB3-1438=Presets with the same name will be overwritten.\nDo you want to import?\n\nThis process can not be undone.
+CUB3-1439=The preset could not be imported.
+CUB3-1440=Would you like to initialize the input preset?\n\nThis process cannot be undone.
+CUB3-1441=Would you like to initialize the Physics model preset?\n\nThis process cannot be undone.
+CUB3-1442=Physics settings in use will be overwritten.\nWould you like to import it?\n\n
+CUB3-1443=This process can not be undone.
+CUB3-1444=Could not import the physics settings.
+CUB3-1445=Following errors occurred when importing the physics settings.
+CUB3-1446= (Maximum
+CUB3-1447= can be displayed)\n\n
+CUB3-1448=group [ %1$s ] : %2$s\n
+CUB3-1449=Physics settings are imported.
+CUB3-1451=Inappropriate Id is defined.
+CUB3-1452=Group name should be defined(
+CUB3-1453=)
+CUB3-1454=Couldn't find the parameter to input(
+CUB3-1455=Input type is incorrect(
+CUB3-1456=Couldn't find the parameter to output(
+CUB3-1457=Output type is incorrect(
+CUB3-1458=Group isn't set up
+CUB3-1459=Couldn't find the following parameters in model\n
+CUB3-1460=Apply on the exist parameters\n\n
+CUB3-1461=for test
+CUB3-1462=Effectiveness(%)
+CUB3-1463=Less than minimum
+CUB3-1464=Greater than maximum
+CUB3-1465=Would you like to adjust the output magnification to fit in parameter range?\n
+CUB3-1466=Input normalization (Position)
+CUB3-1467= -
+CUB3-1468=Input normalization (Angle)
+CUB3-1469=Reset
+CUB3-1470=Adjust
+CUB3-1471=Physics preset
+CUB3-1472=Import
+CUB3-1473=Overwrite Save
+CUB3-1474=Rename
+CUB3-1475=Name:
+CUB3-1478=Input normalization
+CUB3-1479=Type
+CUB3-1480=Effectiveness(%)
+CUB3-1481=Type is changed\n\n
+CUB3-1482=Effectiveness will be reset to 0%, because the sum total is over 100%
+CUB3-1483=Input parameter
+CUB3-1484=Use
+CUB3-1485=Add a preset
+CUB3-1486=Name:
+CUB3-1487=Preset is not selected
+CUB3-1488=Rename the preset
+CUB3-1489=Would you like to delete %s?
+CUB3-1490=Preset name is empty
+CUB3-1491=Forbidden characters are included in preset name
+CUB3-1492=Already has same preset name
+CUB3-1493=Auto-update maximum of output
+CUB3-1494=Increase Output
+CUB3-1495=Decrease Output
+CUB3-1496=Reset Magnification
+CUB3-1497=Reset Output Maximum
+CUB3-1498=Pendulum No
+CUB3-1499=Output Maximum(%)
+CUB3-1500=The pendulum has not been set. Please add a pendulum in the Physics model settings.
+CUB3-1501=Output parameter
+CUB3-1502=Would you like to reset all magnification to 1.0?
+CUB3-1503=Would you like to adjust all of the output magnification to fit in parameter range?\n
+CUB3-1504=Group:
+CUB3-1505=Add a group:
+CUB3-1506=Input preset:
+CUB3-1507=Physics model preset:
+CUB3-1508=Duplicate the group
+CUB3-1509=Pendulum settings
+CUB3-1510=Physics model settings
+CUB3-1511=Stop
+CUB3-1512=Enable the log output of Physics
+CUB3-1513=Play All
+CUB3-1514=Physics Settings Editor
+CUB3-1516=Import Physics Settings
+CUB3-1517=Import Preset
+CUB3-1518=Export Preset
+CUB3-1519=Initialize Input Preset
+CUB3-1520=Initialize Physics Model Preset
+CUB3-1522=,or
+CUB3-1523=Found some parameters that do not exist in this model.\n
+CUB3-1524=Deleted the parameters that do not exist in Physics Settings.
+CUB3-1525=Reset Parameter to Default
+CUB3-1527=Head Input
+CUB3-1528=Body Input
+CUB3-1529=Bust Input
+CUB3-1530=Hair (Short)
+CUB3-1531=Hair (Long)
+CUB3-1532=Hair (Double Pendulum)
+CUB3-1533=Hair (Triple Pendulum)
+CUB3-1534=Clothes (Light)
+CUB3-1535=Clothes (Heavy)
+CUB3-1536=Bust (Small)
+CUB3-1537=Bust (Big)
+
+
+#----------- 2017/09/04(月) -----------
+CUB3-1538=Adjust all output magnification of objects which are under 100%
+CUB3-1539=Adjust all output magnification of objects which are over 100%
+CUB3-1540=Reset magnification to 1.0
+CUB3-1541=Set output maximum by 0%
+CUB3-1542=Deformer of position adjusting
+CUB3-1543=Show popupMenu of hidden tabs list
+CUB3-1545=Auto switch Workspace Mode by selecting the tab
+CUB3-1547=Move to the Beginning of Timeline
+CUB3-1548=Move to the End of Timeline
+CUB3-1549=Move to the Beginning of Work Area
+CUB3-1550=Move to the End of Work Area
+CUB3-1551=Set the Beginning of Work Area as indicator
+CUB3-1552=Set the End of Work Area as indicator
+
+
+
+#----------- 2017/09/05(火) -----------
+CUB3-1553=Do you want to copy part's child objects?
+
+
+
+#----------- 2017/09/22(金) -----------
+CUB3-1554=PNG Image Output Settings
+CUB3-1556=Collapse all
+
+
+
+#----------- 2017/10/26(木) -----------
+CUB3-1557=Edit draw order
+
+
+
+#----------- 2017/11/21(火) -----------
+CUB3-1558=This file was created in the FREE version.\n
+CUB3-1559=For commercial use,files created in FREE version is limited to individuals/enterprises with sales of less than 10 million yen.\n
+CUB3-1560=Please see the <a href='%s'> Terms of Service </a> for more details.
+CUB3-1561=License Agreement
+CUB3-1562=Automatically create optimal curves
+CUB3-1563=Insert key to every frame
+CUB3-1564=Duplicate and remain the scene before performing
+CUB3-1565=To use「Baking Animation from Physics」physics setting for the model is necessary.\n
+CUB3-1566=Settings of Baking Animation from Physics
+CUB3-1567=Please select the parameters which you want to apply for Physics
+CUB3-1568=Keyframe Insertion Method
+CUB3-1569=Physics are applied to the selected parameters.
+CUB3-1571=Multiple Keys Editing
+CUB3-1572=Couldn't find any object that can be set
+CUB3-1573=Parameter state
+CUB3-1574=Editing Content
+CUB3-1575=Draw order
+CUB3-1576=Editing ranges
+CUB3-1577=Select/Unselect All
+CUB3-1578=Hint
+CUB3-1579=Details of the selected parameters
+CUB3-1580=Before and after performing
+CUB3-1581=Unchanged Objects
+CUB3-1582=Changed Objects
+CUB3-1583=Either the minimum value or the maximum value exceeds the setting range.\n
+CUB3-1584=Set the minimum value less than the minimum value to the minimum, and set the maximum value larger than the maximum value to the maximum value.\n
+CUB3-1585=The range that can be set is as follows.\n
+CUB3-1586= - Draw order: 0~1000\n
+CUB3-1587= - Opacity   : 0~100\n
+CUB3-1588=Not found
+CUB3-1589=Draw order: %d %s %d → %d %s %d
+CUB3-1590=Opacity   : %d %s %d → %d %s %d
+CUB3-1591=Out-of-range keys exist in the parameters of the selected object\n
+CUB3-1592=A contradiction in the opacity of the model track is found in the animation file which is imported from 2.1
+CUB3-1593=Please refer to the timeline and dope sheet property group for details
+CUB3-1594=Do you want to retain the current appearance?
+CUB3-1595=(If it is not converted it will be changed to the appearance in 2.1 standard)
+CUB3-1596=Export
+CUB3-1597=Only when key exists
+CUB3-1599=Export UserData file (userdata3.json)
+CUB3-1600=Unset
+CUB3-1601=Only display the scenes which contain the model is previewed
+CUB3-1602=Playlist isn't set.\nPlease add a playlist to the playlists.
+CUB3-1603=Scene group isn't set\nPlease add a scene group to the scene groups.
+CUB3-1604=You can not add a scene group to a scene group.
+CUB3-1605=Playlist
+CUB3-1606=Edit Playlist
+CUB3-1607=Scene group
+CUB3-1608=Edit scene group
+CUB3-1609=New Playlist
+CUB3-1610=Please enter the name of the playlist
+CUB3-1611=Please enter the name of the duplicated playlist
+CUB3-1612= copy
+CUB3-1613=Would you like to delete %s?
+CUB3-1614=Playlists
+CUB3-1615=New scene group
+CUB3-1616=Please enter the name of the scene group
+CUB3-1617=Please enter the name of the duplicated scene group
+CUB3-1618=Scene groups
+CUB3-1619=Imported files in the editor
+CUB3-1620=Refer this file
+CUB3-1621=Read only
+CUB3-1622=File path isn't set
+CUB3-1623=This is read-only file.\nYou can edit it by reimporting it to the Viewer.
+CUB3-1624=It is already opened in the editor.\nPlease select from the imported files in the editor.
+CUB3-1625=File: 
+CUB3-1626=Reference
+CUB3-1627=Select an animation file contains the scene to be referenced
+CUB3-1628=Load
+CUB3-1629=Relative Model
+CUB3-1630=Settings of the cmo3-can3 linkage
+CUB3-1631=Settings of the cursor tracking
+CUB3-1633=All unset
+CUB3-1634=Parameter ID
+CUB3-1635=Track cursor
+CUB3-1636=Automatic eye-blinking
+CUB3-1637=Enable angle interpolation
+CUB3-1638=Easing (2.1ver)
+CUB3-1639=Fading: 
+CUB3-1643=UserData
+CUB3-1644=You can add data which links with the SDK.
+CUB3-1645=Show/Hide Glue
+CUB3-1649=[Help]
+CUB3-1650=Bake Animation from Physics
+CUB3-1651=None
+CUB3-1652=None
+
+
+#----------- 2017/11/27(月) -----------
+CUB3-1653=Selected Keyforms:
+
+#----------- 2017/12/15(金) -----------
+CUB3-1654=Replace %s
+
+
+
+#----------- 2017/12/18(月) -----------
+CUB3-1655=Mesh-uneditable ArtMeshes are selected.
+CUB3-1656=Skinning
+CUB3-1657=Please call this function with the deformation path selected.
+CUB3-1658=Please call this function with at least one ArtMesh selected.
+CUB3-1659=Deformation path is not included
+CUB3-1660=Using deformation path for Skinning is applicable only for the ArtMesh with curve of deformation path set.\nFollowing ArtMeshes will be skipped from process\n\n
+CUB3-1661=Please call this function with at least two rotation deformers selected.
+CUB3-1662=- Calculation result is invalid / Some parts of edges are used for three or more polygons
+CUB3-1663=- Calculation result is invalid / shared edges size == 0
+CUB3-1666=Please set the range of angle
+CUB3-1667=Parameter has already been set
+CUB3-1668=Automatically generated parameters
+CUB3-1669=Range of angle
+CUB3-1670=Ungroup by Draw Order
+CUB3-1671=Group by Part
+CUB3-1672=Disable settings of guide images
+CUB3-1673=Enable settings of guide images
+CUB3-1674=Clicking selection area:
+CUB3-1675=PSD images(beta)
+CUB3-1676=Skinning
+CUB3-1677=Use deformation path for Skinning
+CUB3-1678=Generate parameters for rotation deformer
+
+
+
+#----------- 2017/12/19(火) -----------
+CUB3-1679=Reset all values in the column
+CUB3-1680=Do you want to reset all effectiveness of the input setting to 0?
+CUB3-1681=Edit all values in the column
+CUB3-1682=Please enter the value to set for all
+CUB3-1683=Automatically Generate Meshes(Mesh Editing Mode)
+
+
+
+#----------- 2017/12/21(木) -----------
+CUB3-1684=10 divided
+CUB3-1685=20 divided
+
+
+#----------- 2017/12/21(木) -----------
+CUB3-1686=Since parameters will be automatically generated to the bottom of the palette after applying Skinning,\n
+CUB3-1688=(If you accidentally add a rotation on the view area, the keyform will change)\n\n
+CUB3-1689=Please check the details of "Cautions after applying Skinning" on「<a href='%s'>Skinning</a>」Manuals.
+CUB3-1690=Cautions after applying Skinning
+
+
+
+#----------- 2018/02/01(木) -----------
+CUB3-1691=Bake Lip-sync
+CUB3-1692=Lip-sync settings are necessary to use this function.
+
+
+
+#----------- 2018/03/02(金) -----------
+CUB3-1693=Low quality
+CUB3-1694=Not recommended
+CUB3-1695=Generating texture
+CUB3-1696=Texture Generation Method
+CUB3-1698=Enable Operation of Keyframes Hidden by Shy
+CUB3-1699=Enable the keyframe operations (add, delete, move) in tracks and property groups for the properties that are hidden by shy.
+CUB3-1700=Duplicate Track
+CUB3-1701=Import Motion
+
+
+#----------- 2018/03/09(金) -----------
+CUB3-1702=Edit Track Name
+
+
+
+#----------- 2018/03/12(月) -----------
+CUB3-1703=Tutorial Video
+CUB3-1705=Do not show up when starting
+CUB3-1707=Select Empty Deformers
+CUB3-1708=Collapse below selected deformer
+
+
+#----------- 2018/03/13(火) -----------
+CUB3-1709=English
+
+
+
+
+#----------- 2018/04/23(Mon) -----------
+CUB3-1712=are failed to output.
+CUB3-1713=Saving file
+CUB3-1714=Add Guides at Coordinates of Selected Vertices
+CUB3-1715=Run it again after importing a model file
+CUB3-1717=Please make sure you did backup files before running this function.\n
+CUB3-1722=Please select the file
+CUB3-1724=Run it again after a model file is selected
+CUB3-1727=row
+CUB3-1733=Resetting is done, please confirm the IDs and names
+CUB3-1734=Bake Lip-sync and Eye-blink to Motion
+CUB3-1735=Export Event
+CUB3-1737=MOV export is not available in FREE version
+CUB3-1738=Video Format
+CUB3-1739=Resolution setting should be at least 16x16
+CUB3-1740=Resolution should be set up to 9.4 megapixels (width x height) or less
+CUB3-1741=Output All
+CUB3-1742=Enable Audios
+CUB3-1744=Show Canvas
+CUB3-1745=If Show Canvas is unchecked, background is solid black
+CUB3-1746=Position X
+CUB3-1748=Warp Deformer of %s
+CUB3-1751=Unlock
+CUB3-1752=Some objects could not have their visibility status restored due to recent additions or deletions of objects.
+CUB3-1753=Horizontal
+CUB3-1754=Vertical
+CUB3-1755=Edit Guide
+CUB3-1756=New Guide
+CUB3-1757=Guide Settings
+CUB3-1758=Working
+CUB3-1759=Color Settings
+CUB3-1762=Check Motion's change as Image
+CUB3-1763=Do you want to save related files?\n\n
+CUB3-1764=Export Model Settings File(model3.json)
+CUB3-1765=Save All Expression
+CUB3-1766=Delete All
+CUB3-1767=Show Inspector
+CUB3-1768=Directory
+CUB3-1769=This name is already used
+CUB3-1771=Expression Name
+CUB3-1772=Add Expression
+CUB3-1773=Do you want to overwrite the existing pose?
+CUB3-1776=Merge Model Settings(model3.json)
+CUB3-1778=Please drop a moc3 or model3.json over here
+CUB3-1779=Please drop model3.json over here
+CUB3-1781=is not saved.\nDo you want to save it?
+CUB3-1782=Please select the folder
+CUB3-1783=Would you like to create a new folder?
+CUB3-1784=The following file name contains non-alphanumeric characters.\nThey can not be used on the SDK.\n\n
+CUB3-1785=Center
+CUB3-1786=Additive Mode
+CUB3-1787=Multiply Mode
+CUB3-1788=Note: ArtMeshes with IDs starting with "HitArea" are automatically extracted.
+CUB3-1789=Name
+CUB3-1790= (alphanumeric / capitalizing first character is recommended)
+CUB3-1792=Copy ID
+CUB3-1793=Overwrite Fade-in
+CUB3-1794=Overwrite Fade-out
+CUB3-1795=Looped playback Note: Preview-only (will not be saved)
+CUB3-1796=Fade-in on looped playback
+CUB3-1797=Set as idle motion
+CUB3-1799=unsupported formats :
+CUB3-1801=Sounds
+CUB3-1802=Note:Capitalizing first character is recommended(I.e. Hello)
+CUB3-1803=Note: Select Part ID and copy it by pressing Ctrl+C
+CUB3-1804=Merge Model Settings( model3.json )
+CUB3-1805=Please select the file whose extension is %s.
+CUB3-1806=Merge from model3.json ( this file will not be changed )
+CUB3-1807=Merge to model3.json ( this file and it's parent folder will be changed )
+CUB3-1808=<html>The information in model3.json exported from Editor can be merged into the setting file (model3.json) created by Viewer.
+CUB3-1809=Note: Please close the Viewer of model3.json that you want to merge from then apply it.
+CUB3-1810=Note: Please make sure you back-up the file before applying it.
+CUB3-1811=Apply Merge
+CUB3-1814=Multiple parameters are selected
+CUB3-1815=None of parameters is selected
+CUB3-1816=Selected parameters are combined
+CUB3-1818=Motion Mirroring
+CUB3-1822=Unable to generate keyforms for mirroring.
+CUB3-1824=Open Object Template Dialog
+CUB3-1826=Lock/unlock Selected Objects
+CUB3-1827=Show/Hide Selected Objects
+CUB3-1828=Restore to Latest Visibility Status
+CUB3-1829=Guide
+CUB3-1830=Add Horizontal Line
+CUB3-1831=Add Vertical Line
+CUB3-1832=Add Vertical and Horizontal Lines
+CUB3-1833=Show Guide (Modeling View)
+CUB3-1834=Open Guide Settings
+CUB3-1835=Object Templates
+CUB3-1836=Only show objects that contain inappropriate status
+CUB3-1837=Status
+CUB3-1838=Stick out from parent
+CUB3-1840=Validate Deformer
+CUB3-1841= [PRO Version]
+CUB3-1842=Vertices Info
+CUB3-1845=Reverse Keyframes
+CUB3-1846=Reversing keyframes by base value
+CUB3-1847=\nThe above properties can not be applied
+CUB3-1848=Paste Keyframes to Selected Rows
+CUB3-1849=Pasting copied keyframes to different parameters
+CUB3-1850=Add Event
+CUB3-1851=Delete Event
+CUB3-1852=Event
+CUB3-1853=Parameters in selection area
+CUB3-1856=Snap to key position on curve
+CUB3-1857=Please select same number of rows as copied properties\nCopied row count：
+CUB3-1858=Apply raw values(not recommended)
+CUB3-1859=Set values to maximum/minimum if they are out of range
+CUB3-1860=Adjust values by proportion if the range of pasted properties are different
+CUB3-1861=The ranges of the pasted and copied parameters are different,
+CUB3-1862=inappropriate values might be pasted.
+CUB3-1863=Expression
+CUB3-1864=Pose
+CUB3-1865=Import
+CUB3-1866=Expression Motion(motion3.json | exp3.json)
+CUB3-1867=Model Settings(model3.json)
+CUB3-1868=All Expression Motion
+CUB3-1869=Stop Motion
+CUB3-1870=Transparent Background (beta)
+CUB3-1871=Enable Pose Switching
+CUB3-1872=Guide Settings (Modeling View)
+CUB3-1873=Snap Moving Vertices to Guide
+CUB3-1874=Select Objects of Selected Vertices
+
+
+
+#----------- 2018/04/24(Tue) -----------
+CUB3-1876=Enable Mipmap
+
+
+
+#----------- 2018/04/25(水) -----------
+
+
+
+#----------- 2018/04/25(水) -----------
+CUB3-1879=Window Coordinates
+CUB3-1880=Upper Left
+
+
+
+#----------- 2018/04/26(木) -----------
+CUB3-1881=Highlight Vertices Outside Parent Deformer Range
+
+
+
+#----------- 2018/06/12(Tue) -----------
+CUB3-1883=Add Guide
+CUB3-1884=Save : Temporary Snapshot[%d]
+CUB3-1885=Show : Temporary Snapshot[%d]
+CUB3-1886=Hide : All Temporary Snapshots
+CUB3-1887=Failed at importing
+CUB3-1890=Resolution setting should be less than Width(4096)xHeight(2304)
+CUB3-1892=Do you want to overwrite %s.model3.json\n\n[No] Only overwrite moc3.
+CUB3-1893=Do you want to create %s.model3.json\n\n[Yes] Output a .model3.json has the same name as .moc3.
+CUB3-1894=Delete Unused Layers
+CUB3-1895=Features
+CUB3-1896=Edit All Guide Colors
+CUB3-1897=Default Guide Line Color
+CUB3-1900=Temporary Snapshots
+CUB3-1901=Save[1]
+CUB3-1902=Save[2]
+CUB3-1903=Save[3]
+CUB3-1904=Save[4]
+CUB3-1905=Show[1]
+CUB3-1906=Show[2]
+CUB3-1907=Show[3]
+CUB3-1908=Show[4]
+CUB3-1909=Change Inactive Color
+CUB3-1910=Inactive Color:
+CUB3-1911=Apply to Warp Deformers and Rotation Deformers
+CUB3-1913=Save Snapshot
+CUB3-1914=Default Interpolation:
+CUB3-1915=Layer
+CUB3-1916=Layer Name
+CUB3-1917=Layer ID
+CUB3-1918=# Unused #
+CUB3-1919=Select Related Model Images
+CUB3-1920=Create Model Image
+CUB3-1921=Used Model Images
+CUB3-1922=Number of layers connected to the model image that are currently being used
+CUB3-1923=Number of connections to the model image
+CUB3-1924=Number of layers connected to the model image (including the ones that have been switched)
+CUB3-1925=Replaced Flag
+CUB3-1926=Delete Unused Layers
+CUB3-1927=Hash value for debugging
+CUB3-1928=Remove Improper Connection of ArtMesh(Beta)
+CUB3-1929=Unselected
+CUB3-1930=Improper connection that can be deleted aren't found
+CUB3-1931=Not improper connection are found. Only delete improper connection
+CUB3-1932=Removed %d improper connection.
+CUB3-1933=Can not drag.\n\nPlease disconnect unnecessary source images and try again\n\n
+CUB3-1934=Add Marker
+CUB3-1935=Delete Marker
+CUB3-1936=Marker
+CUB3-1937=Snap indicator to marker by pressing Shift and dragging
+CUB3-1938=Work Area\n
+CUB3-1939=Lock Inspector When Locking Objects
+CUB3-1940=Show/Hide Bounding Box
+CUB3-1941=Track
+CUB3-1942=Start Track at Current Position
+CUB3-1943=End Track at Current Position
+CUB3-1944=Move Track to Current Position
+CUB3-1945=Indicator
+CUB3-1946=Previous Keyframe
+CUB3-1947=Next Keyframe
+CUB3-1948=Previous Keyframe in Track
+CUB3-1949=Next Keyframe in Track
+CUB3-1950=Expand all tracks
+CUB3-1952=Add a Horizontal Line to Mouse Position
+CUB3-1953=Add a Vertical Line to Mouse Position
+CUB3-1954=Add Horizontal/Vertical Lines to Mouse Position
+CUB3-1955=Subtools
+CUB3-1956=Select Arrow
+CUB3-1957=Connect Edge
+
+
+
+#----------- 2018/06/18(月) -----------
+CUB3-1958= Note:The result of ID conversion, it will assign a new ID if ID is duplicated.\n
+CUB3-1959=Select Model Images Used in Selected ArtMeshes
+
+
+
+#----------- 2018/08/03(金) -----------
+CUB3-1960=Default Layout
+CUB3-1962=Displayed Model Images
+CUB3-1963=All Model Images
+CUB3-1964=Do not place
+CUB3-1965=Visible unset textures only
+
+
+
+#----------- 2018/08/28(Tue) -----------
+CUB3-1966=Export Source Image
+CUB3-1968=Auto Backup Interval(min)
+CUB3-1969=Auto Backup Size(MB)
+CUB3-1970=Model file doesn't exist\n
+CUB3-1972= [Hide]
+CUB3-1973= [Guide Images]
+CUB3-1974= [Keyforms]
+CUB3-1975=There are some problems in the status of output mask.\n
+CUB3-1976=Please set to output the used masks.\n
+CUB3-1977=If the masks are using ArtMeshes with no keyforms at maximum and minimum parameter values, they may be displayed unexpectedly on the actual device.\n
+CUB3-1979=ID list of Mask ArtMeshes have problems\n
+CUB3-1980=Assign clipping mask to Mask ArtMeshes have problems
+CUB3-1981=nizima
+CUB3-1982=nizima Settings
+CUB3-1983=Will be used in output file name
+CUB3-1984=Export Types
+CUB3-1985=The assigned file is already existing\n\n
+CUB3-1986=The File is not saved, please save the file.\n
+CUB3-1987=The file has been changed.\n
+CUB3-1988=Do you want to delete the objects that are using source images?
+CUB3-1989=The target ArtMesh doesn't use a locked Texture Atlas.
+CUB3-1990=Texture Atlas Source Images
+CUB3-1991=Group made from Texture Atlas
+CUB3-1992=Change Texture Name
+CUB3-1993=Do you want to unlock it?
+CUB3-1994=Lock Texture(Beta)
+CUB3-1995=Export Texture Image(Beta)
+CUB3-1996=Replace Texture Image(Beta)
+CUB3-1997=Show Model Images
+CUB3-1998=Calculate FPS
+CUB3-1999=There was a clipping referring to the ArtMesh, which was hidden and not output.\n
+CUB3-2000=Please set the masks to be used to visible before outputting.\n\n
+CUB3-2001=ID list of ArtMeshes have clipping problems\n
+CUB3-2002=Assign Clipping to hidden Mask
+CUB3-2003=There are clippings referencing ArtMeshes with no keyforms at maximum and minimum parameter values.\n
+CUB3-2004=Depending on the environment, it may not be reproduced correctly.\n\n
+CUB3-2005=Assigning Clipping to an Artmesh with a Keyform Issue
+CUB3-2008=Drawing Layer
+CUB3-2009=Mask
+CUB3-2010=Vertices Count
+CUB3-2011=Polygons Count
+CUB3-2012=Invert function can apply only to drawing objects and deformers
+CUB3-2013=Export PSD (beta)
+CUB3-2014=Export All Source Images as PSD
+CUB3-2015=Export Current Display Content as PSD
+CUB3-2016=PSD Export Type
+CUB3-2017=You can make individually output by right-clicking the source image in the project palette
+CUB3-2019=%s are masks but they are hidden or guide images(Click for details)
+CUB3-2020=%1$s are included %2$s are masks but they are hidden or guide images(Click for details)
+CUB3-2021=%s is a mask, but it lacks keyforms at the max/min parameter values (click for more details)
+CUB3-2022=%2$s ArtMeshes, including %1$s, are masks, but they lack keyforms at the max/min parameter values (click for more details)
+CUB3-2023=Please call after saving the model file.
+CUB3-2024=Recording time is too short
+CUB3-2025=%d hidden objects
+CUB3-2026=Create an animation file from recorded motion
+CUB3-2027=Recording Settings
+CUB3-2028=Create a new animation file
+CUB3-2029=Add to the current animation file
+CUB3-2031=Export PSD (beta)
+CUB3-2032=The file output is failed\n\n
+CUB3-2033=Delete Empty Layer Group
+CUB3-2034=Please reload the model
+CUB3-2035=Shy selected properties
+CUB3-2036=Shy properties without keyframes
+CUB3-2037=Create repeat key
+CUB3-2038=Create repeat key (Overwrite last key)
+CUB3-2039=Always show up the warning of mask
+CUB3-2040=Apply Texture Atlas to Source Image (Beta)
+
+
+
+#----------- 2018/09/03(月) -----------
+CUB3-2041=Would you like to show the absolute path of the broken link files?
+CUB3-2042=Only can uncheck it when all links are repaired
+CUB3-2043=Hide absolute path of broken links
+
+
+
+#----------- 2018/09/18(Tue) -----------
+CUB3-2045=Head
+CUB3-2046=Brows
+CUB3-2047=Hands
+CUB3-2048=Hand L
+CUB3-2049=Hand R
+CUB3-2050=Arms
+CUB3-2051=Arm L
+CUB3-2052=Arm R
+CUB3-2053=Legs
+CUB3-2054=Leg L
+CUB3-2055=Leg R
+CUB3-2056=Sway
+CUB3-2057=Hair
+CUB3-2058=Parameter Group Settings
+
+
+#----------- 2018/10/01(mon) -----------
+CUB3-2060=When the repeat value of "%s" is enabled, the minimum and maximum values will be added automatically.\nWould you like to continue?
+
+
+#----------- 2018/11/06(Tue) -----------
+CUB3-2061= output range should be at least 2 frames.
+CUB3-2062=<html><span class='caution'>Please be aware that if you delete the material, you will not be able to undo the previous operation. </span>
+CUB3-2063=<a href=\"dame\">See the details on the manuals of Clipping Mask(Click to get the page)</a>\n
+CUB3-2064=O
+CUB3-2065=There are no difference in the canvas info
+CUB3-2066=Elements
+CUB3-2067=There are no difference in the part info
+CUB3-2068=There are no difference in the parameter info
+CUB3-2069=There are no difference in the ArtMesh info
+CUB3-2070=Compare Difference
+CUB3-2071=Size X
+CUB3-2072=Size Y
+CUB3-2073=Center X
+CUB3-2074=Center Y
+CUB3-2075=Blend mode
+CUB3-2076=One Side
+CUB3-2077=Texture Number
+CUB3-2078=Canvas
+CUB3-2079=Select comparison target with %s
+CUB3-2080=Select Comparison Target
+CUB3-2081=Statistics
+CUB3-2082=Moc Statistics\n
+CUB3-2084=Parts:%s\n
+CUB3-2085=Parameters:%s\n
+CUB3-2086=Drawable info\n
+CUB3-2087=All Vertices: %s / All Polygons: %s\n
+CUB3-2088=Used Textures: %s ( %s )\n
+CUB3-2090=Used Rendering Mode
+CUB3-2091=Failed to import texture atlas.
+CUB3-2092=「<a href='%s'>Standard Parameter List</a>」
+CUB3-2094=Select the parameters for batch reflection.
+CUB3-2095=Select All
+CUB3-2096=Batch Reflect
+
+
+
+#----------- 2018/11/07(水) -----------
+CUB3-2097=Services
+CUB3-2098=Getting started from here!
+CUB3-2099=Ask questions, share your work,
+CUB3-2100=or see what others are up to.
+// CUB3-2101は日本語のみ対応、翻訳はしない
+CUB3-2101=<html>Live2D Model / Illustrations Official Market<br>It is also possible to sell a self-made Live2D model!</html>
+
+
+#-----------2018/11/14(wed)------------
+CUB3-2102=Grid Color
+
+
+#----------- 2018/12/18(Tue) -----------
+CUB3-2105=Couldn't get the model
+CUB3-2106=Filter targets aren't set
+CUB3-2107= are found
+CUB3-2108=Searching result
+CUB3-2110=Before replacement
+CUB3-2111=After replacement
+CUB3-2112=Replace Name
+CUB3-2113=Couldn't apply it because some names are blank after replacement
+CUB3-2114=Replace ID
+CUB3-2115=Failed to apply, 3.0's string requirement not met.
+CUB3-2116=Failed to apply, duplicate ID.
+CUB3-2117= are replaced
+CUB3-2118=Replace
+CUB3-2119=Parent Part
+CUB3-2120=Search and Replace
+CUB3-2121=Replace the Name/ID for the selected items in the table
+CUB3-2122=Table has Updated for the changes of the table
+CUB3-2124=Set all warp deformers to new method (3.3 or later)
+CUB3-2126=Target Version
+CUB3-2127=<html> Note: The new method has been expanded to allow more beautiful transformation when the warp deformer is deformed trapezoidally. However, since the expression changes a little from the old method (3.2 or earlier), please remove the check if you want to keep the expression as close to 3.2 as possible.
+CUB3-2128=Export Transform Text
+CUB3-2129=The beeps are inserted to the output AAC audios in <br>Free/Trial version. Please use it for evaluation <br>purposes.
+CUB3-2130=Child elements of item were cleaned up:
+CUB3-2131=Data corruption was detected and deleted:
+CUB3-2132=Data corruption was detected and repaired:
+CUB3-2133=For SDK 3.3 / Cubism3.3
+CUB3-2134=Note:Please don't edit the columns of the Type/GUID in the output CSV
+CUB3-2135=Please select the objects to export.
+CUB3-2138=Export Settings
+CUB3-2139=Application result
+CUB3-2140=Import Model's Parameters
+CUB3-2141=Delete all existing parameter before performing
+CUB3-2142=Please select the import CSV for conversion.
+CUB3-2143=Export Model's Objects
+CUB3-2144=Import Model's Objects
+CUB3-2145=Couldn't perform it because the following IDs are duplicated
+CUB3-2146=There are no contents of the CSV
+CUB3-2147=Couldn't perform it because the contents of the CSV are incorrect\n\n
+CUB3-2148=Export Model's Parameter
+CUB3-2150=Resetting has done, please check the parameter settings
+CUB3-2151=Could not execute. The following IDs do not meet 3.0's requirement\n\n
+CUB3-2152=Could not execute. The following IDs' types are incorrect\n\n
+CUB3-2153=Could not execute. The following IDs' GUIDs are incorrect\n\n
+CUB3-2154=Could not execute. The following IDs' names are blank\n\n
+CUB3-2155=The CSV has been output
+CUB3-2156=No objects selected for motion mirroring.
+CUB3-2157=Parameters are incorrect
+CUB3-2158=Parameter is set to repeat
+CUB3-2159=The selected parameters are not linked to the object
+CUB3-2160=There are no keyforms at this parameter value.
+CUB3-2163=Please see"<a href='%s'>Official Manual</a>"for the details.
+CUB3-2164=Unable to execute mirroring process.
+CUB3-2165=Use Center of Canvas
+CUB3-2166=Use Guide
+CUB3-2167=Use Center Point of Rotation Deformer
+CUB3-2168=Mirroring Target
+CUB3-2169=Source Parameters
+CUB3-2170=Mirror Axis Settings
+CUB3-2171=4 Division
+CUB3-2172=Start Frame
+CUB3-2173=Old Conversion
+CUB3-2174=Note: When the warp deformer is deformed trapezoidally, the 3.3 method is transformed more beautifully than the 3.2 method
+CUB3-2175=The new method can be used only with Cubism version 3.3 or later. Please check the model's target version.
+CUB3-2176=Filter by Text
+CUB3-2177=Shy unselected properties
+CUB3-2179=4 Division
+CUB3-2180=Divide one triangle into four triangles
+CUB3-2181=Drag to add a vertex
+CUB3-2182=Bulk setting of model objects
+CUB3-2183=Bulk setting of model parameters
+CUB3-2184=Part Shortcuts
+CUB3-2185=New Part
+CUB3-2186=Delete selected Parts
+CUB3-2187=Parameter Shortcuts
+CUB3-2188=Cancel Selection
+CUB3-2189=Combine/uncombine
+CUB3-2190=Select Previous
+CUB3-2191=Select Next
+CUB3-2192=Select First Key
+CUB3-2193=Select Next Key
+CUB3-2194=Select Previous Key
+CUB3-2195=Select Last Key
+CUB3-2196=Select Default Key
+CUB3-2197=Select Fist Vertical Key(combined)
+CUB3-2198=Select Next Vertical Key(combined)
+CUB3-2199=Select Previous Vertical Key(combined)
+CUB3-2200=Select Last Vertical Key(combined)
+
+
+
+#----------- 2019/02/08(Fri) -----------
+CUB3-2201=All On
+CUB3-2202=All Off
+CUB3-2205=<html>For SDK usage, please check the target SDK version.<BR>Select "SDK3.3/Cubism3.3", please check the settings below if your model is made in Cubism 3.2 or before.
+CUB3-2206=Note: The new method has been enhanced to produce more beautiful deformation when warp deformers are deformed trapezoidally. However, since the expression differs slightly from the old method, uncheck this option if you want to maintain the appearance of existing deformers as they were in 3.2 and earlier.
+CUB3-2207=However, the display way has been changed.
+CUB3-2208=Please uncheck it to keep the deformer display result same as 3.2 or older.
+CUB3-2209=The assigned moc3 file is not moc3 file format.\n
+CUB3-2210=moc3 file name: %s
+CUB3-2211=The assigned moc3 file is newer than the file version that OWViewer can read.\n
+CUB3-2212=Please use the latest OWViewer.\n
+CUB3-2213=moc3 file name: %s\n
+CUB3-2214=File version code: %s\n
+CUB3-2215=moc3 file version: %s\n
+CUB3-2216=Canvas Size: %s x %s\n
+CUB3-2217=Central Position: %s x %s\n
+CUB3-2218=[ PRO Ver. Education Purpose ]
+CUB3-2220=Conversion(Horizontal)
+CUB3-2221=Conversion(Vertical)
+CUB3-2222=Bezier(XY)2
+CUB3-2223=Bezier(XY)3
+CUB3-2224=0 × 0
+CUB3-2226=Bulk Setting
+CUB3-2227=Would you like to overwrite the draw order of all forms linked to this object with the current value?
+CUB3-2228=Bulk Set Draw Order
+CUB3-2229=Set Group Color
+
+
+
+#----------- 2019/04/12(Fri) -----------
+CUB3-2232=<html>Offline use is available for up to %d days after the last online license authentication.<br>
+CUB3-2233=Launching Live2D Cubism Editor while connected to the internet will automatically authenticate the license.<br>
+CUB3-2234=You can check the offline use expiration date in the menu below.<br><br>
+CUB3-2235=Help > Online License Authentication</html>
+CUB3-2236=Keyframes have been set outside the range of the motion data export
+CUB3-2237=Export Display Information file (cdi3.json)
+CUB3-2244=Use File Name
+CUB3-2245=Online License Authentication
+
+#----------- 2019/05/30(Thu) -----------
+CUB3-2246=Please select Modeling View
+CUB3-2248=ArtPath
+CUB3-2262=Form Animation(Global)
+CUB3-2263=Form Animation(Local)
+CUB3-2264=The corresponding object properties in the animation mode will also be deleted.\nKeyframes of the form edit properties in the timeline cannot be undone after this operation.\n\nWould you like to delete?
+CUB3-2265=ArtPath Line width magnification
+CUB3-2266=Apply Frame stepping
+CUB3-2267=Form Edit
+CUB3-2268=Time Remapping
+CUB3-2269=Show/hide will apply to model file
+CUB3-2270=Lock/unlock will apply to model file
+CUB3-2271=ArtPath Brush
+CUB3-2272=Can only be changed in "Adjustment Mode 1".
+CUB3-2273=ArtPath %s
+CUB3-2274=Unsupported to edit multiple ArtPaths simultaneously
+CUB3-2276=Keyform isn't found
+CUB3-2277=New Brush
+CUB3-2278=Top border
+CUB3-2279=Bottom border
+CUB3-2280=Density
+CUB3-2281=illegal_state : Illegal ArtPath Drawing method
+CUB3-2282=For SDK 4.0 / Cubism4.0
+CUB3-2283=%d ArtMeshes are using a reversed mask\n
+CUB3-2284=Note: Reversed mask is not compatible with version before SDK4.0\n\n
+CUB3-2285=Do you want to export it?\n\n
+CUB3-2286=Ellipse Interpolation
+CUB3-2287=SNS Interpolation
+CUB3-2289=3.0 or later
+CUB3-2291=ArtPath brush Settings
+CUB3-2292=Import Brush
+CUB3-2293=Export Brush
+CUB3-2294=Reset as Default
+CUB3-2295=UV Range Color
+CUB3-2296=Auto Generation of ArtPath
+CUB3-2297=Outline ArtMesh ID
+CUB3-2298=Fill ArtMesh ID
+CUB3-2299=Auto Generation
+CUB3-2302=Adjust to Area
+CUB3-2304=Adjust to Line
+CUB3-2310=Settings for getting line width
+CUB3-2311=Texture only has line
+CUB3-2312=Texture has line and coloring
+CUB3-2313=Brush hasn't been selected
+CUB3-2316=Top border:
+CUB3-2317=Bottom border:
+CUB3-2318=Tip begin:
+CUB3-2319=Tip end:
+CUB3-2320=Width on canvas
+CUB3-2321=Drawing method
+CUB3-2322=Line width magnification
+CUB3-2323=Mesh Method
+CUB3-2324=Sprite Method
+CUB3-2325=  Number of ArtPath:%d \n
+CUB3-2326=  Number of ArtPath's control points:%d \n
+CUB3-2327=  Number of ArtPath's polygons:%d \n
+CUB3-2328=Usage(Mask: %s / Reversed Mask: %s)\n
+CUB3-2329=Import Default brush
+CUB3-2330=Apply Color to ArtPath
+CUB3-2331=Apply Width to ArtPath
+CUB3-2332=Adjust positions of ArtPath's control point
+CUB3-2333=Add new ArtPath's control point
+CUB3-2334=Please select ArtMesh and try it again
+CUB3-2335=Auto-generate ArtPath
+CUB3-2336=Align ArtPath's control point positions with selected ArtMesh
+CUB3-2337=Please select ArtPath and try it again
+CUB3-2338=Please select only one ArtMesh and try it again
+CUB3-2341=Closed ArtPath cannot be joined
+CUB3-2343=Selected ArtPath doesn't have the same keys
+CUB3-2348=Please operate in Modeling View
+CUB3-2349=ArtPath Tools
+CUB3-2350=Edit ArtPath
+CUB3-2353=Create form edit key
+CUB3-2354=Show/Hide Drawable Object
+CUB3-2355=Apply to ArtMesh, DeformPath, and ArtPath
+CUB3-2356=Lock Drawable Object
+CUB3-2357=Show/Hide Labels for Form Edited Objects
+CUB3-2358=FREE version - The additional ArtPath has exceeded the limitation(
+CUB3-2359=FREE version - The max number of ArtPath is 
+CUB3-2360=FREE version - Only 3-frame step is available for Frame Step\n
+CUB3-2361=3-frame step is not used
+CUB3-2362=FREE version - Only 3-frame step is available for Frame Step.
+CUB3-2363=Image Sequence Track is only available for PRO version.
+CUB3-2364=FREE version - Only ArtMesh is available for Form Animation\n
+CUB3-2365=Objects other than ArtMeshes are being used.
+CUB3-2366=FREE version - Only ArtMesh is available for Form Animation
+CUB3-2370=Editing Form Animation
+CUB3-2371=Edit Form Animation
+CUB3-2372=Reverse mask
+CUB3-2373=Control Point Settings
+CUB3-2374=Keep Line Width as 0
+CUB3-2375=Control Points:
+CUB3-2376=Close ArtPath
+CUB3-2377=Line Generation Method
+CUB3-2378=Line alignment
+CUB3-2380=[Unset]
+CUB3-2381=Open ArtPath Brush Settings Dialog
+CUB3-2382=Change Brush
+CUB3-2383=Points:
+CUB3-2385=Show/Hide ArtPaths
+CUB3-2386=Failed to create template file.\nForm Edit properties cannot be save as template file.
+CUB3-2388=-frame step setting is only available for PRO version.
+CUB3-2389=-frame step setting is only available for PRO version.
+CUB3-2390=Unlimited
+CUB3-2391=Delete Frame Step Property
+CUB3-2392=Add Frame Step Property
+CUB3-2393=Adjustment Mode 1 (default)
+CUB3-2394=Adjustment Mode 2
+CUB3-2395=Apply form editing
+CUB3-2396=Tree/Flatten View
+CUB3-2398=Open Form Animation View
+CUB3-2399=Guide Track, hide while rendering for video/image
+CUB3-2400=Show only selected Form Edit object
+CUB3-2401=Creating Image Sequence Track
+CUB3-2402=Since the values of Form Edit, repeated parameters, scaling of tracks don't have range. They cannot be copied to other properties.
+CUB3-2404=Join ArtPaths
+CUB3-2405=Split ArtPath
+CUB3-2408=Edit ArtPath
+CUB3-2409=Default Brush Settings
+CUB3-2410=Please select ArtPath
+CUB3-2411=Create DeformPath from ArtPath
+CUB3-2413=Adjust the opacity of control point
+CUB3-2414=Adjust the width of control point
+CUB3-2416=Open Auto Generation ArtPath Dialog
+CUB3-2417=Adjust Opacity
+CUB3-2418=Adjust Width
+CUB3-2423=Apply ArtMesh deformation to ArtPath
+CUB3-2425=Form Animation
+
+
+#----------- 2019/07/05(Fri) -----------
+CUB3-2426=The following items are exported during motion output.\n
+CUB3-2427=・ Parameter curve information\n
+CUB3-2428=・ Opacity of the parts\n
+CUB3-2429=・ Overall opacity\n
+CUB3-2430=・ Lip sync\n
+CUB3-2431=・ Blink\n\n
+CUB3-2432=Note: We cannot output information such as ArtPath, Form Animation.
+CUB3-2433=The Form Animation View that was opened from %s has been closed.
+CUB3-2434=Please check if the target application supports the SDK version.
+CUB3-2435=Please confirm the following setting items when using the model produced by Cubism 3.2 or earlier.
+CUB3-2436=Model target version selection
+CUB3-2437=The following feature(s) are not available in the selected target version.
+CUB3-2438= or later are supported
+CUB3-2439=(%s only)
+CUB3-2440=New warp deformer method
+CUB3-2441=Reversed Mask
+CUB3-2442=Match settings to existing scene's deformer as well
+CUB3-2443=Target version selection for animation
+CUB3-2444=<html>When creating a new scene, it will be the target version currently selected.<br>This setting is saved in an animation file.<br>Note: You can change this setting later.
+CUB3-2445=Video
+CUB3-2446=SDK (Unity)
+CUB3-2447=SDK (Others)
+CUB3-2448=AE plug-in
+CUB3-2449=<html>Recommended for output in video applications such as media players.
+CUB3-2450=You can use the ArtPath feature to add lines and the form animation feature to edit objects directly on the timeline in Editor.
+CUB3-2451=<br>Note: Not for SDK usage
+CUB3-2452=<html>Select this when using Cubism SDK for Unity.
+CUB3-2453=When editing "Bezier" curves in the Graph Editor, handles can only be edited vertically. (This is due to the fact that only angles are recognized in accordance with the game engine's specifications)
+CUB3-2454=The shape of the curve may change when changing the target, because the positions of all controllers are changed according to the specifications of the SDK.
+CUB3-2455=<br>Note: ArtPath and form animation of Cubism 4.0 new features can not be used.
+CUB3-2456=<html>Select this when not using Cubism SDK for Unity. (Cubism SDK for Native, etc)
+CUB3-2457=<html>Use when creating motions in After Effects (AE) using the AE plug-in.
+CUB3-2473=Color change threshold
+CUB3-2474=The smaller the number, the wider the range of colors considered to be the same color
+CUB3-2475=Maximum line width
+CUB3-2476=If the line width above this value is detected, the detection result will not be applied.
+CUB3-2477=Line width spacing
+CUB3-2478=Minimum unit of line width
+CUB3-2479=Minimum transparency
+CUB3-2480=Search range
+CUB3-2481=Pixel information search range
+CUB3-2482=Ignore invisible points
+CUB3-2483=Exclude control points with 0 opacity or 0 line width from automatic setting
+CUB3-2484=Please execute after releasing control point tracking
+CUB3-2485=ArtPath control points and mesh ties
+CUB3-2486=Delete tracking setting
+CUB3-2487=An ArtPath is set to follow the ArtMesh
+CUB3-2488=The control point to follow the ArtMesh is selected
+CUB3-2489=New warp deformer method (3.3 or later)
+CUB3-2490=Object with a reversed mask
+CUB3-2491=Contains objects that are not compatible with the selected export version.\n
+CUB3-2492=The appearance may change, but
+CUB3-2493=Set brush as default
+CUB3-2494=Change drawing type
+CUB3-2495=Brush update
+CUB3-2496=Specify background color
+CUB3-2497=The ArtPath matches the outline of the mesh
+CUB3-2498=Control point is farthest from the contour
+CUB3-2499=Select a range of control points you want to add and then execute
+CUB3-2500=You cannot create an ArtPath for an extremely small area. The texture may have stray pixels.
+CUB3-2501=One or more ArtPath control points are located outside the ArtMesh range
+CUB3-2502=Please select a control point.
+CUB3-2503=Link selected ArtPath to ArtMesh
+CUB3-2504=Unlink the selected ArtPath with the ArtMesh
+CUB3-2505=Onion skin setting
+CUB3-2506=Frame color setting
+CUB3-2513=Previous
+CUB3-2514=Number of frames:
+CUB3-2515=Color:
+CUB3-2516=Next
+CUB3-2521=nizima
+CUB3-2522=Open the market "nizima" of Live2D models & illustration materials
+CUB3-2523=The following settings are invalid:
+CUB3-2526=Show / Hide Animation Preview (β)
+CUB3-2527=Child drawable object is out of bounds
+CUB3-2528=Reverse mask is only available in Cubism 4.0 and later. Please check the target version of the model.
+CUB3-2533=Do you want to change it?
+CUB3-2538=Extended Interpolation
+CUB3-2540=Interpolation method
+CUB3-2541=Interpolation adjustment
+CUB3-2542=Default value
+CUB3-2543=Target version setting
+CUB3-2544=Reset edit result / Insert default key
+CUB3-2545=Adjustment Mode 1 follows the default parent-child relationship.\nIf the angle of the parent deformer changes, the form edited child object(s) will follow.
+CUB3-2546=Adjustment mode 2 is affected by the deformer, but\nThe position of the object moved by form editing is not affected by the angle of the parent.\n\n
+CUB3-2547=Please be careful when you edit the form for vertices with glue applied.\n
+CUB3-2550=Switch the target to [Video].\n
+CUB3-2551=Form animation is a function for video output only.\n
+CUB3-2552=Although exporting to SDK is possible, the export will not include form animation data.\n
+CUB3-2553=Form animation is a function that allows you to directly edit shapes (forms)\non the Animation View timeline without affecting the model data.\n\n
+CUB3-2556=Please select ArtMesh
+CUB3-2557=A transformation path has already been set for one of the ArtMeshes.\nWould you like to delete and continue?
+CUB3-2560=Onion skin
+CUB3-2563=<ArtPath Automatic generation>
+CUB3-2564=Automatic generation from a single ArtMesh
+CUB3-2565=Automatic generation from multiple ArtMeshes
+CUB3-2566=<Highlight elements of ArtMesh>
+CUB3-2567=Highlight color
+CUB3-2568=Highlight opacity
+CUB3-2569=Highlight line width
+CUB3-2570=Highlight everything
+CUB3-2571=Align with Outline ArtMesh
+CUB3-2572=Align with Fill ArtMesh
+CUB3-2573=Add control points to align with ArtMesh
+CUB3-2574=Add a point in the middle of all control points
+CUB3-2575=Add a point in the middle of the selected control point
+CUB3-2576=Bake ArtMesh deformation to ArtPath
+CUB3-2577=<Following settings>
+CUB3-2578=Follow all
+CUB3-2579=Cancel all
+CUB3-2580=Follow selected control points
+CUB3-2581=Release selected control point
+CUB3-2582=Switch Workspace to Modeling
+CUB3-2583=Switch Workspace to Animation
+CUB3-2584=Switch workspace to Form Animation
+CUB3-2585=Adjust the opacity set in the control point
+CUB3-2586=Adjust the thickness set in the control point
+CUB3-2587=nizima
+
+
+
+#----------- 2019/07/12(金) -----------
+CUB3-2588=Animation preview setting
+CUB3-2589=Watercolor
+CUB3-2590=Pencil
+CUB3-2593=Form Editing OFF
+CUB3-2594=Multiple ArtMeshes with different clipping IDs are selected.\n
+CUB3-2595=Would you like to delete all at once?
+CUB3-2596=Multiple ArtMeshes with different user data specified are selected.\n
+CUB3-2597=Would you like to overwrite all user data?
+CUB3-2598=Confirm edit
+CUB3-2599=Multiple ArtPaths with different clipping IDs are selected.\n
+CUB3-2600=Do you want to collectively overwrite the draw order at once?
+CUB3-2601=Multiple ArtMeshes with different draw orders are selected.\n
+CUB3-2602=Multiple ArtPaths with different draw orders are selected.\n
+CUB3-2603=Multiple drawing objects with different draw orders are selected.\n
+CUB3-2604=Multiple warp deformers with different number of divisions of transformation specified are selected.\n
+CUB3-2605=Do you want to overwrite the number of divisions of the conversion collectively?
+CUB3-2606=Multiple warp deformers with different Bezier division numbers are selected.\n
+CUB3-2607=Do you want to overwrite the Bezier division number collectively?
+CUB3-2609=ArtPath is a function only for video export use.\n
+CUB3-2610=It is possible to export to the SDK, but the ArtPath data would not be exported.\n
+
+
+
+#----------- 2019/07/18(Thu) -----------
+CUB3-2611=Show / Hide View
+CUB3-2612=Modelling View Settings
+CUB3-2615=Modeling View
+CUB3-2616=Animation View
+CUB3-2617=Form Animation View
+
+
+
+#----------- 2019/07/24(Wed) -----------
+CUB3-2618=Magnifying rate is too high
+CUB3-2619=Magnifying rate is too high, the Ellipse orbit may break.
+CUB3-2620=\nFor details please see [<a href='%s'>Official Manual</a>].
+CUB3-2621=There is a path where the number of keys of Nonlinear Interpolation is 2 or less points.
+CUB3-2622=Extended interpolation requires at least 3 keyforms.\n
+CUB3-2623=When setting extended interpolation and changing to 2 keyforms or less,\n
+CUB3-2624=please select Linear Interpolation. \n\n
+CUB3-2625=About the number of keys of Extension Interpolation
+CUB3-2626=For details please refer to [<a href='%s'>Official Manual</a>].
+CUB3-2627=Please see the [<a href='%s'> Official Manual </a>] for information on how to customize your brush settings
+CUB3-2628=Import PNG image as texture for Brush usage. \n Single file specification: Mesh Method. Multiple files specification: Sprite Method.
+CUB3-2629=Please execute after selecting a target ArtPath and a single ArtMesh, or after specifying the Fill ArtMesh ID from the Auto Generation ArtPath dialog.
+CUB3-2630=Please execute after selecting a target ArtPath and a single ArtMesh, or after specifying the Outline ArtMesh ID from the Auto Generation ArtPath dialog.
+
+
+#----------- 2019/08/02(金) -----------
+CUB3-2631="
+CUB3-2632="
+CUB3-2633=and its child element(s)
+
+
+#----------- 2019/08/06(火) -----------
+CUB3-2634=Tool Details: Deform Path edit
+CUB3-2635=Tool Details: Edit Glue
+CUB3-2636=Tool Details: ArtPath Tools
+CUB3-2637=Tool Details: Mesh Edit mode
+
+
+#----------- 2019/08/21(Wed) -----------
+CUB3-2638=About "Adjustment Mode 2"
+CUB3-2639=Product Page
+
+
+
+#----------- 2019/08/23(Fri) -----------
+CUB3-2640=The data structure of the model has changed.\nThe form animation data has been restored, and the Undo History has been reset.
+CUB3-2641=The shape may be slightly different, please check the changes.
+CUB3-2642=Changing the structure of model data which has applied to Form Animation (*1) may affect the form.\n
+CUB3-2643=At that time, recovery will be performed automatically, but the shape may be slightly different. Please check the changes\n
+CUB3-2644=(Please note that you will not be able to undo previous operations of animation)\n\n
+CUB3-2645=*1. Number of ArtMesh vertices, warp division of warp deformers, number of ArtPath control points, etc.
+
+
+
+#----------- 2019/09/26(木) -----------
+CUB3-2649=Show ArtPath's Vertex Number
+CUB3-2650=Show ArtPath's mesh
+
+
+
+#----------- 2019/12/04(水) -----------
+CUB3-2651=There are %d mask ID permutation types.\n
+CUB3-2655=Warning about the number of mask ID permutation types
+CUB3-2656=Failed to load
+CUB3-2657=Message from Live2D
+CUB3-2658=Not displaying today
+CUB3-2659=File load interrupted
+CUB3-2660=Tracking Settings
+CUB3-2661=\n<<Relating to Clipping Masks>> \n
+CUB3-2662=  Clippings used: %d \n
+CUB3-2663=  Mask ID permutation types: %d \n
+CUB3-2664=  Objects with moc3 output issues: %d \n
+CUB3-2665=Clippings: %s / Mask ID permutation types: %s\n
+
+
+
+#----------- 2020/01/29(水) -----------
+CUB3-2666=Show the target for the form edit at the front
+CUB3-2671=<html> We recommend using half-width alphanumeric characters and "_" for the model name.<br>Using any other name runs the risk of FaceRig not exhibiting correct behavior.</html>
+CUB3-2672=Group editing
+CUB3-2673=Please select only one item when duplicating.
+CUB3-2674=Please select only one item when changing the name.
+CUB3-2675=Increase priority
+CUB3-2676=Decrease priority
+CUB3-2677=Would you like to delete %d physics group(s)?
+CUB3-2678=Pay caution to the input and output parameters when the background of the table cell is colored.<br>
+CUB3-2679=Please refer to the <a href=''>official manual.<a>
+CUB3-2681=Priority
+CUB3-2682=Number of pendulums
+CUB3-2683=Input parameters (positionX)
+CUB3-2684=Input parameters (angle)
+CUB3-2685=The file name must be at least 1 characters long.
+CUB3-2686=The expression name must be at least 1 characters long.
+CUB3-2687=This name contains characters that cannot be used.
+CUB3-2689=Please designate the file name and the expression name.
+CUB3-2690=Resolution
+CUB3-2691=[ PRO for indie - for individuals and small-scale enterprises ]
+CUB3-2692=Lightweight playback
+CUB3-2693=When playing back animation, part of the timeline palette display will not be updated to reduce system load.
+CUB3-2694=Modifying audio track [%s]
+CUB3-2695=Audio cannot be output because [%s]'s file size is too big.
+CUB3-2696=Show update information during startup
+
+
+
+#----------- 2020/07/10(金) -----------
+CUB3-2698=Audio track (s) with broken link (s) was included, so the video export was canceled.
+CUB3-2699=The specified path cannot be found
+CUB3-2700=There are no hidden dialogs.
+CUB3-2701=Do you want to redisplay all hidden dialogs?\n\nThis maneuver cannot be Undo.
+CUB3-2702=Distinction between capital and small letters
+CUB3-2703=Select all
+CUB3-2704=Please select an item.
+CUB3-2705=Encoding
+CUB3-2706=Bit rate
+CUB3-2707=YUV Convert
+CUB3-2708=Specify user
+CUB3-2709=Start from 0
+CUB3-2710=Start from 1
+CUB3-2711=[The clipping source has been deleted (Description: null)]
+CUB3-2712=Delete reference to model images
+CUB3-2713=JAR As it is referencing classes that are excluded during generation, the corresponding process is commented out
+CUB3-2714=Convert all fade times
+CUB3-2715=Convert all overwritten fade times
+CUB3-2716=Rewrite motion fade times
+CUB3-2717=model3.json overwrite fade time will be rewritten.
+CUB3-2718=Rewrite fade time of expressions
+CUB3-2719=exp3.json setting fade time will be rewritten.
+CUB3-2720=Target all
+CUB3-2721=Use a value to specify
+CUB3-2722=Target unspecified states
+CUB3-2723=Use a value to specify
+CUB3-2724=Deselect specifications
+CUB3-2725=Target fade-in
+CUB3-2726=Target fade-out
+CUB3-2727=Target value
+CUB3-2728=Value to be overwritten
+CUB3-2731=%s mask has been deleted ( Click for details )
+CUB3-2732=%2$d ArtMesh masks including %1$s have been deleted ( Click for details )
+CUB3-2733=Double click: reset canvas rotation
+CUB3-2734=shift: grid, Double click: reset canvas rotation
+CUB3-2735=Double click: reset canvas state
+CUB3-2736=Double click: reset canvas offset
+CUB3-2737=Clear displayed logs
+CUB3-2738=Copy displayed logs
+CUB3-2739=Turn on log output / Turn off
+CUB3-2740=No other parameter can be selected
+CUB3-2741=Related physics setting will also be deleted.\n
+CUB3-2742=A template with the same name already exists\n\n
+CUB3-2746=Redisplay all dialogs that are hidden
+CUB3-2747=Show the overall work area
+CUB3-2748=Flip canvas
+
+
+
+#----------- 2020/09/03(木) -----------
+CUB3-2749=Failed to save due to lack of access privileges to the selected folder.\nPlease select another folder.
+CUB3-2750=Do not show this dialog again
+CUB3-2751=Accessibility permission not granted
+CUB3-2752=Open system settings
+CUB3-2753=Cancel
+CUB3-2754=This operation uses accessibility functions.
+CUB3-2755=It may not run properly without permission to use accessibility functions.
+CUB3-2756=For instructions on how to give permissions, please check the <a href=''>Live2D Help</a>.
+CUB3-2757=Keyform(s) with invalid opacity settings have been found.\n
+CUB3-2758=Using the moc3 with the SDK using this setting may cause unexpected discoloration.\n
+CUB3-2759=Please check the Art Mesh with the following ID in the Editor.\n\n
+CUB3-2760=Art Mesh with invalid Opacity setting\n
+CUB3-2761=The Opacity setting is currently invalid.
+
+
+
+#----------- 2020/11/04(水) -----------
+CUB3-2762=A file with the same name is already being exported to the specified destination. Would you like to change the destination folder?
+CUB3-2763=Export of scene [%s] has been interrupted.\nWould you like to abort the export of the remaining scenes?
+CUB3-2766=The cache file for the selected scene already exists.\n\n%s\n\nWould you like to overwrite it?
+CUB3-2767=Locked ArtMesh cannot be edited.
+CUB3-2768=An error has occurred during computation. Please check the logs for details.
+CUB3-2769=The operation of the Physics has been canceled.
+CUB3-2770=Preparing the baking of Physics.
+CUB3-2771=First time
+CUB3-2772=Second time
+CUB3-2773=Generating Curve
+CUB3-2774=Point Reduction
+CUB3-2775=Processing
+CUB3-2776=Recording
+CUB3-2780= The shortcut keys are overlapping. It may not function correctly.
+CUB3-2781=Change Form Edit Property
+CUB3-2782=Please use the parameter slider to check the movement in Modeling View.\n
+CUB3-2783=As the opacity of the deformer is outside the appropriate range, clamping will be conducted.
+CUB3-2784=Opacity of the drawable object is out of range. Clamping will be applied.
+CUB3-2785=Draw order of the drawable object is out of range. Clamping will be applied.
+CUB3-2786=As the Vertex setting of the ArtPath is outside the appropriate range, clamping will be conducted.
+CUB3-2787=As the Draw Order of the Parts is outside the appropriate range, clamping will be conducted.
+CUB3-2788=Separate groups all at once.
+CUB3-2789=Separate groups individually.
+CUB3-2790=Separate groups all at once.
+CUB3-2791=Separate groups individually.
+CUB3-2792=The Valid Flags for the respective Groups will only stop the calculation of the target Group.\n
+CUB3-2793=Additionally, this setting will not affect the output to the physics3.json file.\n
+CUB3-2795=About Valid Flags for the respective Groups.
+CUB3-2796=Other %d file(s)
+CUB3-2797=The selected file or folder cannot be found on the drive letter where the model3.json file is located.
+CUB3-2798=Would you like to copy?
+CUB3-2799=The file cannot be read.\nPlease confirm if it is located in the same drive letter as where the motion3.json file is.
+CUB3-2800=File read error.
+CUB3-2801=Blinking and lip-sync cannot be applied to repeat parameters.
+CUB3-2802=This setting cannot be applied to repeat parameters.
+CUB3-2803=Parameters that have blinking or lip-sync settings cannot be repeated.
+CUB3-2804=Manage Child Object(s)
+CUB3-2805=Select all
+CUB3-2806=Show all
+CUB3-2807=Hide all
+CUB3-2808=Lock all
+CUB3-2809=Unlock all
+CUB3-2810=Manage Child Part(s)
+CUB3-2813=Delete Form Edit
+CUB3-2814=Delete Property Group of Form Edit
+CUB3-2815=Lock Marker
+CUB3-2818=Show Child Elements When Resize Warp Deformer 
+
+
+
+#----------- 2021/02/01(月) -----------
+CUB3-2819=License deactivation successful\n\nExit application
+
+
+#----------- 2021/02/03(水) -----------
+CUB3-2820=When setting parameters for exporting to [all parameters],\n
+CUB3-2821=the "default values set to the parameters" for associated models will be exported even to unkeyed parameters.\n
+CUB3-2822=Therefore, when changing the default values of the model's parameters after exporting the motion, it will become necessary to re-export the motion.
+CUB3-2823=Failed to acquire key value
+
+
+
+#----------- 2021/03/31(水) -----------
+CUB3-2824=File gathering is a function on the PRO version
+CUB3-2825=Failed to read PSD. Not compatible with non-\n8bit PSDs.
+CUB3-2826=PSD Image Output Settings
+CUB3-2827=Output designated frame
+CUB3-2828=Match frame
+CUB3-2829=Set file name
+CUB3-2830=Serial number
+CUB3-2831=Start number
+CUB3-2832=Scene: [%s] Track: [%s] Parameter: %s
+CUB3-2833=A scene with a different frame rate setting has been inserted.\nCheck the frame rate on the current scene.
+CUB3-2834=[%s] Import scene
+CUB3-2835=  Import all scenes
+CUB3-2836=Import to:
+CUB3-2837=Import target scenes:
+CUB3-2838=Add comment to tag (optional)
+CUB3-2839=Work area
+CUB3-2840=Apply time remapping
+CUB3-2841=Set scene track [%s]
+CUB3-2842=Scene to insert:
+CUB3-2843=Reference range:
+CUB3-2844=Entire scene
+CUB3-2845=The scene could not be inserted, as it includes scene tracks referenced in insertion destination.\nCheck the following scenes: %s
+CUB3-2846=If you apply time remapping to this scene track,\nyou will not be able to output audio from the inserted scene.
+CUB3-2847=Notes for applying time remapping
+CUB3-2848=Stroke mesh-mapping (beta) cannot be executed while editing
+CUB3-2849=Set automatic layout
+CUB3-2850=Set automatically
+CUB3-2851=Layout target
+CUB3-2852=Allow rotations
+CUB3-2853=Similar change candidates exist.\n\n
+CUB3-2854=Change them as well?
+CUB3-2855=Similar changes
+CUB3-2859=Use old playback methods
+CUB3-2860=Motions will be recreated when motions including curves with enlarged Bezier handles deteriorate on SDK.\n
+CUB3-2861=Starting with Cubism Viewer 4.1, expression names filenames without the extensions by default.\n\nYou can set whether or not to include extensions in default expression names from "File" menu -> "Settings".
+CUB3-2862=Target SDK type: 
+CUB3-2863=Unexpected type
+CUB3-2864=Try executing with an art mesh that is not hidden and has an opacity of over 0% selected.
+CUB3-2865=Adjust art pass thickness
+CUB3-2866=Stroke: create
+CUB3-2867=Apply work area
+CUB3-2868=Apply time remapping
+CUB3-2869=Add (X) to the end of file names when saving cmo3,can3 under a different file name
+CUB3-2870=There parameters on the joined display are not compatible with onion skins.\nIf you would like the check movement with onion skins displayed,\nrevert the joining and select the parameters once more.
+CUB3-2871=Regarding onion skins in Modeling View
+CUB3-2872=Orbit of the selected vertex
+CUB3-2873=Bring onion skin layer to front
+CUB3-2874=All frames
+CUB3-2875=Keyframe only
+CUB3-2876=Onion skin marker
+CUB3-2877=Display while playing
+CUB3-2878=Display target
+CUB3-2879=Number of onion skins between keys: 
+CUB3-2880=Frame display density
+CUB3-2881=Previous frame
+CUB3-2882=Display range: 
+CUB3-2883=Transparency Level: 
+CUB3-2884=Next frame
+CUB3-2885=Offset
+CUB3-2886=X direction: 
+CUB3-2887=Y direction: 
+CUB3-2888=Swapping display targets is a PRO version feature.
+CUB3-2889=Deform Brush Tool
+CUB3-2891=Transform objects using the brush
+CUB3-2893="Hide selection" is turned on. (Click here to stop)
+CUB3-2894=The mesh could not be generated because the repeated density is too large
+CUB3-2895=Stroke mesh-mapping (beta)
+CUB3-2896=Confirm stroke being edited (Click here[%s])
+CUB3-2897=Confirm stroke being edited (Click here)
+CUB3-2898=Cannot execute as you are currently editing strokes
+CUB3-2899=Mesh width
+CUB3-2900=Repeated density
+CUB3-2901=Number of vertices in mesh width
+CUB3-2902=Invert mesh
+CUB3-2903=Maintain current mesh
+CUB3-2904=Mesh-mapping settings
+CUB3-2905=Update strokePaths
+CUB3-2906=Start editing strokes
+CUB3-2907=Update mesh
+CUB3-2908=Update pre-change mesh forms
+CUB3-2909=Temporary deform tool
+CUB3-2910=Start editing handler
+CUB3-2911=Update handler
+CUB3-2912=Onion skin OFF
+CUB3-2913=Onion skin ON
+CUB3-2914=The following IDs were replaced with other parameters.\n\n%s
+CUB3-2915=\n\nWhen replacing IDs after creating an animation may cause the movements of the models in the animation to change.
+CUB3-2917=Notes on replacing parameter ID save
+CUB3-2918=Replicate parameters
+CUB3-2919=Add selected objects to child
+CUB3-2920=Processing scene import...
+CUB3-2921=Import [%s] scene?
+CUB3-2922=Cancel all
+CUB3-2923=an animation saved on a newer version that the editor you are currently using\n
+CUB3-2924=Scenes from animation files created on versions that are newer than the editor you are using cannot be imported.
+CUB3-2925=Current editor version: %s
+CUB3-2926=The import destination or import scene has not been selected.
+CUB3-2927=Insert scene
+CUB3-2928=[%s] is being referenced as a scene track in the following scenes.
+CUB3-2929=Convert selection to linear at specified frame
+CUB3-2930=Convert selection to Bezier at specified frame
+CUB3-2931=shift: Increase accuracy
+CUB3-2932=Ctrl: Continuous Bezier
+CUB3-2933=Ctrl: Standard Bezier
+CUB3-2934=Shift: Horizontal, absorb to 1/3 of the distance
+CUB3-2935=Shift: Fix frame
+CUB3-2936=Shift: Maintain shape, Alt: Maintain symmetry
+CUB3-2937=Apply to all keys?
+CUB3-2938=Smoothen curve
+CUB3-2939=Deleted unnecessary keys
+CUB3-2940=Enable smart snap
+CUB3-2941=Disable smart snap
+CUB3-2942=Solo display
+CUB3-2943=Track display
+CUB3-2944=Add onion skin marker
+CUB3-2945=Delete onion skin marker
+CUB3-2946=Lock onion skin marker
+CUB3-2947=Repeat
+CUB3-2948=Change markers and onion skin markers
+CUB3-2949=Curve presets
+CUB3-2950=Apply curve shape.
+CUB3-2951=<Dope sheet>
+CUB3-2952=<Graph Editor>
+CUB3-2953=Display key values
+CUB3-2954=Auto resize
+CUB3-2955=Always edit continuous continuous Beziers
+CUB3-2956=Smart snap using Shift
+CUB3-2957=Make Beziers by dragging curves
+CUB3-2958=Open scenes to reference
+CUB3-2959=Change scene track settings
+CUB3-2960=Create Image Sequence Track from This Scene Track
+CUB3-2961=Some lines will not be processed.
+CUB3-2966=Stroke ArtPath
+CUB3-2967=Re-stroke ArtPath
+CUB3-2968=Pressure settings
+CUB3-2969=Deform brushes
+CUB3-2973=Stroke mesh-mapping (beta)
+CUB3-2974=Generates mesh based on the path created by dragging\n(Click or drag to add/edit path control points)\n(Ctrl+click or drag to add/edit width handles)
+CUB3-2975=Include extensions in default expression names
+CUB3-2977=Enlarge/shrink
+CUB3-2978=Free transform
+CUB3-2979=Perspective
+CUB3-2980=Distort
+CUB3-2983=Deselect the temporary deform tool
+CUB3-2984=Return to the previous onion skin marker
+CUB3-2985=Go to the next onion skin marker
+CUB3-2986=Gather files
+CUB3-2987=Make art path control points thicker
+CUB3-2988=Make art path control points thinner
+CUB3-2989=Delete selected Parts (Child objects will remain)
+CUB3-2990=Column operations for temporary warp deformations
+CUB3-2991=Add columns
+CUB3-2992=Remove columns
+CUB3-2993=Add rows
+CUB3-2994=Remove rows
+CUB3-2995=Increase mesh width
+CUB3-2996=Reduce mesh width
+CUB3-2997=Increase divisions
+CUB3-2998=Reduce divisions
+CUB3-2999=Change the number of vertices in the mesh width
+CUB3-3000=Confirm stroke
+
+
+
+#----------- 2021/04/23(金) -----------
+CUB3-3002=Please deselect the temporary deform tool
+CUB3-3003=The selection includes objects that cannot be edited
+CUB3-3004=Only objects that can be deformed on the canvas are valid
+CUB3-3005=Failed to find a file with related materials. Cannot continue with the scene import.\nPlease restore the broken link in the original animation file,\nor delete the tracks that contain files with broken links and try importing again.
+CUB3-3006=Could not find files with related materials. The scene could not be duplicated.\nPlease restore the broken link, or delete the tracks that contain files with broken links and try again.
+
+
+
+#----------- 2021/05/31(月) -----------
+CUB3-3007=PSB File loading is not supported.
+CUB3-3010=Settings of the cursor tracking
+CUB3-3011=Perspective
+CUB3-3012=Distortion
+CUB3-3013=Temporary warp
+CUB3-3014=Temporary path
+CUB3-3015=Deformation method
+CUB3-3016=Horizontal: 
+CUB3-3017=Vertical: 
+CUB3-3018=Warp division number
+CUB3-3019=Display key name
+CUB3-3021=Temporary warp deformation
+CUB3-3022=Temporary path deformation
+
+
+
+#----------- 2021/08/03(火) -----------
+CUB3-3023=Enter the string to be replaced.
+CUB3-3024=For all scenes, frames outside of the specified output range <br>will not be exported.
+CUB3-3025=Failed to load the following model file.\n%s\nPlease reopen the model file and try the operation again.
+CUB3-3026=Copied
+CUB3-3027=Color Reduction
+CUB3-3028=Do the copying before pasting.
+CUB3-3029=Copy output lines
+CUB3-3030=Paste output lines
+CUB3-3031=Unable to load the texture file.\nPlease check if the path of the texture file is consistent with the content described in the file model3.json.
+CUB3-3032=Unable to load the texture file.\nAn error occurred during loading.
+CUB3-3033=Unable to load the file model3.json.\nAn error occurred during loading.\nPlease check if the content of the file model3.json is correct.
+CUB3-3034=Unable to load the target file(s).\nPlease check if the path of the target file is the same as that described in the file model3.json, and load the file again.\n%s
+CUB3-3035=Unable to load the target file.\nPlease export the moc3 file along with the target file.\n%s
+CUB3-3036=Unable to load the target file.\nAn error occurred during loading.\n%s
+CUB3-3037=Select a parameter in the parameter palette.
+CUB3-3038=Select a combined parameter in the parameter palette.
+CUB3-3039=Set as Input Image for Model Image of Selected ArtMeshes
+CUB3-3040=Set as input image for selected ArtMesh
+CUB3-3041=Left Right: Move frame , Up Down(+Shift): Adjust value
+CUB3-3042=Stroke editing is not complete. Do you want to confirm the current editing?
+CUB3-3043=Confirm
+CUB3-3044=Dispose
+
+
+
+#----------- 2021/10/06(水) -----------
+CUB3-3048=Parameter values cannot be copied or pasted for Form Animation
+CUB3-3049=Please execute after copying the Parameter values
+CUB3-3050=Please select the model track to paste onto
+CUB3-3054=There are %d unused source images\n%s\n\nWould you like to delete them?
+CUB3-3055=Return to default settings
+CUB3-3056=Would you like to close it without saving your changes?
+CUB3-3057=Left mouse button X
+CUB3-3058=Left mouse button Y
+CUB3-3059=Right mouse button X
+CUB3-3060=Right mouse button Y
+CUB3-3062=Physics FPS
+CUB3-3063=No settings
+CUB3-3064=Number of stages for the pendulum:
+CUB3-3065=Input: %d
+CUB3-3066=   X input: %d
+CUB3-3067=   Y input: %d
+CUB3-3068=   Angle input: %d
+CUB3-3069=Output: %d
+CUB3-3071=Motion FPS: %.1f
+CUB3-3073=Please select the ArtMesh to paste onto
+CUB3-3074=Writing the waveform
+CUB3-3075=Shaping the waveform
+CUB3-3076=It is not possible to move an object with itself as the target: 
+CUB3-3077=Would you like to save the changes to your parameter settings?
+CUB3-3078=Please select 1 parameter.
+CUB3-3079=Would you like to save the changes to your part settings?
+CUB3-3080=Label color
+CUB3-3081=Red
+CUB3-3082=Orange
+CUB3-3083=Yellow
+CUB3-3084=Green
+CUB3-3085=Blue
+CUB3-3086=Purple
+CUB3-3087=Gray
+CUB3-3088=Label Color Settings
+CUB3-3089=Advanced settings
+CUB3-3090=Impact value on children
+CUB3-3091=Settings for Impact value on children
+CUB3-3092=Version 2.1 animation files (.canx) cannot be imported directly into the scene.\nPlease convert them to .can3 files before importing the scene.
+CUB3-3093=Select all keys when selecting parameters
+CUB3-3094=Handle color
+CUB3-3096=Show Frame Rate
+CUB3-3097=<Common>
+CUB3-3098=Copy Parameter Value
+CUB3-3099=Paste Parameter Value
+CUB3-3100=Snap to Nearest Key
+
+
+
+#----------- 2021/10/25(月) -----------
+CUB3-3101=Frame rate used for baking
+CUB3-3103=Calculate FPS of Physics: %s
+CUB3-3104=Scene frame rate: %d
+
+
+
+#----------- 2022/01/13(木) -----------
+CUB3-3105=The data structure of the model has changed. The form animation data has been deleted, and the Undo History has been reset.
+CUB3-3106=Output scenes with Motion Export checked
+CUB3-3107=Motion Export
+CUB3-3108=Check all
+CUB3-3109=Uncheck all
+CUB3-3110=Motion Export Settings
+CUB3-3111=Lock angle and magnification
+CUB3-3112=Are you sure you want to cancel physics group editing?
+CUB3-3113=Edit Physics Group
+CUB3-3114=Calculate FPS must be an integer within %1$d and %2$d.
+CUB3-3115=Initialize Calculate FPS
+CUB3-3116=Open Motion Export Settings Dialog
+CUB3-3117=Add number to the end of the name when pasting an object
+
+
+
+#----------- 2022/03/04(金) -----------
+CUB3-3118=The parent deformer with common parameters is not selected.\n
+CUB3-3119=Parent deformer not mirrored; child objects may behave unexpectedly.\n
+CUB3-3120=If the result is different than expected, the process can be reversed with Undo.
+
+
+
+#----------- 2022/04/18(月) -----------
+CUB3-3121=Execute in Mesh Edit mode when mirror edit is on.
+CUB3-3122=Parameter Bookmark Display Settings
+CUB3-3123=<html>Note: We recommend "SDK(N/A)/Latest Cubism" for non-SDK usage, such as outputting in video.
+CUB3-3124=Blend Shape
+CUB3-3125=Multiply Color
+CUB3-3126=Screen Color
+CUB3-3127=Note: Freeze is on.
+CUB3-3128=Settings have been changed. Do you want to save the changes?
+CUB3-3129=Edit Shortcuts
+CUB3-3130=Add Shortcuts
+CUB3-3131=Restore All
+CUB3-3132=Mode: 
+CUB3-3133=Category: 
+CUB3-3134=Corresponding shortcut not found.
+CUB3-3135=Do you want to restore to pre-edit settings?
+CUB3-3136=Do you want to restore to default settings?
+CUB3-3137=The same shortcut is already registered.
+CUB3-3138=A shortcut is already registered to this key.\nWould you like to delete the existing settings? 
+CUB3-3139=Key
+CUB3-3140=Select the command you want to set a shortcut for.
+CUB3-3141=Limit Settings for Blend Shape Weights
+CUB3-3143=Highlight elements of ArtMesh
+CUB3-3144=Options for Paste Form Special
+CUB3-3145=Return to Previous Marker
+CUB3-3146=Proceed to Next Marker
+CUB3-3147=Parameter Bookmarks
+CUB3-3148=Display with Selected Parameters
+CUB3-3149=Delete Labels from Selected Tracks
+CUB3-3150=Hide All Labels
+CUB3-3151=Workspace
+CUB3-3152=Switch to Previous Tab
+CUB3-3153=Switch to Next Tab
+CUB3-3154=Duplicate Tab
+CUB3-3155=Set All Views to Same Display Position
+CUB3-3156=Invert Axis
+CUB3-3157=Merge Vertices
+CUB3-3158=Switch to Last Used Tool
+CUB3-3159=Display with Object at Cursor Position
+CUB3-3160=Select from Objects at Cursor Position
+CUB3-3161=Display with Parameters of Selected Objects Only
+CUB3-3162=Freeze
+CUB3-3163=Freeze/Unfreeze at Current Frame
+CUB3-3164=Freeze All
+CUB3-3165=Freeze Selected Properties
+CUB3-3166=Freeze Unselected Properties
+CUB3-3167=Unfreeze All
+CUB3-3168=Dope Sheet
+CUB3-3169=Graph Editor
+CUB3-3170=Palette
+CUB3-3171=SDK(N/A)/Latest Cubism
+CUB3-3173=Recalculation completed. No changes were made to the curves.
+CUB3-3174=Recalculation completed. A log of the changed curves has been generated.
+CUB3-3175=Non-freeze Parameters
+CUB3-3176=Edit Graph
+CUB3-3177=Show Rules
+CUB3-3178=Create table according to the following rules.
+CUB3-3179=・5 rows or fewer
+CUB3-3180=・No duplicate parameters
+CUB3-3181=・Parameter values are above minimum and below maximum values
+CUB3-3182=・Weight limit is above 0% and below 100%
+CUB3-3183=Graph Edit Rules
+CUB3-3184=An invalid value has been set.
+CUB3-3185=Row limit is exceeded.
+CUB3-3186=There are duplicate parameter values.
+CUB3-3187=Parameter value is out of range.
+CUB3-3188=Weight limit is out of range.
+CUB3-3189=Add Row
+CUB3-3190=Delete Row
+CUB3-3191=Weight Limit (%)
+CUB3-3192=Weight Limit Graph
+CUB3-3193=Target Blend Shape to edit weight limit settings
+CUB3-3194=Number of Target Objects to be Edited: 
+CUB3-3195=Select an object for which Blend Shape is set.
+CUB3-3196=Parameters to determine the maximum weight of the Blend Shape
+CUB3-3197=Horizontal line that is always 100%
+CUB3-3198=Straight line with minimum value of 0% and maximum value of 100%
+CUB3-3199=Straight line with minimum value of 100% and maximum value of 0%
+CUB3-3200=Polyline with minimum value of 0%, middle value of 100%, and maximum value of 0%
+CUB3-3201=Polyline with minimum and middle values of 0%, and maximum value of 100%
+CUB3-3202=Polyline with minimum value of 100%, middle value of 0%, and maximum value of 0%
+CUB3-3203=Polyline with minimum value of 0%, middle value of 100%, and maximum value of 100%
+CUB3-3204=Polyline with minimum value of 100%, middle value of 100%, and maximum value of 0%
+CUB3-3205=Step-like polyline with minimum value of 0% and maximum value of 100%
+CUB3-3206=Step-like polyline with minimum value of 100%, and maximum value of 0%
+CUB3-3207=Line
+CUB3-3208=Select only 1 parameter from the list.
+CUB3-3209=Blend Shape key cannot be changed to 0.0.
+CUB3-3210=Please select the following objects.
+CUB3-3211=Objects that Blend Shape cannot be set for are selected.
+CUB3-3212=Blend Shape parameters cannot be set on objects that do not have a keyform.
+CUB3-3213=Select 1 or more Blend Shape parameters.
+CUB3-3214=Parameters that are not for Blend Shape are selected.
+CUB3-3215=Editable Blend Shape: 
+CUB3-3216=Parameters with Blend Shape keys assigned are converted to Blend Shape parameters.
+CUB3-3217=The following parameters have been added due to detection of incorrect Blend Shapes:\n
+CUB3-3218=Target Type
+CUB3-3219=Target ID
+CUB3-3220=Language
+CUB3-3221=%1$.2f sec (%2$df) %3$s
+CUB3-3222=Event:
+CUB3-3223=%1$.2f sec (%2$df)
+CUB3-3224=Parameter Value to Reference
+CUB3-3225=Keys to Overwrite
+CUB3-3226=Lower Left
+CUB3-3227=Upper Right
+CUB3-3228=Lower Right
+CUB3-3229=Center value
+CUB3-3230=Opacity (Control Point)
+CUB3-3231=The elements selected above are used for "Paste Form" and "Blend Form".\n
+CUB3-3232=These options are active when the dialog is open.
+CUB3-3233=Unselect All
+CUB3-3234=Label Layout
+CUB3-3235=Change label layout.
+CUB3-3236=Retain Pop-up Position
+CUB3-3237=When the Parameter Bookmark is called again from the label, the pop-up will be displayed in the position it was last closed at.
+CUB3-3238=Pinned by Default
+CUB3-3239=The Parameter Bookmark will be displayed as pinned.
+CUB3-3240=Copy Label When Copying Track
+CUB3-3241=Ensure that the label is copied along with the track.
+CUB3-3242=Pop-up Opacity
+CUB3-3243=Set the opacity of the pop-up.
+CUB3-3244=Label Opacity
+CUB3-3245=Set the opacity of the label.
+CUB3-3246=Label Display Scale
+CUB3-3247=Set the display scale of the label.
+CUB3-3248=On Canvas
+CUB3-3249=On Track
+CUB3-3250=On View
+CUB3-3251=Left Align
+CUB3-3252=Right Align
+CUB3-3253=Open Save Location After Saving or Exporting
+CUB3-3254=The selected target version does not support %s.
+CUB3-3255=Mirror Editing in Progress
+CUB3-3256=When mirror editing is enabled, vertices are flipped according to the axis settings.
+CUB3-3257=<Parameter Bookmarks>
+CUB3-3258= is only available in the PRO version.
+CUB3-3259=To create new ones, please reduce the number of existing Blend Shape parameters.
+CUB3-3260=The number of Blend Shape parameters exceeds the FREE version limit (%d).\n\n
+CUB3-3261=Currently %d are in use.
+CUB3-3262=The FREE version allows a maximum of %d Blend Shape parameters.
+CUB3-3263=Saving or exporting Runtime Model Tracks is not available in the FREE version.
+CUB3-3264=Multiply color can only be used in Cubism4.2 or later. Please check the target version for the model.
+CUB3-3265=Screen color can only be used in Cubism4.2 or later. Please check the target version for the model.
+CUB3-3266=Set Random Pose
+CUB3-3267=Blend Shape can only be used in Cubism4.2 or later. Please check the target version for the model.
+CUB3-3268=Recalculate Curve
+CUB3-3269=Recalculate to get the correct smooth curve.
+CUB3-3270=Delete Label From Track [%s]
+CUB3-3271=Delete Label at Cursor Position
+CUB3-3272=Set the name that appears on the pop-up and label.
+CUB3-3273=Parameter Bookmark Settings
+CUB3-3274=1 or more parameters must be selected.
+CUB3-3275=Name must contain at least 1 character.
+CUB3-3276=Scroll the timeline palette to the position of the target %s.
+CUB3-3277=Parameter Group
+CUB3-3278=The pop-up remains open even when it loses focus.
+CUB3-3279=Close the pop-up.
+CUB3-3280=Display the label on the canvas that calls this pop-up.
+CUB3-3281=Set the information displayed on the Parameter Bookmark.
+CUB3-3282=Freeze on Current Frame
+CUB3-3283=Shy All
+CUB3-3284=Unshy All
+CUB3-3285=Generating Runtime Model Track
+CUB3-3286=Cannot reference model settings file (.model3.json).
+CUB3-3287=Do you want to load %s?
+CUB3-3288=Display with Parameter Group
+CUB3-3289=Parameter Bookmarks cannot be displayed when parameters of different tracks are selected at the same time.
+CUB3-3290=No parameter is selected.
+CUB3-3291=Selected Parameter
+CUB3-3292=ArtPath is not supported for target settings that are not "SDK(N/A)/Latest Cubism".
+CUB3-3293=Do you want to change the target to "SDK(N/A)/Latest Cubism"?\n
+CUB3-3294=Mirror Edit
+CUB3-3295=Axis
+CUB3-3297=Reset Axis Position
+CUB3-3298=Center of Canvas
+CUB3-3299=Center of Selected Vertices
+CUB3-3300=Delete deform paths for current edit level
+CUB3-3301=Display Events
+
+
+
+#----------- 2022/04/27(水) -----------
+CUB3-3302=For SDK 4.2 / Cubism4.2
+
+
+
+#----------- 2022/06/06(月) -----------
+CUB3-3303=Please select a track with a Live2D parameter.
+CUB3-3304=Calculate FPS of Physics is not set.
+CUB3-3305=Calculate FPS will not be exported to the Physics settings file (.physics3.json).
+CUB3-3306=Do you want to export Calculate FPS to the Physics settings file (.physics3.json)?
+CUB3-3309=There may be a problem with the saved file. Please try the following when attempting to save again.\n
+CUB3-3310=- Please check if there is a warning in the hint at the bottom right of the Modeling View screen.\n
+CUB3-3311=- Please try saving the file with a different filename.\n
+CUB3-3312=- The destination drive may have insufficient free space. Please try a different destination.\n
+CUB3-3313=- There may be insufficient free memory. Please try closing all applications other than Cubism Editor before saving again.\n\n
+CUB3-3315=File saving failed. Do you want to try saving it again?
+CUB3-3316=Retry saving
+CUB3-3317=File saved successfully.
+CUB3-3318=File saving has been canceled.
+CUB3-3319=Export Calculate FPS to Physics settings file
+CUB3-3320=You need to open the Physics settings and configure the Calculate FPS.
+CUB3-3321=Selected set textures only
+CUB3-3322=(If 1 ArtMesh is selected, the related images will open selected)
+CUB3-3323=The source scene for duplication is not found. The animation file may be corrupted.
+CUB3-3324=The model file for duplication is not found. The animation file may be corrupted.
+CUB3-3325=Unable to find the label for duplication.
+CUB3-3326=There is no destination track for duplication. The destination track needs to use the same model.
+CUB3-3327=Do you want to duplicate the label to the same model track for all scenes?
+CUB3-3328=- Duplication destination tracks: 
+CUB3-3329=- Labels: 
+CUB3-3330=Note: Undo is not available for this operation.
+CUB3-3331=Please use the PRO version when saving and exporting Runtime Model Tracks.
+
+
+
+#----------- 2022/08/01(月) -----------
+CUB3-3332=Would you like to reset the display size and position for all dialogs?
+CUB3-3333=You cannot Undo this operation.
+CUB3-3334=Deselect Hidden and Locked Objects
+CUB3-3335=Track Trajectory
+CUB3-3336=Track Trajectory Settings
+CUB3-3337=Duplicate All Labels (Identical Model Track)
+CUB3-3338=Duplicate Labels Individually
+CUB3-3339=Warp Deformer Shaping Brush
+CUB3-3340=Default setting
+CUB3-3341=A portion of the ArtMesh could not be bound with glue.
+CUB3-3342=If you did not get the expected result, Undo your operation and try skinning again after performing one of the following.
+CUB3-3343=- Divide the ArtMesh's mesh further
+CUB3-3344=- Increase interval between the control points for the rotation deformer or the deform path
+CUB3-3345=Call with edit level at 2 or 3.
+CUB3-3346=Call with an editable warp deformer selected.
+CUB3-3347=Unit
+CUB3-3348=Display range (back)
+CUB3-3349=Display range (front)
+CUB3-3350=Line color
+CUB3-3351=Frame color
+CUB3-3352=Keyframe color
+CUB3-3353=Boundary line color
+CUB3-3354=Boundary line
+CUB3-3355=Custom
+CUB3-3356=Simple
+CUB3-3357=Time
+CUB3-3358=Please operate with the edit level set to 2 or 3.
+CUB3-3359=Only usable with the warp deformer. Unsupported objects were unselected.
+CUB3-3360=The scene's frame rate is set to the Calculate FPS of Physics.\nCalculate FPS: 
+CUB3-3361=Track trajectory OFF
+CUB3-3362=Track trajectory ON
+CUB3-3363=Reset All
+CUB3-3364=Duplicate All
+CUB3-3365=Duplicate destination
+CUB3-3366=Animation file
+CUB3-3367=Duplicate source track:
+CUB3-3368=Duplicate destination track:
+CUB3-3369=Do you want to cancel the label duplication?
+CUB3-3370=Animations using models that exceed the limitations of the FREE version cannot be saved or exported.
+CUB3-3371=Use the PRO version to save or export these animations.
+CUB3-3372=Reset Dialog Size and Position
+CUB3-3373=Shape Warp Deformer along Bezier Handle
+
+
+
+#----------- 2022/09/09(金) -----------
+CUB3-3375=There are no parameters with matching ID.
+
+
+
+#----------- 2022/09/27(火) -----------
+CUB3-3376=A nonexistent Pendulum No is specified for output.
+CUB3-3377=Please set the Pendulum No again from the output settings.
+
+
+
+#----------- 2022/11/08(火) -----------
+CUB3-3378=There is no object being used as a clipping mask.
+CUB3-3379=There is no object using the selected objects as a clipping mask.
+CUB3-3380=Validate Assigned Parameters
+CUB3-3381=Select Clipping Mask
+CUB3-3382=Reverse Clipping ID Lookup
+CUB3-3383=Shuffle Playback
+CUB3-3384=Show a list-view of the number of parameters assigned to objects.
+CUB3-3385=Show only objects with 3 or more parameters
+CUB3-3386=Number of assigned normal parameters
+CUB3-3387=Number of assigned Blend Shape parameters
+CUB3-3388=IDs that cannot be designated as a mask are cancelled.
+CUB3-3389=Select the clipping mask objects.
+CUB3-3390=Please execute after selecting an object that has keyforms.
+CUB3-3391=Parameter is set to repeat when target setting is not “SDK(N/A)/Latest Cubism”.
+CUB3-3392=It is not recommended to use repeat parameters with SDK.\n
+CUB3-3393=Movements may differ from the editor when creating motion with repeat parameters.\n
+CUB3-3394=Do you want to switch the target to "SDK(N/A)/Latest Cubism"?
+CUB3-3395=Reflect Part Palette Label Color in Deformer Palette
+CUB3-3396=Show Recent Files with Full Paths
+
+
+#----------- 2023/01/19(木) -----------
+CUB3-3397=Cannot move as no track has been selected.
+CUB3-3398=Cannot move as the target track is missing.
+CUB3-3399=Cannot move as the target track is locked or hidden.
+CUB3-3400=PSD Import Settings
+CUB3-3401=Apply Deformer to Child Elements
+CUB3-3402=Live2D Help
+CUB3-3403=A nonexistent Pendulum No is specified.
+CUB3-3404=There are input settings for nonexistent parameter.
+CUB3-3405=There are output settings for nonexistent parameter.
+CUB3-3406=Input settings or Physics model do not exist.
+CUB3-3407=Output settings do not exist.
+CUB3-3408=All weight limits are less than 100%.
+CUB3-3409=If the weight limit is less than 100%, keys cannot be added and keyforms cannot be edited.
+CUB3-3410=If this is not intended, please add a 100% weight limit.
+CUB3-3411=If the default form is edited, the Blend Shape may transform in unexpected ways.\n\n
+CUB3-3412=See the precautions related to “Blend Shape Transformation” on the “<a href='%s'>Blend Shape</a>” page of the manual.\n
+CUB3-3413=Or above
+CUB3-3414=Or below
+CUB3-3415=Match
+CUB3-3416=Don't match
+CUB3-3417=Layout inspection
+CUB3-3418=Reveal overlapping textures
+CUB3-3419=Reveal out of frame textures
+CUB3-3420=Reveal the following conditions
+CUB3-3421=Margins inside of generated ArtMesh
+CUB3-3422=Consider child keyforms
+CUB3-3423=Creates the warp deformer sized to fit all child keyforms within the bounds.
+CUB3-3424=Snap to center of selected objects
+CUB3-3425=Adjust its size so that its center is aligned with that of the selected objects.
+CUB3-3426=Incorrect physics groups will not be exported.
+CUB3-3427=All physics groups have been excluded from export targets.
+CUB3-3428=Physics settings will not be output.
+CUB3-3429=Incorrect content
+
+
+
+#----------- 2023/02/17(金) -----------
+CUB3-3430=Some versions of the Cubism SDK may not work properly if the number of mask ID permutation types exceeds a certain number.\n\n
+
+
+
+#----------- 2023/05/19(金) -----------
+CUB3-3431=Synchronize selection with canvas
+CUB3-3432=Synchronize from canvas to dialog
+CUB3-3433=Synchronize from dialog to canvas
+CUB3-3434=Setting disabled: Keys of extended interpolation are too close(Click for details)
+CUB3-3435=The setting of the extended interpolation of the following object is disabled because the key interval is too narrow.
+
+
+#----------- 2023/07/28(金) -----------
+CUB3-3436=Grid settings
+CUB3-3437=Failed to integrate license authenticated by Cubism Editor 4 or earlier.\n
+CUB3-3438=Reinstalling the latest version may resolve the issue.\n\n
+CUB3-3439=If the problem persists, please contact us from the <a href='%s'>inquiry form</a>.
+CUB3-3440=This option will become available after opening the model's Physics settings at least once.
+CUB3-3441=Environment Settings
+CUB3-3442=File operation options
+CUB3-3443=Add number to the end of file names when saving under a different file name
+CUB3-3444=General
+CUB3-3445=Light
+CUB3-3446=Dark
+CUB3-3447=Color Theme
+CUB3-3448=Changes to the color theme take effect after restarting.
+CUB3-3449=Disable auto zoom in of UI
+CUB3-3450=Disabling auto zoom in of UI may result in an unintended layout.\nAre you sure you want to change the settings?
+CUB3-3451=Changes to auto zoom in of UI take effect after restarting.
+CUB3-3452=Disable
+CUB3-3453=Inquiries and Support Options
+CUB3-3454=These are options for troubleshooting.<br>Do not change the settings unless you have a specific reason to do so.
+CUB3-3455=Show information for investigation in view
+CUB3-3456=Bilinear filtering of UI
+CUB3-3457=PSD import
+CUB3-3458=Notification
+CUB3-3459=Notification options
+CUB3-3460=Object Style
+CUB3-3461=Child color when resizing
+CUB3-3462=Modeling resolution
+CUB3-3463=Animation resolution
+CUB3-3464=Form animation resolution
+CUB3-3465=Thumbnail icon background color
+CUB3-3466=Form of ArtMesh and Warp Deformer
+CUB3-3467=Motion-sync
+CUB3-3468=Analyzing visemes from audio
+CUB3-3469=Motion-sync analysis failed. Please execute after enabling at least 1 audio element.
+CUB3-3470=Naturally closed
+CUB3-3475=Approximately half-open
+CUB3-3479=Wide open
+CUB3-3480=Upper and lower teeth closed, mouth slightly open
+CUB3-3481=Roundly open
+CUB3-3482=Pouting
+CUB3-3484=Bake Animation from Motion-sync
+CUB3-3485=Audio analysis failed. Animation bake is suspended.\nPlease execute after reviewing the input audio data.
+CUB3-3486=There are analysis results of keys exceeding the audio track duration.\n\nDo you want to extend the track and bake keys?
+CUB3-3487=Generating keyframes from visemes
+CUB3-3488=An error occurred in motion-sync mapping. Animation bake is suspended.
+CUB3-3489=Viseme
+CUB3-3490=Match Track Duration to Audio Track
+CUB3-3491=Adjust the ranges of model tracks and work areas to match the duration of the audio track.
+CUB3-3492=Do you want to import another preset?\n\nEdited contents will be lost.
+CUB3-3493=The preset that matches the selected audio analysis type will be imported.\n\nEdited contents will be lost. Would you like to continue?\n
+CUB3-3495=Export Motion-sync Settings
+CUB3-3496=Import Motion-sync Settings
+CUB3-3497=Initialize Preset
+CUB3-3498=About Motion-sync Settings
+CUB3-3499=About Bake Animation from Motion-sync
+CUB3-3500=Would you like to initialize the preset?
+CUB3-3501=Current settings will be overwritten. Would you like to continue?
+CUB3-3502=Threshold
+CUB3-3503=Preset List
+CUB3-3504=Preset Name
+CUB3-3505=Would you like to save the changes to the preset?
+CUB3-3506=Would you like to delete the following preset?\n %s\n\n
+CUB3-3507=The following default preset cannot be deleted.\n %s
+CUB3-3508=Duplicate Preset
+CUB3-3509=Add current input details as a new preset.
+CUB3-3510=Parameters
+CUB3-3511=List of Motion-sync Settings
+CUB3-3512=Would you like to save the changes to motion-sync settings?
+CUB3-3513=Would you like to delete the following Motion-sync settings?\n%s\n\n
+CUB3-3514=Setting name
+CUB3-3516=Add Motion-sync Settings
+CUB3-3517=Audio analysis type
+CUB3-3518=Setting preset
+CUB3-3519=Add Parameter
+CUB3-3521=The name entered is already used.
+CUB3-3522=Motion-sync Settings
+CUB3-3523=Please add motion-sync settings.
+CUB3-3524=Settings that have no corresponding parameters in the model are ignored.
+CUB3-3525=Please check whether the parameters in red exist in the model.
+CUB3-3528=*Temporary settings when baking. They can be output as JSON file from "Export Motion-sync Settings".
+CUB3-3529=Model Track
+CUB3-3531=The larger the value, the more emphasis will be given to volume than the viseme analysis results.
+CUB3-3532=Changes to audio analysis type can be made from “Motion-sync Settings” in Modeling.
+CUB3-3533=There are no parameters corresponding to the specified motion-sync settings.
+CUB3-3534=Load Audio
+CUB3-3535=Audio Preview
+CUB3-3536=Audio Elements
+CUB3-3537=Sets the elements analyzed from audio data
+CUB3-3538=Sets the parameters corresponding to audio elements
+CUB3-3539=Sample Rate
+CUB3-3540=Blending Ratio
+CUB3-3541=Smoothing
+CUB3-3542=Sets the number of audio elements sampled per second.
+CUB3-3544=The smaller the value, the more the motion is played only with the highest weighted audio elements.
+CUB3-3545=The larger the value, the smoother the motion of playback will be.
+CUB3-3546=Would you like to delete the following parameter(s)?\n\n%s
+CUB3-3547=Updates to the current value in Parameter palette.
+CUB3-3548=Updates the value of the model in Parameter palette to the current value in mapping settings. Form can be checked on the canvas.
+CUB3-3549=Mapping Settings
+CUB3-3550=Workspace Settings
+CUB3-3551=Move Up
+CUB3-3552=Move Down
+CUB3-3553=List of custom workspaces
+CUB3-3554=Auto Switch When Selecting Tab
+CUB3-3555=%s already exists. Do you want to replace with %s?
+CUB3-3556=Do you want to set the current layout as the initial layout of %s?
+CUB3-3557=Auto Generation of Face Motion
+CUB3-3558=Generate Face Deformer
+CUB3-3559=Generate Face Motion
+CUB3-3560=Reset Current Layout
+CUB3-3561=Update Initial Layout
+CUB3-3562=Deformer generated successfully.\nPlease specify each deformer and click the “Generate Motion” button to continue.
+CUB3-3563=%s Angle
+CUB3-3564=%s Position
+CUB3-3565=Auto Generation of Face Deformer
+CUB3-3566=Corresponding parts
+CUB3-3567=Eye L
+CUB3-3568=Eye R
+CUB3-3569=Eyeball L
+CUB3-3570=Eyeball R
+CUB3-3571=Eyebrow L
+CUB3-3572=Eyebrow R
+CUB3-3573=Ear L
+CUB3-3574=Ear R
+CUB3-3575=Movement level
+CUB3-3576=Deformation level
+CUB3-3577=Auto Generation of Face Motion
+CUB3-3578=Adjust Face Motion
+CUB3-3579=Match movement level of eyebrows to eyes
+CUB3-3580=Corner motions generated successfully.
+CUB3-3581=Angle Y
+CUB3-3582=Please select a target parameter.
+CUB3-3583=Deformers are not fully specified. Please specify all deformers except nose and ears.
+CUB3-3584=Selection of Target Deformers
+CUB3-3585=Selection of Target Parameters
+CUB3-3586=Generate Motion
+CUB3-3587=Note: Generation of corner motions can also be used for manually edited motions.
+CUB3-3588=Corners
+CUB3-3589=Face motion has already been automatically generated. Do you want to initialize the keyforms and re-generate motion?\nIf you select “No”, only movement and deformation levels will be adjustable.
+CUB3-3590=Motion generated successfully. Continue to adjust movement and deformation levels.
+CUB3-3591=Keys already exist in the target parameter. Would you like to overwrite them?
+CUB3-3593=Failed to generate motion.\nDeformer with keys added to parameters other than Angle X and Angle Y is not supported.
+CUB3-3594=Key structure other than -30, 0, 30 is not supported.\nWould you like to change the key structure?
+CUB3-3595=Failed to generate motion.\nKey structure other than -30, 0, 30 is not supported.
+CUB3-3596=For SDK 5.0 / Cubism5.0
+CUB3-3597=Export Motion-sync settings file (.motionsync3.json)
+CUB3-3598=Motion-sync settings must be configured before proceeding.
+CUB3-3599=Vertices interval (outside)
+CUB3-3600=Vertices interval (inside)
+CUB3-3601=Limit settings for Blend Shape weights exist in parameters prior to change.
+CUB3-3602=Some of the limit settings for Blend Shape weights could not be changed because they already refer to the parameter to be changed.
+CUB3-3603=The selected target version does not support %s.
+CUB3-3604=Blend Shape other than form of ArtMesh and Warp Deformer
+CUB3-3605=The setting name on the bake side is changed because a temporary setting with the same name exists on the animation bake side.
+CUB3-3607=Lip-sync (CRI LipSync)
+CUB3-3609=Invalid motion-sync settings exist:
+CUB3-3612=Failed to import motion-sync settings.
+CUB3-3613=Motion-sync settings are invalid.
+CUB3-3614=Would you like to continue with the import?\nInvalid settings will be ignored.
+CUB3-3617=:
+CUB3-3618=All flags will be reset when the Physics settings are closed.
+CUB3-3619=About Physics Settings
+CUB3-3620=Pattern A
+CUB3-3621=Pattern B
+CUB3-3622=Posing
+CUB3-3623=Playlist Setting Editor
+CUB3-3628=Low
+CUB3-3629=Mid
+CUB3-3630=High
+CUB3-3631=Please select a custom workspace.
+CUB3-3632=The calculated Blend Shape values are displayed as is.\nThese are the values before being limited to the possible values for each item.
+CUB3-3633=Copy Name
+CUB3-3639=Vowels Only (Blend Shape)
+
+
+
+#----------- 2023/08/10(木) -----------
+CUB3-3646=CRI LipSync is not available.
+CUB3-3647=Current temporary settings will be overwritten. Would you like to continue?
+CUB3-3648=The following tracks are required in the scene when using "Bake Animation from Motion-sync".
+CUB3-3649=Model track (with motion-sync settings for the model)
+CUB3-3650=The old fading method may result in unnatural expressions depending on the parameter settings.
+CUB3-3651=Use Old Fading Method
+
+
+
+#----------- 2023/08/16(水) -----------
+CUB3-3652=By following the rules for ID in Cubism 3.0 or later, IDs are converted and imported according to the following procedures.
+CUB3-3653=Conversion of IDs when importing CMOX
+
+
+
+#----------- 2023/09/07(木) -----------
+CUB3-3654=The presence of keys in lip-sync may result in an unintended appearance during playback.\nDo you want to bake the motion-sync animation?
+CUB3-3655=Motion-sync is only available in Cubism5.0 or later.\nDo you want to change the target version of the model to "SDK5.0/Cubism5.0"?
+CUB3-3656=Please add the corresponding parameter.
+CUB3-3657=Do you want to exclude the incorrect motion-sync settings and export?
+CUB3-3658=Status does not take into account the limit settings for Blend Shape weights.
+
+
+
+#----------- 2023/10/16(月) -----------
+CUB3-3659=The motion-sync formula has been optimized since Cubism 5.0.01.
+CUB3-3660=The blending ratio value is automatically adjusted to maintain compatibility.
+CUB3-3661=The following models were created before 5.0.00.
+CUB3-3662=Do you want to open the above models and automatically adjust the blending ratio values to maintain compatibility?
+CUB3-3663=Note: If the blending ratio is not adjusted automatically, the expected results may not be obtained.
+
+
+
+#----------- 2023/11/02(木) -----------
+CUB3-3664=Generating Texture Atlas
+CUB3-3665=Add number to the end of the name when duplicating a parameter
+CUB3-3666=Context Menu
+CUB3-3667=Show parent-child hierarchy of deformer
+CUB3-3668=Show Part Names in Deformer Field of Inspector Palette
+CUB3-3669=Import Scene
+CUB3-3670=Show/Hide Palette
+CUB3-3671=Creators Forum
+CUB3-3672=A graphical error has occurred.
+CUB3-3673=The following problems may have occurred.
+CUB3-3674=Your machine does not meet the operating requirements of Cubism Editor
+CUB3-3675=The graphics processor is configured to use the onboard graphics instead of the graphics board
+CUB3-3676=You are using an older version of the graphics driver
+CUB3-3677=Please see <a href='%s'>Live2D Official Help Website</a> for details.
+CUB3-3678=Application Startup Error
+CUB3-3679=If the file cannot be saved successfully after retrying, use the file saved in <a href='%s'>Auto Backup</a>, or keep the file you saved last and contact the Creators Forum or User Support.
+CUB3-3680=Apply Prevention of Color Leakage to texture
+CUB3-3681=Open File Location
+CUB3-3682=Apply Prevention of Color Leakage
+CUB3-3683=The texture will change after applying the prevention of color leakage.\nDo you want to continue?
+CUB3-3684=Converting texture
+CUB3-3685=Failed to convert texture.
+CUB3-3686=There are no default keyforms.
+CUB3-3687=You cannot select the .can3 file you are currently editing.
+CUB3-3688=You need to configure the modeling settings to use functions such as "Automatic eye-blinking" and "Lip-sync".
+CUB3-3689=Highlight Frame Step frames
+CUB3-3690=Auto-scroll to Form Animation property of selected object
+CUB3-3691=When an object is selected in the Form Animation View, it automatically scrolls to the associated property.
+CUB3-3692=Show Palette
+
+
+
+#----------- 2024/01/29(月) -----------
+CUB3-3693=Adjust the name so that deformer types do not overlap
+CUB3-3694=Set the name based on the selected object
+CUB3-3695=Synchronize Parameter Values Across Tabs
+CUB3-3696=Mesh Color
+CUB3-3697=If a child drawable object is out of bounds, select the child drawable object
+CUB3-3698=Select Option
+CUB3-3699=Double click to select the object.
+CUB3-3700=Move Here
+CUB3-3704=The keyforms for Blend Shape parameters cannot be edited.
+CUB3-3705=Unable to load the target file(s).\nThe path of the following file(s) is different from that described in the file .model3.json.
+
+
+
+#----------- 2024/02/07(水) -----------
+CUB3-3706=Select for Movement
+CUB3-3707=Moves the following object(s).
+CUB3-3708=Failed to move.
+CUB3-3709=Select the object(s) you want to move and execute "Select for Movement".
+CUB3-3710=The object(s) selected for movement cannot be specified as the destination.
+
+
+
+#----------- 2024/02/27(火) -----------
+CUB3-3711=This process may take some time.
+
+
+
+#----------- 2024/04/25(木) -----------
+CUB3-3712=You must unlock this part to add a control point.\nDo you want to unlock it?
+CUB3-3714=Caution on parameter mapping
+
+
+
+#----------- 2024/06/07(金) -----------
+CUB3-3715=You're using an <b>alpha version</b> of Editor.\n\n
+CUB3-3716=Version
+CUB3-3718=We've given users early access to try out the new features.\n
+CUB3-3719=Please note that some features may not be fully implemented, may be unstable, or result in unexpected behavior.\n
+CUB3-3720=The UI is based on specifications currently under development, and is subject to change.\n
+CUB3-3721=In addition, bugs and specification changes may result in model files (.cmo3), animation files (.can3), and any other data you create becoming incompatible with future software versions.\n
+CUB3-3722=While it's possible to use the alpha version for actual projects, <b>it's strongly recommended that you only use it to evaluate the usability and performance of the new features. </b>\n
+CUB3-3723=Please ensure you fully understand the purpose of the alpha version before using it.\n
+CUB3-3725=We welcome feedback from creators to continue to improve and enhance usability!
+CUB3-3726=Precaution
+CUB3-3727=This cannot be changed in the alpha version.
+CUB3-3728=Home
+CUB3-3729=Opens upon start only when News and Release Notes have been updated
+CUB3-3730=Last update history
+CUB3-3731=Unsaved data
+CUB3-3732=Select %d file(s)
+CUB3-3733=The information for the selected file is displayed.
+CUB3-3734=Backup source file name
+CUB3-3735=Number of backup files
+CUB3-3736=Folder
+CUB3-3737=Number of files
+CUB3-3738=Backup files
+CUB3-3739=Back
+CUB3-3740=Sort by registration date
+CUB3-3741=Sort by name
+CUB3-3742=Sort by update history
+CUB3-3743=Recent files
+CUB3-3744=Favorites
+CUB3-3745=Sort
+CUB3-3746=Backup date
+CUB3-3747=Close Home when file is opened
+CUB3-3748=Add to favorites
+CUB3-3749=Delete from recent files
+CUB3-3750=Clear recent files
+CUB3-3751=Delete from favorites
+CUB3-3752=Add file to favorites
+CUB3-3753=Add folder to favorites
+CUB3-3754=Clear favorites
+CUB3-3755=Select file
+CUB3-3756=Create with specified size
+CUB3-3757=Create from PSD file
+CUB3-3758=Drop file here
+CUB3-3759=or
+CUB3-3760=Create a new scene
+CUB3-3761=Learn
+CUB3-3762=Release Notes
+CUB3-3763=A new version is available.
+CUB3-3764=External Application Integration Settings
+CUB3-3765=Show ArtMesh vertex
+CUB3-3766=Auto Generation of Deformer
+CUB3-3767=Auto Generation of Sway Motion
+CUB3-3768=Apply 3D Rotation Expression
+CUB3-3769=Model Template
+CUB3-3770=Export template
+CUB3-3771=Delete empty parameters
+CUB3-3772=Delete empty parameter groups
+CUB3-3773=Delete empty parts
+CUB3-3774=Delete empty parts below child
+CUB3-3775=Delete empty deformers
+CUB3-3776=Delete empty deformers below child
+CUB3-3777=Generating deformer
+CUB3-3778=The ArtMesh(es) that failed to be estimated are now in the "Unused ArtMesh" list.\n%s
+CUB3-3779=Generate deformer shape and position with horizontal symmetry
+CUB3-3780=Deformer hierarchy to be generated
+CUB3-3781=Remove ArtMesh
+CUB3-3782=Unused ArtMesh
+CUB3-3783=Add to deformer hierarchy
+CUB3-3784=If "Face Warp" does not have a child ArtMesh, the "Neck Position" and "Face Rotation" may be created in an unintended position.\n
+CUB3-3785=Would you like to create the deformers?
+CUB3-3786=Would you like to abort the auto generation of deformers?
+CUB3-3787=Upper Body Warp Z
+CUB3-3788=Upper Body Warp Y
+CUB3-3789=Lower Body Warp
+CUB3-3790=Arm R Rotation
+CUB3-3791=Arm L Rotation
+CUB3-3792=Neck Position
+CUB3-3793=Neck Warp
+CUB3-3794=Face Rotation
+CUB3-3795=Face Warp
+CUB3-3796=Nose Warp
+CUB3-3797=Mouth Warp
+CUB3-3798=Ear R Warp
+CUB3-3799=Ear L Warp
+CUB3-3800=Eyebrow R Warp
+CUB3-3801=Eyebrow R Position
+CUB3-3802=Eyebrow R Angle
+CUB3-3803=Eyebrow L Warp
+CUB3-3804=Eyebrow L Position
+CUB3-3805=Eyebrow L Angle
+CUB3-3806=Eye R Warp
+CUB3-3807=Eyeball R Warp
+CUB3-3808=Eye L Warp
+CUB3-3809=Eyeball L Warp
+CUB3-3810=Top
+CUB3-3811=Right
+CUB3-3812=Bottom
+CUB3-3813=Left
+CUB3-3814=Register warp deformer
+CUB3-3815=Synchronize selection with parameter palette
+CUB3-3816=Flip sway horizontally
+CUB3-3817=Left side keyform
+CUB3-3818=Right side keyform
+CUB3-3819=Synchronize left and right side setting values
+CUB3-3820=Hair sway
+CUB3-3821=Z-angle swing
+CUB3-3822=Update keyform
+CUB3-3823=Automatically update the keyform when the setting value changes
+CUB3-3824=Estimate sway setting values
+CUB3-3825=Sway settings
+CUB3-3826=Estimation type
+CUB3-3827=Pivot position
+CUB3-3828=Select a warp deformer to register.
+CUB3-3829=Synchronize selection with view area
+CUB3-3830=Copy settings
+CUB3-3831=Paste settings
+CUB3-3832=Delete settings
+CUB3-3833=Sway level (horizontal)
+CUB3-3834=Sway level (vertical)
+CUB3-3835=Softness
+CUB3-3836=Auto Generation of Sway Motion
+CUB3-3837=Would you like to delete the existing keys and add 3 keys?
+CUB3-3838=Failed to add sway keyforms.\n
+CUB3-3839=Set the value range for Blend Shape parameters as below:
+CUB3-3840=Set the minimum value lower than 0
+CUB3-3841=Set the maximum value higher than 0
+CUB3-3842=X-direction
+CUB3-3843=Y-direction
+CUB3-3844=Parameter mapping
+CUB3-3845=3D shape
+CUB3-3846=Camera position
+CUB3-3847=Center of rotation
+CUB3-3848=Z-direction offset
+CUB3-3849=Perspective strength
+CUB3-3850=Rotation type
+CUB3-3851=3D rotation
+CUB3-3852=Keyform to update
+CUB3-3853=Set to center of canvas
+CUB3-3854=Show coordinates in view area
+CUB3-3855=Change coordinate display color
+CUB3-3856=Planarization
+CUB3-3857=Depth estimation
+CUB3-3858=Make Z horizontally symmetrical at each point (warp deformer only)
+CUB3-3859=Make Z vertically symmetrical at each point (warp deformer only)
+CUB3-3860=Change mapping
+CUB3-3861=X-direction parameters
+CUB3-3862=Y-direction parameters
+CUB3-3863=The default value does not have a key. You need a keyform set at the default value to create a rotation expression.
+CUB3-3864=Depth estimation requires a keyform different than the front side. Select a key other than the default value.
+CUB3-3865=Register object
+CUB3-3866=Select an object to register.
+CUB3-3867=Unable to copy because settings do not match.
+CUB3-3868=Changes will not be saved because the keyforms have not been updated.
+CUB3-3869=You must update the keyforms to apply setting changes.
+CUB3-3870=From X-direction to -Y-direction
+CUB3-3871=From Y-direction to -X-direction
+CUB3-3872=XY-directions simultaneously
+CUB3-3873=There are objects with insufficient keyforms for the specified parameter.
+CUB3-3874=Would you like to create a keyform by adding 3 keys?
+CUB3-3876=An error occurred during the update. See the log for details.
+CUB3-3877=The parameter mapping is not set.
+CUB3-3878=%s is a Blend Shape parameter and cannot be used.
+CUB3-3879=Adjust to template
+CUB3-3880=Don't change
+CUB3-3881=Prioritize duplicate names
+CUB3-3882=Adjust to position and shape
+CUB3-3883=Mapping prioritizing matching names.\nAll other mapping will be based on position and shape.
+CUB3-3884=Mapping based on position and shape only.
+CUB3-3885=All meshes
+CUB3-3886=Default state mesh only
+CUB3-3887=Don't generate
+CUB3-3888=New model template sample found.\nWould you like to update?
+CUB3-3889=Attached file(s)
+CUB3-3890=Would you like to delete the image?
+CUB3-3891=Would you like to delete the selected attached file?
+CUB3-3892=Displayed as a tooltip in the list in the "Select Model Template" window and included in the target for search.
+CUB3-3893=Export model template
+CUB3-3894=The thumbnail image displayed in the "Select Model Template" window.
+CUB3-3895=Author
+CUB3-3896=A Model Template with the same name already exists.
+CUB3-3897=Failed to export because a Model Template with the same name already exists.
+CUB3-3898=Create a copy of the attached file(s).
+CUB3-3899=CMO3 file
+CUB3-3900=Select from CMO3 file
+CUB3-3901=Select from Model Template list
+CUB3-3902=Select Model Template
+CUB3-3903=Open Model Template folder
+CUB3-3904=Display model with flash (F key to toggle)
+CUB3-3905=Display model with fixed opacity (F key to switch)
+CUB3-3906=Mapping
+CUB3-3907=Playback motion (F key to play/stop)
+CUB3-3908=Set the label color for the element to be added.
+CUB3-3909=Set to
+CUB3-3910=Add the duplicate ID using a new ID
+CUB3-3911=Overwrite with duplicate ID
+CUB3-3912=Don't add duplicate group names
+CUB3-3913=Add duplicate group names with a new name
+CUB3-3916=The template model is set to a newer target version than the target model.\n
+CUB3-3917=It may include features not available to the target model.
+CUB3-3918=Apply Model Template Settings
+CUB3-3919=Using someone else's model as a template without permission may lead to copyright, moral rights, or other rights infringement.\nPlease only use models and Model Templates for which you own the copyright or have permission to use.
+CUB3-3920=Regarding the use of Model Templates
+CUB3-3921=Remove mapping
+CUB3-3924=Not connected
+CUB3-3925=Connected
+CUB3-3926=Disconnect
+CUB3-3927=Status
+CUB3-3928=Token
+CUB3-3929=Permission
+CUB3-3930=Allow connections from other devices.\nMake sure to check your router and firewall settings.\nWould you like to allow remote connections?
+CUB3-3931=Port number
+CUB3-3932=Reset port number history
+CUB3-3933=Connection settings
+CUB3-3934=Default port
+CUB3-3935=Allow remote connections
+CUB3-3936=External applications
+CUB3-3937=API version
+CUB3-3938=Version information
+CUB3-3941=Open Home
+CUB3-3942=Would you like to delete all empty parts?
+CUB3-3943=Please select only one part.
+CUB3-3944=Would you like to delete all empty deformers?
+CUB3-3945=Please select only one deformer.
+CUB3-3946=Would you like to delete all empty parameters?
+CUB3-3947=Would you like to delete all empty parameter groups?
+CUB3-3948=Recording (one frame)
+CUB3-3949=The parameters from the external application will be applied to the current frame in the timeline.
+CUB3-3950=Recording (multiple frames)
+CUB3-3951=The parameters from the external application will be applied to the timeline as the frames advance.
+CUB3-3952=Please connect to the internet.
+CUB3-3954=alpha version help
+CUB3-3955=Deformer Shortcuts
+
+
+#----------- 2024/06/19(水) -----------
+CUB3-3956=News
+
+
+
+#----------- 2024/07/02(火) -----------
+CUB3-3957=You cannot add this file format to favorites.
+CUB3-3958=Failed to activate server.
+CUB3-3959=The specified port number is already in use.
+CUB3-3960=Please check the port number.
+CUB3-3961=Please set a valid port number.
+CUB3-3962=About External Application Integration
+CUB3-3963=About Live2D Cubism Editor External Integration API
+CUB3-3964=Live2D Cubism Editor External Integration API
+CUB3-3965=Failed to display because you're currently offline.
+
+
+
+#----------- 2024/08/07(水) -----------
+CUB3-3966=Would you like to clear recent files?
+CUB3-3967=Would you like to clear favorites?
+CUB3-3968=Refresh
+CUB3-3969=Browse subfolders (5 Hierarchy)
+CUB3-3970=Expand all
+CUB3-3971=Collapse all
+CUB3-3972=[Not generated]
+CUB3-3973=Automatically shape the vertices
+CUB3-3975=Apply scale to the bounding box
+CUB3-3976=Don't add duplicate setting names
+CUB3-3977=Add duplicate setting names with a new name
+CUB3-3978=Mapping List
+CUB3-3979=Target
+CUB3-3980=Previous application information is saved. Do you want to apply it?
+CUB3-3981=Return mapping to default state
+CUB3-3982=Would you like to return the mapping to the default state?
+CUB3-3983=Initialize token
+CUB3-3984=Do you want to initialize the saved token?
+CUB3-3986=The Animation View is more easily differentiated because it is drawn on transparent layers.\n
+CUB3-3987=Same for the cases below:
+CUB3-3988=Drawing the model in the "Physics Settings" and "Apply Model Template Settings" windows
+CUB3-3989=Exported images and videos (including snapshots)
+CUB3-3990=Even on SDK, the expression may vary depending on the following elements:
+CUB3-3991=Platform
+CUB3-3992=Presence/absence of off screen
+CUB3-3993=Shader settings, etc.
+CUB3-3994=Please make sure it works on the actual machine before using it.
+
+
+
+#----------- 2024/09/11(水) -----------
+CUB3-3995=Would you like to add 3 keys?
+
+
+
+#----------- 2024/09/13(金) -----------
+CUB3-3996=Cannot create keyform. Please select keys from parameters other than the X and Y directions.
+
+
+
+#----------- 2024/10/09(水) -----------
+CUB3-3997=The following favorite file(s) or folder(s) cannot be found.
+CUB3-3998=Would you like to delete from your favorites?
+CUB3-3999=[Broken link]
+CUB3-4000=Related Products
+<<<<<<< HEAD
+<<<<<<< HEAD
+CUB3-4001=Support
+
+
+
+#----------- 2024/11/26(火) -----------
+CUB3-4002=Select only 1 parameter.
+CUB3-4003=The current value of the parameter has no key.\nPlease execute with a value with key.
+CUB3-4004=Freeze and target follow of parameter controller cannot be active simultaneously.
+CUB3-4005=Parameter Controller Display Settings
+CUB3-4006=Select 2 single point controllers on the same track.
+CUB3-4007=Select only 1 direction controller.
+CUB3-4009=Display type
+CUB3-4010=Improve timer accuracy
+CUB3-4011=Display the tool details palette and edit the parameter controller.
+CUB3-4012=Parameter Controller
+CUB3-4013=Select Object Linked to Key
+CUB3-4014=Confirm target for pasting multiple forms
+CUB3-4015=Update Original Shape of Deformers
+CUB3-4016=Delete Original Shape of All Deformers
+CUB3-4017=Show/Hide Guide Image
+CUB3-4018=Input a frame rate in the range of 1.00-120.00.
+CUB3-4019=Calculating target follow of parameter controller
+CUB3-4020=Calculation Unit
+CUB3-4021=Failed to export .paramctrl3.json.
+CUB3-4022=Parameter controllers already exist.\n
+CUB3-4023=Would you like to delete all existing controllers and add new ones?
+CUB3-4024=Delete and Add
+CUB3-4025=Keep and Add
+CUB3-4026=Failed to load .paramctrl3.json.
+CUB3-4027=.paramctrl3.json found. Select file to load.
+CUB3-4028=Select .paramctrl3.json
+CUB3-4029=Select from Parameter Controllers at Cursor Position
+CUB3-4030=Order
+CUB3-4031=Controller to calculate
+CUB3-4032=Parameter Controller Calculation Unit Settings
+CUB3-4033=Tip (Green): Changing the order can prevent the calculation results being overwritten.
+CUB3-4034=Tip (Red): Changing the order cannot prevent the calculation results being overwritten. If the movement is not as intended, please check the related controllers.
+CUB3-4035=Display the controllers that may change the calculation results depending on the order.
+CUB3-4036=Please check if the movement is as intended.
+CUB3-4037=Would you like to change the order automatically?
+CUB3-4038=Show track name
+CUB3-4039=CSV Character Code
+CUB3-4040=Not created
+CUB3-4041=Deformer creation
+CUB3-4042=Key addition
+CUB3-4043=Manual update
+CUB3-4044=Would you like to delete the original shape of all deformers?
+CUB3-4045=The following deformer(s) cannot be restored to the original shape because the scale of the parent rotation deformer is close to the lower limit value.
+CUB3-4046=The following deformer(s) cannot be restored to the original shape because the original shape has not been created.
+CUB3-4047=The following deformer(s) may not be completely restored to the original shape because the number of conversion divisions has been changed from the original shape.
+CUB3-4048=Filter by Parts
+CUB3-4049=Select including child parts
+CUB3-4050=Angle and Magnification List
+CUB3-4051=Convergence speed
+CUB3-4052=When a multi-stage pendulum is set, it will be numbered in order from the top.
+CUB3-4053=The smaller the value, the faster the swaying; the larger the value, the slower the swaying.
+CUB3-4054=The larger the value, the larger the swaying even with the slightest input.
+CUB3-4055=Set the value within the range of 0.7-0.99 as a guideline.
+CUB3-4056=1 as the standard speed. Reacts faster if set to a value larger than 1; reacts slower if set to a value smaller than 1.
+CUB3-4057=1 as the standard speed. Converges faster if set to a value larger than 1; converges slower if set to a value smaller than 1.
+CUB3-4058=Interval:
+CUB3-4059=(Group unset)
+CUB3-4060=Failed to save %s due to attempting to save to a different drive than the model settings file.
+CUB3-4061=The following files are already loaded.
+CUB3-4062=Unable to load the following files because the expression name already exists.
+CUB3-4063=Support Option
+CUB3-4064=Target for Pasting Form
+CUB3-4069=Change Target Object
+CUB3-4070=Target for Blending Form
+CUB3-4071=Unable to edit all the selected objects.\n\nPlease execute after changing to an editable parameter value.
+CUB3-4072=Unable to edit some of the selected objects.\n\nWould you like to revert the shape of only the editable objects?
+CUB3-4073=Target can be changed by dragging & dropping the list items.
+CUB3-4074=Execute by clicking "OK" or Enter key.
+CUB3-4075=Return list to default state
+CUB3-4076=This combination cannot be applied. It will be disregarded when executed.
+CUB3-4077=Display Option
+CUB3-4078=Automatically determine the target next time and do not show this dialog
+CUB3-4079=(Can be redisplayed from "Modeling" menu)
+CUB3-4080=Reverse positive and negative
+CUB3-4081=Invert coordinates
+CUB3-4082=Auto setting
+CUB3-4083=Manual setting
+CUB3-4084=Options for "Invert coordinates" synchronize across tabs.
+CUB3-4085=Flip the front and back side
+CUB3-4086=When active, paste vertices with the front and back of vertex position reversed.\nThe whole object will be reversed by sliding to the opposite side of the axis.
+CUB3-4087=Center of Selected Object
+CUB3-4088=Center of Parent Deformer
+CUB3-4089=Relationship between targets
+CUB3-4090=Highlight affected ArtMeshes
+CUB3-4091=Show controller during playback
+CUB3-4092=Show controller for hidden tracks
+CUB3-4093=Data may have been corrupted due to a bug.\n
+CUB3-4094=Try saving manually. If save fails, restore data from the backup folder.\n\n
+CUB3-4095=Calculating parameter controller
+CUB3-4096=Calculate collectively before playback
+CUB3-4097=Controller Display Settings
+CUB3-4098=Target follow of parameter controller OFF
+CUB3-4099=Target follow of parameter controller ON
+CUB3-4100=Parameter controller display OFF
+CUB3-4101=Parameter controller display ON
+CUB3-4102=Disable drag & drop
+CUB3-4103=Start point
+CUB3-4104=End point
+CUB3-4105=Automatic grouping
+CUB3-4106=When target is set to controllers, response to animation playback and editing may be affected.\n
+CUB3-4107=Reducing the number of controllers for which a target is set or temporally disabling them will improve response.\n
+CUB3-4108=Extend direction controller
+CUB3-4109=Extend the direction controller beyond the start and end points when target follow is active.
+CUB3-4111=Original Shape
+CUB3-4112=Loop Editing Support
+CUB3-4113=Form animation is not included in the loop editing support.\nEditing content of form animation will not be applied outside of the range of the scene.
+CUB3-4116=%d sec
+CUB3-4117=Duration + 5 sec
+CUB3-4118=Display Range Settings
+CUB3-4119=<Parameter Controllers>
+CUB3-4120=Export Parameter Controller
+CUB3-4121=Import Parameter Controller
+CUB3-4122=Enable moving indicator out of scene range
+CUB3-4123=Click the end point of another ArtPath to connect.\n(Alt+Click to connect the control points and merge them into 1)
+CUB3-4124=Select/Edit Controller
+CUB3-4125=Add Single Point Controller
+CUB3-4126=Add Direction Controller
+CUB3-4127=Delete Controller
+CUB3-4128=Bake Animation from Parameter Controller
+CUB3-4129=Reverse Direction Controller
+CUB3-4130=Convert Direction Controller into 2 Single Point Controllers
+CUB3-4131=Convert 2 Single Point Controllers into Direction Controller
+CUB3-4132=Follow Target
+CUB3-4133=Show Controller
+CUB3-4134=Parameter Controller Tool
+
+CUB3-4001=Support
+
+
+#----------- 2025/01/24(金) -----------
+CUB3-4135=Cannot bake parameter controllers when freeze is enabled.
+CUB3-4136=Baking parameter controllers will delete all controllers in the scene.
+CUB3-4137=Would you like to duplicate and keep the current scene before baking?
+CUB3-4138=Duplicate Scene and Bake
+CUB3-4139=Overwrite Scene and Bake
+CUB3-4140=Target follow of parameter controller
+CUB3-4141=Enable/Disable Loop Editing Support
+CUB3-4142=Calculating...
+CUB3-4143=Failed to reference ArtMesh.
+CUB3-4144=Change ArtMesh Reference
+CUB3-4145=Failed to load the following motion files.\nExpression setting files with the same names generated from these files exist.
+CUB3-4146=High Load
+CUB3-4147=Freeze is enabled for scenes in the scene track.
+CUB3-4148=Optimize Keyframe Curves
+
+
+
+#----------- 2025/03/04(火) -----------
+CUB3-4149=Please call this function with a track selected that supports material reloading or replacing.
+CUB3-4150=Please call this function with only one warp deformer selected.
+CUB3-4151=Please select only one warp deformer without selecting the warp deformer control points.
+CUB3-4152=Select Deformer's Child Elements
+CUB3-4153=Sequential Image Selection
+CUB3-4154=Image Selection
+CUB3-4155=Runtime Model Selection
+CUB3-4156=Double click on the ArtMesh to start
+CUB3-4157=Align Angle of Bounding Box
+CUB3-4158=Change Draw Order of All ArtMeshes
+CUB3-4159=Bulk Change Draw Order of ArtMeshes
+CUB3-4160=Reload Material of Selected Track
+CUB3-4161=Replace Material of Selected Track
+CUB3-4162=Replace Material of Selected Track (All Scenes)
+CUB3-4163=Lock Draw Order Slider
+CUB3-4164=Draw Order Slider
+CUB3-4165=Reflect
+CUB3-4166=Reverse
+CUB3-4167=Draw order of all keyforms will change for ArtMeshes with keyforms.
+CUB3-4168=Interval of Draw Order
+CUB3-4169=This does not apply to ArtMeshes that are children of "Grouped" or "Guide Image" parts.
+CUB3-4170=Please call this function with at least one ArtMesh selected.
+CUB3-4171=Reload Material
+CUB3-4172=Replace Material
+
+
+
+#----------- 2025/03/28(金) -----------
+CUB3-4173=nizima Ranking
+CUB3-4174=Show Object Name at Cursor Position
+CUB3-4175=Common
+CUB3-4176=Exclude Frame Step When Bulk Inserting Keyframes
+CUB3-4177=Edit before frame 0
+
+
+
+#----------- 2025/08/06(水) -----------
+CUB3-4178=Please execute after selecting 1 model track.
+CUB3-4179=Objects that cannot have an alias created are selected.
+CUB3-4180=This alpha version is intended to evaluate the usability and performance of the new features and improvements planned for Cubism Editor %s.\n
+CUB3-4181=Please send suggestions for new features, improvements, and other bugs or requests to the <a href='%s'>dedicated category of the Live2D Official Creators' Forum</a>. (Click to visit page)\n
+CUB3-4182=Parameter values used for input of physics have changed according to target follow of the parameter controller.
+CUB3-4183=Bake animation from parameter controller must be executed before baking physics.
+CUB3-4184=Draw with blend mode set to prioritize speed
+CUB3-4185=Bounding Box
+CUB3-4186=Hide after selecting object
+CUB3-4187=Shift+Drag operation for rotation handle
+CUB3-4188=Angle increment
+CUB3-4189=Discard decimal places of angle
+CUB3-4190=Highlight color
+CUB3-4191=Highlight overlapping polygons
+CUB3-4192=Set deformer name based on selected object
+CUB3-4193=Always show warnings about appearance in blend mode
+CUB3-4194=Alias
+CUB3-4195=Offscreen drawing
+CUB3-4196=Expand Warp Deformer Based on Children Outside Range
+CUB3-4197=Move to Beginning
+CUB3-4198=Move to End
+CUB3-4199=Move to Start Frame of Work Area
+CUB3-4200=Move to End Frame of Work Area
+CUB3-4201=Set as Start Frame of Work Area
+CUB3-4202=Set as End Frame of Work Area
+CUB3-4203=Display Entire Scene
+CUB3-4204=Reset Zoom
+CUB3-4205=Fade
+CUB3-4206=Apply Fade-In/Fade-Out Settings to Other Scenes
+CUB3-4207=Expansion Brush
+CUB3-4208=Switch to Previous Brush Shape
+CUB3-4209=Switch to Next Brush Shape
+CUB3-4210=Apply multiply color/screen color
+CUB3-4211=Some smooth curves may change.
+CUB3-4212=Undo and Redo history will be reset.
+CUB3-4213=Would you like to continue?
+CUB3-4214=Export failed because the parameter ID contains "@".
+CUB3-4215=Please execute after correcting the ID of the parameter(s) below.
+CUB3-4216=Transparent background
+CUB3-4217=Transparent background/Lossless
+CUB3-4218=Scene: [%1$s] Track: [%2$s] Part: %3$s
+CUB3-4219=Lock/Unlock Selection
+CUB3-4220=The current scene contains follow motion for a direction controller with a single point controller as the target.
+CUB3-4221=This calculation has been optimized from Cubism Editor 5.3.00 and later, resulting in improved performance and changes in movement compared to the saved version.
+CUB3-4222=Alias of %s
+CUB3-4223=Over
+CUB3-4224=Atop
+CUB3-4225=Out
+CUB3-4226=Conjoint
+CUB3-4227=Disjoint
+CUB3-4228=Decrease opacity
+CUB3-4229=Decrease thickness
+CUB3-4230=Add (Glow)
+CUB3-4231=Add (Before 5.3)
+CUB3-4232=Multiply (Before 5.3)
+CUB3-4233=When using advanced blend modes, flickering may occur if polygons overlap within a single mesh.\n
+CUB3-4234=To avoid flickering, adjust shapes so that polygons do not overlap.\n
+CUB3-4235=%s has overlapping polygons (Click for details)
+CUB3-4236=%2$d ArtMeshes including %1$s have overlapping polygons (Click for details)
+CUB3-4237=For SDK 5.3 / Cubism5.3
+CUB3-4238=Export hidden aliases
+CUB3-4239=The following aliases have reference errors.
+CUB3-4240=The appearance of an alias with a reference error may change.
+CUB3-4241=Number of parameters with a weight limit set
+CUB3-4242=Keyforms cannot be selected or edited when Blend Shape parameters are combined.\n
+CUB3-4243=Please uncombine the parameters if you want to select them.\n
+CUB3-4244=When editing in the combined state, check the editable keyform parameters in the tips displayed in the bottom right of the View.
+CUB3-4245=Precaution on Combining Blend Shape Parameters
+CUB3-4246=　Number of advanced blend mode uses: %d\n
+CUB3-4247=<<Alias Related>>\n
+CUB3-4248=　Number of aliases: %d\n
+CUB3-4249=　Number of redraws with aliases: %d\n
+CUB3-4250=<<Offscreen Drawing Related>>\n
+CUB3-4251=　Number of parts to draw: %d\n
+CUB3-4252=　Number of aliases to draw: %d\n
+CUB3-4253=<<Clipping Mask Related>>\n
+CUB3-4254=Color Blend
+CUB3-4255=The model contains blend modes other than "Normal" and "Over".\n
+CUB3-4256=When blend modes other than "Normal" and "Over" are used, the appearance in the Modeling View may not be reproduced depending on the View.\n
+CUB3-4257=Object possessed
+CUB3-4258=<<Moc Statistics>>\n
+CUB3-4259=<<Drawable Information>>\n
+CUB3-4260=Number of Drawable: %d\n
+CUB3-4261=Color blend used: %s\n
+CUB3-4263=Number of advanced blend mode uses: %d\n
+CUB3-4264=<<Offscreen Drawing Information>>\n
+CUB3-4265=Number of parts to draw: %d\n
+CUB3-4266=Alpha blend used: %s\n
+CUB3-4267=Select an object with 2 parameters set.
+CUB3-4268=Vertex information does not apply to objects with a vertex count that differs from the source.
+CUB3-4269=Cannot apply because the selected object type differs from the source.
+CUB3-4270=Please make sure the ArtMesh to paste onto has the same shape as the source image.\n
+CUB3-4271=If the shapes are different, the mesh may not be pasted correctly.\n
+CUB3-4272=Would you like to paste?
+CUB3-4273=Flip rotation deformer position
+CUB3-4274=Blend modes of objects not in offscreen drawing may result in an unintended appearance due to the canvas.\n
+CUB3-4275=To achieve an appearance that is unaffected by the canvas, place the object into a part with offscreen drawing enabled.\n
+CUB3-4276=%s may have unintended appearance (Click for details)
+CUB3-4277=%2$d objects including %1$s may have unintended appearance (Click for details)
+CUB3-4278=B+Drag
+CUB3-4279=Change size
+CUB3-4280=C+Drag
+CUB3-4281=Change angle
+CUB3-4282=V+Drag
+CUB3-4283=Change hardness
+CUB3-4284=Shrink
+CUB3-4285=To add an alias, please delete some existing aliases.
+CUB3-4286=The number of aliases exceeds the FREE version limit (%d).\n\n
+CUB3-4287=%d aliases are currently in use.
+CUB3-4288=The FREE version allows a maximum of %d aliases.\n\n
+CUB3-4289=Reference
+CUB3-4290=The reference object does not exist.
+CUB3-4291=Invalid object.
+CUB3-4292=References by aliases are in a loop.
+CUB3-4293=No object with the entered ID found.
+CUB3-4294=The object with the entered ID cannot be used as a reference.
+CUB3-4295=The appearance of the Modeling View for blend modes may not be reproduced depending on the environment.\n
+CUB3-4296=Precaution on Blend Mode
+CUB3-4297=Lock Selection
+CUB3-4298=Multiple aliases with different draw orders are selected.\n
+CUB3-4299=Multiple objects with different draw orders are selected.\n
+CUB3-4300="Video" is selected.
+CUB3-4301=This target is premised on video export.
+CUB3-4302=ArtPath and form animation can be edited, but cannot be exported for SDK.
+CUB3-4303="SDK (Unity)" is selected.
+CUB3-4304=The X movement of the Bezier handle will be limited.
+CUB3-4305=The shape of the curve may change because the position of the Bezier Handle will change according to this specification.
+CUB3-4306=Form animation editing will be limited (Edits made up to this point will be retained).
+CUB3-4307="SDK (Others)" is selected.
+CUB3-4308=Note: Select "SDK (Unity)" for Unity.
+CUB3-4309="AE plug-in" is selected.
+CUB3-4310=Lock duration
+CUB3-4311=Compatibility Settings
+CUB3-4312=Deformer transformation (3.2 method)
+CUB3-4313=When the warp deformer is deformed trapezoidally, behavior prior to 3.2 can be reproduced.
+CUB3-4314=Bezier transformation (5.2 method)
+CUB3-4315=When bezier controllers are reset, behavior prior to 5.2 can be reproduced. The settings are shared across the entire editor.
+CUB3-4316=From Cubism 5 SDK R4, parameter repeat functions normally.\n
+CUB3-4317=Depending on the SDK version, the motion using repeat may behave differently from the editor.\n
+CUB3-4318=When using repeat with the SDK, make sure that you are using a compatible SDK version.
+CUB3-4319=Use of Repeat with SDK
+CUB3-4320=Please see "<a href='%s'>Notes on changing IDs</a>" in the official manual for details.
+CUB3-4321=[Reference error]
+CUB3-4322=The following IDs were replaced with other parts.\n\n
+CUB3-4323=Replacing IDs after creating an animation may cause the model's movement in the animation to change.\n
+CUB3-4324=Precaution on Replacing Part ID
+CUB3-4325=<Display columns>
+CUB3-4326=Create alias
+CUB3-4327=For files with a broken link, a relative path is displayed instead of an absolute path.
+CUB3-4328=<html>The selected scene and the fade value for the following model tracks in the scene will be changed.</html>
+CUB3-4329=<html>The fade value in the selected scene will be changed.</html>
+CUB3-4330=Replacement of part ID or parameter ID in a model referenced within the animation has been detected.\n
+CUB3-4331=<span class='caution'>The model track's parts visibility and parameter's keyframe information may have been moved or lost.</span>\n\n
+CUB3-4332=Please check that the parts visibility and the parameter movements in the following model tracks are working properly.\n
+CUB3-4333=Brush shape
+CUB3-4334=Hardness
+CUB3-4335=Thickness
+CUB3-4336=Decrease weight
+CUB3-4337=Increase weight B
+CUB3-4338=Increase weight A
+CUB3-4339=Weaken adhesion
+CUB3-4340=Circle
+CUB3-4341=Square
+CUB3-4342=Line
+CUB3-4343=Parameter repeat
+CUB3-4344=<Indicator>
+CUB3-4345=Add
+CUB3-4346=Multiply
+
+
+
+#----------- 2025/10/08(水) -----------
+CUB3-4347=The model uses offscreen drawing or alpha blend.
+CUB3-4348=Models with the above settings may not export to PSD correctly.
+CUB3-4349=Notes on PSD Export
+CUB3-4350=Priority for Applying Limit Settings for Blend Shape Weights
+CUB3-4351=Objects with the same parameter settings exist in the Blend Shape weight limit.
+CUB3-4352=Please specify the priority for applying to the objects.
+CUB3-4353=Manage Object(s) on Same Hierarchy
+CUB3-4354=(Form)
+
+
+
+#----------- 2025/11/26(水) -----------
+CUB3-4355=Please see the "<a href='%s'>Terms of Use</a>" for details.
+CUB3-4356=Please see the "<a href='%s'>Official Manual</a>" for details.
+CUB3-4357=Please see "<a href=''>Live2D Help</a>" for information on how to give accessibility permission.
+CUB3-4358=The exportable size in the FREE version is limited to %s.
+CUB3-4359=Add Guide to Center
+CUB3-4360=Display 1 Frame Range at Indicator
+CUB3-4361=Please see "<a href='%s'>Live2D Help</a>" for details.
+CUB3-4362=Would you like to discard changes and exit?
+CUB3-4363=Please see the "<a href='%s'>Official Manual</a>" for information on how to customize brush settings.
+CUB3-4364=The selected objects do not have two parameters set.\n\nPlease see the "<a href='%s'>Official Manual</a>" for details.
+CUB3-4365=Pasted outside view.
+CUB3-4366=The ArtMesh has been deformed.\n
+CUB3-4367=If pasted as is, the vertex positions may shift.\n
+CUB3-4368=To paste accurately, restore the ArtMesh to its original shape before pasting.\n
+CUB3-4369=This problem does not occur when pasting to the same ArtMesh.\n
+CUB3-4370=There are %d (%s) automatic backup files.
+CUB3-4371=Would you like to organize your backup folder?
+CUB3-4372=Additionally, using IDs in the standard parameter list makes it easy to replace, reuse, etc.
+CUB3-4373=The number of textures exceeds the FREE version limit (%d).
+CUB3-4374=Up to %d textures can be used in the FREE version.
+CUB3-4375=The number of parameters exceeds the FREE version limit (%d).\n\n
+CUB3-4376=Up to %d parameters can be used in the FREE version.
+CUB3-4377=The number of parts exceeds the FREE version limit (%d).\n\n
+CUB3-4378=Up to %d parts can be used in the FREE version.
+CUB3-4379=The number of ArtMeshes exceeds the FREE version limit (%d).\n\n
+CUB3-4380=Up to %d drawable objects can be used in the FREE version.
+CUB3-4381=The number of ArtPaths exceeds the FREE version limit (%d).\n\n
+CUB3-4382=Up to %d ArtPaths can be used in the FREE version.
+CUB3-4383=The number of deformers exceeds the FREE version limit (%d).\n\n
+CUB3-4384=Up to %d deformers can be used in the FREE version.
+CUB3-4385=The warp division of warp deformers exceeds the FREE version limit (9×9).\n\n
+CUB3-4386=The number of draw order groups exceeds the FREE version limit (%d).\n\n
+CUB3-4387=Up to %d draw order groups can be used in the FREE version.
+CUB3-4388=The number of repeat parameters exceeds the FREE version limit (%d).\n\n
+CUB3-4389=Up to %d repeat parameters can be used in the FREE version.
+
+
+
+#----------- 2025/12/03(水) -----------
+CUB3-4390=　Maximum depth : %d\n
+CUB3-4391=Maximum depth: %d\n
+
+
+#----------- 2026/01/09(金) -----------
+CUB3-4392=Exiting due to license activation failure.\n\nPlease contact us at support@live2d.com.
+CUB3-4393=Invalid license key.
+CUB3-4394=[ FREE version ]
+CUB3-4395=[ Trial version %d days remaining ]
+CUB3-4396=[ PRO promotion version %d days remaining ]
+CUB3-4397=Due to higher drawing load, performance may be slower depending on your machine.\n
+CUB3-4398=Using offscreen drawing expands expressive possibilities, but also increases drawing load.\n
+CUB3-4399=Enabling this feature will increase load depending on the number of parts, the depth of hierarchy, and the environment’s resolution. Please use this feature with caution for performance.\n\n
+CUB3-4400=Notes on Offscreen Drawing
+

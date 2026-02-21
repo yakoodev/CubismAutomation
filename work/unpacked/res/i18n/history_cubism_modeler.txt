@@ -1,0 +1,106 @@
+<html><body>
+
+<font color=red>*Rendering method has been updated. Please report to us if you find irregularity in rendered images
+or when exporting images.
+</font>
+<hr>
+<b>3.0 beta 2 (2017/04/13)</b>
+
+
+<hr>
+<b>3.0 beta 1 (2017/04/06)</b>
+
+
+<hr>
+<b>3.0 alpha 15 (2017/03/30)</b>
+
+
+<hr>
+<b>3.0 alpha 14 (2017/03/23)</b>
+
+
+<hr>
+<b>3.0 alpha 13 (2017/03/16)</b>
+
+
+<hr>
+<b>3.0 alpha 12 (2017/03/08)</b>
+
+
+<hr>
+<b>3.0 alpha 11 (2017/03/02)</b>
+
+
+<hr>
+<b>3.0 alpha 10 (2017/02/22)</b>
+
+
+<hr>
+<b>3.0 alpha 9 (2017/02/15)</b>
+
+
+<hr>
+<b>3.0 alpha 8 (2017/02/09)</b>
+
+
+<hr>
+<b>3.0 alpha 7 (2017/02/01)</b>
+
+
+<hr>
+<b>3.0 alpha 6 (2017/01/26)</b>
+
+
+<hr>
+<b>3.0 alpha 5 (2017/01/19)</b>
+
+
+<hr>
+<b>3.0 alpha 4 (2017/01/12)</b>
+
+
+<hr>
+<b>3.0 alpha 3 (2017/01/05)</b>
+
+
+<hr>
+<b>3.0 alpha 2 (2016/12/21)</b>
+
+
+<hr>
+<b>3.0 alpha 1 (2016/12/07)</b>
+
+
+<hr>
+<b>3.0 pre alpha 8 (2016/11/29)</b>
+
+
+<hr>
+<b>3.0 pre alpha 7 (2016/11/16)</b>
+
+
+<hr>
+<b>3.0 pre alpha 6 (2016/11/09)</b>
+
+
+<hr>
+<b>3.0 pre alpha 5 (2016/11/02)</b>
+
+
+<hr>
+<b>3.0 pre alpha 4 (2016/10/26)</b>
+
+
+<hr>
+<b>3.0 pre alpha 3 (2016/10/19)</b>
+
+
+<hr>
+<b>3.0 pre alpha 2 (2016/10/12)</b>
+
+
+<hr>
+<b>3.0 pre alpha 1 (2016/10/03)</b>
+
+
+</body></html>

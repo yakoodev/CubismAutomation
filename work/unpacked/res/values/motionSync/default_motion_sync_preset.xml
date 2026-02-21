@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<motion_sync>
+    <preset id="CRI_LIP_SYNC_DEFAULT_1" tr_name="基本" name="##CUBI-0940">
+        <mapping type="CRI">
+            <cubism_params number="2">
+                <param id="ParamMouthForm" tr_name="口　変形" name="##CUBI-1229">
+                    <item name="min" value="-1.0" />
+                    <item name="max" value="1.0" />
+                    <item name="damper" value="0.0" />
+                    <item name="smooth" value="25" />
+                </param>
+                <param id="ParamMouthOpenY" tr_name="口　開閉" name="##CUBI-1231">
+                    <item name="min" value="0.0" />
+                    <item name="max" value="1.0" />
+                    <item name="damper" value="0.0" />
+                    <item name="smooth" value="25" />
+                </param>
+            </cubism_params>
+            <audio_params number="6">
+                <param id="Silence" name="Silence">
+                    <item name="min" value="0.0" />
+                    <item name="max" value="1.0" />
+                    <item name="scale" value="1.0" />
+                    <item name="enabled" value="true" />
+                </param>
+                <param id="A" name="A">
+                    <item name="min" value="0.0" />
+                    <item name="max" value="1.0" />
+                    <item name="scale" value="0.3" />
+                    <item name="enabled" value="true" />
+                </param>
+                <param id="I" name="I">
+                    <item name="min" value="0.0" />
+                    <item name="max" value="1.0" />
+                    <item name="scale" value="1.0" />
+                    <item name="enabled" value="true" />
+                </param>
+                <param id="U" name="U">
+                    <item name="min" value="0.0" />
+                    <item name="max" value="1.0" />
+                    <item name="scale" value="1.5" />
+                    <item name="enabled" value="true" />
+                </param>
+                <param id="E" name="E">
+                    <item name="min" value="0.0" />
+                    <item name="max" value="1.0" />
+                    <item name="scale" value="6.0" />
+                    <item name="enabled" value="true" />
+                </param>
+                <param id="O" name="O">
+                    <item name="min" value="0.0" />
+                    <item name="max" value="1.0" />
+                    <item name="scale" value="8.0" />
+                    <item name="enabled" value="true" />
+                </param>
+            </audio_params>
+            <mapping_list number="6">
+                <mapping_item id="Silence" type="Shape">
+                    <target>
+                        <item name="ParamMouthForm" value="0" />
+                        <item name="ParamMouthOpenY" value="0" />
+                    </target>
+                </mapping_item>
+                <mapping_item id="A" type="Shape">
+                    <target>
+                        <item name="ParamMouthForm" value="1" />
+                        <item name="ParamMouthOpenY" value="1" />
+                    </target>
+                </mapping_item>
+                <mapping_item id="I" type="Shape">
+                    <target>
+                        <item name="ParamMouthForm" value="1" />
+                        <item name="ParamMouthOpenY" value="0.4" />
+                    </target>
+                </mapping_item>
+                <mapping_item id="U" type="Shape">
+                    <target>
+                        <item name="ParamMouthForm" value="-1" />
+                        <item name="ParamMouthOpenY" value="0.4" />
+                    </target>
+                </mapping_item>
+                <mapping_item id="E" type="Shape">
+                    <target>
+                        <item name="ParamMouthForm" value="1" />
+                        <item name="ParamMouthOpenY" value="0.7" />
+                    </target>
+                </mapping_item>
+
+                <mapping_item id="O" type="Shape">
+                    <target>
+                        <item name="ParamMouthForm" value="-1" />
+                        <item name="ParamMouthOpenY" value="1" />
+                    </target>
+                </mapping_item>
+            </mapping_list>
+        </mapping>
+    </preset>
+    <preset id="CRI_LIP_SYNC_DEFAULT_2" tr_name="母音のみ(ブレンドシェイプ)" name="##CUB3-3639">
+        <mapping type="CRI">
+            <cubism_params number="6">
+                <param id="ParamMouthOpenY" tr_name="口　開閉" name="##CUBI-1231">
+                    <item name="min" value="0.0" />
+                    <item name="max" value="1.0" />
+                    <item name="damper" value="0.0" />
+                    <item name="smooth" value="25" />
+                </param>
+                <param id="ParamA" name="A">
+                    <item name="min" value="0.0" />
+                    <item name="max" value="1.0" />
+                    <item name="damper" value="0.0" />
+                    <item name="smooth" value="25" />
+                </param>
+                <param id="ParamI" name="I">
+                    <item name="min" value="0.0" />
+                    <item name="max" value="1.0" />
+                    <item name="damper" value="0.0" />
+                    <item name="smooth" value="25" />
+                </param>
+                <param id="ParamU" name="U">
+                    <item name="min" value="0.0" />
+                    <item name="max" value="1.0" />
+                    <item name="damper" value="0.0" />
+                    <item name="smooth" value="25" />
+                </param>
+                <param id="ParamE" name="E">
+                    <item name="min" value="0.0" />
+                    <item name="max" value="1.0" />
+                    <item name="damper" value="0.0" />
+                    <item name="smooth" value="25" />
+                </param>
+                <param id="ParamO" name="O">
+                    <item name="min" value="0.0" />
+                    <item name="max" value="1.0" />
+                    <item name="damper" value="0.0" />
+                    <item name="smooth" value="25" />
+                </param>
+            </cubism_params>
+            <audio_params number="6">
+                <param id="Silence" name="Silence">
+                    <item name="min" value="0.0" />
+                    <item name="max" value="1.0" />
+                    <item name="scale" value="1.0" />
+                    <item name="enabled" value="true" />
+                </param>
+                <param id="A" name="A">
+                    <item name="min" value="0.0" />
+                    <item name="max" value="1.0" />
+                    <item name="scale" value="0.3" />
+                    <item name="enabled" value="true" />
+                </param>
+                <param id="I" name="I">
+                    <item name="min" value="0.0" />
+                    <item name="max" value="1.0" />
+                    <item name="scale" value="1.0" />
+                    <item name="enabled" value="true" />
+                </param>
+                <param id="U" name="U">
+                    <item name="min" value="0.0" />
+                    <item name="max" value="1.0" />
+                    <item name="scale" value="1.5" />
+                    <item name="enabled" value="true" />
+                </param>
+                <param id="E" name="E">
+                    <item name="min" value="0.0" />
+                    <item name="max" value="1.0" />
+                    <item name="scale" value="6.0" />
+                    <item name="enabled" value="true" />
+                </param>
+                <param id="O" name="O">
+                    <item name="min" value="0.0" />
+                    <item name="max" value="1.0" />
+                    <item name="scale" value="8.0" />
+                    <item name="enabled" value="true" />
+                </param>
+            </audio_params>
+            <mapping_list number="6">
+                <mapping_item id="Silence" type="Shape">
+                    <target>
+                        <item name="ParamMouthOpenY" value="0" />
+                        <item name="ParamA" value="0" />
+                        <item name="ParamI" value="0" />
+                        <item name="ParamU" value="0" />
+                        <item name="ParamE" value="0" />
+                        <item name="ParamO" value="0" />
+                    </target>
+                </mapping_item>
+                <mapping_item id="A" type="Shape">
+                    <target>
+                        <item name="ParamMouthOpenY" value="1" />
+                        <item name="ParamA" value="1" />
+                        <item name="ParamI" value="0" />
+                        <item name="ParamU" value="0" />
+                        <item name="ParamE" value="0" />
+                        <item name="ParamO" value="0" />
+                    </target>
+                </mapping_item>
+                <mapping_item id="I" type="Shape">
+                    <target>
+                        <item name="ParamMouthOpenY" value="1" />
+                        <item name="ParamA" value="0" />
+                        <item name="ParamI" value="1" />
+                        <item name="ParamU" value="0" />
+                        <item name="ParamE" value="0" />
+                        <item name="ParamO" value="0" />
+                    </target>
+                </mapping_item>
+                <mapping_item id="U" type="Shape">
+                    <target>
+                        <item name="ParamMouthOpenY" value="1" />
+                        <item name="ParamA" value="0" />
+                        <item name="ParamI" value="0" />
+                        <item name="ParamU" value="1" />
+                        <item name="ParamE" value="0" />
+                        <item name="ParamO" value="0" />
+                    </target>
+                </mapping_item>
+                <mapping_item id="E" type="Shape">
+                    <target>
+                        <item name="ParamMouthOpenY" value="1" />
+                        <item name="ParamA" value="0" />
+                        <item name="ParamI" value="0" />
+                        <item name="ParamU" value="0" />
+                        <item name="ParamE" value="1" />
+                        <item name="ParamO" value="0" />
+                    </target>
+                </mapping_item>
+                <mapping_item id="O" type="Shape">
+                    <target>
+                        <item name="ParamMouthOpenY" value="1" />
+                        <item name="ParamA" value="0" />
+                        <item name="ParamI" value="0" />
+                        <item name="ParamU" value="0" />
+                        <item name="ParamE" value="0" />
+                        <item name="ParamO" value="1" />
+                    </target>
+                </mapping_item>
+            </mapping_list>
+        </mapping>
+    </preset>
+</motion_sync>
+

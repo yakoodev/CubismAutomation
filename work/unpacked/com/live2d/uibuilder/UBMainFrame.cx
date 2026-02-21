@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import com.live2d.type.CFont?>
+<?import com.live2d.type.CInsets?>
+<?import com.live2d.ui.container.CBorderPane?>
+<?import com.live2d.ui.container.CHBox?>
+<?import com.live2d.ui.container.CSpacer?>
+<?import com.live2d.ui.container.CSplitPane?>
+<?import com.live2d.ui.container.CVBox?>
+<?import com.live2d.ui.control.CButton?>
+<?import com.live2d.ui.control.CLabel?>
+<?import com.live2d.ui.menu.CMenu?>
+<?import com.live2d.ui.menu.CMenuBar?>
+<?import com.live2d.ui.menu.CMenuItem?>
+<?import com.live2d.ui.window.CFrame?>
+<CFrame xmlns="http://live2d.com/cxui/1.0" xmlns:cx="http://live2d.com/cx/1.0" title="UI Builder" width="1200" height="900" defaultCloseOperation="EXIT_ON_CLOSE">
+	<menuBar>
+		<CMenuBar>
+			<menus>
+				<CMenu text="File">
+					<items>
+						<CMenuItem text="Hello!" actionCommand="CMD_HELLO" shortcut="Ctrl+H" cx:id="menuHello" />
+						<CMenuItem text="New" actionCommand="CMD_NEW" shortcut="Ctrl+N" />
+						<CMenuItem text="Open" actionCommand="CMD_OPEN" shortcut="Ctrl+O" />
+						<CMenu text="Open Recent">
+							<items />
+						</CMenu>
+						<CMenuItem text="Save" actionCommand="CMD_SAVE" shortcut="Ctrl+S" />
+						<CMenuItem text="Save As" actionCommand="CMD_SAVE_AS" shortcut="Ctrl+Shift+S" />
+						<CMenuItem text="Revert" />
+						<CMenuItem text="Preferences" />
+						<CMenuItem text="Close" />
+						<CMenuItem text="Exit" actionCommand="CMD_EXIT" shortcut="Alt+F4" />
+					</items>
+				</CMenu>
+				<CMenu text="Edit">
+					<items>
+						<CMenuItem text="Undo" />
+						<CMenuItem text="Redo" />
+						<CMenuItem text="Cut" />
+						<CMenuItem text="Copy" />
+						<CMenuItem text="Paste" />
+						<CMenuItem text="Delete" actionCommand="CMD_DELETE" shortcut="Delete" />
+						<CMenuItem text="Select All" />
+						<CMenuItem text="Unselect All" />
+					</items>
+				</CMenu>
+				<CMenu text="Insert" cx:id="menuInsert">
+					<items />
+				</CMenu>
+				<CMenu text="WrapIn" cx:id="menuWrapIn">
+					<items />
+				</CMenu>
+				<CMenu text="#Debug#" cx:id="menuDebug">
+					<items>
+						<CMenuItem text="Update Document" actionCommand="CMD_DEBUG_UPDATE_DOCUMENT" />
+					</items>
+				</CMenu>
+				<CMenu text="Help">
+					<items>
+						<CMenuItem text="About MyHelloApp" actionCommand="CMD_ABOUT" />
+					</items>
+				</CMenu>
+			</menus>
+		</CMenuBar>
+	</menuBar>
+	<contentPane>
+		<CVBox prefHeight="600" prefWidth="900">
+			<children>
+				<CSplitPane dividerPositions="0.25, 0.75" prefHeight="-1" prefWidth="-1" CVBox.vgrow="ALWAYS">
+					<children>
+						<CSplitPane dividerPositions="0.5" orientation="VERTICAL" prefHeight="200" prefWidth="160">
+							<children>
+								<CBorderPane cx:id="libraryPane" />
+								<CBorderPane cx:id="hierarchyPane" />
+							</children>
+						</CSplitPane>
+						<CBorderPane cx:id="mainCanvas" prefHeight="-1" prefWidth="-1" />
+						<CBorderPane cx:id="inspectorPane" />
+					</children>
+				</CSplitPane>
+				<CHBox spacing="5" CVBox.vgrow="NEVER">
+					<padding>
+						<CInsets top="3" left="3" bottom="3" right="3" />
+					</padding>
+					<children>
+						<CLabel maxHeight="2147483647" maxWidth="-1" text="Left status" CHBox.hgrow="ALWAYS" textColor="#9F9F9F">
+							<font>
+								<CFont name="MS Gothic" size="12.0" />
+							</font>
+						</CLabel>
+						<CSpacer prefHeight="-1" prefWidth="-1" CHBox.hgrow="ALWAYS" />
+						<CLabel maxWidth="-1" text="Right status" textColor="#9F9F9F" CHBox.hgrow="NEVER">
+							<font>
+								<CFont name="MS Gothic" size="12.0" />
+							</font>
+						</CLabel>
+						<CButton text="ABC" />
+						<CSpacer prefWidth="365" />
+						<CButton selected="false" text="Hello" />
+						<CButton text="Button4" textColor="#FF00FF" />
+					</children>
+				</CHBox>
+			</children>
+		</CVBox>
+	</contentPane>
+</CFrame>
+

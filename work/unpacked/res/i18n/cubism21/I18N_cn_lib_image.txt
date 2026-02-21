@@ -1,0 +1,187 @@
+IMAG-0000=Sample Frame
+IMAG-0001=Image
+IMAG-0002=Graph
+IMAG-0003=Loupe
+IMAG-0004=3D Histogram
+IMAG-0005=3D Histogram HSL
+IMAG-0006=Console
+IMAG-0007=Angle Statistics Viewer
+IMAG-0008=Information
+IMAG-0009=Only BufferedImage with int arrays are supported
+IMAG-0010=int Array Viewer
+IMAG-0011=C:/Documents and Settings/nakajo/Desktop/file.png
+IMAG-0012=Types other than INT_ARGB are "Not Implemented".
+IMAG-0013=The type of the filter output image is not appropriate.
+IMAG-0014=Filter to be cleaned up :
+IMAG-0015=C:/Documents and Settings/nakajo/Desktop/filexx.png
+IMAG-0016=Build
+IMAG-0017=Main
+IMAG-0018=Edit
+IMAG-0019=RGB Histogram
+IMAG-0020=HSL2 Histogram
+IMAG-0021=HSL Mode
+IMAG-0022=Original Image
+IMAG-0023=Results of Processing
+IMAG-0024=Incorrect Value
+#「×」2バイトでよろしいでしょうか
+IMAG-0025=\n×not connect!
+#「◎」2バイトでよろしいでしょうか
+IMAG-0026=\n◎connected! : 
+#2バイトでよろしいでしょうか
+IMAG-0027=■
+#2バイトでよろしいでしょうか
+IMAG-0028=・
+IMAG-0029=s
+IMAG-0030=e
+#2バイトでよろしいでしょうか
+IMAG-0031=×
+#2バイトでよろしいでしょうか
+IMAG-0032=○
+#2バイトでよろしいでしょうか
+IMAG-0033=●
+#2バイトでよろしいでしょうか
+IMAG-0034=－
+#2バイトでよろしいでしょうか
+IMAG-0035=？
+IMAG-0036=Infinite Loop
+IMAG-0037=TODO : Attempted to register redundantly using an unsupported type :
+#SKIP
+IMAG-0038= Not Implemented  : In preparation
+IMAG-0039=Smoothing fine was skipped because there were too many pixels.
+IMAG-0040=Strange Direction 
+IMAG-0041=Not likely to appear
+IMAG-0042=Illegal State : Same connection on both sides (length 2 closed loop) :
+IMAG-0043=Are you using Illegal State : ScalingUtil.isEdge() for comparison? :
+IMAG-0044=This boundary is a dummy
+IMAG-0045=Failed to delete : 
+IMAG-0046=Open an image
+IMAG-0047=Save an image
+IMAG-0048=Exit
+IMAG-0049=Open collection of sample images.
+IMAG-0050=Open the home page
+IMAG-0051=Open the Help
+IMAG-0052=2-window display (original image and converted image)
+IMAG-0053=File
+IMAG-0054=Show
+IMAG-0055=Help
+IMAG-0056=Failed to load due to insufficient memory.
+#___は変数が入ると想定される場所です、ご確認ください
+IMAG-0057=Allow Internet connection from ___? \n\n
+IMAG-0058=The internet is used for the following purposes. \n\n
+IMAG-0059=- Check for the latest version \n
+IMAG-0060=- Acquire collections of sample images \n
+IMAG-0061=- Display banners \n
+IMAG-0062=\nNote: (No customer information is transmitted.)
+IMAG-0063=JPEG format (.jpg)
+IMAG-0064=PNG format (.png)
+IMAG-0065=GIF format (.gif)
+IMAG-0066=BMP format (.bmp)
+IMAG-0067=Currently Save feature is not available\n\nError code : 401
+IMAG-0068=Currently Save feature is not available\n\nError code : 402
+IMAG-0069=License verification failed.\n\n Error code : 404
+IMAG-0070=Currently Save feature is not available\n\nError code : 403
+IMAG-0071=Currently Save feature is not available\n\nError code : 410
+IMAG-0072=Currently Save feature is not available\n\nError code : 411
+IMAG-0073=Could not generate the new code
+IMAG-0074=■■■■　DEBUG MODE ■■■■
+IMAG-0075=Verify
+IMAG-0076= Not Implemented event 
+IMAG-0077=Untitled.jpg
+IMAG-0078=The specified format is not supported
+IMAG-0079=The specified file already exists\n\n
+IMAG-0080=\n\nDo you want to overwrite?
+IMAG-0081=Questions
+IMAG-0082=Save
+IMAG-0083=Failed to export image due to insufficient memory\n\nTry again with a smaller data size.
+IMAG-0084=Failed to output due to an error.
+IMAG-0085=Sorry, but this version is not available any more.
+IMAG-0086=Sorry, but this file format is not supported\n\n
+IMAG-0087=Sorry, but an error occurred during loading image. \n\n
+#「×」2バイトでよろしいでしょうか
+IMAG-0088=The image size is too large, ( %d × %d ) so there are possibilities that \n\n
+#次の2行の「•」はこのままでいいでしょうか
+IMAG-0089=• Processing will take a very long time. \n
+IMAG-0090=• Processing will fail due to insufficient memory. \n\n
+IMAG-0091=etc. Continue anyway? (This will be fixed in the release version.)
+IMAG-0092=Error : 
+IMAG-0093=--- Completed Successfully [
+IMAG-0094=Delete the old data
+IMAG-0095=Converting...
+IMAG-0096=Sorry, but conversion failed.
+IMAG-0097=Sorry, but conversion failed due to insufficient memory.
+IMAG-0098=Cancel the setup
+IMAG-0099=Interrupt the setup
+IMAG-0100=Sample Image
+IMAG-0101=Obtain from the internet
+IMAG-0102=Sample Collection 2
+IMAG-0103=Sample
+IMAG-0104=Save Settings
+IMAG-0105=Number of Pixels
+IMAG-0106=Magnification
+IMAG-0107=Width
+IMAG-0108=Height
+IMAG-0109=Capacity prior to compression
+#「※」2バイトでよろしいでしょうか。また、次の2行は間に容量を示す数字が入るものとして訳付けしてあります
+IMAG-0110=Note: Pre-compressed size
+IMAG-0111=MB (Size before compression) can be saved.
+IMAG-0112=JPEG Compression
+IMAG-0113=Compression Quality
+IMAG-0114=[0: Lowest quality / 100: Highest quality]
+IMAG-0115=[ Original Size 
+#2バイトでよろしいでしょうか
+IMAG-0116=×
+IMAG-0117= % [Max]
+IMAG-0118=The data size is incorrect
+IMAG-0119=The image size is incorrect
+IMAG-0120=Compression quality value is invalid.
+IMAG-0121=Email
+IMAG-0122=Generated Code
+IMAG-0123= Original Image 
+IMAG-0124=Converted Image
+IMAG-0125=Apply bicubic interpolation to original image.
+IMAG-0126=Display Magnification
+IMAG-0127=Address 
+IMAG-0128=Zoom In / Zoom out
+#2バイトでよろしいでしょうか
+IMAG-0129=←
+#2バイトでよろしいでしょうか
+IMAG-0130=↓
+#2バイトでよろしいでしょうか
+IMAG-0131=→
+#2バイトでよろしいでしょうか
+IMAG-0132=↑
+IMAG-0133=Cannot be called with an Open line.
+IMAG-0134=The direction cannot be determined with a length of 1 (2 including itself). \n Use "isLineLenOver()" to check if the length in the designated direction is sufficient beforehand.
+IMAG-0135=A length of 3 or more is needed to view the smooth level.
+IMAG-0136= Length 
+IMAG-0137=Strange State
+IMAG-0138=The next connection is in an illegal state.
+IMAG-0139=dst image : 
+IMAG-0140= \t Coordinates on original image (
+IMAG-0141=SRC image
+IMAG-0142=DST image
+IMAG-0143=Pre-processing
+IMAG-0144=The start and end coordinates are identical.
+IMAG-0145=Strange!!!
+IMAG-0146=Illegal State (2 discrete points?)
+IMAG-0147=Illegal State2
+IMAG-0148=Uncorrected
+IMAG-0149=Overlapping drawing Not Implemented excluding PixDraw_edage3P!!
+IMAG-0150=Strange Designation :
+IMAG-0151=Overlapping drawing Not Implemented excluding PixDraw_edge3P+PixDraw_edgeEnd.
+IMAG-0152=Drawing of overlapping boundary lines that are crossing is not supported. \n  jp.noids.image.scaling.pixDraw.PixDraw_edgeMulti#PixDraw_edgeMulti( ) 
+IMAG-0153=This operation is not recommended. Four-point designation is impossible : \n     jp.noids.image.scaling.pixDraw.PixDraw_notEdgeFlat#setCornerColor( )
+IMAG-0154=Supposed not to come.
+IMAG-0155=Strange Ratio :
+IMAG-0156=Color Distance :
+IMAG-0157=Edge Information
+IMAG-0158=Edge Generation Process :
+IMAG-0159=Create the edge data :
+IMAG-0160=Drawing
+IMAG-0161=The range is incorrect (x,y) = 
+IMAG-0162=-- Not selected --
+IMAG-0163=Size of area outside image is specified :
+IMAG-0164=    Image Size ( 
+IMAG-0165=    Specified Pixel   ( 
+IMAG-0166=Interior division C1 and C2 are the same, so interior division value could not be retrieved. \n Use "isAvailable()" to check if interior division is available beforehand.
+IMAG-0167=0 divide
