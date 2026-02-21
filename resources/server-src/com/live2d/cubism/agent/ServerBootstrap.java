@@ -53,6 +53,7 @@ public final class ServerBootstrap {
     try {
       String host = envOrDefault("CUBISM_AGENT_HOST", "127.0.0.1");
       int port = parsePort(envOrDefault("CUBISM_AGENT_PORT", "18080"), 18080);
+      CubismJobRunner.initialize();
       HttpServer created = HttpServer.create(new InetSocketAddress(host, port), 0);
       created.createContext("/hello", ex -> writeText(ex, 200, "hello world\n"));
       created.createContext("/health", ex -> writeText(ex, 200, "ok\n"));

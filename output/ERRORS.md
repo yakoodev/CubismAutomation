@@ -18,6 +18,7 @@ This document describes stable error codes returned by the Cubism agent API.
 - `job_cannot_cancel`: Job is already terminal and cannot be canceled.
 - `invalid_action`: Unknown job action.
 - `timeout_exceeded`: Job exceeded timeout budget.
+- `recovered_interrupted`: Job was `queued/running` before restart and reconciled to `failed` on recovery.
 
 ## Runtime/Document Codes
 - `no_document`: No active document in Cubism.

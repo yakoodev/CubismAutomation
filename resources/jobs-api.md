@@ -26,6 +26,16 @@ Base URL: `http://127.0.0.1:18080`
 - `sleep` with `sleep_ms`
 - `project_open` (reuses `POST /project/open` payload schema)
 
+## Persistence and recovery
+- Jobs are persisted to disk (default path: `temp/jobs-store.tsv`).
+- Configurable Java system properties:
+  - `-Dcubism.agent.jobs.store=<path>`: override snapshot path.
+  - `-Dcubism.agent.jobs.ttl.ms=<milliseconds>`: TTL for terminal jobs (default `86400000`).
+  - `-Dcubism.agent.jobs.max=<count>`: max kept jobs after cleanup (default `2000`).
+- On startup, saved jobs are loaded.
+  - `queued`/`running` jobs are reconciled to `failed` with error `recovered_interrupted`.
+  - Idempotency mapping (`Idempotency-Key`) is restored from snapshot.
+
 ## Request examples
 ```json
 {"action":"noop"}
@@ -42,4 +52,8 @@ Base URL: `http://127.0.0.1:18080`
 ## Validation script
 ```powershell
 powershell -ExecutionPolicy Bypass -File scripts/32_smoke_jobs_api.ps1
+```
+
+```powershell
+powershell -ExecutionPolicy Bypass -File scripts/33_smoke_jobs_recovery.ps1
 ```
