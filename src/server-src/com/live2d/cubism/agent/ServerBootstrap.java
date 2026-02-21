@@ -52,6 +52,9 @@ public final class ServerBootstrap {
       created.createContext("/state/document", ServerBootstrap::handleStateDocument);
       created.createContext("/state/selection", ServerBootstrap::handleStateSelection);
       created.createContext("/state/ui", ServerBootstrap::handleStateUi);
+      created.createContext("/parameters", ServerBootstrap::handleParametersList);
+      created.createContext("/parameters/state", ServerBootstrap::handleParametersState);
+      created.createContext("/parameters/set", ServerBootstrap::handleParametersSet);
       created.createContext("/mesh/list", ServerBootstrap::handleMeshList);
       created.createContext("/mesh/active", ServerBootstrap::handleMeshActive);
       created.createContext("/mesh/state", ServerBootstrap::handleMeshState);
@@ -186,6 +189,44 @@ public final class ServerBootstrap {
       return;
     }
     writeJson(exchange, 200, CubismStateAdapter.stateUiJson());
+  }
+
+  private static void handleParametersList(HttpExchange exchange) throws IOException {
+    if (!"GET".equalsIgnoreCase(exchange.getRequestMethod())) {
+      writeJson(exchange, 405, "{\"ok\":false,\"error\":\"method_not_allowed\"}\n");
+      return;
+    }
+    if (!ensureAuthorized(exchange)) {
+      return;
+    }
+    CubismParameterAdapter.ApiResponse response = CubismParameterAdapter.parametersList();
+    writeJson(exchange, response.status(), response.json());
+  }
+
+  private static void handleParametersState(HttpExchange exchange) throws IOException {
+    if (!"GET".equalsIgnoreCase(exchange.getRequestMethod())) {
+      writeJson(exchange, 405, "{\"ok\":false,\"error\":\"method_not_allowed\"}\n");
+      return;
+    }
+    if (!ensureAuthorized(exchange)) {
+      return;
+    }
+    CubismParameterAdapter.ApiResponse response = CubismParameterAdapter.parametersState();
+    writeJson(exchange, response.status(), response.json());
+  }
+
+  private static void handleParametersSet(HttpExchange exchange) throws IOException {
+    if (!"POST".equalsIgnoreCase(exchange.getRequestMethod())) {
+      writeJson(exchange, 405, "{\"ok\":false,\"error\":\"method_not_allowed\"}\n");
+      return;
+    }
+    if (!ensureAuthorized(exchange)) {
+      return;
+    }
+    String body = readBody(exchange.getRequestBody());
+    exchange.setAttribute("requestBody", body);
+    CubismParameterAdapter.ApiResponse response = CubismParameterAdapter.parametersSet(body);
+    writeJson(exchange, response.status(), response.json());
   }
 
   private static void handleStartupPrepare(HttpExchange exchange) throws IOException {

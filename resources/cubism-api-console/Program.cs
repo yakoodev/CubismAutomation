@@ -345,6 +345,24 @@ record ApiCatalog(List<ApiGroup> Groups)
                 new ApiAction("POST /mesh/auto_generate (dry-run)", "POST", "/mesh/auto_generate", """{"mesh_id":"ArtMesh78","validate_only":true}"""),
                 new ApiAction("POST /mesh/auto_generate (execute)", "POST", "/mesh/auto_generate", """{"mesh_id":"ArtMesh78","validate_only":false}"""),
                 new ApiAction("GET /mesh/screenshot", "GET", "/mesh/screenshot?mesh_id=ArtMesh78")
+            ]),
+            new ApiGroup("parameters", "Parameter API", [
+                new ApiAction("GET /parameters", "GET", "/parameters"),
+                new ApiAction("GET /parameters/state", "GET", "/parameters/state"),
+                new ApiAction("POST /parameters/set", "POST", "/parameters/set", """{"id":"ParamAngleX","value":10.0}"""),
+                new ApiAction(
+                    "POST /parameters/set (batch)",
+                    "POST",
+                    "/parameters/set",
+                    """
+                    {
+                      "updates": [
+                        {"id":"ParamAngleX","value":5.0},
+                        {"id":"ParamAngleY","value":-5.0}
+                      ]
+                    }
+                    """
+                )
             ])
         ]);
     }
