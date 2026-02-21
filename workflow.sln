@@ -2,27 +2,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.2.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "resources", "resources", "{7F74F24B-7313-8368-FB46-4872DBD77787}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tools", "tools", "{07C2787E-EAC7-C090-1BA3-A61EC2A24D84}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "work", "work", "{169F9964-4321-BFA7-3D0F-CC406FE73C48}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "cubism-api-console", "cubism-api-console", "{9F243315-D0C2-DDE3-58FB-8EF81B895093}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CubismApiConsole", "resources\cubism-api-console\CubismApiConsole.csproj", "{112AE5EE-8FBE-5ECF-09FF-27C8B774A930}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "cubism-api-console", "cubism-api-console", "{E6D97EA7-CB72-903C-A43B-DB4EB7E6D55D}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CubismApiConsole", "tools\cubism-api-console\CubismApiConsole.csproj", "{5CBABFDA-E32E-EC1F-4F82-09C3B4321CAA}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CubismAutomation_repo", "CubismAutomation_repo", "{A0A06C7C-6144-13EB-7985-BC161DE032AC}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tools", "tools", "{BB751783-FAF5-7EA8-48A6-FD4F3237CAAA}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "cubism-api-console", "cubism-api-console", "{56AF1886-E4C2-0756-E835-8F436D0D1400}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CubismApiConsole", "work\CubismAutomation_repo\tools\cubism-api-console\CubismApiConsole.csproj", "{F5C002FD-6524-6738-A427-66C7AD7CC72B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -30,31 +10,13 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{112AE5EE-8FBE-5ECF-09FF-27C8B774A930}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{112AE5EE-8FBE-5ECF-09FF-27C8B774A930}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{112AE5EE-8FBE-5ECF-09FF-27C8B774A930}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{112AE5EE-8FBE-5ECF-09FF-27C8B774A930}.Release|Any CPU.Build.0 = Release|Any CPU
 		{5CBABFDA-E32E-EC1F-4F82-09C3B4321CAA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{5CBABFDA-E32E-EC1F-4F82-09C3B4321CAA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5CBABFDA-E32E-EC1F-4F82-09C3B4321CAA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5CBABFDA-E32E-EC1F-4F82-09C3B4321CAA}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F5C002FD-6524-6738-A427-66C7AD7CC72B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F5C002FD-6524-6738-A427-66C7AD7CC72B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F5C002FD-6524-6738-A427-66C7AD7CC72B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F5C002FD-6524-6738-A427-66C7AD7CC72B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{9F243315-D0C2-DDE3-58FB-8EF81B895093} = {7F74F24B-7313-8368-FB46-4872DBD77787}
-		{112AE5EE-8FBE-5ECF-09FF-27C8B774A930} = {9F243315-D0C2-DDE3-58FB-8EF81B895093}
-		{E6D97EA7-CB72-903C-A43B-DB4EB7E6D55D} = {07C2787E-EAC7-C090-1BA3-A61EC2A24D84}
-		{5CBABFDA-E32E-EC1F-4F82-09C3B4321CAA} = {E6D97EA7-CB72-903C-A43B-DB4EB7E6D55D}
-		{A0A06C7C-6144-13EB-7985-BC161DE032AC} = {169F9964-4321-BFA7-3D0F-CC406FE73C48}
-		{BB751783-FAF5-7EA8-48A6-FD4F3237CAAA} = {A0A06C7C-6144-13EB-7985-BC161DE032AC}
-		{56AF1886-E4C2-0756-E835-8F436D0D1400} = {BB751783-FAF5-7EA8-48A6-FD4F3237CAAA}
-		{F5C002FD-6524-6738-A427-66C7AD7CC72B} = {56AF1886-E4C2-0756-E835-8F436D0D1400}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {5C215EF4-1B5D-4190-94D5-F5D57BF5111C}

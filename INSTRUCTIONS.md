@@ -19,3 +19,8 @@
 - Есть проверяемый результат (команда/тест).
 - Обновлён `output/patch.log`.
 - Если это влияет на pipeline — обновлён `PIPELINE.md`.
+
+## Актуальные локальные пути
+- Cubism runtime dir: `C:\Users\Yakoo\source\Live2D Cubism 5.3`
+- Cubism editor exe: `C:\Users\Yakoo\source\Live2D Cubism 5.3\CubismEditor5.exe`
+- Тестовая модель для API/mesh: `C:\Users\Yakoo\Downloads\vt\hibiki`

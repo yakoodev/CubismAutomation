@@ -1,14 +1,14 @@
-﻿== Inspect: C:\Users\Yakoo\source\sandbox\cubism-jar-agent-env\output\workflow\input\Live2D_Cubism.jar ==
+﻿== Inspect: C:\Users\Yakoo\source\sandbox cubism\input\Live2D_Cubism.jar ==
 
 7-Zip 25.00 (x64) : Copyright (c) 1999-2025 Igor Pavlov : 2025-07-05
 
 Scanning the drive for archives:
 1 file, 41859315 bytes (40 MiB)
 
-Listing archive: C:\Users\Yakoo\source\sandbox\cubism-jar-agent-env\output\workflow\input\Live2D_Cubism.jar
+Listing archive: C:\Users\Yakoo\source\sandbox cubism\input\Live2D_Cubism.jar
 
 --
-Path = C:\Users\Yakoo\source\sandbox\cubism-jar-agent-env\output\workflow\input\Live2D_Cubism.jar
+Path = C:\Users\Yakoo\source\sandbox cubism\input\Live2D_Cubism.jar
 Type = zip
 Physical Size = 41859315
 
@@ -332,10 +332,10 @@ Name: com/live2d/cubism/view/palette/timeline/insidePanel/graphEditor/q.
 Scanning the drive for archives:
 1 file, 41859315 bytes (40 MiB)
 
-Listing archive: C:\Users\Yakoo\source\sandbox\cubism-jar-agent-env\output\workflow\input\Live2D_Cubism.jar
+Listing archive: C:\Users\Yakoo\source\sandbox cubism\input\Live2D_Cubism.jar
 
 --
-Path = C:\Users\Yakoo\source\sandbox\cubism-jar-agent-env\output\workflow\input\Live2D_Cubism.jar
+Path = C:\Users\Yakoo\source\sandbox cubism\input\Live2D_Cubism.jar
 Type = zip
 Physical Size = 41859315
 

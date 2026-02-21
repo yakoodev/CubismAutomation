@@ -6,6 +6,9 @@ Automation stack for Live2D Cubism:
 - release scripts (build/verify/install/rollback),
 - optional C# web console for manual API testing.
 
+Repository root (current):
+- `C:\Users\Yakoo\source\sandbox cubism`
+
 ## Quick Start
 1. Build release:
 ```powershell
@@ -24,6 +27,9 @@ powershell -ExecutionPolicy Bypass -File scripts/82_install_server_jar.ps1 -Rele
 - Version: `/version`
 - Commands: `/command`
 - State: `/state`, `/state/project`, `/state/document`, `/state/selection`
+- Mesh (read): `GET /mesh/list`, `GET /mesh/active`, `GET /mesh/state`
+- Mesh (write): `POST /mesh/select`, `POST /mesh/rename`, `POST /mesh/visibility`, `POST /mesh/lock`
+- Mesh edit ops: `POST /mesh/ops` (`validate_only=true|false`)
 - Startup automation: `POST /startup/prepare`
 
 `/startup/prepare` flow (current):
@@ -41,6 +47,10 @@ powershell -ExecutionPolicy Bypass -File scripts/82_install_server_jar.ps1 -Rele
 Default auth mode: `off`.
 Set `CUBISM_AGENT_AUTH_MODE=required` and `CUBISM_AGENT_TOKEN=...` to enable token auth.
 
+API logging:
+- Server writes per-request API logs to `CUBISM_AGENT_LOG_FILE`.
+- Default server log file: `%USERPROFILE%\\cubism-agent-api.log`.
+
 ## Manual UI (C#)
 ```powershell
 cd tools/cubism-api-console
@@ -54,6 +64,7 @@ Open:
 - `ENVIRONMENT.md`
 - `HOW_IT_WORKS.md`
 - `RELEASE_PLAYBOOK.md`
-- `output/api-mvp.md`
-- `output/state-read-api.md`
-- `output/security-config.md`
+- `docs/api-mvp.md`
+- `docs/state-read-api.md`
+- `docs/security-config.md`
+- `docs/mesh-api.md`

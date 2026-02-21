@@ -28,3 +28,8 @@ powershell -ExecutionPolicy Bypass -File scripts/12_unpack_and_unsign.ps1 -JarPa
 
 ## Критичный practical note
 Для этого JAR нельзя полагаться на full-repack после полного `7z x` на Windows: возможна потеря части файлов из-за path constraints. Поэтому production-путь: только in-place jar update.
+
+## Актуальные runtime пути (локальная среда)
+- Cubism dir: `C:\Users\Yakoo\source\Live2D Cubism 5.3`
+- Cubism exe: `C:\Users\Yakoo\source\Live2D Cubism 5.3\CubismEditor5.exe`
+- Интеграционная модель для API/mesh тестов: `C:\Users\Yakoo\Downloads\vt\hibiki`

@@ -1,6 +1,6 @@
 param(
   [Parameter(Mandatory=$true)][string]$ReleaseDir,
-  [string]$CubismDir = "C:\Program Files\Live2D Cubism 5.3",
+  [string]$CubismDir = "C:\Users\Yakoo\source\Live2D Cubism 5.3",
   [switch]$NoBackup
 )
 

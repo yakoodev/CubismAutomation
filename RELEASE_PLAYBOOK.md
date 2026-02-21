@@ -26,9 +26,9 @@ powershell -ExecutionPolicy Bypass -File scripts/82_install_server_jar.ps1 -Rele
 ```
 
 This script updates only:
-- `C:\Program Files\Live2D Cubism 5.3\cubism-agent-server.jar`
+- `C:\Users\Yakoo\source\Live2D Cubism 5.3\cubism-agent-server.jar`
 and creates backup in:
-- `C:\Program Files\Live2D Cubism 5.3\agent-backups\`
+- `C:\Users\Yakoo\source\Live2D Cubism 5.3\agent-backups\`
 
 ## Rollback
 Latest backup:
@@ -38,5 +38,8 @@ powershell -ExecutionPolicy Bypass -File scripts/83_rollback_server_jar.ps1
 
 Specific backup:
 ```powershell
-powershell -ExecutionPolicy Bypass -File scripts/83_rollback_server_jar.ps1 -BackupFile "C:\Program Files\Live2D Cubism 5.3\agent-backups\cubism-agent-server.20260219-163000.jar"
+powershell -ExecutionPolicy Bypass -File scripts/83_rollback_server_jar.ps1 -BackupFile "C:\Users\Yakoo\source\Live2D Cubism 5.3\agent-backups\cubism-agent-server.20260219-163000.jar"
 ```
+
+## Validation model
+- Default model for release verification: `C:\Users\Yakoo\Downloads\vt\hibiki`

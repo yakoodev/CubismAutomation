@@ -1,37 +1,39 @@
 ﻿# Cubism API Console
 
-Минимальный C# web UI для ручной проверки Cubism Agent API.
+Minimal C# web UI for manual Cubism Agent API checks.
 
-## Запуск
+## Run
 ```powershell
 cd tools/cubism-api-console
 dotnet run -c Release
 ```
 
-UI доступен на:
+UI URL:
 - `http://127.0.0.1:51888`
 
-## Конфиг
+## Config
 `appsettings.json`:
-- `CubismApi.BaseUrl` - адрес Cubism Agent API
-- `CubismApi.Token` - дефолтный Bearer token (опционально)
+- `CubismApi.BaseUrl` - Cubism Agent API base URL
+- `CubismApi.Token` - default Bearer token (optional)
+- `CubismApi.LogFilePath` - path for persisted request/response logs (default: `logs/api-calls.log`)
 
-## Что можно проверить
-- `GET /health`, `/version`, `/state*`
-- `POST /startup/prepare` (task 090)
-- команды (`zoom_in`, `undo`, и т.д.)
-- кастомный POST payload к любому path
-- token override прямо в UI (без перезапуска)
+## API Call Logs
+- Every `/api/call` request is saved with `call_id`, request payload and response payload.
+- Default file: `tools/cubism-api-console/logs/api-calls.log`
+- `call_id` is returned by `/api/call` so you can reference exact failing mesh calls.
 
-## `/startup/prepare` (актуальное поведение)
-Рекомендуемый payload:
-```json
-{"license_mode":"free","create_new_model":true,"wait_timeout_ms":30000}
-```
+## Included Presets
+- State/health endpoints
+- Startup flow endpoint
+- Command shortcuts
+- Mesh read endpoints
+- Mesh write endpoints
+- Mesh edit operations (`/mesh/ops`, dry-run and execute)
 
-Что делает агент:
-1. выбирает лицензию (`free` или `pro`);
-2. закрывает пост-лицензионное окно (`OK`/`Continue`, если есть);
-3. закрывает окно `Home` (если появилось);
-4. создает новую модель (через `New`, затем fallback: API-команда и `Ctrl+N`);
-5. проверяет, что документ реально создан, и возвращает подробные steps в JSON.
+## Extending Tests
+Presets are now registry-driven:
+- edit `ApiCatalog.Default()` in `Program.cs`
+- add a new `ApiAction` entry (label, method, path, optional body)
+- restart `dotnet run`
+
+You do not need to edit HTML/JS when adding a new preset action.

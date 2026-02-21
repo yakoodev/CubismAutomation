@@ -1,5 +1,5 @@
 param(
-  [string]$SrcRoot = "work/server-src",
+  [string]$SrcRoot = "src/server-src",
   [string]$BuildRoot = "work/build/server",
   [string]$OutJar = "output/cubism-agent-server.jar"
 )
