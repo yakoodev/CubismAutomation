@@ -14,6 +14,10 @@ This document describes stable error codes returned by the Cubism agent API.
 - `guardrail_violation`: Action blocked by runtime/document mode safety check.
 - `no_effect`: Request accepted but post-verify state did not change as requested.
 - `not_found`: Target object (mesh/deformer/parameter) is not found.
+- `job_not_found`: Job id is unknown.
+- `job_cannot_cancel`: Job is already terminal and cannot be canceled.
+- `invalid_action`: Unknown job action.
+- `timeout_exceeded`: Job exceeded timeout budget.
 
 ## Runtime/Document Codes
 - `no_document`: No active document in Cubism.

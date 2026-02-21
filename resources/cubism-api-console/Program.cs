@@ -373,6 +373,13 @@ record ApiCatalog(List<ApiGroup> Groups)
             ]),
             new ApiGroup("project", "Project Open API", [
                 new ApiAction("POST /project/open", "POST", "/project/open", """{"path":"C:\\Users\\Yakoo\\Downloads\\vt\\hibiki\\model.cmo3"}""")
+            ]),
+            new ApiGroup("jobs", "Jobs API", [
+                new ApiAction("GET /jobs", "GET", "/jobs"),
+                new ApiAction("POST /jobs (noop)", "POST", "/jobs", """{"action":"noop"}"""),
+                new ApiAction("POST /jobs (sleep)", "POST", "/jobs", """{"action":"sleep","sleep_ms":8000}"""),
+                new ApiAction("GET /jobs/{id}", "GET", "/jobs/job-REPLACE_ME"),
+                new ApiAction("POST /jobs/{id}/cancel", "POST", "/jobs/job-REPLACE_ME/cancel", """{}""")
             ])
         ]);
     }

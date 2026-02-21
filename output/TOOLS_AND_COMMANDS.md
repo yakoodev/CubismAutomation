@@ -21,6 +21,7 @@
 - `scripts/29_smoke_deformer_api.ps1`
 - `scripts/30_smoke_metrics_api.ps1`
 - `scripts/31_smoke_project_open_api.ps1`
+- `scripts/32_smoke_jobs_api.ps1`
 - `scripts/84_stop_cubism.ps1`
 - `scripts/85_start_cubism.ps1`
 
@@ -115,6 +116,11 @@ powershell -ExecutionPolicy Bypass -File scripts/30_smoke_metrics_api.ps1
 Smoke для Project Open API:
 ```powershell
 powershell -ExecutionPolicy Bypass -File scripts/31_smoke_project_open_api.ps1
+```
+
+Smoke для Jobs API:
+```powershell
+powershell -ExecutionPolicy Bypass -File scripts/32_smoke_jobs_api.ps1
 ```
 
 Остановить Cubism (graceful close + force fallback):

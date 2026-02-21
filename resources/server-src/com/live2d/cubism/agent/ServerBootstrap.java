@@ -59,6 +59,7 @@ public final class ServerBootstrap {
       created.createContext("/version", ServerBootstrap::handleVersion);
       created.createContext("/command", ServerBootstrap::handleCommand);
       created.createContext("/metrics", ServerBootstrap::handleMetrics);
+      created.createContext("/jobs", ServerBootstrap::handleJobs);
       created.createContext("/startup/prepare", ServerBootstrap::handleStartupPrepare);
       created.createContext("/state", ServerBootstrap::handleStateAll);
       created.createContext("/state/project", ServerBootstrap::handleStateProject);
@@ -182,6 +183,55 @@ public final class ServerBootstrap {
       ",\"paths\":" + countersJson(PATH_COUNTS) +
       ",\"commands\":" + countersJson(COMMAND_COUNTS) + "}\n";
     writeJson(exchange, 200, json);
+  }
+
+  private static void handleJobs(HttpExchange exchange) throws IOException {
+    if (!ensureAuthorized(exchange)) {
+      return;
+    }
+    String path = exchange.getRequestURI() == null ? "" : exchange.getRequestURI().getPath();
+    String method = exchange.getRequestMethod() == null ? "" : exchange.getRequestMethod().toUpperCase();
+
+    if ("/jobs".equals(path) || "/jobs/".equals(path)) {
+      if ("POST".equals(method)) {
+        String body = readBody(exchange.getRequestBody());
+        exchange.setAttribute("requestBody", body);
+        String idem = exchange.getRequestHeaders().getFirst("Idempotency-Key");
+        CubismJobRunner.ApiResponse resp = CubismJobRunner.submit(body, idem);
+        writeJson(exchange, resp.status(), resp.json());
+        return;
+      }
+      if ("GET".equals(method)) {
+        CubismJobRunner.ApiResponse resp = CubismJobRunner.listJobs();
+        writeJson(exchange, resp.status(), resp.json());
+        return;
+      }
+      writeJson(exchange, 405, "{\"ok\":false,\"error\":\"method_not_allowed\"}\n");
+      return;
+    }
+
+    if (path.startsWith("/jobs/")) {
+      String tail = path.substring("/jobs/".length());
+      if (tail.endsWith("/cancel")) {
+        if (!"POST".equals(method)) {
+          writeJson(exchange, 405, "{\"ok\":false,\"error\":\"method_not_allowed\"}\n");
+          return;
+        }
+        String id = tail.substring(0, tail.length() - "/cancel".length());
+        CubismJobRunner.ApiResponse resp = CubismJobRunner.cancelJob(id);
+        writeJson(exchange, resp.status(), resp.json());
+        return;
+      }
+      if (!"GET".equals(method)) {
+        writeJson(exchange, 405, "{\"ok\":false,\"error\":\"method_not_allowed\"}\n");
+        return;
+      }
+      CubismJobRunner.ApiResponse resp = CubismJobRunner.getJob(tail);
+      writeJson(exchange, resp.status(), resp.json());
+      return;
+    }
+
+    writeJson(exchange, 404, "{\"ok\":false,\"error\":\"not_found\"}\n");
   }
 
   private static void handleStateAll(HttpExchange exchange) throws IOException {
