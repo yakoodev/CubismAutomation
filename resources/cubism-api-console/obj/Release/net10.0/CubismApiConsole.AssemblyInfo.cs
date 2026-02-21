@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CubismApiConsole")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+29e4393dad341b34018ea1bd77142914b5a9efd3")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6521e978f11072ea69450c48d92e9a208c7dfb46")]
 [assembly: System.Reflection.AssemblyProductAttribute("CubismApiConsole")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CubismApiConsole")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

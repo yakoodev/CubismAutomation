@@ -1,30 +1,30 @@
-C:\Users\Yakoo\source\sandbox\cubism-jar-agent-env\output\workflow\tools\cubism-api-console\bin\Debug\net10.0\appsettings.Development.json
-C:\Users\Yakoo\source\sandbox\cubism-jar-agent-env\output\workflow\tools\cubism-api-console\bin\Debug\net10.0\appsettings.json
-C:\Users\Yakoo\source\sandbox\cubism-jar-agent-env\output\workflow\tools\cubism-api-console\bin\Debug\net10.0\CubismApiConsole.staticwebassets.endpoints.json
-C:\Users\Yakoo\source\sandbox\cubism-jar-agent-env\output\workflow\tools\cubism-api-console\bin\Debug\net10.0\CubismApiConsole.exe
-C:\Users\Yakoo\source\sandbox\cubism-jar-agent-env\output\workflow\tools\cubism-api-console\bin\Debug\net10.0\CubismApiConsole.deps.json
-C:\Users\Yakoo\source\sandbox\cubism-jar-agent-env\output\workflow\tools\cubism-api-console\bin\Debug\net10.0\CubismApiConsole.runtimeconfig.json
-C:\Users\Yakoo\source\sandbox\cubism-jar-agent-env\output\workflow\tools\cubism-api-console\bin\Debug\net10.0\CubismApiConsole.dll
-C:\Users\Yakoo\source\sandbox\cubism-jar-agent-env\output\workflow\tools\cubism-api-console\bin\Debug\net10.0\CubismApiConsole.pdb
-C:\Users\Yakoo\source\sandbox\cubism-jar-agent-env\output\workflow\tools\cubism-api-console\obj\Debug\net10.0\rpswa.dswa.cache.json
-C:\Users\Yakoo\source\sandbox\cubism-jar-agent-env\output\workflow\tools\cubism-api-console\obj\Debug\net10.0\CubismApiConsole.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\Yakoo\source\sandbox\cubism-jar-agent-env\output\workflow\tools\cubism-api-console\obj\Debug\net10.0\CubismApiConsole.AssemblyInfoInputs.cache
-C:\Users\Yakoo\source\sandbox\cubism-jar-agent-env\output\workflow\tools\cubism-api-console\obj\Debug\net10.0\CubismApiConsole.AssemblyInfo.cs
-C:\Users\Yakoo\source\sandbox\cubism-jar-agent-env\output\workflow\tools\cubism-api-console\obj\Debug\net10.0\CubismApiConsole.csproj.CoreCompileInputs.cache
-C:\Users\Yakoo\source\sandbox\cubism-jar-agent-env\output\workflow\tools\cubism-api-console\obj\Debug\net10.0\CubismApiConsole.MvcApplicationPartsAssemblyInfo.cache
-C:\Users\Yakoo\source\sandbox\cubism-jar-agent-env\output\workflow\tools\cubism-api-console\obj\Debug\net10.0\CubismApiConsole.sourcelink.json
-C:\Users\Yakoo\source\sandbox\cubism-jar-agent-env\output\workflow\tools\cubism-api-console\obj\Debug\net10.0\rjimswa.dswa.cache.json
-C:\Users\Yakoo\source\sandbox\cubism-jar-agent-env\output\workflow\tools\cubism-api-console\obj\Debug\net10.0\rjsmrazor.dswa.cache.json
-C:\Users\Yakoo\source\sandbox\cubism-jar-agent-env\output\workflow\tools\cubism-api-console\obj\Debug\net10.0\rjsmcshtml.dswa.cache.json
-C:\Users\Yakoo\source\sandbox\cubism-jar-agent-env\output\workflow\tools\cubism-api-console\obj\Debug\net10.0\scopedcss\bundle\CubismApiConsole.styles.css
-C:\Users\Yakoo\source\sandbox\cubism-jar-agent-env\output\workflow\tools\cubism-api-console\obj\Debug\net10.0\staticwebassets.build.json
-C:\Users\Yakoo\source\sandbox\cubism-jar-agent-env\output\workflow\tools\cubism-api-console\obj\Debug\net10.0\staticwebassets.build.json.cache
-C:\Users\Yakoo\source\sandbox\cubism-jar-agent-env\output\workflow\tools\cubism-api-console\obj\Debug\net10.0\staticwebassets.development.json
-C:\Users\Yakoo\source\sandbox\cubism-jar-agent-env\output\workflow\tools\cubism-api-console\obj\Debug\net10.0\staticwebassets.build.endpoints.json
-C:\Users\Yakoo\source\sandbox\cubism-jar-agent-env\output\workflow\tools\cubism-api-console\obj\Debug\net10.0\swae.build.ex.cache
-C:\Users\Yakoo\source\sandbox\cubism-jar-agent-env\output\workflow\tools\cubism-api-console\obj\Debug\net10.0\staticwebassets.upToDateCheck.txt
-C:\Users\Yakoo\source\sandbox\cubism-jar-agent-env\output\workflow\tools\cubism-api-console\obj\Debug\net10.0\CubismApiConsole.dll
-C:\Users\Yakoo\source\sandbox\cubism-jar-agent-env\output\workflow\tools\cubism-api-console\obj\Debug\net10.0\refint\CubismApiConsole.dll
-C:\Users\Yakoo\source\sandbox\cubism-jar-agent-env\output\workflow\tools\cubism-api-console\obj\Debug\net10.0\CubismApiConsole.pdb
-C:\Users\Yakoo\source\sandbox\cubism-jar-agent-env\output\workflow\tools\cubism-api-console\obj\Debug\net10.0\CubismApiConsole.genruntimeconfig.cache
-C:\Users\Yakoo\source\sandbox\cubism-jar-agent-env\output\workflow\tools\cubism-api-console\obj\Debug\net10.0\ref\CubismApiConsole.dll
+C:\Users\Yakoo\source\sandbox cubism\tools\cubism-api-console\bin\Debug\net10.0\appsettings.Development.json
+C:\Users\Yakoo\source\sandbox cubism\tools\cubism-api-console\bin\Debug\net10.0\appsettings.json
+C:\Users\Yakoo\source\sandbox cubism\tools\cubism-api-console\bin\Debug\net10.0\CubismApiConsole.staticwebassets.endpoints.json
+C:\Users\Yakoo\source\sandbox cubism\tools\cubism-api-console\bin\Debug\net10.0\CubismApiConsole.exe
+C:\Users\Yakoo\source\sandbox cubism\tools\cubism-api-console\bin\Debug\net10.0\CubismApiConsole.deps.json
+C:\Users\Yakoo\source\sandbox cubism\tools\cubism-api-console\bin\Debug\net10.0\CubismApiConsole.runtimeconfig.json
+C:\Users\Yakoo\source\sandbox cubism\tools\cubism-api-console\bin\Debug\net10.0\CubismApiConsole.dll
+C:\Users\Yakoo\source\sandbox cubism\tools\cubism-api-console\bin\Debug\net10.0\CubismApiConsole.pdb
+C:\Users\Yakoo\source\sandbox cubism\tools\cubism-api-console\obj\Debug\net10.0\rpswa.dswa.cache.json
+C:\Users\Yakoo\source\sandbox cubism\tools\cubism-api-console\obj\Debug\net10.0\CubismApiConsole.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Yakoo\source\sandbox cubism\tools\cubism-api-console\obj\Debug\net10.0\CubismApiConsole.AssemblyInfoInputs.cache
+C:\Users\Yakoo\source\sandbox cubism\tools\cubism-api-console\obj\Debug\net10.0\CubismApiConsole.AssemblyInfo.cs
+C:\Users\Yakoo\source\sandbox cubism\tools\cubism-api-console\obj\Debug\net10.0\CubismApiConsole.csproj.CoreCompileInputs.cache
+C:\Users\Yakoo\source\sandbox cubism\tools\cubism-api-console\obj\Debug\net10.0\CubismApiConsole.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Yakoo\source\sandbox cubism\tools\cubism-api-console\obj\Debug\net10.0\CubismApiConsole.sourcelink.json
+C:\Users\Yakoo\source\sandbox cubism\tools\cubism-api-console\obj\Debug\net10.0\rjimswa.dswa.cache.json
+C:\Users\Yakoo\source\sandbox cubism\tools\cubism-api-console\obj\Debug\net10.0\rjsmrazor.dswa.cache.json
+C:\Users\Yakoo\source\sandbox cubism\tools\cubism-api-console\obj\Debug\net10.0\rjsmcshtml.dswa.cache.json
+C:\Users\Yakoo\source\sandbox cubism\tools\cubism-api-console\obj\Debug\net10.0\scopedcss\bundle\CubismApiConsole.styles.css
+C:\Users\Yakoo\source\sandbox cubism\tools\cubism-api-console\obj\Debug\net10.0\staticwebassets.build.json
+C:\Users\Yakoo\source\sandbox cubism\tools\cubism-api-console\obj\Debug\net10.0\staticwebassets.build.json.cache
+C:\Users\Yakoo\source\sandbox cubism\tools\cubism-api-console\obj\Debug\net10.0\staticwebassets.development.json
+C:\Users\Yakoo\source\sandbox cubism\tools\cubism-api-console\obj\Debug\net10.0\staticwebassets.build.endpoints.json
+C:\Users\Yakoo\source\sandbox cubism\tools\cubism-api-console\obj\Debug\net10.0\swae.build.ex.cache
+C:\Users\Yakoo\source\sandbox cubism\tools\cubism-api-console\obj\Debug\net10.0\staticwebassets.upToDateCheck.txt
+C:\Users\Yakoo\source\sandbox cubism\tools\cubism-api-console\obj\Debug\net10.0\CubismApiConsole.dll
+C:\Users\Yakoo\source\sandbox cubism\tools\cubism-api-console\obj\Debug\net10.0\refint\CubismApiConsole.dll
+C:\Users\Yakoo\source\sandbox cubism\tools\cubism-api-console\obj\Debug\net10.0\CubismApiConsole.pdb
+C:\Users\Yakoo\source\sandbox cubism\tools\cubism-api-console\obj\Debug\net10.0\CubismApiConsole.genruntimeconfig.cache
+C:\Users\Yakoo\source\sandbox cubism\tools\cubism-api-console\obj\Debug\net10.0\ref\CubismApiConsole.dll

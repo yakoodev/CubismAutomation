@@ -74,6 +74,20 @@ Supported commands in this stage:
 {"ok":false,"error":"startup_timeout|startup_failed","message":"..."}
 ```
 
+## Mesh API
+- Read:
+  - `GET /mesh/list`
+  - `GET /mesh/active`
+  - `GET /mesh/state`
+- Write:
+  - `POST /mesh/select`
+  - `POST /mesh/rename`
+  - `POST /mesh/visibility`
+  - `POST /mesh/lock`
+- Edit ops:
+  - `POST /mesh/ops` (`validate_only=true|false`)
+- Full details: `docs/mesh-api.md`
+
 ## Method rules
 - `/version` accepts only `GET`; other methods return `405`.
 - `/command` accepts only `POST`; other methods return `405`.
