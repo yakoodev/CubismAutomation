@@ -1,0 +1,1230 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import com.live2d.type.CFont?>
+<?import com.live2d.type.CInsets?>
+<?import com.live2d.type.CImageIcon?>
+<?import com.live2d.type.CMultiResolutionImageIcon?>
+<?import com.live2d.ui.container.CBorderPane?>
+<?import com.live2d.ui.container.CHBox?>
+<?import com.live2d.ui.container.CSpacer?>
+<?import com.live2d.ui.container.CSeparator?>
+<?import com.live2d.ui.container.CSimplePane?>
+<?import com.live2d.ui.container.CVBox?>
+<?import com.live2d.ui.control.CButton?>
+<?import com.live2d.ui.control.CToggleButton?>
+<?import com.live2d.ui.control.CIconButton?>
+<?import com.live2d.ui.control.CIconToggleButton?>
+<?import com.live2d.ui.control.CLabel?>
+<?import com.live2d.ui.menu.CDlgMenuItem?>
+<?import com.live2d.ui.menu.CMenu?>
+<?import com.live2d.ui.menu.CMenuBar?>
+<?import com.live2d.ui.menu.CMenuItem?>
+<?import com.live2d.ui.menu.CSeparatorMenuItem?>
+<?import com.live2d.ui.menu.CCheckMenuItem?>
+<?import com.live2d.ui.window.CFrame?>
+<?import com.live2d.ui.control.CMemoryViewerPanel?>
+<?import com.live2d.ui.control.CSlidableFloat?>
+<?import com.live2d.ui.control.CCheckBox?>
+<?import com.live2d.cubism.doc.webSocket.CExternalAppIndicatorPanel?>
+<CFrame xmlns="http://live2d.com/cxui/1.0" xmlns:cx="http://live2d.com/cx/1.0" title="Cubism Editor" width="1200" height="900" defaultCloseOperation="EXIT_ON_CLOSE">
+	<!-- ========= Menu ========= -->
+	<menuBar>
+		<CMenuBar>
+			<menus>
+				<!-- 以下、TOOL TIP のサンプル。<html>をつけることで<br>改行ができるが、エスケープする必要がある。但し、本番ではテキストをIdで置き換え外部定義にするのでエスケープ不要になる予定 -->
+				<CMenu tr_text="ファイル" text="##CUBI-0546">
+					<items>
+						<CMenu tr_text="新規作成" text="##CUB3-0814">
+							<items>
+								<CMenuItem tr_text="モデル" text="##CUB3-0327" actionCommand="CMD_NEW_MODEL" />
+								<CDlgMenuItem tr_text="アニメーション" text="##CUB3-0815" actionCommand="CMD_NEW_ANIMATION" />
+							</items>
+						</CMenu>
+						<CDlgMenuItem tr_text="ファイルを開く" text="##CUBI-1100" actionCommand="CMD_OPEN" />
+						<CMenuItem tr_text="前回開いたファイルを開く" text="##CUB3-0817" cx:id="menuItem_file_recent_file" actionCommand="CMD_RECENT_FILE_OPEN" />
+						<CMenu tr_text="最近開いたファイルを開く" text="##CUB3-0818" cx:id="menu_file_recent_fileHistory">
+							<items />
+						</CMenu>
+						<CSeparatorMenuItem />
+						<CMenuItem tr_text="閉じる" text="##DESI-0005" actionCommand="CMD_DEL_TAB_TABBOX" />
+						<CMenuItem tr_text="すべてを閉じる" text="##CUB3-1208" actionCommand="CMD_CLOSE_ALL" />
+						<CSeparatorMenuItem />
+						<CMenuItem tr_text="保存" text="##CUBI-0332" actionCommand="CMD_SAVE" cx:id="menuItem_file_save" />
+						<CDlgMenuItem tr_text="別名保存" text="##CUB3-0046" actionCommand="CMD_SAVE_AS" cx:id="menuItem_file_save_as" />
+						<CSeparatorMenuItem />
+						<CMenu tr_text="モデル画像/動画書き出し" text="##CUB3-0819" cx:id="menu_export_picture_and_animation">
+							<items>
+								<CDlgMenuItem tr_text="画像" text="##IMAG-0001" cx:id="menuItem_export_model_as_png" actionCommand="CMD_EXPORT_MODEL_AS_PNG" />
+								<CDlgMenuItem tr_text="GIFアニメ" text="##CUBI-0113" cx:id="menuItem_export_scene_as_animated_gif" actionCommand="CMD_EXPORT_SCENE_AS_ANIMATED_GIF" />
+								<!-- Glueとバッティングしていたので使用頻度を考え、仮でショートカットなしに設定 -->
+								<CDlgMenuItem tr_text="静止画（連番）" text="##CUBI-0115" cx:id="menuItem_export_scene_as_png" actionCommand="CMD_EXPORT_SCENE_AS_PNG" />
+								<CDlgMenuItem tr_text="PSD画像(β)" text="##CUB3-1675" cx:id="menuItem_export_model_as_psd" actionCommand="CMD_EXPORT_MODEL_AS_PSD" />
+								<CDlgMenuItem tr_text="動画" text="##CUBI-0114" cx:id="menuItem_export_scene_as_video" actionCommand="CMD_EXPORT_SCENE_AS_VIDEO" />
+							</items>
+						</CMenu>
+						<CMenu tr_text="モデル設定ファイル書き出し" text="##CUB3-0821" cx:id="menu_file_export_model_setting_file">
+							<items>
+								<CDlgMenuItem tr_text="moc3ファイル書き出し" text="##CUB3-1212" cx:id="menuItem_export_embedded_model" actionCommand="CMD_EXPORT_EMBEDDED_MODEL" />
+								<CSeparatorMenuItem />
+								<CDlgMenuItem tr_text="物理演算設定の書き出し" text="##CUB3-1214" cx:id="menuItem_export_physics_setting" actionCommand="CMD_EXPORT_PHYSICS_SETTINGS" />
+								<CDlgMenuItem tr_text="モーションファイル書き出し" text="##CUB3-1211" cx:id="menuItem_export_motion" actionCommand="CMD_EXPORT_MOTION" />
+							</items>
+						</CMenu>
+						<CSeparatorMenuItem />
+						<CDlgMenuItem tr_text="環境設定" text="##CUB3-3441" actionCommand="CMD_SHOW_CONFIG_DIALOG" />
+						<CDlgMenuItem tr_text="キーボードショートカット" text="##CUBI-0376" actionCommand="CMD_KEYBOARD_SHORTCUT_SETTING" />
+						<CDlgMenuItem tr_text="外部アプリケーション連携設定" text="##CUB3-3764" actionCommand="CMD_EXTERNAL_APP_SETTING" />
+						<CSeparatorMenuItem />
+						<CDlgMenuItem tr_text="統計情報" text="##CUBI-0366" actionCommand="CMD_MODELING_STATISTICS" />
+						<CDlgMenuItem tr_text="キャンバス設定" text="##CUB3-1215" actionCommand="CMD_MODEL_SETTING" />
+						<CDlgMenuItem tr_text="モデルのリサイズ" text="##CUBI-0367" cx:id="menuItem_resize_model_document" actionCommand="CMD_RESIZE_MODEL_DOCUMENT" />
+						<CSeparatorMenuItem />
+						<CMenuItem tr_text="終了" text="##CUBI-0250" actionCommand="CMD_EXIT" />
+					</items>
+				</CMenu>
+				<CMenu tr_text="編集" text="##CUBI-0514">
+					<items>
+						<CMenuItem tr_text="元に戻す" text="##CUBI-0129" actionCommand="CMD_UNDO" />
+						<CMenuItem tr_text="やり直す" text="##CUBI-0130" actionCommand="CMD_REDO" />
+						<CSeparatorMenuItem />
+						<CMenuItem tr_text="切り取り" text="##CUBI-0369" actionCommand="CMD_CUT" />
+						<CMenuItem tr_text="コピー" text="##CUBI-0370" actionCommand="CMD_COPY" />
+						<CMenuItem tr_text="貼り付け" text="##CUBI-0371" actionCommand="CMD_PASTE" />
+						<CMenuItem tr_text="削除" text="##CUBI-0135" actionCommand="CMD_DELETE" />
+						<CSeparatorMenuItem />
+						<CMenuItem tr_text="&lt;共通&gt;" text="##CUB3-3097" enabled="false" />
+						<CMenuItem tr_text="パラメータ値をコピー" text="##CUB3-3098" actionCommand="CMD_COPY_PARAM_SET" />
+						<CMenuItem tr_text="パラメータ値を貼り付け" text="##CUB3-3099" actionCommand="CMD_PASTE_PARAM_SET" />
+						<CSeparatorMenuItem />
+						<CMenuItem tr_text="選択を解除" text="##CUB3-0829" actionCommand="CMD_ESC" />
+						<CMenuItem tr_text="非表示およびロックの選択を解除" text="##CUB3-3334" actionCommand="CMD_DESELECT_INVISIBLE_AND_LOCK_OBJECTS" />
+						<CSeparatorMenuItem />
+						<CMenuItem tr_text="すべて選択" text="##CUBI-0368" actionCommand="CMD_SELECT_ALL" />
+						<CSeparatorMenuItem />
+						<CDlgMenuItem tr_text="検索と置換" text="##CUB3-2120" actionCommand="CMD_FIND_OBJECT_DIALOG" shortcut="Ctrl+F" />
+					</items>
+				</CMenu>
+				<CMenu tr_text="表示" text="##CUBI-0548" cx:id="menu_display">
+					<items>
+						<CMenu tr_text="グリッド" text="##CUB3-1178">
+							<items>
+								<CCheckMenuItem tr_text="グリッドを表示（モデリングビュー）" text="##CUB3-1216" cx:id="menu_display_grid" actionCommand="CMD_SHOW_GUI_GRID" />
+								<CSeparatorMenuItem />
+								<CDlgMenuItem tr_text="グリッド設定" text="##CUB3-3436" actionCommand="CMD_GRID_SETTING" />
+							</items>
+						</CMenu>
+						<CMenu tr_text="ガイド" text="##CUB3-1829">
+							<items>
+								<CCheckMenuItem tr_text="ガイドを表示（モデリングビュー）" text="##CUB3-1833" cx:id="menu_display_guide_modeling" actionCommand="CMD_SHOW_GUI_GUIDE_FOR_MODELING" />
+								<CCheckMenuItem tr_text="ガイドを表示（アニメーションビュー）" text="##CUB3-1217" cx:id="menu_display_guide" actionCommand="CMD_SHOW_GUI_GUIDE" />
+								<CSeparatorMenuItem />
+								<CMenuItem tr_text="中央にガイドを追加" text="##CUB3-4359" actionCommand="CMD_SETTING_GUIDES_MODELING_ADD_CENTER" />
+								<CMenuItem tr_text="選択されている頂点の座標にガイドを追加" text="##CUB3-1714" actionCommand="CMD_SETTING_GUIDES_MODELING_ADD_SELECTED_VERTICES" />
+								<CSeparatorMenuItem />
+								<CDlgMenuItem tr_text="ガイド（モデリングビュー）の設定" text="##CUB3-1872" actionCommand="CMD_SETTING_GUIDES_MODELING_SETTING" />
+								<CSeparatorMenuItem />
+								<CCheckMenuItem tr_text="移動する頂点をガイドへ吸着する" text="##CUB3-1873" cx:id="snapToGuide" actionCommand="CMD_CHANGE_SNAP_TO_GUIDE" />
+							</items>
+						</CMenu>
+						<CCheckMenuItem tr_text="アートメッシュの頂点を表示" text="##CUB3-3765" cx:id="menu_show_art_mesh_point" actionCommand="CMD_SHOW_ARTMESH_POINT" />
+						<CCheckMenuItem tr_text="アートメッシュの頂点番号を表示" text="##CUB3-0851" actionCommand="CMD_SHOW_VERTEX_INDEX" cx:id="drawArtMeshVertexIndex" />
+						<CCheckMenuItem tr_text="親デフォーマからはみ出した頂点をハイライト" text="##CUB3-1881" cx:id="menu_display_highLight_outside_of_parent_deformer" actionCommand="CMD_HIGHLIGHT_VERTICES_OUTSIDE_OF_PARENT_DEFORMER" />
+						<CCheckMenuItem tr_text="デフォーマの子要素をハイライト" text="##CUB3-1218" cx:id="menu_display_highLight_deformer_child" actionCommand="CMD_HIGH_LIGHT_DEFORMER_CHILD" />
+						<CCheckMenuItem tr_text="重なったポリゴンをハイライト" text="##CUB3-4191" cx:id="menu_isHighlightConflictPolygon" actionCommand="CMD_SWITCH_HIGHTLIGHT_CONFLICT_POLYGON" />
+						<CCheckMenuItem tr_text="デフォーマをCtrlリサイズ時の子要素を表示" text="##CUB3-2818" cx:id="menu_show_child_under_warp_deformer_ctrl_mode" actionCommand="CMD_SHOW_CHILD_UNDER_WARP_DEFORMER_CTRL_MODE" />
+						<CCheckMenuItem tr_text="カーソル位置のオブジェクト名を表示" text="##CUB3-4174" cx:id="menuItem_isShowPopupHoveringObject" actionCommand="CMD_SHOW_POPUP_HOVERING_OBJECT" />
+						<CSeparatorMenuItem />
+						<CCheckMenuItem tr_text="選択状態を隠す" text="##CUBI-0179" cx:id="menuItem_hide_Selected_State" actionCommand="CMD_HIDE_OBJECT_SELECTION" />
+						<CSeparatorMenuItem />
+						<CMenuItem tr_text="選択オブジェクトをフォーカス" text="##CUB3-1219" cx:id="menuItem_focus_on_selected_objects" actionCommand="CMD_FOCUS_ON_SELECTED_OBJECTS" />
+						<CSeparatorMenuItem />
+						<CMenuItem tr_text="&lt;表示方式&gt;" text="##CUB3-1436" enabled="false" />
+						<CCheckMenuItem tr_text="モデル用画像" text="##CUB3-0244" cx:id="menuItem_show_model_by_raw_image" actionCommand="CMD_SHOW_MODEL_BY_RAW_IMAGE" />
+						<CCheckMenuItem tr_text="テクスチャアトラス" text="##CUB3-0245" cx:id="menuItem_show_model_by_texture_atlas" actionCommand="CMD_SHOW_MODEL_BY_TEXTURE_ATLAS" />
+						<CSeparatorMenuItem />
+						<CMenu tr_text="表示品質（モデル用画像表示）" text="##CUB3-1437">
+							<items>
+								<CCheckMenuItem tr_text="原寸" text="##CORE-0155" cx:id="menuItem_previewReductionRatio_1" actionCommand="CMD_PREVIEW_REDUCTION_RATIO_1" />
+								<CCheckMenuItem text="1/2" cx:id="menuItem_previewReductionRatio_2" actionCommand="CMD_PREVIEW_REDUCTION_RATIO_2" />
+								<CCheckMenuItem text="1/4" cx:id="menuItem_previewReductionRatio_4" actionCommand="CMD_PREVIEW_REDUCTION_RATIO_4" />
+								<CCheckMenuItem text="1/8" cx:id="menuItem_previewReductionRatio_8" actionCommand="CMD_PREVIEW_REDUCTION_RATIO_8" />
+							</items>
+						</CMenu>
+						<CSeparatorMenuItem />
+						<CMenuItem tr_text="バウンディングボックスの表示/非表示" text="##CUB3-1940" actionCommand="CMD_TOGGLE_DISPLAY_BOUNDINGBOX" />
+						<CSeparatorMenuItem />
+						<CMenu tr_text="オニオンスキン" text="##CUB3-2560" cx:id="menu_onionskin">
+							<items>
+								<CCheckMenuItem tr_text="モデリングビュー" text="##CUB3-2615" cx:id="menuItem_previewOnionskin_Modeler" actionCommand="CMD_PREVIEW_ONIONSKIN_MODELER" />
+								<CCheckMenuItem tr_text="アニメーションビュー" text="##CUB3-2616" cx:id="menuItem_previewOnionskin_Animator" actionCommand="CMD_PREVIEW_ONIONSKIN_ANIMATOR" />
+								<CCheckMenuItem tr_text="フォームアニメーションビュー" text="##CUB3-2617" cx:id="menuItem_previewOnionskin_FormAnimation" actionCommand="CMD_PREVIEW_ONIONSKIN_FORM_ANIMATION" />
+								<CSeparatorMenuItem />
+								<CDlgMenuItem tr_text="オニオンスキン設定" text="##CUB3-2505" actionCommand="CMD_OPEN_ONIONSKIN_SETTING" />
+							</items>
+						</CMenu>
+						<CMenu tr_text="トラックの軌道" text="##CUB3-3335" cx:id="menu_motionpath">
+							<items>
+								<CCheckMenuItem tr_text="アニメーションビュー" text="##CUB3-2616" cx:id="menuItem_preview_motionpath_animator" actionCommand="CMD_PREVIEW_MOTIONPATH_ANIMATION" />
+								<CSeparatorMenuItem />
+								<CDlgMenuItem tr_text="トラックの軌道設定" text="##CUB3-3336" actionCommand="CMD_OPEN_MOTIONPATH_SETTING" />
+							</items>
+						</CMenu>
+					</items>
+				</CMenu>
+				<CMenu tr_text="モデリング" text="##CUB3-0832" cx:id="menu_modeling">
+					<items>
+						<CMenu tr_text="デフォーマ" text="##CUB3-0300">
+							<items>
+								<CDlgMenuItem tr_text="ワープデフォーマを作成" text="##CUB3-0633" actionCommand="CMD_CREATE_WARP_DEFORMER" />
+								<CDlgMenuItem tr_text="回転デフォーマを作成" text="##CUB3-0623" actionCommand="CMD_CREATE_ROTATION_DEFORMER" />
+								<CSeparatorMenuItem />
+								<CDlgMenuItem tr_text="デフォーマの自動生成" text="##CUB3-3766" actionCommand="CMD_AUTO_CREATE_DEFORMERS" />
+								<CSeparatorMenuItem />
+								<CMenuItem tr_text="親のデフォーマを選択" text="##CUBI-0401" actionCommand="CMD_SELECT_PARENT_DEFORMER" />
+								<CMenuItem tr_text="デフォーマの子要素を選択" text="##CUB3-4152" actionCommand="CMD_SELECT_CHILD_ELEMENTS_OF_DEFORMER" />
+								<CSeparatorMenuItem />
+								<CMenuItem tr_text="デフォーマを中身ごと削除" text="##CUBI-1574" actionCommand="CMD_DELETE_DEFORMER_AND_CHILDREN" />
+								<CMenuItem tr_text="デフォーマを子要素に適用" text="##CUB3-3401" cx:id="menuItem_delete_deformer_and_set_param" actionCommand="CMD_DELETE_DEFORMER_AND_SET_PARAM" />
+								<CSeparatorMenuItem />
+								<CDlgMenuItem tr_text="デフォーマの検証" text="##CUB3-1840" cx:id="menuItem_validateDeformerDialog" actionCommand="CMD_VALIDATE_DEFORMER_DIALOG" />
+								<CSeparatorMenuItem />
+								<CMenuItem tr_text="バウンディングボックスの角度を揃える" text="##CUB3-4157" actionCommand="CMD_ADJUST_BOUNDING_BOX_ANGLE" />
+							</items>
+						</CMenu>
+						<CMenu tr_text="テクスチャ" text="##CUBI-0322">
+							<items>
+								<CMenuItem tr_text="メッシュ編集" text="##CUB3-0014" actionCommand="CMD_START_OR_END_MESH_EDITOR" />
+								<CDlgMenuItem tr_text="メッシュの自動生成" text="##CUB3-0347" actionCommand="CMD_GENERATE_MESH_IN_MODELING_MODE" />
+								<!-- 3.0搭載見送り
+								<CMenuItem tr_text="テクスチャ一覧" text="##CUBI-1706" actionCommand="CMD_START_OR_END_TEXTURE_EDITOR" />
+-->
+								<CDlgMenuItem tr_text="テクスチャアトラス編集" text="##CUB3-0344" actionCommand="CMD_TEXTURE_ATLAS" />
+								<CSeparatorMenuItem />
+								<CMenuItem tr_text="原画とテクスチャアトラスを切り替え" text="##CUB3-0834" actionCommand="CMD_CHANGE_ARTMESH_INPUT" />
+								<CMenuItem tr_text="テクスチャアトラスから原画に反映（β）" text="##CUB3-2040" actionCommand="CMD_GENERATE_RAW_IMAGE_FROM_TEXTURE_ATLAS" />
+							</items>
+						</CMenu>
+						<CMenu tr_text="パラメータ" text="##CUB3-0360">
+							<items>
+								<CMenuItem tr_text="デフォルト設定値に戻す" text="##CUB3-0720" actionCommand="CMD_SET_DEFAULT_PARAMETERS" />
+								<CSeparatorMenuItem />
+								<CCheckMenuItem tr_text="デフォルトのフォームをロック" text="##CUB3-0836" cx:id="menu_lockDefaultForm" actionCommand="CMD_CHANGE_DEFAULT_KEYFORM_LOCKED" />
+								<CCheckMenuItem tr_text="パラメータ値をタブ間で同期" text="##CUB3-3695" cx:id="menu_syncParametersAcrossTabs" actionCommand="CMD_SYNC_PARAMETERS_ACROSS_TABS" />
+								<CSeparatorMenuItem />
+								<CDlgMenuItem tr_text="パラメータ設定" text="##COR3-0201" actionCommand="CMD_OPEN_PARAMETER_SETTING" />
+								<CDlgMenuItem tr_text="パラメータグループ設定" text="##CUB3-2058" actionCommand="CMD_OPEN_PARAMETER_GROUP_SETTING" />
+								<CSeparatorMenuItem />
+								<CDlgMenuItem tr_text="四隅のフォームを自動生成" text="##CUB3-0835" actionCommand="CMD_AUTO_BLEND_4_CORNER" />
+								<CDlgMenuItem tr_text="動きの反転" text="##CUB3-1818" actionCommand="CMD_INVERSION_OF_MOVEMENT" />
+								<CSeparatorMenuItem />
+								<CMenu tr_text="顔の動きを自動生成" text="##CUB3-3557">
+									<items>
+										<CDlgMenuItem tr_text="顔のデフォーマを生成" text="##CUB3-3558" actionCommand="CMD_AUTO_CREATE_FACE_DEFORMER" />
+										<CDlgMenuItem tr_text="顔の動きを生成" text="##CUB3-3559" actionCommand="CMD_AUTO_MOVE_FACE_DEFORMER" />
+									</items>
+								</CMenu>
+								<CDlgMenuItem tr_text="揺れの動きを自動生成" text="##CUB3-3767" actionCommand="CMD_CREATE_YURE" />
+								<CDlgMenuItem tr_text="3D回転表現の適用" text="##CUB3-3768" actionCommand="CMD_SHOW_ROTATE3D_SETTING_DIALOG" />
+								<CSeparatorMenuItem />
+								<CDlgMenuItem tr_text="マルチキー編集" text="##CUB3-1571" actionCommand="CMD_EDIT_MULTIKEY" />
+								<CDlgMenuItem tr_text="一括反転" text="##CUB3-2096" actionCommand="CMD_EDIT_REVERSE_ALL_KEYS" />
+								<CMenuItem tr_text="キーに紐付くオブジェクトを選択" text="##CUB3-4013" actionCommand="CMD_SELECT_OBJECT_BY_CURRENT_KEY_VALUE" />
+								<CMenuItem tr_text="選択オブジェクトのパラメータ構成を揃える" text="##CUBI-0410" actionCommand="CMD_SET_SAME_PARAMETERS_TO_ALL_SELECTED" />
+								<CSeparatorMenuItem />
+								<CDlgMenuItem tr_text="まばたき・リップシンク設定" text="##CUB3-0721" actionCommand="CMD_SHOW_EFFECT_SETTING_DIALOG" />
+								<CDlgMenuItem tr_text="拡張補間" text="##CUB3-2538" actionCommand="CMD_EDIT_EXTENSION_INTERPOLATION" />
+								<CDlgMenuItem tr_text="ブレンドシェイプの重みの制限設定" text="##CUB3-3141" actionCommand="CMD_SHOW_MORPH_TARGET_CONSTRAINT_EDIT_DIALOG" />
+								<CDlgMenuItem tr_text="モーションシンク設定" text="##CUB3-3522" actionCommand="CMD_SHOW_MOTION_SYNC_SETTING_DAILOG" />
+								<CSeparatorMenuItem />
+								<CDlgMenuItem tr_text="対応付けられたパラメータの検証" text="##CUB3-3380" actionCommand="CMD_VALIDATE_PARAMETER_MAPPING_DIALOG" />
+							</items>
+						</CMenu>
+						<CMenu tr_text="アートメッシュ" text="##CUB3-1336">
+							<items>
+								<CDlgMenuItem tr_text="すべてのアートメッシュの描画順を変更" text="##CUB3-4158" actionCommand="CMD_CHANGE_ALL_MESH_DRAW_ORDER" />
+								<CDlgMenuItem tr_text="アートメッシュの描画順を一括変更" text="##CUB3-4159" actionCommand="CMD_CHANGE_MESH_DRAW_ORDER" />
+								<CSeparatorMenuItem />
+								<CMenuItem tr_text="当たり判定用アートメッシュを生成" text="##CUB3-1337" actionCommand="CMD_CREATE_ARTMESH_FOR_HIT_TEST" />
+							</items>
+						</CMenu>
+						<CMenu tr_text="アートパス" text="##CUB3-2248" cx:id="menu_artPath">
+							<items>
+								<CMenuItem tr_text="&lt;アートパスの自動生成&gt;" text="##CUB3-2563" enabled="false" cx:id="menuItem_for_separate_auto_generate" />
+								<CMenuItem tr_text="単一のアートメッシュから自動生成" text="##CUB3-2564" actionCommand="CMD_CREATE_ART_PATH_INDIVISUALLY" />
+								<CMenuItem tr_text="複数のアートメッシュから自動生成" text="##CUB3-2565" actionCommand="CMD_CREATE_ART_PATH_COLLECT" />
+								<CSeparatorMenuItem />
+								<CMenuItem tr_text="&lt;アートメッシュの要素を反映&gt;" text="##CUB3-2566" enabled="false" cx:id="menuItem_for_separate_pick_info" />
+								<CMenuItem tr_text="色を反映" text="##CUB3-2567" actionCommand="CMD_PICK_ART_MESH_COLOR_FOR_ART_PATH" />
+								<CMenuItem tr_text="不透明度を反映" text="##CUB3-2568" actionCommand="CMD_PICK_ART_MESH_ALPHA_FOR_ART_PATH" />
+								<CMenuItem tr_text="線幅を反映" text="##CUB3-2569" actionCommand="CMD_ESTIMATE_LINE_WIDTH" />
+								<CMenuItem tr_text="すべてを反映" text="##CUB3-2570" actionCommand="CMD_PICK_ART_MESH_LINE_INFO" />
+								<CSeparatorMenuItem />
+								<CMenuItem tr_text="線画のアートメッシュに沿わせる" text="##CUB3-2571" actionCommand="CMD_CALIBRATE_ART_PATH_CTRL_POINT" />
+								<CMenuItem tr_text="塗りのアートメッシュに沿わせる" text="##CUB3-2572" actionCommand="CMD_FIT_ART_MESH_CONTOUR" />
+								<CMenuItem tr_text="アートメッシュに沿わせるようにコントロールポイントを追加" text="##CUB3-2573" actionCommand="CMD_ADD_NEAR_CTRL_POINT_FOR_SELECTED_ART_MESH_COUNTER" />
+								<CMenuItem tr_text="すべてのコントロールポイントの中間に点を追加" text="##CUB3-2574" actionCommand="CMD_INSERT_INTER_ART_PATH_POINTS_TO_ALL" />
+								<CMenuItem tr_text="選択コントロールポイントの中間に点を追加" text="##CUB3-2575" actionCommand="CMD_INSERT_INTER_ART_PATH_POINTS_TO_SELECTED_POINTS" />
+								<CSeparatorMenuItem />
+								<CDlgMenuItem tr_text="アートパスの自動生成ダイアログを開く" text="##CUB3-2416" actionCommand="CMD_OPEN_LINE_INFO_PICK_DIALOG" />
+								<CSeparatorMenuItem />
+								<CMenuItem tr_text="アートパスから変形パスを生成" text="##CUB3-2411" actionCommand="CMD_CREATE_CONTROLLER_EXTENSION_BY_ART_PATH" />
+								<CSeparatorMenuItem />
+								<CDlgMenuItem tr_text="アートメッシュの変形をアートパスにベイク" text="##CUB3-2576" actionCommand="CMD_EDIT_MULTIKEY_FOR_ARTPATH" />
+								<CSeparatorMenuItem />
+								<CMenuItem tr_text="&lt;追従設定&gt;" text="##CUB3-2577" enabled="false" cx:id="menuItem_for_separate_bind" />
+								<CMenuItem tr_text="すべて追従" text="##CUB3-2578" actionCommand="CMD_BIND_ART_PATH_POINT_TO_ARTMESH_EXTENSION_TO_ALL" />
+								<CMenuItem tr_text="すべて解除" text="##CUB3-2579" actionCommand="CMD_UNBIND_ART_PATH_POINT_TO_ARTMESH_EXTENSION_TO_ALL" />
+								<CMenuItem tr_text="選択コントロールポイントを追従" text="##CUB3-2580" actionCommand="CMD_BIND_ART_PATH_POINT_TO_ARTMESH_EXTENSION" />
+								<CMenuItem tr_text="選択コントロールポイントを解除" text="##CUB3-2581" actionCommand="CMD_UNBIND_ART_PATH_POINT_TO_ARTMESH_EXTENSION" />
+								<CSeparatorMenuItem />
+								<CDlgMenuItem tr_text="アートパスのブラシの設定ダイアログを開く" text="##CUB3-2381" actionCommand="CMD_ART_PATH_BRUSH_DIALOG" />
+							</items>
+						</CMenu>
+						<CMenu tr_text="グルー" text="##CUB3-0847">
+							<items>
+								<CMenuItem tr_text="グルーのオン/オフ切り替え" text="##CUB3-0850" actionCommand="CMD_GLUE_CHANGE_ENABLE" />
+							</items>
+						</CMenu>
+						<CMenu tr_text="スキニング" text="##CUB3-1656">
+							<items>
+								<CMenuItem tr_text="スキニング" text="##CUB3-1676" actionCommand="CMD_GLUE_SKINNING" />
+								<CMenuItem tr_text="変形パスからスキニング" text="##CUB3-1677" actionCommand="CMD_DEFORM_PATH_SKINNING" />
+								<CSeparatorMenuItem />
+								<CDlgMenuItem tr_text="回転デフォーマ用のパラメータを生成" text="##CUB3-1678" actionCommand="CMD_ADD_PARAMETER_FOR_ROTATION_DEFORMER" />
+							</items>
+						</CMenu>
+						<!--
+						<CMenu tr_text="物理演算" text="##CUB3-0823">
+							<items>
+								<CMenuItem tr_text="物理演算のオン/オフ切り替え" text="##CUB3-0074" actionCommand="CMD_XXXXX" />
+							</items>
+						</CMenu>
+						-->
+						<CMenu tr_text="フォームの編集" text="##CUB3-0838">
+							<items>
+								<CMenuItem tr_text="フォームをコピー" text="##CUBI-0372" cx:id="menuItem_copy_shape" actionCommand="CMD_COPY_SHAPE" />
+								<CMenuItem tr_text="フォームを貼り付け" text="##CUB3-0841" cx:id="menuItem_paste_shape" actionCommand="CMD_PASTE_SHAPE" />
+								<CDlgMenuItem tr_text="フォームをブレンド" text="##CUBI-0374" cx:id="menuItem_blend_shape" actionCommand="CMD_BLEND_SHAPE" />
+								<CDlgMenuItem tr_text="フォームの特殊な貼り付けオプション" text="##CUB3-3144" cx:id="menuItem_open_paste_blend_setting_dialog" actionCommand="CMD_OPEN_PASTE_BLEND_SETTING_DIALOG" />
+								<CSeparatorMenuItem />
+								<CCheckMenuItem tr_text="複数フォームの貼り付け時に適用先を確認" text="##CUB3-4014" cx:id="menuItem_display_multi_paste_shape_dialog" actionCommand="CMD_DISPLAY_MULTI_PASTE_SHAPE_DIALOG" />
+								<CSeparatorMenuItem />
+								<CDlgMenuItem tr_text="反転" text="##CUBI-0328" actionCommand="CMD_MODELING_REFLECTION" />
+								<CDlgMenuItem tr_text="倍率を指定して拡大縮小" text="##CUBI-0388" actionCommand="CMD_RESIZE_ARTMESH_WITH_SCALE" />
+								<CMenuItem tr_text="ワープデフォーマをベジェハンドルに沿って整形" text="##CUB3-3373" actionCommand="CMD_RESHAPE_WARP_DEFORMER" />
+								<CSeparatorMenuItem />
+								<CMenuItem tr_text="はみ出た子を基準にワープデフォーマを広げる" text="##CUB3-4196" actionCommand="CMD_EXPAND_WARPDEFORMER" />
+								<CSeparatorMenuItem />
+								<CMenuItem tr_text="元の形状に戻す" text="##CUB3-0839" actionCommand="CMD_RESTORE_ORIGINAL_SHAPE" />
+								<CMenuItem tr_text="デフォーマの元の形状を更新" text="##CUB3-4015" actionCommand="CMD_UPDATE_DEFORMER_ORIGINAL_SHAPE" />
+								<CMenuItem tr_text="すべてのデフォーマの元の形状を削除" text="##CUB3-4016" actionCommand="CMD_DELETE_DEFORMER_ORIGINAL_SHAPE" />
+							</items>
+						</CMenu>
+						<CMenu tr_text="一時変形ツール" text="##CUB3-2909">
+							<items>
+								<CMenuItem tr_text="拡大・縮小" text="##CUB3-2977" actionCommand="CMD_CREATE_FREE_DEFORM_HANDLER_AS_SCALE_MODE" />
+								<CMenuItem tr_text="回転" text="##CUBI-0749" actionCommand="CMD_CREATE_FREE_DEFORM_HANDLER_AS_ROTATE_MODE" />
+								<CMenuItem tr_text="自由変形" text="##CUB3-2978" actionCommand="CMD_CREATE_FREE_DEFORM_HANDLER_AS_FREE_MODE" />
+								<CMenuItem tr_text="遠近変形" text="##CUB3-2979" actionCommand="CMD_CREATE_FREE_DEFORM_HANDLER_AS_PERSPECTIVE_MODE" />
+								<CMenuItem tr_text="ゆがみ変形" text="##CUB3-2980" actionCommand="CMD_CREATE_FREE_DEFORM_HANDLER_AS_WARP_MODE" />
+								<CSeparatorMenuItem />
+								<CMenuItem tr_text="一時ワープ変形" text="##CUB3-3021" actionCommand="CMD_CREATE_WARP_HANDLER" />
+								<CMenuItem tr_text="列を増やす" text="##CUB3-2991" actionCommand="CMD_TWICE_COLUMN_WARP_HANDLER" />
+								<CMenuItem tr_text="列を減らす" text="##CUB3-2992" actionCommand="CMD_HALF_COLUMN_WARP_HANDLER" />
+								<CMenuItem tr_text="行を増やす" text="##CUB3-2993" actionCommand="CMD_TWICE_ROW_WARP_HANDLER" />
+								<CMenuItem tr_text="行を減らす" text="##CUB3-2994" actionCommand="CMD_HALF_ROW_WARP_HANDLER" />
+								<CSeparatorMenuItem />
+								<CMenuItem tr_text="一時パス変形" text="##CUB3-3022" actionCommand="CMD_CREATE_PATH_HANDLER" />
+								<CSeparatorMenuItem />
+								<CMenuItem tr_text="一時変形ツールを解除" text="##CUB3-2983" actionCommand="CMD_DELETE_TEMPORARY_HANDLER" />
+							</items>
+						</CMenu>
+						<CMenu tr_text="クリッピング" text="##CUB3-0662">
+							<items>
+								<CMenuItem tr_text="クリッピングマスクを選択" text="##CUB3-3381" actionCommand="CMD_SELECT_CLIPPING_OBJECT" />
+								<CMenuItem tr_text="クリッピングを逆引き" text="##CUB3-3382" actionCommand="CMD_SELECT_CLIPPED_OBJECT" />
+							</items>
+						</CMenu>
+						<CSeparatorMenuItem />
+						<CMenu tr_text="モデルテンプレート" text="##CUB3-3769">
+							<items>
+								<CDlgMenuItem tr_text="テンプレートを適用" text="##CUBI-1568" actionCommand="CMD_MODELING_TEMPLATE" />
+								<CDlgMenuItem tr_text="テンプレート書き出し" text="##CUB3-3770" actionCommand="CMD_EXPORT_AS_TEMPLATE" cx:id="menuItem_export_as_template" />
+							</items>
+						</CMenu>
+						<CSeparatorMenuItem />
+						<CMenu tr_text="ロック" text="##CUBI-0382">
+							<items>
+								<CMenuItem tr_text="選択オブジェクトをロック/解除" text="##CUB3-1826" actionCommand="CMD_SELECTED_OBJECT_UNLOCK" />
+								<CMenuItem tr_text="未選択オブジェクトをロック" text="##CUB3-1044" actionCommand="CMD_NOT_SELECTED_OBJECT_LOCK" />
+								<CMenuItem tr_text="すべてのロックを解除" text="##CUB3-1045" actionCommand="CMD_ALL_OBJECT_UNLOCK" />
+							</items>
+						</CMenu>
+						<CMenu tr_text="表示/非表示" text="##CUB3-0837">
+							<items>
+								<CMenuItem tr_text="選択オブジェクトを表示/非表示" text="##CUB3-1827" actionCommand="CMD_SELECTED_OBJECT_VISIBLE" />
+								<CMenuItem tr_text="未選択オブジェクトを隠す" text="##CUB3-1047" actionCommand="CMD_NOT_SELECTED_OBJECT_HIDE" />
+								<CMenuItem tr_text="すべてを表示" text="##CUB3-1048" actionCommand="CMD_ALL_OBJECT_SHOW" />
+								<CSeparatorMenuItem />
+								<CMenuItem tr_text="下絵を表示/非表示" text="##CUB3-4017" actionCommand="CMD_PART_PALETTE_CMD_CHANGE_VISIBLE_GUIDE_IMAGE" />
+								<CSeparatorMenuItem />
+								<CMenuItem tr_text="直前の表示状態を復元" text="##CUB3-1828" actionCommand="CMD_LOAD_VISIBLE_MAP" />
+							</items>
+						</CMenu>
+						<CSeparatorMenuItem />
+						<CMenu tr_text="編集時の影響レベルを変更" text="##CUB3-0842">
+							<items>
+								<CCheckMenuItem cx:id="menuItem_checkBtnEditLevel1" tr_text="レベル１（詳細）" text="##CUB3-0843" actionCommand="CMD_EDIT_LEVEL_1" />
+								<CCheckMenuItem cx:id="menuItem_checkBtnEditLevel2" tr_text="レベル２（通常）" text="##CUB3-0844" actionCommand="CMD_EDIT_LEVEL_2" />
+								<CCheckMenuItem cx:id="menuItem_checkBtnEditLevel3" tr_text="レベル３（大枠）" text="##CUB3-0845" actionCommand="CMD_EDIT_LEVEL_3" />
+							</items>
+						</CMenu>
+						<CSeparatorMenuItem />
+						<CDlgMenuItem tr_text="モデルのIDを変換" text="##CUB3-1363" actionCommand="CMD_CONVERT_ID_MODEL" />
+						<CMenu tr_text="モデルのオブジェクトの一括設定" text="##CUB3-2182" cx:id="menu_csv_import_export_model_ids">
+							<items>
+								<CDlgMenuItem tr_text="エクスポート" text="##CUBI-1588" actionCommand="CMD_CSV_EXPORT_MODEL_IDS" cx:id="menu_csv_export_model_ids" />
+								<CDlgMenuItem tr_text="インポート" text="##CUBI-1587" actionCommand="CMD_CSV_IMPORT_MODEL_IDS" cx:id="menu_csv_import_model_ids" />
+							</items>
+						</CMenu>
+						<CMenu tr_text="モデルのパラメータの一括設定" text="##CUB3-2183" cx:id="menu_csv_import_export_model_ids_parameter">
+							<items>
+								<CDlgMenuItem tr_text="エクスポート" text="##CUBI-1588" actionCommand="CMD_CSV_EXPORT_MODEL_IDS_PARAMETER" cx:id="menu_csv_export_model_ids_parameter" />
+								<CDlgMenuItem tr_text="インポート" text="##CUBI-1587" actionCommand="CMD_CSV_IMPORT_MODEL_IDS_PARAMETER" cx:id="menu_csv_import_model_ids_parameter" />
+							</items>
+						</CMenu>
+						<CSeparatorMenuItem />
+						<CDlgMenuItem tr_text="物理演算設定" text="##CUB3-0983" cx:id="menuItem_show_viewer" actionCommand="CMD_SHOW_VIEWER" />
+						<!--<CMenuItem text="2.1風Viewerを開く" actionCommand="CMD_SHOW_LEGACY_VIEWER" />-->
+					</items>
+				</CMenu>
+				<CMenu tr_text="アニメーション" text="##CUB3-0815" cx:id="menu_animation">
+					<items>
+						<CMenu tr_text="素材" text="##CUB3-0753" cx:id="menu_animation_material">
+							<items>
+								<CMenuItem tr_text="選択トラックの素材を再読み込み" text="##CUB3-4160" cx:id="menuItem_reload_model" actionCommand="CMD_RELOAD_MODEL" />
+								<CDlgMenuItem tr_text="選択トラックの素材を差し替え" text="##CUB3-4161" cx:id="menuItem_replace_model" actionCommand="CMD_REPLACE_MODEL" />
+								<CSeparatorMenuItem />
+								<CDlgMenuItem tr_text="選択トラックの素材を差し替え(全シーン)" text="##CUB3-4162" cx:id="menuItem_replace_model_resource" actionCommand="CMD_REPLACE_MODEL_RESOURCE" />
+							</items>
+						</CMenu>
+						<CMenu tr_text="シーン" text="##CUBI-0217" cx:id="menu_scene">
+							<items>
+								<CMenuItem tr_text="シーンを新規作成" text="##CUB3-0855" cx:id="menuItem_add_scene" actionCommand="CMD_ADD_SCENE" />
+								<CSeparatorMenuItem />
+								<CDlgMenuItem tr_text="シーンをインポート" text="##CUB3-3669" cx:id="menuItem_import_scene_from_animation" actionCommand="CMD_IMPORT_SCENE_FROM_ANIMATION" />
+								<CSeparatorMenuItem />
+								<CDlgMenuItem tr_text="音声ファイルから自動的にシーンを生成" text="##CUBI-0118" cx:id="menuItem_create_scene_from_sounds" actionCommand="CMD_CREATE_SCENE_FROM_SOUNDS" />
+								<CSeparatorMenuItem />
+								<CMenuItem tr_text="ループ編集補助の有効/無効" text="##CUB3-4141" cx:id="menuItem_switch_loop_editing_support" actionCommand="CMD_SWITCH_LOOP_EDITING_SUPPORT" />
+							</items>
+						</CMenu>
+						<CMenu tr_text="トラック" text="##CUB3-1941" cx:id="menu_track">
+							<items>
+								<CMenuItem tr_text="パラメータコントローラのアニメーションベイク" text="##CUB3-4128" cx:id="menuItem_param_controller_preview_bake" actionCommand="CMD_PARAM_CONTROLLER_PREVIEW_BAKE" />
+								<CSeparatorMenuItem />
+								<CDlgMenuItem tr_text="物理演算のアニメーションベイク" text="##CUB3-1650" cx:id="menuItem_bake_physics" actionCommand="CMD_BAKE_PHYSICS" />
+								<CSeparatorMenuItem />
+								<CDlgMenuItem tr_text="モーションシンクのアニメーションベイク" text="##CUB3-3484" cx:id="menuItem_bake_motion_sync" actionCommand="CMD_BAKE_MOTION_SYNC" />
+								<CDlgMenuItem tr_text="音声ファイルからリップシンクを生成" text="##CUB3-1222" cx:id="menuItem_lipsync" actionCommand="CMD_LIPSYNC" />
+								<CSeparatorMenuItem />
+								<CMenuItem tr_text="現在の位置をトラックの始めに" text="##CUB3-1942" cx:id="menuItem_set_start_track" actionCommand="CMD_SET_START_TRACK" />
+								<CMenuItem tr_text="現在の位置をトラックの終わりに" text="##CUB3-1943" cx:id="menuItem_set_end_track" actionCommand="CMD_SET_END_TRACK" />
+								<CMenuItem tr_text="現在の位置にトラックを移動" text="##CUB3-1944" cx:id="menuItem_move_track_indicator" actionCommand="CMD_MOVE_TRACK_INDICATOR" />
+							</items>
+						</CMenu>
+						<CMenu tr_text="タイムライン" text="##CUBI-0211">
+							<items>
+								<CMenuItem tr_text="&lt;インジケーター&gt;" text="##CUB3-4344" enabled="false" />
+								<CMenuItem tr_text="始めに移動" text="##CUB3-4197" cx:id="menuItem_move_start" actionCommand="CMD_MOVE_START" />
+								<CMenuItem tr_text="終わりに移動" text="##CUB3-4198" cx:id="menuItem_move_end" actionCommand="CMD_MOVE_End" />
+								<CMenuItem tr_text="ワークエリアの開始点に移動" text="##CUB3-4199" cx:id="menuItem_move_start_workspace" actionCommand="CMD_MOVE_START_WORKSPACE" />
+								<CMenuItem tr_text="ワークエリアの終了点に移動" text="##CUB3-4200" cx:id="menuItem_move_end_workspace" actionCommand="CMD_MOVE_End_WORKSPACE" />
+								<CMenuItem tr_text="1フレーム戻る" text="##CUB3-1155" cx:id="menuItem_prev_frame" actionCommand="CMD_PREV_FRAME" />
+								<CMenuItem tr_text="1フレーム進む" text="##CUB3-1156" cx:id="menuItem_next_frame" actionCommand="CMD_NEXT_FRAME" />
+								<CMenuItem tr_text="1キーフレーム戻る(プロパティ)" text="##CUB3-1946" cx:id="menuItem_prev_keyframe" actionCommand="CMD_PREV_KEYFRAME" />
+								<CMenuItem tr_text="1キーフレーム進む(プロパティ)" text="##CUB3-1947" cx:id="menuItem_next_keyframe" actionCommand="CMD_NEXT_KEYFRAME" />
+								<CMenuItem tr_text="1キーフレーム戻る(トラック)" text="##CUB3-1948" cx:id="menuItem_prev_track_keyframe" actionCommand="CMD_PREV_TRACK_KEYFRAME" />
+								<CMenuItem tr_text="1キーフレーム進む(トラック)" text="##CUB3-1949" cx:id="menuItem_next_track_keyframe" actionCommand="CMD_NEXT_TRACK_KEYFRAME" />
+								<CMenuItem tr_text="前のマーカーに戻る" text="##CUB3-3145" cx:id="menuItem_prev_timeline_marker" actionCommand="CMD_PREV_TIMELINE_MARKER" />
+								<CMenuItem tr_text="次のマーカーに進む" text="##CUB3-3146" cx:id="menuItem_next_timeline_marker" actionCommand="CMD_NEXT_TIMELINE_MARKER" />
+								<CMenuItem tr_text="前のオニオンスキンマーカーに戻る" text="##CUB3-2984" cx:id="menuItem_prev_onionskin_marker" actionCommand="CMD_PREV_ONIONSKIN_MARKER" />
+								<CMenuItem tr_text="次のオニオンスキンマーカーに進む" text="##CUB3-2985" cx:id="menuItem_next_onionskin_marker" actionCommand="CMD_NEXT_ONIONSKIN_MARKER" />
+								<CMenuItem tr_text="ワークエリアの開始点に設定" text="##CUB3-4201" cx:id="menuItem_set_start_workspace" actionCommand="CMD_SET_START_WORKSPACE" />
+								<CMenuItem tr_text="ワークエリアの終了点に設定" text="##CUB3-4202" cx:id="menuItem_set_end_workspace" actionCommand="CMD_SET_END_WORKSPACE" />
+								<CSeparatorMenuItem />
+								<CMenuItem tr_text="ワークエリアの全体表示" text="##CUB3-2747" cx:id="menuItem_show_full_workspace" actionCommand="CMD_SHOW_FULL_WORKSPACE" />
+								<CMenuItem tr_text="シーンの全体表示" text="##CUB3-4203" cx:id="menuItem_show_full_scene" actionCommand="CMD_SHOW_FULL_SCENE" />
+								<CMenuItem tr_text="拡大・縮小をリセット" text="##CUB3-4204" cx:id="menuItem_show_default_zoom" actionCommand="CMD_SHOW_DEFAULT_ZOOM" />
+							</items>
+						</CMenu>
+						<CMenu tr_text="フェード" text="##CUB3-4205">
+							<items>
+								<CDlgMenuItem tr_text="フェードイン・アウトの設定" text="##CUBI-1547" cx:id="menuItem_fade_setting" actionCommand="CMD_FADE_SETTING" />
+								<CDlgMenuItem tr_text="他のシーンにフェードイン・アウトの設定を反映" text="##CUB3-4206" cx:id="menuItem_reflect_fade" actionCommand="CMD_REFLECT_FADE" />
+							</items>
+						</CMenu>
+						<CMenu tr_text="パラメータコントローラ" text="##CUB3-4012">
+							<items>
+								<CDlgMenuItem tr_text="パラメータコントローラの計算ユニット設定" text="##CUB3-4032" actionCommand="CMD_PARAM_CTRL_CALC_ORDER_SETTING_DIALOG" cx:id="menu_paramCtrl_calcOrderSettingDialog" />
+								<CSeparatorMenuItem />
+								<CMenuItem tr_text="方向コントローラを反転" text="##CUB3-4129" actionCommand="CMD_PARAM_CONTROLLER_LINE_PARAM_CTRL_REVERSE_DIRECTION" cx:id="menu_paramCtrl_lineParamCtrlReverseDirection" />
+								<CMenuItem tr_text="方向コントローラを2つの単点コントローラに変換" text="##CUB3-4130" actionCommand="CMD_PARAM_CONTROLLER_SPLIT_LINE_PARAM_CTRL" cx:id="menu_paramCtrl_splitLineParamCtrl" />
+								<CMenuItem tr_text="2つの単点コントローラを方向コントローラに変換" text="##CUB3-4131" actionCommand="CMD_PARAM_CONTROLLER_CONVERT_TO_LINE_PARAM_CTRL" cx:id="menu_paramCtrl_convertToLineParamCtrl" />
+								<CSeparatorMenuItem />
+								<CCheckMenuItem tr_text="ターゲットを追従" text="##CUB3-4132" cx:id="menu_showParamCtrlTargetTracking" actionCommand="CMD_SHOW_PARAM_CONTROLLER_TARGET_TRACKING" />
+								<CCheckMenuItem tr_text="再生前にまとめて計算" text="##CUB3-4096" cx:id="menu_enablePlaybackCache" actionCommand="CMD_ENABLE_PLAYBACK_CACHE" />
+								<CCheckMenuItem tr_text="コントローラを表示" text="##CUB3-4133" cx:id="menu_showParamCtrlMarker" actionCommand="CMD_SHOW_PARAM_CTRL_MARKER" />
+								<CSeparatorMenuItem />
+								<CDlgMenuItem tr_text="コントローラの表示設定" text="##CUB3-4097" actionCommand="CMD_PARAM_CONTROLLER_DISPLAY_SETTING_DIALOG" cx:id="menu_paramCtrl_displaySettingDialog" />
+							</items>
+						</CMenu>
+						<CMenu tr_text="パラメータブックマーク" text="##CUB3-3147">
+							<items>
+								<CMenuItem tr_text="選択中のパラメータで表示" text="##CUB3-3148" cx:id="menu_show_parameter_bookmark_from_selected_attribute" actionCommand="CMD_SHOW_PARAMETER_BOOKMARK_FORM_SELECTED_ATTRIBUTE" />
+								<CSeparatorMenuItem />
+								<CMenuItem tr_text="選択中のトラックからラベルを削除" text="##CUB3-3149" cx:id="menu_remove_labels_on_selected_tracks" actionCommand="CMD_REMOVE_LABELS_ON_SELECTED_TRACKS" />
+								<CMenuItem tr_text="ラベルを一括で複製(同一モデルのトラック)" text="##CUB3-3337" cx:id="menu_copy_parameter_bookmark_label" actionCommand="CMD_COPY_PARAMETER_BOOKMARK_LABEL" />
+								<CDlgMenuItem tr_text="ラベルを個別に複製" text="##CUB3-3338" cx:id="menu_show_label_copy_dialog" actionCommand="CMD_SHOW_LABEL_COPY_DIALOG" />
+								<CCheckMenuItem cx:id="menuItem_hideParameterBookmarkLabel" tr_text="すべてのラベルを隠す" text="##CUB3-3150" actionCommand="CMD_HIDE_PARAMETER_BOOKMARK_LABEL" />
+								<CSeparatorMenuItem />
+								<CDlgMenuItem tr_text="パラメータブックマークの表示設定" text="##CUB3-3122" cx:id="menu_open_parameter_bookmark_setting" actionCommand="CMD_OPEN_PARAMETER_BOOKMARK_SETTING" />
+							</items>
+						</CMenu>
+						<CDlgMenuItem tr_text="マーカーを追加" text="##CUB3-1934" cx:id="menu_add_timeline_marker" actionCommand="CMD_ADD_TIMELINE_MARKER" />
+						<!--<CMenu tr_text="シーン一覧" text="##CUB3-1223">
+							<items />
+						</CMenu>-->
+						<CSeparatorMenuItem />
+						<CMenuItem tr_text="再生" text="##CUBI-1666" actionCommand="CMD_PLAY_STOP" />
+						<CSeparatorMenuItem />
+						<CMenuItem tr_text="編集モードの切り替え" text="##CUB3-1163" actionCommand="CMD_SWITCH_EDIT_MODE" cx:id="menuItem_switch_edit_mode" />
+						<CSeparatorMenuItem />
+						<CDlgMenuItem tr_text="ファイルを収集" text="##CUB3-2986" cx:id="menu_file_collection" actionCommand="CMD_COLLECTION" />
+					</items>
+				</CMenu>
+				<CMenu tr_text="フォームアニメーション" text="##CUB3-2425" cx:id="menu_formAnimation">
+					<items>
+						<CMenu tr_text="デフォーマ" text="##CUB3-0300">
+							<items>
+								<CMenuItem tr_text="親のデフォーマを選択" text="##CUBI-0401" actionCommand="CMD_SELECT_PARENT_DEFORMER" />
+								<CMenuItem tr_text="デフォーマの子要素を選択" text="##CUB3-4152" actionCommand="CMD_SELECT_CHILD_ELEMENTS_OF_DEFORMER" />
+							</items>
+						</CMenu>
+						<CMenu tr_text="一時変形ツール" text="##CUB3-2909">
+							<items>
+								<CMenuItem tr_text="拡大・縮小" text="##CUB3-2977" actionCommand="CMD_CREATE_FREE_DEFORM_HANDLER_AS_SCALE_MODE" />
+								<CMenuItem tr_text="回転" text="##CUBI-0749" actionCommand="CMD_CREATE_FREE_DEFORM_HANDLER_AS_ROTATE_MODE" />
+								<CMenuItem tr_text="自由変形" text="##CUB3-2978" actionCommand="CMD_CREATE_FREE_DEFORM_HANDLER_AS_FREE_MODE" />
+								<CMenuItem tr_text="遠近変形" text="##CUB3-2979" actionCommand="CMD_CREATE_FREE_DEFORM_HANDLER_AS_PERSPECTIVE_MODE" />
+								<CMenuItem tr_text="ゆがみ変形" text="##CUB3-2980" actionCommand="CMD_CREATE_FREE_DEFORM_HANDLER_AS_WARP_MODE" />
+								<CMenuItem tr_text="一時ワープ変形" text="##CUB3-3021" actionCommand="CMD_CREATE_WARP_HANDLER" />
+								<CMenuItem tr_text="一時パス変形" text="##CUB3-3022" actionCommand="CMD_CREATE_PATH_HANDLER" />
+								<CMenuItem tr_text="一時変形ツールを解除" text="##CUB3-2983" actionCommand="CMD_DELETE_TEMPORARY_HANDLER" />
+							</items>
+						</CMenu>
+						<CSeparatorMenuItem />
+						<CMenu tr_text="ロック" text="##CUBI-0382">
+							<items>
+								<CMenuItem tr_text="選択オブジェクトをロック/解除" text="##CUB3-1826" actionCommand="CMD_SELECTED_OBJECT_UNLOCK" />
+								<CMenuItem tr_text="未選択オブジェクトをロック" text="##CUB3-1044" actionCommand="CMD_NOT_SELECTED_OBJECT_LOCK" />
+								<CMenuItem tr_text="すべてのロックを解除" text="##CUB3-1045" actionCommand="CMD_ALL_OBJECT_UNLOCK" />
+							</items>
+						</CMenu>
+						<CMenu tr_text="表示/非表示" text="##CUB3-0837">
+							<items>
+								<CMenuItem tr_text="選択オブジェクトを表示/非表示" text="##CUB3-1827" actionCommand="CMD_SELECTED_OBJECT_VISIBLE" />
+								<CMenuItem tr_text="未選択オブジェクトを隠す" text="##CUB3-1047" actionCommand="CMD_NOT_SELECTED_OBJECT_HIDE" />
+								<CMenuItem tr_text="すべてを表示" text="##CUB3-1048" actionCommand="CMD_ALL_OBJECT_SHOW" />
+								<CSeparatorMenuItem />
+								<CMenuItem tr_text="直前の表示状態を復元" text="##CUB3-1828" actionCommand="CMD_LOAD_VISIBLE_MAP" />
+							</items>
+						</CMenu>
+						<CSeparatorMenuItem />
+						<CMenu tr_text="編集時の影響レベルを変更" text="##CUB3-0842">
+							<items>
+								<CCheckMenuItem cx:id="menuItem_fa_checkBtnEditLevel1" tr_text="レベル１（詳細）" text="##CUB3-0843" actionCommand="CMD_EDIT_LEVEL_1" />
+								<CCheckMenuItem cx:id="menuItem_fa_checkBtnEditLevel2" tr_text="レベル２（通常）" text="##CUB3-0844" actionCommand="CMD_EDIT_LEVEL_2" />
+								<CCheckMenuItem cx:id="menuItem_fa_checkBtnEditLevel3" tr_text="レベル３（大枠）" text="##CUB3-0845" actionCommand="CMD_EDIT_LEVEL_3" />
+							</items>
+						</CMenu>
+						<CSeparatorMenuItem />
+						<CMenuItem tr_text="フォーム編集キーを追加" text="##CUB3-2353" cx:id="menuItem_create_formAnimation_key" actionCommand="CMD_CREATE_FORMANIMATION_KEY" />
+						<CSeparatorMenuItem />
+						<CDlgMenuItem tr_text="アニメーションプレビュー設定" text="##CUB3-2588" cx:id="menuItem_show_animation_preview_setting_dialog" actionCommand="CMD_SHOW_ANIMATION_PREVIEW_SETTING_DIALOG" />
+					</items>
+				</CMenu>
+				<CMenu tr_text="ウィンドウ" text="##CUB3-0872" cx:id="menu_window">
+					<items>
+						<!--<CMenuItem tr_text="ワークスペースの切り替え" text="##CUB3-0873" actionCommand="CMD_CHANGE_WORKSPACE" />-->
+						<CMenu tr_text="ワークスペース" text="##CUB3-3151" cx:id="menu_workspace">
+							<items>
+								<CMenuItem visible="false" cx:id="menuItem_workspaceListEnd" />
+								<CSeparatorMenuItem />
+								<CMenuItem tr_text="現在のレイアウトをリセット" text="##CUB3-3560" actionCommand="CMD_RESET_CURRENT_WORKSPACE_LAYOUT" />
+								<CMenuItem tr_text="初期レイアウトを更新" text="##CUB3-3561" actionCommand="CMD_STORE_CURRENT_WORKSPACE_LAYOUT_AS_DEFAULT" />
+								<CDlgMenuItem tr_text="ワークスペース設定" text="##CUB3-3550" actionCommand="CMD_WORKSPACE_SETTING" />
+							</items>
+						</CMenu>
+						<CMenuItem cx:id="menuItem_hidePalette" tr_text="パレットを隠す" text="##CUB3-0874" actionCommand="CMD_HIDE_OR_RESTORE_PALETTE" />
+						<CMenuItem cx:id="menuItem_restorePalette" visible="false" tr_text="パレットを表示する" text="##CUB3-3692" actionCommand="CMD_HIDE_OR_RESTORE_PALETTE" />
+						<CSeparatorMenuItem />
+						<CMenuItem tr_text="タブを複製" text="##CUB3-3154" actionCommand="CMD_ADD_TAB_TABBOX" />
+						<CSeparatorMenuItem />
+						<CMenuItem tr_text="前のタブに切り替え" text="##CUB3-3152" actionCommand="CMD_MOVE_TAB_PREV" />
+						<CMenuItem tr_text="次のタブに切り替え" text="##CUB3-3153" actionCommand="CMD_MOVE_TAB_NEXT" />
+						<CSeparatorMenuItem />
+						<CMenuItem tr_text="すべてのビューの表示位置を合わせる" text="##CUB3-3155" cx:id="menuItem_sync_view_camera" actionCommand="CMD_SET_ALL_VIEWS_TO_SAME_DISPLAY_POSITION" />
+						<CSeparatorMenuItem />
+						<CMenuItem tr_text="ビューエリアの状態をリセット" text="##CUB3-1224" actionCommand="CMD_RESET_MAINCANVAS" />
+						<CSeparatorMenuItem />
+					</items>
+				</CMenu>
+				<CMenu tr_text="ヘルプ" text="##CUBI-0551" cx:id="menu_help">
+					<items>
+						<CMenuItem tr_text="使い方マニュアル" text="##CUBI-0415" actionCommand="CMD_OPEN_MANUAL_PAGE" />
+						<CMenuItem tr_text="Live2Dホームページ" text="##CUBI-0414" actionCommand="CMD_OPEN_HOME_PAGE" />
+						<CMenuItem tr_text="製品ページ" text="##CUB3-2639" actionCommand="CMD_OPEN_PRODUCT_PAGE" />
+						<CMenuItem tr_text="ダウンロードページ" text="##CUBI-0125" actionCommand="CMD_OPEN_DOWNLOAD_PAGE" />
+						<CMenuItem tr_text="サンプルモデル" text="##CUBI-0800" actionCommand="CMD_OPEN_SAMPLE_MODEL_PAGE" />
+						<CMenuItem tr_text="クリエイターズフォーラム" text="##CUB3-3671" actionCommand="CMD_OPEN_COMMUNITY_PAGE" />
+						<CMenuItem tr_text="Live2Dヘルプ" text="##CUB3-3402" actionCommand="CMD_OPEN_LIVE2D_HELP_PAGE" />
+						<CDlgMenuItem tr_text="動画チュートリアル" text="##CUB3-1703" actionCommand="CMD_SHOW_TUTORIAL_VIDEO" />
+						<CMenuItem tr_text="ホーム" text="##CUB3-3728" actionCommand="CMD_SHOW_HOME_DIALOG" />
+						<CSeparatorMenuItem />
+						<CDlgMenuItem tr_text="ライセンスの登録" text="##CUBI-0119" actionCommand="CMD_REGISTER_LICENSE" cx:id="menuItem_register_license" />
+						<CDlgMenuItem tr_text="ライセンスの解除" text="##CUB3-0880" actionCommand="CMD_REVOKE_LICENSE" cx:id="menuItem_revoke_license" />
+						<CDlgMenuItem tr_text="ライセンスのオンライン認証" text="##CUB3-2245" actionCommand="CMD_UPDATE_ONLINE_LICENSE" cx:id="menuItem_update_online_license" />
+						<CMenuItem tr_text="購入ページを開く" text="##CUBI-0120" actionCommand="CMD_OPEN_STORE_PAGE" />
+						<CSeparatorMenuItem />
+						<CCheckMenuItem tr_text="操作を可視化" text="##CUB3-0881" cx:id="menu_showUserOperation" actionCommand="CMD_SHOW_USER_OPERATION" />
+						<CMenuItem tr_text="ログファイルを開く" text="##CUBI-0121" actionCommand="CMD_OPEN_LOG_FILE" />
+						<CMenuItem tr_text="自動バックアップフォルダを開く" text="##CUBI-0417" actionCommand="CMD_OPEN_BACKUP_DIR" />
+						<!--<CMenuItem tr_text="OpenGLのクリーンナップ" text="##CUBI-0182" />-->
+						<CSeparatorMenuItem />
+						<CMenuItem tr_text="更新履歴" text="##CUBI-1682" actionCommand="CMD_OPEN_ABOUT" />
+					</items>
+				</CMenu>
+				<CMenu tr_text="alpha版ヘルプ" text="##CUB3-3954" cx:id="menu_help_for_alpha">
+					<items>
+						<CMenuItem tr_text="ご利用時の注意事項" text="##CUB3-3726" actionCommand="CMD_SHOW_INFORMATION_DIALOG_FOR_ALPHA" />
+						<CMenuItem tr_text="使い方マニュアル" text="##CUBI-0415" actionCommand="CMD_OPEN_MANUAL_PAGE_ALPHA" />
+						<CMenuItem tr_text="ダウンロードページ" text="##CUBI-0125" actionCommand="CMD_OPEN_DOWNLOAD_PAGE_ALPHA" />
+						<CMenuItem tr_text="クリエイターズフォーラム" text="##CUB3-3671" actionCommand="CMD_OPEN_FORUM_PAGE_ALPHA" />
+						<CMenuItem tr_text="更新履歴" text="##CUBI-1682" actionCommand="CMD_OPEN_ABOUT_ALPHA" />
+					</items>
+				</CMenu>
+				<CMenu text="" prefWidth="0" name="dummy_menu1" />
+				<!-- メニューとして見せる必要が無いがショートカット（シングルキー含む）を適用したい場合用の隠しメニュー -->
+				<CMenu text="" prefWidth="0" cx:id="hiddenMenu">
+					<items>
+						<!-- ツールバー/隠しメニュー -->
+						<CMenuItem tr_text="回転デフォーマ作成ツール" text="##CUB3-1245" actionCommand="CMD_TOOL_MODE_CREATE_ROTATION_DEFORMER" />
+						<CMenuItem tr_text="矢印ツール" text="##CUB3-0899" actionCommand="CMD_TOOL_MODE_ARROW" />
+						<CMenuItem tr_text="投げ縄選択ツール" text="##CUB3-0510" actionCommand="CMD_TOOL_MODE_LASSO" />
+						<CMenuItem tr_text="ブラシ選択ツール" text="##CUB3-0512" actionCommand="CMD_TOOL_MODE_BLUSH_SELECT" />
+						<CMenuItem tr_text="変形パスツール" text="##CUB3-0219" actionCommand="CMD_TOOL_MODE_DEFORM_PATH" />
+						<CMenuItem tr_text="変形ブラシツール" text="##CUB3-2889" actionCommand="CMD_TOOL_MODE_DEFORM_BRUSH" />
+						<CMenuItem tr_text="グルーツール" text="##CUB3-0523" actionCommand="CMD_TOOL_MODE_GLUE" />
+						<CMenuItem tr_text="アートパスツール" text="##CUB3-2349" actionCommand="CMD_TOOL_MODE_ARTPATH" />
+						<CMenuItem tr_text="パラメータコントローラ" text="##CUB3-4012" actionCommand="CMD_TOOL_MODE_PARAM_CTRL" />
+						<CMenuItem tr_text="最後に使ったツールに切り替え" text="##CUB3-3158" actionCommand="CMD_CHANGE_MODE" />
+						<CMenuItem tr_text="ワークスペースをモデリングへ切り替え" text="##CUB3-2582" actionCommand="CMD_CHANGE_WORKSPACE_MODELER" />
+						<CMenuItem tr_text="ワークスペースをアニメーションへ切り替え" text="##CUB3-2583" actionCommand="CMD_CHANGE_WORKSPACE_ANIMATOR" />
+						<CMenuItem tr_text="ワークスペースをフォームアニメーションへ切り替え" text="##CUB3-2584" actionCommand="CMD_CHANGE_WORKSPACE_FORM_ANIMATION" />
+						<!-- ビューエリア上 -->
+						<CMenuItem tr_text="アートメッシュのロック" text="##CUB3-1248" actionCommand="CMD_CHANGE_VIEW_VIEWVERTEX" />
+						<CMenuItem tr_text="デフォーマのロック" text="##CUB3-1249" actionCommand="CMD_CHANGE_VIEW_DEFORMER" />
+						<CMenuItem tr_text="アートメッシュの表示/非表示" text="##CUB3-1131" actionCommand="CMD_CHANGE_VIEW_ARTMESH" />
+						<CMenuItem tr_text="Solo" text="Solo" cx:id="menuItem_solo" actionCommand="CMD_SOLO" />
+						<CMenuItem tr_text="不透明度を反映" text="##CUB3-2568" actionCommand="CMD_SOLO_ENABLE_APPLY_OPACITY" />
+						<CMenuItem tr_text="乗算色・スクリーン色を反映" text="##CUB3-4210" actionCommand="CMD_SOLO_ENABLE_APPLY_COLOR" />
+						<CMenuItem tr_text="選択されている頂点のオブジェクトを選択" text="##CUB3-1874" actionCommand="CMD_SELECT_OBJECT_BY_SELECTION" />
+						<!-- ビューエリア下 -->
+						<CMenuItem tr_text="スナップショット" text="##CUBI-0958" actionCommand="CMD_SCREEN_SHOT" />
+						<CMenuItem tr_text="スナップショットの表示/非表示" text="##CUB3-1060" actionCommand="CMD_SCREEN_SHOT_VIEW" />
+						<CMenuItem tr_text="スナップショットの下絵保存" text="##CUB3-1250" cx:id="menuItem_screen_shot_to_artmesh" actionCommand="CMD_SCREEN_SHOT_TO_ARTMESH" />
+						<CMenuItem tr_text="ズームアウト" text="##CUB3-1085" actionCommand="CMD_CAMERA_ZOOM_OUT" />
+						<CMenuItem tr_text="ズームイン" text="##CUB3-1084" actionCommand="CMD_CAMERA_ZOOM_IN" />
+						<CMenuItem tr_text="原寸表示" text="##CUB3-1087" actionCommand="CMD_CAMERA_SET_SCALE_ONE_BY_ONE" />
+						<CMenuItem tr_text="全体表示" text="##CORE-0148" actionCommand="CMD_CAMERA_DISPLAY_ALL" />
+						<CMenuItem tr_text="キャンバス反転" text="##CUB3-2748" actionCommand="CMD_CAMERA_FLIP_HORIZONTALLY_SCREEN" />
+						<!-- アニメーション -->
+						<CMenuItem tr_text="軽量再生" text="##CUB3-2692" actionCommand="CMD_REVERSE_IS_LIGHT_PREVIEW" />
+						<CMenuItem tr_text="コマ打ちのフレームを強調表示する" text="##CUB3-3689" actionCommand="CMD_REVERSE_TIMELINE_DISPLAY_FRAMESTEP" />
+						<CMenuItem tr_text="選択オブジェクトのフォームアニメーションのプロパティに自動スクロール" text="##CUB3-3690" actionCommand="CMD_REVERSE_TIMELINE_FOCUS_ROW_ON_CLICK" />
+						<CMenuItem tr_text="シーン範囲外へのインジケーターの移動を有効化" text="##CUB3-4122" actionCommand="CMD_REVERSE_TIMELINE_OPERATION_OUTSIDE_DURATION" />
+						<CMenuItem tr_text="シャイで非表示にしたプロパティに対するキーフレームの操作を有効化" text="##CUB3-1698" actionCommand="CMD_REVERSE_INCLUDE_SHIED_ATTRS" />
+						<CMenuItem tr_text="すべてのトラックを展開" text="##CUB3-1950" actionCommand="CMD_EXPAND_ALL_CONTAINS" />
+						<CMenuItem tr_text="パラメータ選択時にすべてのキーを選択" text="##CUB3-3093" actionCommand="CMD_REVERSE_ENABLE_CLICK_SELECT_ALL_KEYS" />
+						<CMenuItem tr_text="キーフレームの一括挿入時にコマ打ちを除外" text="##CUB3-4176" actionCommand="CMD_REVERSE_TIMELINE_FRAMESTEP_IGNORE_ADDORREMOVE" />
+						<CMenuItem tr_text="インジケーターに1フレームの範囲を表示する" text="##CUB3-4360" actionCommand="CMD_REVERSE_ENABLE_DRAW_INDICATOR_FRAME_RANGE" />
+						<CMenuItem tr_text="キーの値を表示する" text="##CUB3-2953" actionCommand="CMD_REVERSE_ENABLE_SHOW_KEY_FRAMES_VALUE" />
+						<CMenuItem tr_text="キーの名前を表示する" text="##CUB3-3019" actionCommand="CMD_REVERSE_ENABLE_DISPLAY_ATTRIBUTE_NAME" />
+						<CMenuItem tr_text="オートリサイズ" text="##CUB3-2954" actionCommand="CMD_REVERSE_ENABLE_ALWAYS_RESIZE_HORIZONTAL" />
+						<CMenuItem tr_text="常に連続ベジェ編集を行う" text="##CUB3-2955" actionCommand="CMD_REVERSE_ENABLE_ALWAYS_CONTINUOUS_BEZIER" />
+						<CMenuItem tr_text="Shiftでスマートスナップ" text="##CUB3-2956" actionCommand="CMD_REVERSE_ENABLE_ROUND_VALUE_WITH_SHIFT" />
+						<CMenuItem tr_text="カーブをドラッグでベジェ化" text="##CUB3-2957" actionCommand="CMD_REVERSE_ENABLE_AUTO_BEZIER_ON_CURVE_DRAGGING" />
+						<CMenuItem tr_text="カーブのキーの位置にスナップ" text="##CUB3-1856" actionCommand="CMD_REVERSE_ENABLE_SNAP_ON_GRAPH_EDITOR" />
+						<CMenuItem tr_text="現在のフレームでフリーズ/解除" text="##CUB3-3163" actionCommand="CMD_SET_FREEZE_POS" />
+						<CMenuItem tr_text="すべてをフリーズ" text="##CUB3-3164" actionCommand="CMD_SET_FREEZE_ALL" />
+						<CMenuItem tr_text="選択したプロパティをフリーズ" text="##CUB3-3165" actionCommand="CMD_SET_FREEZE_SELECTED" />
+						<CMenuItem tr_text="選択していないプロパティをフリーズ" text="##CUB3-3166" actionCommand="CMD_SET_FREEZE_UNSELECTED" />
+						<CMenuItem tr_text="すべてのフリーズを解除" text="##CUB3-3167" actionCommand="CMD_SET_UNFREEZE_ALL" />
+						<!-- モデリング -->
+						<CMenuItem tr_text="アートパスのコントロールポイントを太く" text="##CUB3-2987" actionCommand="CMD_EDIT_WIDTH_ART_PATH_CONTROL_POINT_THICKEN" />
+						<CMenuItem tr_text="アートパスのコントロールポイントを細く" text="##CUB3-2988" actionCommand="CMD_EDIT_WIDTH_ART_PATH_CONTROL_POINT_THIN" />
+						<CMenuItem tr_text="近くのキーに吸着" text="##CUB3-3100" actionCommand="CMD_SNAP_NEAREST_PARAMETER_KEY" />
+						<CMenuItem tr_text="描画順スライダーをロック" text="##CUB3-4163" actionCommand="CMD_DRAW_ORDER_RULER_EDITABLE" />
+						<CMenu tr_text="ツール詳細" text="##CUB3-0780">
+							<items>
+								<CMenu tr_text="変形パスツール" text="##CUB3-0219">
+									<items>
+										<CMenuItem tr_text="コントロールポイントの追加" text="##CUB3-1204" actionCommand="CMD_TOOL_MODE_CONTROLLER_CONTROLLER_ADD_CONTROLPOINT" />
+										<CMenuItem tr_text="コントロールポイントの削除" text="##CUB3-1205" actionCommand="CMD_TOOL_MODE_CONTROLLER_CONTROLLER_DELETE_CONTROLPOINT" />
+										<CMenuItem tr_text="パスの削除" text="##CUB3-1206" actionCommand="CMD_TOOL_MODE_CONTROLLER_CONTROLLER_DISCONNECT_CONTROLPOINT" />
+										<CMenuItem tr_text="折れ線" text="##CUBI-1028" actionCommand="CMD_TOOL_MODE_CONTROLLER_CONTROLLER_SET_CORNER" />
+										<!--<CMenuItem text="変形パスの削除" actionCommand="" /> -->
+									</items>
+								</CMenu>
+								<CMenu tr_text="グルーツール" text="##CUB3-0523">
+									<items>
+										<CMenuItem tr_text="重みブラシA:B" text="##CUB3-0792" actionCommand="CMD_TOOL_MODE_GLUE_WEIGHT_BRUSH_AB" />
+										<CMenuItem tr_text="重みブラシA" text="##CUB3-0791" actionCommand="CMD_TOOL_MODE_GLUE_WEIGHT_BRUSH_A" />
+										<CMenuItem tr_text="重みブラシB" text="##CUB3-0793" actionCommand="CMD_TOOL_MODE_GLUE_WEIGHT_BRUSH_B" />
+										<CMenuItem tr_text="グルーの吸着" text="##CUB3-1188" actionCommand="CMD_TOOL_MODE_GLUE_WEIGHT_BRUSH_CLOSER" />
+									</items>
+								</CMenu>
+								<CMenu tr_text="アートパスツール" text="##CUB3-2349">
+									<items>
+										<CMenuItem tr_text="コントロールポイントの追加" text="##CUB3-1204" actionCommand="CMD_TOOL_MODE_ARTPATH_ADD_ARTPATH_POINT" />
+										<CMenuItem tr_text="コントロールポイントの削除" text="##CUB3-1205" actionCommand="CMD_TOOL_MODE_ARTPATH_DELETE_ARTPATH_POINT" />
+										<CMenuItem tr_text="コントロールポイントに設定されている不透明度を調整" text="##CUB3-2585" actionCommand="CMD_TOOL_MODE_ARTPATH_ADJUST_OPACITY" />
+										<CMenuItem tr_text="コントロールポイントに設定されている太さを調整" text="##CUB3-2586" actionCommand="CMD_TOOL_MODE_ARTPATH_ADJUST_WIDTH" />
+										<CMenuItem tr_text="折れ線" text="##CUBI-1028" actionCommand="CMD_TOOL_MODE_ARTPATH_SET_CORNER" />
+										<CMenuItem tr_text="ストロークでアートパスを作成" text="##CUB3-2966" actionCommand="CMD_TOOL_MODE_ARTPATH_CREATE_WITH_STROKE" />
+										<CMenuItem tr_text="ストロークでアートパスを編集" text="##CUB3-2967" actionCommand="CMD_TOOL_MODE_ARTPATH_EDIT_WITH_STROKE" />
+										<CMenuItem tr_text="アートパスを接続" text="##CUB3-2404" actionCommand="CMD_TOOL_MODE_ARTPATH_CONNECT_PATH" />
+										<CMenuItem tr_text="アートパスを切断" text="##CUB3-2405" actionCommand="CMD_TOOL_MODE_ARTPATH_CUT_PATH" />
+									</items>
+								</CMenu>
+								<CMenu tr_text="変形ブラシツール" text="##CUB3-2889">
+									<items>
+										<CMenuItem tr_text="変形ブラシ" text="##CUB3-2969" actionCommand="CMD_TOOL_MODE_DEFORM_BRUSH_DEFORM_BRUSH" />
+										<CMenuItem tr_text="膨張ブラシ" text="##CUB3-4207" actionCommand="CMD_TOOL_MODE_DEFORM_BRUSH_EXPANSION_BRUSH" />
+										<CMenuItem tr_text="ワープデフォーマの整形ブラシ" text="##CUB3-3339" actionCommand="CMD_TOOL_MODE_DEFORM_BRUSH_WARPDEFORMER_RESHAPE" />
+									</items>
+								</CMenu>
+								<CMenu tr_text="パラメータコントローラツール" text="##CUB3-4134">
+									<items>
+										<CMenuItem tr_text="コントローラの選択・編集" text="##CUB3-4124" actionCommand="CMD_TOOL_MODE_PARAM_CTRL_SELECT_AND_EDIT" />
+										<CMenuItem tr_text="単点コントローラの追加" text="##CUB3-4125" actionCommand="CMD_TOOL_MODE_PARAM_CTRL_ADD" />
+										<CMenuItem tr_text="方向コントローラの追加" text="##CUB3-4126" actionCommand="CMD_TOOL_MODE_PARAM_CTRL_LINE_ADD" />
+										<CMenuItem tr_text="コントローラの削除" text="##CUB3-4127" actionCommand="CMD_TOOL_MODE_PARAM_CTRL_SUB" />
+									</items>
+								</CMenu>
+							</items>
+						</CMenu>
+						<CMenu tr_text="ガイドの追加" text="##CUB3-1883">
+							<items>
+								<CMenuItem tr_text="マウスの位置へ水平線を追加" text="##CUB3-1952" actionCommand="CMD_SETTING_GUIDES_MODELING_ADD_HORIZONTAL" />
+								<CMenuItem tr_text="マウスの位置へ垂直線を追加" text="##CUB3-1953" actionCommand="CMD_SETTING_GUIDES_MODELING_ADD_VERTICAL" />
+								<CMenuItem tr_text="マウスの位置へ水平線・垂直線を追加" text="##CUB3-1954" actionCommand="CMD_SETTING_GUIDES_MODELING_ADD_HORIZONTAL_AND_VERTICAL" />
+							</items>
+						</CMenu>
+						<CMenu tr_text="パーツのショートカット" text="##CUB3-2184">
+							<items>
+								<CMenuItem tr_text="パーツを作成" text="##CUB3-2185" actionCommand="CMD_PART_PALETTE_CMD_NEW_PART" />
+								<CMenuItem tr_text="選択されているパーツを削除" text="##CUB3-2186" actionCommand="CMD_PART_PALETTE_CMD_REMOVE_PART" />
+								<CMenuItem tr_text="選択されているパーツを削除(子は残す)" text="##CUB3-2989" actionCommand="CMD_PART_PALETTE_CMD_REMOVE_SELECTED_PART_ONLY" />
+								<CMenuItem tr_text="ドラッグ&amp;ドロップを禁止" text="##CUB3-4102" actionCommand="CMD_PART_PALETTE_RESTRICT_DRAG_AND_DROP" />
+								<CMenuItem tr_text="パーツ設定" text="##CUB3-0739" actionCommand="CMD_PART_PALETTE_CMD_SETTING" />
+								<CMenuItem tr_text="空のパーツを削除" text="##CUB3-3773" actionCommand="CMD_PART_PALETTE_CMD_REMOVE_ALL_EMPTY_PARTS" />
+								<CMenuItem tr_text="子以下の空のパーツを削除" text="##CUB3-3774" actionCommand="CMD_PART_PALETTE_DELETE_DESCENDANT_EMPTY_PARTS" />
+								<CMenuItem tr_text="空のデフォーマを削除" text="##CUB3-3775" actionCommand="CMD_PART_PALETTE_CMD_REMOVE_ALL_EMPTY_DEFORMERS" />
+							</items>
+						</CMenu>
+						<CMenu tr_text="デフォーマのショートカット" text="##CUB3-3955">
+							<items>
+								<CMenuItem tr_text="ドラッグ&amp;ドロップを禁止" text="##CUB3-4102" actionCommand="CMD_DEFORMER_PALETTE_RESTRICT_DRAG_AND_DROP" />
+								<CMenuItem tr_text="子以下の空のデフォーマを削除" text="##CUB3-3776" actionCommand="CMD_DEFORMER_PALETTE_DELETE_DESCENDANT_EMPTY_DEFORMERS" />
+							</items>
+						</CMenu>
+						<CMenu tr_text="パラメータのショートカット" text="##CUB3-2187">
+							<items>
+								<CMenuItem tr_text="選択状態を解除" text="##CUB3-2188" actionCommand="CMD_PARAMETER_PALETTE_CLEAR_SELECTION" />
+								<CSeparatorMenuItem />
+								<CMenuItem tr_text="結合/結合解除" text="##CUB3-2189" actionCommand="CMD_PARAMETER_PALETTE_SWITCH_COMBINED" />
+								<CSeparatorMenuItem />
+								<CMenuItem tr_text="前を選択" text="##CUB3-2190" actionCommand="CMD_PARAMETER_PALETTE_SELECT_PREV_ITEM" />
+								<CMenuItem tr_text="次を選択" text="##CUB3-2191" actionCommand="CMD_PARAMETER_PALETTE_SELECT_NEXT_ITEM" />
+								<CSeparatorMenuItem />
+								<CMenuItem tr_text="最初のキーを選択" text="##CUB3-2192" actionCommand="CMD_PARAMETER_PALETTE_SELECT_FIRST_KEY" />
+								<CMenuItem tr_text="次のキーを選択" text="##CUB3-2193" actionCommand="CMD_PARAMETER_PALETTE_SELECT_NEXT_KEY" />
+								<CMenuItem tr_text="前のキーを選択" text="##CUB3-2194" actionCommand="CMD_PARAMETER_PALETTE_SELECT_PREV_KEY" />
+								<CMenuItem tr_text="最後のキーを選択" text="##CUB3-2195" actionCommand="CMD_PARAMETER_PALETTE_SELECT_LAST_KEY" />
+								<CMenuItem tr_text="デフォルトのキーを選択" text="##CUB3-2196" actionCommand="CMD_PARAMETER_PALETTE_SELECT_DEFAULT" />
+								<CMenuItem tr_text="縦の最初のキーを選択(結合時)" text="##CUB3-2197" actionCommand="CMD_PARAMETER_PALETTE_SELECT_FIRST_KEY_SEC" />
+								<CMenuItem tr_text="縦の次のキーを選択(結合時)" text="##CUB3-2198" actionCommand="CMD_PARAMETER_PALETTE_SELECT_NEXT_KEY_SEC" />
+								<CMenuItem tr_text="縦の前のキーを選択(結合時)" text="##CUB3-2199" actionCommand="CMD_PARAMETER_PALETTE_SELECT_PREV_KEY_SEC" />
+								<CMenuItem tr_text="縦の最後のキーを選択(結合時)" text="##CUB3-2200" actionCommand="CMD_PARAMETER_PALETTE_SELECT_LAST_KEY_SEC" />
+								<CSeparatorMenuItem />
+								<CMenuItem tr_text="キーフォーム追加" text="##CUB3-1127" actionCommand="CMD_PARAMETER_PALETTE_ADD_KEY_FORM" />
+								<CMenuItem tr_text="キーフォーム削除" text="##CUB3-1128" actionCommand="CMD_PARAMETER_PALETTE_DEL_KEY_FORM" />
+								<CMenuItem tr_text="選択" text="##CUBI-0712" actionCommand="CMD_PARAMETER_PALETTE_SELECT" />
+								<CMenuItem tr_text="反転" text="##CUBI-0328" actionCommand="CMD_PARAMETER_PALETTE_REVERSE_KEY" />
+								<CMenuItem tr_text="調整" text="##CUBI-0967" actionCommand="CMD_PARAMETER_PALETTE_ADJUST_KEY" />
+								<CMenuItem tr_text="変更" text="##CUBI-0598" actionCommand="CMD_PARAMETER_PALETTE_MOVE_PARAMETER" />
+								<CSeparatorMenuItem />
+								<CMenuItem tr_text="キーの2点追加" text="##CUB3-1118" actionCommand="CMD_PARAMETER_PALETTE_SET_TWO_KEYS" />
+								<CMenuItem tr_text="キーの3点追加" text="##CUB3-1119" actionCommand="CMD_PARAMETER_PALETTE_SET_THREE_KEYS" />
+								<CMenuItem tr_text="すべてのキーを削除" text="##CUB3-1120" actionCommand="CMD_PARAMETER_PALETTE_REMOVE_ALL_KEYS" />
+								<CMenuItem tr_text="キーフォーム編集" text="##CUB3-0150" actionCommand="CMD_PARAMETER_PALETTE_KEY_FORM_SETTING" />
+								<CMenuItem tr_text="選択オブジェクトのパラメータのみ表示" text="##CUB3-3161" actionCommand="CMD_PARAMETER_PALETTE_FILTER_PARAMETER" />
+								<CSeparatorMenuItem />
+								<CMenuItem tr_text="パラメータ編集" text="##CUBI-0409" actionCommand="CMD_PARAMETER_PALETTE_EDIT_PARAMETER" />
+								<CMenuItem tr_text="パラメータ作成" text="##CUB3-0733" actionCommand="CMD_PARAMETER_PALETTE_ADD_NEW_PARAMETER" />
+								<CMenuItem tr_text="パラメータ複製" text="##CUB3-2918" actionCommand="CMD_PARAMETER_PALETTE_DUPLICATE_SELECTED_PARAMETERS" />
+								<CMenuItem tr_text="フォルダ作成" text="##CUB3-0734" actionCommand="CMD_PARAMETER_PALETTE_NEW_FOLDER" />
+								<CMenuItem tr_text="削除" text="##CUBI-0135" actionCommand="CMD_PARAMETER_PALETTE_DELETE_OBJECT" />
+								<CMenuItem tr_text="空のパラメータを削除" text="##CUB3-3771" actionCommand="CMD_PARAMETER_PALETTE_DELETE_ALL_EMPTY_PARAMETERS" />
+								<CMenuItem tr_text="空のパラメータグループを削除" text="##CUB3-3772" actionCommand="CMD_PARAMETER_PALETTE_DELETE_ALL_EMPTY_PARAMETER_GROUPS" />
+								<CSeparatorMenuItem />
+								<CMenuItem tr_text="ドラッグ&amp;ドロップを禁止" text="##CUB3-4102" actionCommand="CMD_PARAMETER_PALETTE_RESTRICT_DRAG_AND_DROP" />
+							</items>
+						</CMenu>
+						<CMenu tr_text="一時的なスナップショット" text="##CUB3-1900">
+							<items>
+								<CMenu tr_text="保存" text="##CUBI-0332">
+									<items>
+										<CMenuItem tr_text="保存[1]" text="##CUB3-1901" actionCommand="CMD_SAVE_TEMP_SNAP_SHOT_0" />
+										<CMenuItem tr_text="保存[2]" text="##CUB3-1902" actionCommand="CMD_SAVE_TEMP_SNAP_SHOT_1" />
+										<CMenuItem tr_text="保存[3]" text="##CUB3-1903" actionCommand="CMD_SAVE_TEMP_SNAP_SHOT_2" />
+										<CMenuItem tr_text="保存[4]" text="##CUB3-1904" actionCommand="CMD_SAVE_TEMP_SNAP_SHOT_3" />
+									</items>
+								</CMenu>
+								<CMenu tr_text="表示" text="##CUBI-0548">
+									<items>
+										<CMenuItem tr_text="表示[1]" text="##CUB3-1905" actionCommand="CMD_SHOW_TEMP_SNAP_SHOT_0" />
+										<CMenuItem tr_text="表示[2]" text="##CUB3-1906" actionCommand="CMD_SHOW_TEMP_SNAP_SHOT_1" />
+										<CMenuItem tr_text="表示[3]" text="##CUB3-1907" actionCommand="CMD_SHOW_TEMP_SNAP_SHOT_2" />
+										<CMenuItem tr_text="表示[4]" text="##CUB3-1908" actionCommand="CMD_SHOW_TEMP_SNAP_SHOT_3" />
+									</items>
+								</CMenu>
+							</items>
+						</CMenu>
+						<CMenu tr_text="一時ワープ変形の列の操作" text="##CUB3-2990">
+							<items>
+								<CMenuItem tr_text="列を増やす" text="##CUB3-2991" actionCommand="CMD_TWICE_COLUMN_WARP_HANDLER" />
+								<CMenuItem tr_text="列を減らす" text="##CUB3-2992" actionCommand="CMD_HALF_COLUMN_WARP_HANDLER" />
+								<CMenuItem tr_text="行を増やす" text="##CUB3-2993" actionCommand="CMD_TWICE_ROW_WARP_HANDLER" />
+								<CMenuItem tr_text="行を減らす" text="##CUB3-2994" actionCommand="CMD_HALF_ROW_WARP_HANDLER" />
+							</items>
+						</CMenu>
+						<CMenu tr_text="ブレンドシェイプ" text="##CUB3-3124">
+							<items>
+								<CMenuItem text="#-#選択オブジェクトにブレンドシェイプ用キーフォームを追加" actionCommand="CMD_ADD_MORPH_TARGET" />
+								<CMenuItem text="#-#選択オブジェクトのブレンドシェイプ用キーフォームを削除" actionCommand="CMD_REMOVE_MORPH_TARGET" />
+							</items>
+						</CMenu>
+						<CMenu tr_text="パラメータブックマーク" text="##CUB3-3147">
+							<items>
+								<CMenuItem tr_text="カーソル位置のオブジェクトで表示" text="##CUB3-3159" actionCommand="CMD_SHOW_PARAMETER_BOOKMARK_FOR_TOP_DRAWABLE" />
+								<CMenuItem tr_text="カーソル位置のオブジェクトから選択" text="##CUB3-3160" actionCommand="CMD_SHOW_PARAMETER_BOOKMARK_DRAWABLE_LIST_POPUP" />
+							</items>
+						</CMenu>
+						<CMenu tr_text="ブラシ" text="##CUBI-0435">
+							<items>
+								<CMenuItem tr_text="前のブラシ形状に切り替え" text="##CUB3-4208" actionCommand="CMD_BRUSH_COMMON_SHAPE_PREV" />
+								<CMenuItem tr_text="次のブラシ形状に切り替え" text="##CUB3-4209" actionCommand="CMD_BRUSH_COMMON_SHAPE_NEXT" />
+							</items>
+						</CMenu>
+					</items>
+				</CMenu>
+				<CMenu text="" prefWidth="0" cx:id="hiddenDebugMenu">
+					<items>
+						<!-- ツールバー/隠しデバッグメニュー -->
+						<CMenu text="#-#モデル情報の一括設定" cx:id="menu_csv_model_info">
+							<items>
+								<CMenuItem text="#-#エクスポート" actionCommand="CMD_CSV_EXPORT_MODEL_INFO" cx:id="menu_csv_export_model_info" />
+								<CMenuItem text="#-#インポート" actionCommand="CMD_CSV_IMPORT_MODEL_INFO" cx:id="menu_csv_import_model_info" />
+							</items>
+						</CMenu>
+					</items>
+				</CMenu>
+				<CMenu tr_text="メッシュ編集モード" text="##CUB3-0333" cx:id="menu_meshEdit" visible="false" opaque="true">
+					<items>
+						<CMenuItem tr_text="メッシュ編集を完了" text="##CUB3-0884" actionCommand="CMD_START_OR_END_MESH_EDITOR" shortcut2="Enter" />
+						<CMenuItem tr_text="メッシュの自動生成 (メッシュ編集モード)" text="##CUB3-1683" actionCommand="CMD_GENERATE_MESH_IN_MESH_EDITOR_MODE" />
+						<CMenuItem tr_text="エッジ（線）を自動接続" text="##CUB3-0885" actionCommand="CMD_MESH_EDIT_CONNECT_AUTO" />
+						<CSeparatorMenuItem />
+						<CMenuItem tr_text="左右反転" text="##CUB3-1049" actionCommand="CMD_MODELING_REFLECTION_H" />
+						<CMenuItem tr_text="上下反転" text="##CUB3-1050" actionCommand="CMD_MODELING_REFLECTION_V" />
+						<CMenuItem tr_text="軸に対して反転" text="##CUB3-3156" actionCommand="CMD_MODELING_REFLECTION_AXIS_FOR_MESH_EDIT" />
+						<CSeparatorMenuItem />
+						<CMenuItem tr_text="頂点をマージ" text="##CUB3-3157" actionCommand="CMD_MODELING_MERGE_POINTS" />
+						<CSeparatorMenuItem />
+						<CMenuItem tr_text="選択頂点をグルー・バインド" text="##CUB3-0886" actionCommand="CMD_GLUE_BIND" />
+						<CMenuItem tr_text="選択頂点のグルー・バインド解除" text="##CUB3-0887" actionCommand="CMD_GLUE_UNBIND" />
+						<CMenu tr_text="ストロークによるメッシュ割り(β)" text="##CUB3-2973">
+							<items>
+								<CMenuItem tr_text="メッシュ幅を増やす" text="##CUB3-2995" actionCommand="CMD_STROKE_MESH_EDIT_ADD_WIDTH" />
+								<CMenuItem tr_text="メッシュ幅を減らす" text="##CUB3-2996" actionCommand="CMD_STROKE_MESH_EDIT_REDUCE_WIDTH" />
+								<CMenuItem tr_text="分割を増やす" text="##CUB3-2997" actionCommand="CMD_STROKE_MESH_EDIT_ADD_SEGMENT_NUM" />
+								<CMenuItem tr_text="分割を減らす" text="##CUB3-2998" actionCommand="CMD_STROKE_MESH_EDIT_REDUCE_SEGMENT_NUM" />
+								<CMenuItem tr_text="メッシュ幅の頂点数を変える" text="##CUB3-2999" actionCommand="CMD_STROKE_MESH_EDIT_TOGGLE_TYPE" />
+								<CMenuItem tr_text="ストロークの確定" text="##CUB3-3000" actionCommand="CMD_STROKE_MESH_EDIT_ON_END_EDIT" />
+							</items>
+						</CMenu>
+						<CMenu tr_text="サブツール" text="##CUB3-1955">
+							<items>
+								<CMenuItem tr_text="矢印選択" text="##CUB3-1956" actionCommand="CMD_TOOL_MODE_MESH_EDIT_ARROW" />
+								<CMenuItem tr_text="頂点の追加" text="##CUB3-1193" actionCommand="CMD_TOOL_MODE_MESH_EDIT_POINT_ADD" />
+								<CMenuItem tr_text="頂点の削除" text="##CUB3-0332" actionCommand="CMD_TOOL_MODE_MESH_EDIT_POINT_REMOVE" />
+								<CMenuItem tr_text="消しゴム" text="##CUBI-1710" actionCommand="CMD_TOOL_MODE_MESH_EDIT_ERASER" />
+								<CMenuItem tr_text="投げ縄選択" text="##CUBI-0430" actionCommand="CMD_TOOL_MODE_MESH_EDIT_LASSO" />
+								<CMenuItem tr_text="点を増やす" text="##CUBI-1630" actionCommand="CMD_TOOL_MODE_MESH_EDIT_SUBDIVIDE_MESH" />
+								<CMenuItem tr_text="ストロークによるメッシュ割り(β)" text="##CUB3-2973" actionCommand="CMD_TOOL_MODE_MESH_EDIT_STROKE_MESH" />
+								<!--CMenuItem tr_text="エッジの接続" text="##CUB3-1957" actionCommand="CMD_TOOL_MODE_MESH_EDIT_EDGE_CONNECT" /-->
+							</items>
+						</CMenu>
+					</items>
+				</CMenu>
+				<CMenu text="#-#   [Debug]" textColor="#DDDDDD" debugOnly="true">
+					<items>
+						<CMenuItem text="#-#ベリファイ実行" actionCommand="CMD_VERIFY_MODEL" debugOnly="true" />
+						<CMenuItem tr_text="選択オブジェクトをプロジェクトツリーで開く" text="##CUB3-0909" actionCommand="CMD_OPEN_SELECTED_IN_OUTLINER_TREE" debugOnly="true" />
+						<CMenuItem text="#-#モデル情報をダンプ" actionCommand="CMD_DUMP_MODEL_INFO" debugOnly="true" />
+						<CMenuItem text="#-#モデル情報をダンプ(キーフォームを含む)" actionCommand="CMD_DUMP_MODEL_INFO_WITH_KEYFORM" debugOnly="true" />
+						<CMenuItem tr_text="CEMainFrameのソースコードを開く[デバッグ]" text="##CUB3-0889" actionCommand="CMD_DEBUG_OPEN_MAIN_FRAME" debugOnly="true" />
+						<CMenu tr_text="テスト[中城]" text="##CUB3-0890" debugOnly="true">
+							<items>
+								<CMenuItem tr_text="反転（一時的なショートカット用）" text="##CUB3-0891" actionCommand="CMD_OBJECT_REFLECTION" />
+								<CMenuItem tr_text="CEMainFrameのソースコードを開く[デバッグ]" text="##CUB3-0889" actionCommand="CMD_DEBUG_OPEN_MAIN_FRAME" />
+								<CMenuItem tr_text="選択オブジェクトを表示の中心にする" text="##CUB3-0892" actionCommand="CMD_TEST_SET_VIEW_CENTER_TO_SELECTED_OBJECT" />
+								<CMenuItem text="JOE TEST 1" actionCommand="CMD_TEST_JOE_1" />
+							</items>
+						</CMenu>
+						<CMenu tr_text="テスト[嶋崎]" text="##CUB3-0893" debugOnly="true">
+							<items>
+								<!--<CMenuItem tr_text="Tabを追加" text="##CUB3-0877" actionCommand="CMD_ADD_TAB_TABBOX" />-->
+								<!--<CSeparatorMenuItem />-->
+								<!--<CMenuItem tr_text="矢印モード" text="##CUB3-0899" actionCommand="CMD_TOOL_MODE_ARROW" shortcut="A" />-->
+								<!--<CMenuItem tr_text="投げ縄選択" text="##CUBI-0430" actionCommand="CMD_TOOL_MODE_LASSO" shortcut="S" />-->
+								<!--<CMenuItem tr_text="グルー" text="##CUB3-0847" actionCommand="CMD_TOOL_MODE_GLUE" />-->
+								<!--<CMenuItem tr_text="モード切替" text="##CUBI-0428" actionCommand="CMD_CHANGE_MODE" shortcut="Ctrl+F" />-->
+								<!--<CMenuItem tr_text="デフォーマの全体ロック" text="##CUB3-0900" actionCommand="CMD_LOCK_ALL_DEFORMER" />-->
+							</items>
+						</CMenu>
+						<CMenu tr_text="テスト[黄]" text="##CUB3-0901" debugOnly="true">
+							<items>
+								<CMenuItem tr_text="こんにちは" text="##CUB3-0902" actionCommand="CMD_TEST_DIV_MAINCANVAS_1" />
+							</items>
+						</CMenu>
+						<CMenu tr_text="テスト[佐藤]" text="##CUB3-0903" debugOnly="true">
+							<items>
+								<CMenuItem tr_text="モデルデータ（moc3）書出し" text="##CUB3-0904" actionCommand="CMD_TEST_SATOU_EXPORT_MODEL" />
+								<CMenuItem text="#-#ネットワークインターフェース一覧" actionCommand="CMD_NETWORK_INTERFACE_DIALOG" />
+							</items>
+						</CMenu>
+						<CMenu tr_text="テスト[金子]" text="##CUB3-0905" debugOnly="true">
+							<items>
+								<CMenuItem tr_text="こんにちは" text="##CUB3-0902" actionCommand="CMD_TEST_DIV_MAINCANVAS_1" />
+								<CMenuItem tr_text="Viewerでモデルをプレビュー" text="##CUB3-0906" actionCommand="CMD_TEST_PREVIEW_MODEL" />
+								<CMenuItem tr_text="Viewerを開く" text="##CUB3-0907" actionCommand="CMD_TEST_OPEN_VIEWER" />
+							</items>
+						</CMenu>
+						<CSeparatorMenuItem debugOnly="true" />
+						<!--<CMenuItem tr_text="選択モード" text="##CUBI-0172" actionCommand="CMD_TOOL_MODE_ARROW" />-->
+						<!--<CMenuItem tr_text="投げ縄選択" text="##CUBI-0430" actionCommand="CMD_TOOL_MODE_LASSO" />-->
+						<!--<CMenuItem tr_text="グルーモード切替" text="##CUB3-0908" actionCommand="CMD_TOOL_MODE_GLUE" />-->
+						<CMenuItem tr_text="モード切替" text="##CUBI-0428" actionCommand="CMD_CHANGE_MODE" />
+						<CMenuItem tr_text="デフォーマの全体ロック" text="##CUB3-0900" actionCommand="CMD_LOCK_ALL_DEFORMER" />
+						<CMenuItem tr_text="前回開いたファイルを開く" text="##CUB3-0817" actionCommand="CMD_RECENT_FILE_OPEN" />
+						<CMenuItem tr_text="アクションを記録" text="#-#アクションを記録" actionCommand="CMD_TEST_RECORD_ACTION" />
+						<!--<CMenuItem tr_text="バージョン情報の表示切替" text="#-#バージョン情報の表示切替" actionCommand="CMD_HIDE_VERSION" />-->
+						<CCheckMenuItem tr_text="アートメッシュの頂点IDを表示" text="##CUB3-0852" actionCommand="CMD_SHOW_VERTEX_ID" cx:id="drawArtMeshVertexId" />
+						<CCheckMenuItem tr_text="アートパスの頂点番号を表示" text="##CUB3-2649" actionCommand="CMD_SHOW_ARTPATH_VERTEX_INDEX" />
+						<CCheckMenuItem tr_text="アートパスのメッシュを表示" text="##CUB3-2650" actionCommand="CMD_SHOW_ARTPATH_MESH" />
+						<CCheckMenuItem text="#-#デバッグ用ショートカットを有効にする" actionCommand="CMD_DEBUG_SHORTCUT_KEY_HOOK" />
+					</items>
+				</CMenu>
+			</menus>
+		</CMenuBar>
+	</menuBar>
+	<!-- ========= Content Pane ========= -->
+	<contentPane>
+		<CVBox prefHeight="600" prefWidth="900">
+			<children>
+				<!-- ========= Tool Bar ========= -->
+				<CHBox cx:id="toolBar" CVBox.vgrow="NEVER">
+					<padding>
+						<CInsets top="4" left="4" bottom="4" right="4" />
+					</padding>
+					<children>
+						<!-- target & workspace -->
+						<CHBox>
+							<padding>
+								<CInsets top="4" left="0" bottom="4" right="0" />
+							</padding>
+							<children>
+								<CSimplePane cx:id="toolPanel_sdkVersion" prefWidth="180" />
+								<CSpacer prefWidth="5" />
+								<CSimplePane cx:id="toolPanel_changeWorkspace" prefWidth="200" />
+							</children>
+						</CHBox>
+						<CSpacer prefHeight="-1" prefWidth="-1" CHBox.hgrow="ALWAYS" />
+						<!-- tools button -->
+						<CHBox>
+							<children>
+								<!-- edit level -->
+								<CHBox>
+									<padding>
+										<CInsets top="4" left="0" bottom="4" right="0" />
+									</padding>
+									<children>
+										<CLabel text="##CUB3-0911" tr_toolTipText="" toolTipText="##CUB3-0605" />
+										<CSpacer prefWidth="4" opaque="false" />
+										<!-- NOTE: 幅を20pxで指定するだけだとボタン領域が20pxの幅にならない -->
+										<!-- FlatLafのpropertiesファイルで、spacingInsetが上下左右1pxで指定されており、そちらが20に含まれてしまっていると思われる。つまり、実際のボタン領域は18pxとなる。 -->
+										<!-- prefWidthを22で指定することで要求仕様を満たすようにする。 -->
+										<CIconToggleButton cx:id="toggle_editLevel_1" toolTipText="##CUB3-0587" prefWidth="22">
+											<icon>
+												<CMultiResolutionImageIcon path="image/icons/Number1_16x16_Default.png" />
+											</icon>
+											<disabledIcon>
+												<CMultiResolutionImageIcon path="image/icons/Number1_16x16_Disabled.png" />
+											</disabledIcon>
+										</CIconToggleButton>
+										<CSpacer prefWidth="2" opaque="false" />
+										<!-- NOTE: toggle_editLevel_1と同様の理由でprefWidthを22に指定。 -->
+										<CIconToggleButton cx:id="toggle_editLevel_2" toolTipText="##CUB3-0588" prefWidth="22">
+											<icon>
+												<CMultiResolutionImageIcon path="image/icons/Number2_16x16_Default.png" />
+											</icon>
+											<disabledIcon>
+												<CMultiResolutionImageIcon path="image/icons/Number2_16x16_Disabled.png" />
+											</disabledIcon>
+										</CIconToggleButton>
+										<CSpacer prefWidth="2" opaque="false" />
+										<!-- NOTE: toggle_editLevel_1と同様の理由でprefWidthを22に指定。 -->
+										<CIconToggleButton cx:id="toggle_editLevel_3" toolTipText="##CUB3-0589" prefWidth="22">
+											<icon>
+												<CMultiResolutionImageIcon path="image/icons/Number3_16x16_Default.png" />
+											</icon>
+											<disabledIcon>
+												<CMultiResolutionImageIcon path="image/icons/Number3_16x16_Disabled.png" />
+											</disabledIcon>
+										</CIconToggleButton>
+									</children>
+								</CHBox>
+							</children>
+						</CHBox>
+						<!-- ========= ここから モデリングのツール =========  -->
+						<CHBox isVisible="true" cx:id="toolSet_modelingMode" spacing="3">
+							<children>
+								<!-- texture tools -->
+								<CSeparator prefWidth="20" />
+								<CIconButton tr_toolTipText="テクスチャアトラス編集" toolTipText="##CUB3-0344" cx:id="toolBtn_textureList" actionCommand="CMD_TEXTURE_ATLAS">
+									<icon>
+										<CMultiResolutionImageIcon path="image/icons/TextureList_32x32_Default.png" />
+									</icon>
+									<disabledIcon>
+										<CMultiResolutionImageIcon path="image/icons/TextureList_32x32_Disabled.png" />
+									</disabledIcon>
+								</CIconButton>
+								<CSpacer prefWidth="2" opaque="false" />
+								<CIconToggleButton tr_toolTipText="メッシュ編集" toolTipText="##CUB3-0014" cx:id="toolGroup_meshEdit">
+									<icon>
+										<CMultiResolutionImageIcon path="image/icons/ManualTextureEdit_32x32_Default.png" />
+									</icon>
+									<disabledIcon>
+										<CMultiResolutionImageIcon path="image/icons/ManualTextureEdit_32x32_Disabled.png" />
+									</disabledIcon>
+								</CIconToggleButton>
+								<CSpacer prefWidth="2" opaque="false" />
+								<CIconButton tr_text="自動" tr_toolTipText="テクスチャの自動分割" toolTipText="##CUB3-0915" cx:id="toolBtn_autoMesh">
+									<icon>
+										<CMultiResolutionImageIcon path="image/icons/TextureEditAuto_32x32_Default.png" />
+									</icon>
+									<disabledIcon>
+										<CMultiResolutionImageIcon path="image/icons/TextureEditAuto_32x32_Disabled.png" />
+									</disabledIcon>
+								</CIconButton>
+								<!-- deformer tools -->
+								<CSeparator prefWidth="20" />
+								<CIconButton cx:id="toolBtn_createWarpDeformer">
+									<icon>
+										<CMultiResolutionImageIcon path="image/icons/CreateWarpDef_32x32_Default.png" />
+									</icon>
+									<disabledIcon>
+										<CMultiResolutionImageIcon path="image/icons/CreateWarpDef_32x32_Disabled.png" />
+									</disabledIcon>
+								</CIconButton>
+								<CSpacer prefWidth="2" opaque="false" />
+								<CIconButton cx:id="toolBtn_createRotationDeformer">
+									<icon>
+										<CMultiResolutionImageIcon path="image/icons/CreateRotDef_32x32_Default.png" />
+									</icon>
+									<disabledIcon>
+										<CMultiResolutionImageIcon path="image/icons/CreateRotDef_32x32_Disabled.png" />
+									</disabledIcon>
+								</CIconButton>
+								<CSpacer prefWidth="2" opaque="false" />
+								<CIconToggleButton tr_toolTipText="回転デフォーマの作成" toolTipText="##CUB3-0133" cx:id="toolGroup_rotationDeformer">
+									<icon>
+										<CMultiResolutionImageIcon path="image/icons/QuickMakeRotDef_32x32_Default.png" />
+									</icon>
+									<disabledIcon>
+										<CMultiResolutionImageIcon path="image/icons/QuickMakeRotDef_32x32_Disabled.png" />
+									</disabledIcon>
+								</CIconToggleButton>
+								<!-- selection tools -->
+								<CSeparator prefWidth="20" />
+								<CIconToggleButton tr_toolTipText="選択・編集ツール" toolTipText="##CUB3-0506" cx:id="toolGroup_arrow">
+									<icon>
+										<CMultiResolutionImageIcon path="image/icons/Arrow_32x32_Default.png" />
+									</icon>
+									<disabledIcon>
+										<CMultiResolutionImageIcon path="image/icons/Arrow_32x32_Disabled.png" />
+									</disabledIcon>
+								</CIconToggleButton>
+								<CSpacer prefWidth="2" opaque="false" />
+								<CIconToggleButton tr_toolTipText="投げ縄選択ツール" toolTipText="##CUB3-0510" cx:id="toolGroup_lasso">
+									<icon>
+										<CMultiResolutionImageIcon path="image/icons/Lasso_32x32_Default.png" />
+									</icon>
+									<disabledIcon>
+										<CMultiResolutionImageIcon path="image/icons/Lasso_32x32_Disabled.png" />
+									</disabledIcon>
+								</CIconToggleButton>
+								<CSpacer prefWidth="2" opaque="false" />
+								<CIconToggleButton tr_toolTipText="ブラシ選択ツール" toolTipText="##CUB3-0512" cx:id="toolGroup_brushSelection">
+									<icon>
+										<CMultiResolutionImageIcon path="image/icons/BrushSelection_32x32_Default.png" />
+									</icon>
+									<disabledIcon>
+										<CMultiResolutionImageIcon path="image/icons/BrushSelection_32x32_Disabled.png" />
+									</disabledIcon>
+								</CIconToggleButton>
+								<!-- brush tools -->
+								<CSeparator prefWidth="20" />
+								<CIconToggleButton tr_toolTipText="制御点編集" toolTipText="##CUB3-0805" cx:id="toolGroup_controller">
+									<icon>
+										<CMultiResolutionImageIcon path="image/icons/ControlPointDef_32x32_Default.png" />
+									</icon>
+									<disabledIcon>
+										<CMultiResolutionImageIcon path="image/icons/ControlPointDef_32x32_Disabled.png" />
+									</disabledIcon>
+								</CIconToggleButton>
+								<CSpacer prefWidth="2" opaque="false" />
+								<CIconToggleButton tr_toolTipText="変形ブラシ" toolTipText="##CUB3-2969" cx:id="toolGroup_deformBrush">
+									<icon>
+										<CMultiResolutionImageIcon path="image/icons/DeformBrush_32x32_Default.png" />
+									</icon>
+									<disabledIcon>
+										<CMultiResolutionImageIcon path="image/icons/DeformBrush_32x32_Disabled.png" />
+									</disabledIcon>
+								</CIconToggleButton>
+								<!-- etc tools -->
+								<CSeparator prefWidth="20" />
+								<CIconToggleButton tr_toolTipText="グルー編集" toolTipText="##CUB3-0523" cx:id="toolGroup_glue">
+									<icon>
+										<CMultiResolutionImageIcon path="image/icons/Glue_32x32_Default.png" />
+									</icon>
+									<disabledIcon>
+										<CMultiResolutionImageIcon path="image/icons/Glue_32x32_Disabled.png" />
+									</disabledIcon>
+								</CIconToggleButton>
+								<CSpacer prefWidth="2" opaque="false" />
+								<CIconToggleButton tr_toolTipText="アートパス編集" toolTipText="##CUB3-2408" cx:id="toolGroup_artPath">
+									<icon>
+										<CMultiResolutionImageIcon path="image/icons/ArtPath_32x32_Default.png" />
+									</icon>
+									<disabledIcon>
+										<CMultiResolutionImageIcon path="image/icons/ArtPath_32x32_Disabled.png" />
+									</disabledIcon>
+								</CIconToggleButton>
+							</children>
+						</CHBox>
+						<!-- ========= ここまで モデリングのツール ========= -->
+						<!-- ========= ここから アニメーターのツール ========= -->
+						<CHBox isVisible="false" cx:id="toolSet_animatorMode" spacing="3">
+							<children>
+								<CSeparator prefWidth="20" />
+								<CIconToggleButton tr_toolTipText="選択・編集ツール" toolTipText="##CUB3-0506" cx:id="toolGroup_arrow_animator">
+									<icon>
+										<CMultiResolutionImageIcon path="image/icons/Arrow_32x32_Default.png" />
+									</icon>
+									<disabledIcon>
+										<CMultiResolutionImageIcon path="image/icons/Arrow_32x32_Disabled.png" />
+									</disabledIcon>
+								</CIconToggleButton>
+								<CSeparator prefWidth="20" />
+								<CIconToggleButton tr_toolTipText="パラメータコントローラ" toolTipText="##CUB3-4134" cx:id="toolGroup_paramCtrl">
+									<icon>
+										<CMultiResolutionImageIcon path="image/icons/ParamCtrl_32x32_Default.png" />
+									</icon>
+									<disabledIcon>
+										<CMultiResolutionImageIcon path="image/icons/ParamCtrl_32x32_Disabled.png" />
+									</disabledIcon>
+								</CIconToggleButton>
+							</children>
+						</CHBox>
+						<!-- ========= ここまで アニメーターのツール ========= -->
+						<CSpacer prefHeight="-1" prefWidth="-1" CHBox.hgrow="ALWAYS" />
+						<CHBox>
+							<children>
+								<CIconButton cx:id="toolBtn_openHomeDialog">
+									<icon>
+										<CMultiResolutionImageIcon path="image/icons/Home_32x32_Default.png" />
+									</icon>
+								</CIconButton>
+								<CSeparator cx:id="separator_Home_Nizima" />
+								<CButton tr_toolTipText="nizima (にじま)" toolTipText="##CUB3-2587" cx:id="toolBtn_openNizimaPage">
+									<icon>
+										<CMultiResolutionImageIcon path="image/nizima/Nizima_Default.png" />
+									</icon>
+									<pressedIcon>
+										<CMultiResolutionImageIcon path="image/nizima/Nizima_Pressed.png" />
+									</pressedIcon>
+									<selectedIcon>
+										<CMultiResolutionImageIcon path="image/nizima/Nizima_Pressed.png" />
+									</selectedIcon>
+									<rolloverIcon>
+										<CMultiResolutionImageIcon path="image/nizima/Nizima_Hover.png" />
+									</rolloverIcon>
+									<disabledIcon>
+										<CMultiResolutionImageIcon path="image/nizima/Nizima_Default.png" />
+									</disabledIcon>
+									<disabledSelectedIcon>
+										<CMultiResolutionImageIcon path="image/nizima/Nizima_Default.png" />
+									</disabledSelectedIcon>
+									<rolloverSelectedIcon>
+										<CMultiResolutionImageIcon path="image/nizima/Nizima_Pressed.png" />
+									</rolloverSelectedIcon>
+								</CButton>
+								<CSeparator cx:id="separator_Nizima_Survey" />
+								<CButton cx:id="toolBtn_openSurveyPage" />
+							</children>
+						</CHBox>
+					</children>
+				</CHBox>
+				<!-- ========= Main Area ========= -->
+				<CSimplePane cx:id="mainContainer" prefHeight="-1" prefWidth="-1" CVBox.vgrow="ALWAYS" />
+				<!-- ========= Status Bar ========= -->
+				<CHBox spacing="5" CVBox.vgrow="NEVER">
+					<padding>
+						<CInsets top="2" left="4" bottom="2" right="4" />
+					</padding>
+					<children>
+						<CLabel cx:id="labelBottomLeft" text="" CHBox.hgrow="ALWAYS" />
+						<CLabel cx:id="labelBottomRight" maxWidth="-1" text="" CHBox.hgrow="NEVER" />
+						<CExternalAppIndicatorPanel />
+						<CMemoryViewerPanel />
+					</children>
+				</CHBox>
+			</children>
+		</CVBox>
+	</contentPane>
+</CFrame>
+

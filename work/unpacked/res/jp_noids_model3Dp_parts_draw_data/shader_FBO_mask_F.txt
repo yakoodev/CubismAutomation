@@ -1,0 +1,25 @@
+#extension GL_EXT_gpu_shader4 : enable
+
+#if __VERSION__ >= 130
+  #define varying in
+  out vec4 mgl_FragColor;
+  #define texture2D texture
+  #define gl_FragColor mgl_FragColor
+#endif
+
+#ifdef GL_ES 
+precision mediump float; 
+precision mediump int; 
+#endif 
+
+varying vec2 		v_texCoord ;
+uniform sampler2D 	s_texture0 ;
+uniform vec4 		baseColor ;
+
+                               
+void main (void) 
+{
+	vec4 c = texture2D(s_texture0 , v_texCoord) * baseColor ;
+	vec4 dst = vec4( c.a , c.a , c.a , c.a ) ;
+	gl_FragColor = dst ;
+} 

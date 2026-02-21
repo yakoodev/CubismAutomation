@@ -1,0 +1,476 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<physics>
+    <preset tr_name="頭　入力" name="##CUB3-1527" value="input">
+        <group name="normalize" value="0">
+            <item name="min" value="-10" />
+            <item name="mid" value="0" />
+            <item name="max" value="10" />
+        </group>
+        <group name="normalize" value="1">
+            <item name="min" value="-10" />
+            <item name="mid" value="0" />
+            <item name="max" value="10" />
+        </group>
+        <group>
+            <item name="source" value="ParamAngleX" />
+            <item name="weight" value="60" />
+            <item name="type" value="0" />
+            <item name="reflect" value="0" />
+        </group>
+        <group>
+            <item name="source" value="ParamAngleZ" />
+            <item name="weight" value="60" />
+            <item name="type" value="2" />
+            <item name="reflect" value="0" />
+        </group>
+        <group>
+            <item name="source" value="ParamBodyAngleX" />
+            <item name="weight" value="40" />
+            <item name="type" value="0" />
+            <item name="reflect" value="0" />
+        </group>
+        <group>
+            <item name="source" value="ParamBodyAngleZ" />
+            <item name="weight" value="40" />
+            <item name="type" value="2" />
+            <item name="reflect" value="0" />
+        </group>
+    </preset>
+    <preset tr_name="胴体　入力" name="##CUB3-1528" value="input">
+        <group name="normalize" value="0">
+            <item name="min" value="-10" />
+            <item name="mid" value="0" />
+            <item name="max" value="10" />
+        </group>
+        <group name="normalize" value="1">
+            <item name="min" value="-10" />
+            <item name="mid" value="0" />
+            <item name="max" value="10" />
+        </group>
+        <group>
+            <item name="source" value="ParamBodyAngleX" />
+            <item name="weight" value="100" />
+            <item name="type" value="0" />
+            <item name="reflect" value="0" />
+        </group>
+        <group>
+            <item name="source" value="ParamBodyAngleZ" />
+            <item name="weight" value="100" />
+            <item name="type" value="2" />
+            <item name="reflect" value="0" />
+        </group>
+    </preset>
+    <preset tr_name="胸　入力" name="##CUB3-1529" value="input">
+        <group name="normalize" value="0">
+            <item name="min" value="-10" />
+            <item name="mid" value="0" />
+            <item name="max" value="10" />
+        </group>
+        <group name="normalize" value="1">
+            <item name="min" value="-10" />
+            <item name="mid" value="0" />
+            <item name="max" value="10" />
+        </group>
+        <group>
+            <item name="source" value="PARAM_BODY_ANGLE_X" />
+            <item name="weight" value="70" />
+            <item name="type" value="0" />
+            <item name="reflect" value="0" />
+        </group>
+        <group>
+            <item name="source" value="PARAM_BODY_ANGLE_Z" />
+            <item name="weight" value="30" />
+            <item name="type" value="0" />
+            <item name="reflect" value="0" />
+        </group>
+    </preset>
+    <preset tr_name="髪（短い）" name="##CUB3-1530" value="physics_model">
+        <group>
+            <item name="index" value="1" />
+            <item name="position_x" value="0" />
+            <item name="position_y" value="3" />
+            <item name="mobility" value="0.95" />
+            <item name="delay" value="0.9" />
+            <item name="acceleration" value="1.5" />
+            <item name="radius" value="3" />
+        </group>
+    </preset>
+    <preset tr_name="髪（長い）" name="##CUB3-1531" value="physics_model">
+        <group>
+            <item name="index" value="1" />
+            <item name="position_x" value="0" />
+            <item name="position_y" value="15" />
+            <item name="mobility" value="0.95" />
+            <item name="delay" value="0.8" />
+            <item name="acceleration" value="1.5" />
+            <item name="radius" value="15" />
+        </group>
+    </preset>
+    <preset tr_name="髪　2段振り子" name="##CUB3-1532" value="physics_model">
+        <group>
+            <item name="index" value="1" />
+            <item name="position_x" value="0" />
+            <item name="position_y" value="10" />
+            <item name="mobility" value="0.9" />
+            <item name="delay" value="0.8" />
+            <item name="acceleration" value="1.5" />
+            <item name="radius" value="10" />
+        </group>
+        <group>
+            <item name="index" value="2" />
+            <item name="position_x" value="0" />
+            <item name="position_y" value="18" />
+            <item name="mobility" value="0.8" />
+            <item name="delay" value="0.8" />
+            <item name="acceleration" value="1.5" />
+            <item name="radius" value="8" />
+        </group>
+    </preset>
+    <preset tr_name="髪　3段振り子" name="##CUB3-1533" value="physics_model">
+        <group>
+            <item name="index" value="1" />
+            <item name="position_x" value="0" />
+            <item name="position_y" value="10" />
+            <item name="mobility" value="0.85" />
+            <item name="delay" value="0.9" />
+            <item name="acceleration" value="1" />
+            <item name="radius" value="10" />
+        </group>
+        <group>
+            <item name="index" value="2" />
+            <item name="position_x" value="0" />
+            <item name="position_y" value="20" />
+            <item name="mobility" value="0.9" />
+            <item name="delay" value="0.9" />
+            <item name="acceleration" value="1" />
+            <item name="radius" value="10" />
+        </group>
+        <group>
+            <item name="index" value="3" />
+            <item name="position_x" value="0" />
+            <item name="position_y" value="28" />
+            <item name="mobility" value="0.9" />
+            <item name="delay" value="0.9" />
+            <item name="acceleration" value="0.8" />
+            <item name="radius" value="8" />
+        </group>
+    </preset>
+    <preset tr_name="服（軽い）" name="##CUB3-1534" value="physics_model">
+        <group>
+            <item name="index" value="1" />
+            <item name="position_x" value="0" />
+            <item name="position_y" value="10" />
+            <item name="mobility" value="0.9" />
+            <item name="delay" value="0.6" />
+            <item name="acceleration" value="1.5" />
+            <item name="radius" value="10" />
+        </group>
+    </preset>
+    <preset tr_name="服（重い）" name="##CUB3-1535" value="physics_model">
+        <group>
+            <item name="index" value="1" />
+            <item name="position_x" value="0" />
+            <item name="position_y" value="10" />
+            <item name="mobility" value="0.95" />
+            <item name="delay" value="0.8" />
+            <item name="acceleration" value="1.5" />
+            <item name="radius" value="10" />
+        </group>
+    </preset>
+    <preset tr_name="胸（小さい）" name="##CUB3-1536" value="physics_model">
+        <group>
+            <item name="index" value="1" />
+            <item name="position_x" value="0" />
+            <item name="position_y" value="3" />
+            <item name="mobility" value="0.8" />
+            <item name="delay" value="0.9" />
+            <item name="acceleration" value="1.5" />
+            <item name="radius" value="3" />
+        </group>
+    </preset>
+    <preset tr_name="胸（大きい）" name="##CUB3-1537" value="physics_model">
+        <group>
+            <item name="index" value="1" />
+            <item name="position_x" value="0" />
+            <item name="position_y" value="5" />
+            <item name="mobility" value="0.9" />
+            <item name="delay" value="0.8" />
+            <item name="acceleration" value="1.5" />
+            <item name="radius" value="5" />
+        </group>
+    </preset>
+    <preset tr_name="10段" name="##CUB3-1684" value="physics_model">
+        <group>
+            <item name="index" value="1" />
+            <item name="position_x" value="0" />
+            <item name="position_y" value="10" />
+            <item name="mobility" value="0.85" />
+            <item name="delay" value="0.85" />
+            <item name="acceleration" value="1.2" />
+            <item name="radius" value="10" />
+        </group>
+        <group>
+            <item name="index" value="2" />
+            <item name="position_x" value="0" />
+            <item name="position_y" value="20" />
+            <item name="mobility" value="0.85" />
+            <item name="delay" value="0.85" />
+            <item name="acceleration" value="1.2" />
+            <item name="radius" value="10" />
+        </group>
+        <group>
+            <item name="index" value="3" />
+            <item name="position_x" value="0" />
+            <item name="position_y" value="30" />
+            <item name="mobility" value="0.85" />
+            <item name="delay" value="0.85" />
+            <item name="acceleration" value="1.2" />
+            <item name="radius" value="10" />
+        </group>
+        <group>
+            <item name="index" value="4" />
+            <item name="position_x" value="0" />
+            <item name="position_y" value="40" />
+            <item name="mobility" value="0.85" />
+            <item name="delay" value="0.85" />
+            <item name="acceleration" value="1.2" />
+            <item name="radius" value="10" />
+        </group>
+        <group>
+            <item name="index" value="5" />
+            <item name="position_x" value="0" />
+            <item name="position_y" value="50" />
+            <item name="mobility" value="0.85" />
+            <item name="delay" value="0.85" />
+            <item name="acceleration" value="1.2" />
+            <item name="radius" value="10" />
+        </group>
+        <group>
+            <item name="index" value="6" />
+            <item name="position_x" value="0" />
+            <item name="position_y" value="60" />
+            <item name="mobility" value="0.85" />
+            <item name="delay" value="0.85" />
+            <item name="acceleration" value="1.2" />
+            <item name="radius" value="10" />
+        </group>
+        <group>
+            <item name="index" value="7" />
+            <item name="position_x" value="0" />
+            <item name="position_y" value="70" />
+            <item name="mobility" value="0.85" />
+            <item name="delay" value="0.85" />
+            <item name="acceleration" value="1.2" />
+            <item name="radius" value="10" />
+        </group>
+        <group>
+            <item name="index" value="8" />
+            <item name="position_x" value="0" />
+            <item name="position_y" value="80" />
+            <item name="mobility" value="0.85" />
+            <item name="delay" value="0.85" />
+            <item name="acceleration" value="1.2" />
+            <item name="radius" value="10" />
+        </group>
+        <group>
+            <item name="index" value="9" />
+            <item name="position_x" value="0" />
+            <item name="position_y" value="90" />
+            <item name="mobility" value="0.85" />
+            <item name="delay" value="0.85" />
+            <item name="acceleration" value="1.2" />
+            <item name="radius" value="10" />
+        </group>
+        <group>
+            <item name="index" value="10" />
+            <item name="position_x" value="0" />
+            <item name="position_y" value="100" />
+            <item name="mobility" value="0.85" />
+            <item name="delay" value="0.85" />
+            <item name="acceleration" value="1.2" />
+            <item name="radius" value="10" />
+        </group>
+    </preset>
+    <preset tr_name="20段" name="##CUB3-1685" value="physics_model">
+        <group>
+            <item name="index" value="1" />
+            <item name="position_x" value="0" />
+            <item name="position_y" value="10" />
+            <item name="mobility" value="0.85" />
+            <item name="delay" value="0.85" />
+            <item name="acceleration" value="1.2" />
+            <item name="radius" value="10" />
+        </group>
+        <group>
+            <item name="index" value="2" />
+            <item name="position_x" value="0" />
+            <item name="position_y" value="20" />
+            <item name="mobility" value="0.85" />
+            <item name="delay" value="0.85" />
+            <item name="acceleration" value="1.2" />
+            <item name="radius" value="10" />
+        </group>
+        <group>
+            <item name="index" value="3" />
+            <item name="position_x" value="0" />
+            <item name="position_y" value="30" />
+            <item name="mobility" value="0.85" />
+            <item name="delay" value="0.85" />
+            <item name="acceleration" value="1.2" />
+            <item name="radius" value="10" />
+        </group>
+        <group>
+            <item name="index" value="4" />
+            <item name="position_x" value="0" />
+            <item name="position_y" value="40" />
+            <item name="mobility" value="0.85" />
+            <item name="delay" value="0.85" />
+            <item name="acceleration" value="1.2" />
+            <item name="radius" value="10" />
+        </group>
+        <group>
+            <item name="index" value="5" />
+            <item name="position_x" value="0" />
+            <item name="position_y" value="50" />
+            <item name="mobility" value="0.85" />
+            <item name="delay" value="0.85" />
+            <item name="acceleration" value="1.2" />
+            <item name="radius" value="10" />
+        </group>
+        <group>
+            <item name="index" value="6" />
+            <item name="position_x" value="0" />
+            <item name="position_y" value="60" />
+            <item name="mobility" value="0.85" />
+            <item name="delay" value="0.85" />
+            <item name="acceleration" value="1.2" />
+            <item name="radius" value="10" />
+        </group>
+        <group>
+            <item name="index" value="7" />
+            <item name="position_x" value="0" />
+            <item name="position_y" value="70" />
+            <item name="mobility" value="0.85" />
+            <item name="delay" value="0.85" />
+            <item name="acceleration" value="1.2" />
+            <item name="radius" value="10" />
+        </group>
+        <group>
+            <item name="index" value="8" />
+            <item name="position_x" value="0" />
+            <item name="position_y" value="80" />
+            <item name="mobility" value="0.85" />
+            <item name="delay" value="0.85" />
+            <item name="acceleration" value="1.2" />
+            <item name="radius" value="10" />
+        </group>
+        <group>
+            <item name="index" value="9" />
+            <item name="position_x" value="0" />
+            <item name="position_y" value="90" />
+            <item name="mobility" value="0.85" />
+            <item name="delay" value="0.85" />
+            <item name="acceleration" value="1.2" />
+            <item name="radius" value="10" />
+        </group>
+        <group>
+            <item name="index" value="10" />
+            <item name="position_x" value="0" />
+            <item name="position_y" value="100" />
+            <item name="mobility" value="0.85" />
+            <item name="delay" value="0.85" />
+            <item name="acceleration" value="1.2" />
+            <item name="radius" value="10" />
+        </group>
+        <group>
+            <item name="index" value="11" />
+            <item name="position_x" value="0" />
+            <item name="position_y" value="110" />
+            <item name="mobility" value="0.95" />
+            <item name="delay" value="0.85" />
+            <item name="acceleration" value="1.2" />
+            <item name="radius" value="10" />
+        </group>
+        <group>
+            <item name="index" value="12" />
+            <item name="position_x" value="0" />
+            <item name="position_y" value="120" />
+            <item name="mobility" value="0.95" />
+            <item name="delay" value="0.85" />
+            <item name="acceleration" value="1.2" />
+            <item name="radius" value="10" />
+        </group>
+        <group>
+            <item name="index" value="13" />
+            <item name="position_x" value="0" />
+            <item name="position_y" value="130" />
+            <item name="mobility" value="0.95" />
+            <item name="delay" value="0.85" />
+            <item name="acceleration" value="1.2" />
+            <item name="radius" value="10" />
+        </group>
+        <group>
+            <item name="index" value="14" />
+            <item name="position_x" value="0" />
+            <item name="position_y" value="140" />
+            <item name="mobility" value="0.95" />
+            <item name="delay" value="0.85" />
+            <item name="acceleration" value="1.2" />
+            <item name="radius" value="10" />
+        </group>
+        <group>
+            <item name="index" value="15" />
+            <item name="position_x" value="0" />
+            <item name="position_y" value="150" />
+            <item name="mobility" value="0.95" />
+            <item name="delay" value="0.85" />
+            <item name="acceleration" value="1.2" />
+            <item name="radius" value="10" />
+        </group>
+        <group>
+            <item name="index" value="16" />
+            <item name="position_x" value="0" />
+            <item name="position_y" value="160" />
+            <item name="mobility" value="0.95" />
+            <item name="delay" value="0.85" />
+            <item name="acceleration" value="1.2" />
+            <item name="radius" value="10" />
+        </group>
+        <group>
+            <item name="index" value="17" />
+            <item name="position_x" value="0" />
+            <item name="position_y" value="170" />
+            <item name="mobility" value="0.95" />
+            <item name="delay" value="0.85" />
+            <item name="acceleration" value="1.2" />
+            <item name="radius" value="10" />
+        </group>
+        <group>
+            <item name="index" value="18" />
+            <item name="position_x" value="0" />
+            <item name="position_y" value="180" />
+            <item name="mobility" value="0.95" />
+            <item name="delay" value="0.85" />
+            <item name="acceleration" value="1.2" />
+            <item name="radius" value="10" />
+        </group>
+        <group>
+            <item name="index" value="19" />
+            <item name="position_x" value="0" />
+            <item name="position_y" value="190" />
+            <item name="mobility" value="0.95" />
+            <item name="delay" value="0.85" />
+            <item name="acceleration" value="1.2" />
+            <item name="radius" value="10" />
+        </group>
+        <group>
+            <item name="index" value="20" />
+            <item name="position_x" value="0" />
+            <item name="position_y" value="200" />
+            <item name="mobility" value="0.95" />
+            <item name="delay" value="0.85" />
+            <item name="acceleration" value="1.2" />
+            <item name="radius" value="10" />
+        </group>
+    </preset>
+</physics>

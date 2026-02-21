@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<shader language="GLSL">
+    <properties>
+    </properties>
+    <blend srcColor="ONE" dstColor="ONE_MINUS_SRC_ALPHA" srcAlpha="ONE" dstAlpha="ONE_MINUS_SRC_ALPHA" />
+    <cull mode="BACK" />
+    <!--#############################  VERTEX  #############################-->
+    <vertex><![CDATA[
+#version 150
+
+#if __VERSION__ >= 130
+  #define attribute in
+  #define varying out
+#endif
+
+#ifdef GL_ES
+precision mediump float;
+precision mediump int;
+#endif
+
+uniform mat4 worldToCameraMatrix , projectionMatrix ;
+uniform mat4 localToWorldMatrix ;// TEST IMPL
+
+attribute vec4 positions;
+attribute vec4 colors;
+varying vec4	v_color ;
+
+void main(void)
+{
+ 	gl_Position = projectionMatrix * worldToCameraMatrix * localToWorldMatrix * positions ;
+ 	v_color = colors ;
+}
+
+]]></vertex>
+    <!--############################  FRAGMENT  ############################-->
+    <fragment><![CDATA[
+#version 150
+
+//#extension GL_EXT_gpu_shader4 : enable
+
+#if __VERSION__ >= 130
+  #define varying in
+  out vec4 mgl_FragColor;
+  #define gl_FragColor mgl_FragColor
+#endif
+
+#ifdef GL_ES
+precision mediump float;
+precision mediump int;
+#endif
+
+varying vec4	v_color ;
+
+void main (void)
+{
+	gl_FragColor = v_color ;
+}
+
+]]></fragment>
+</shader>
+

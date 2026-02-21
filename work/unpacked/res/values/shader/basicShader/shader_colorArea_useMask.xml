@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<shader language="GLSL" name="color area">
+
+    <!-- public property
+    ユーザがインスペクタ上で指定できるようにしたいプロパティのみココに記載します。
+    ここに記載がなくても、uniform / in(attribute) / out は自動的に利用できるようになります。
+    -->
+    <properties>
+        <property name="_MainTex" text="Texture" default="red" />
+    </properties>
+    <blend srcColor="ONE" dstColor="ONE_MINUS_SRC_ALPHA" srcAlpha="ONE" dstAlpha="ONE_MINUS_SRC_ALPHA" />
+    <cull mode="OFF" />
+    <transparent type="TRANSPARENT" />
+
+    <!-- ======================== Vertex Shader ======================== -->
+    <vertex><![CDATA[
+#version 150
+
+#if __VERSION__ >= 130
+  #define attribute in
+  #define varying out
+#endif
+
+#ifdef GL_ES
+precision mediump float;
+precision mediump int;
+#endif
+
+attribute vec4 	positions;
+attribute vec2 	uvs;
+varying vec2 	v_texCoord;
+
+uniform mat4 worldToCameraMatrix , projectionMatrix , localToWorldMatrix  ;
+
+
+void main(void)
+{
+	gl_Position = projectionMatrix * worldToCameraMatrix * localToWorldMatrix  * positions;
+	v_texCoord = uvs;
+}
+
+
+
+    ]]></vertex>
+    <!-- ======================== Fragment Shader ======================== -->
+    <fragment><![CDATA[
+#version 150
+
+//#extension GL_EXT_gpu_shader4 : enable
+
+#if __VERSION__ >= 130
+  #define varying in
+  out vec4 mgl_FragColor;
+  #define texture2D texture
+  #define gl_FragColor mgl_FragColor
+#endif
+
+#ifdef GL_ES
+precision mediump float;
+precision mediump int;
+#endif
+
+varying vec2 		v_texCoord ;
+uniform sampler2D 	_MainTex ;
+uniform vec2        _MainTex_Scale;
+uniform vec2        _MainTex_Offset;
+uniform vec4 		baseColor ;
+
+uniform sampler2D 	_ClippingMaskTex ;
+uniform vec2 		clippingMaskOffset ;
+uniform vec2 		clippingMaskScale ;
+uniform float		clippingMaskMin ;
+uniform float       invertClippingMask;
+
+
+void main (void)
+{
+	vec4 src  = baseColor ;
+	vec4 mask = texture2D(_ClippingMaskTex , gl_FragCoord.xy * clippingMaskScale + clippingMaskOffset ) ;
+	src = min(src, src.a) ;
+	gl_FragColor = src * max( clippingMaskMin , mix(mask.r, 1.0f - mask.r, invertClippingMask) ) ;
+}
+
+    ]]></fragment>
+
+
+</shader>

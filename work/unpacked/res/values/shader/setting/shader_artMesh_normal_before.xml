@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<shader language="GLSL" name="shader_artmesh_normal_before">
+
+    <!-- public property
+    ユーザがインスペクタ上で指定できるようにしたいプロパティのみココに記載します。
+    ここに記載がなくても、uniform / in(attribute) / out は自動的に利用できるようになります。
+    -->
+    <properties>
+        <property name="_MainTex" text="Texture" default="red" />
+    </properties>
+    <blend srcColor="ONE" dstColor="ONE_MINUS_SRC_ALPHA" srcAlpha="ONE" dstAlpha="ONE_MINUS_SRC_ALPHA" />
+    <cull mode="OFF" />
+
+
+    <!-- ======================== Vertex Shader ======================== -->
+    <vertex><![CDATA[
+
+#version 150
+
+uniform mat4 worldToCameraMatrix , projectionMatrix ;
+in vec2 	uvs ;
+in vec4     positions;
+out vec2    v_texCoord;
+
+void main()
+{
+    gl_Position = projectionMatrix * worldToCameraMatrix * positions ;
+    v_texCoord = uvs;
+}
+
+
+    ]]></vertex>
+    <!-- ======================== Fragment Shader ======================== -->
+    <fragment><![CDATA[
+
+#version 150
+
+uniform sampler2D 	_MainTex ;
+in vec2 		    v_texCoord ;
+
+out vec4            outColor;
+
+void main()
+{
+//    outColor = vec4(1.0, 0.0, 1.0, 1.0) ;
+    outColor = texture2D( _MainTex , v_texCoord ) ;
+}
+
+    ]]></fragment>
+
+
+</shader>

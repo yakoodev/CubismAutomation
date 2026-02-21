@@ -1,0 +1,414 @@
+CORE-0000=Failed to change a file name
+CORE-0001=Failed to output file.
+CORE-0002=Sample
+CORE-0003=Illegal State : Infinite loop?
+CORE-0004=Illegal State : Format Not Supported
+CORE-0005=Delete Shortcut
+CORE-0006=Set Key
+CORE-0007=Press the shortcut key to set
+CORE-0008=Menu
+CORE-0009=Save
+CORE-0010=Open
+#「処理」processとしましたがoperationでしょうか
+CORE-0011=The process that corresponds to group id : %s could not be found \n
+CORE-0012=Initial Settings
+CORE-0013=Export
+CORE-0014=Import
+CORE-0015=Set Shortcut
+CORE-0016=List Shortcut
+#2バイトでよろしいでしょうか
+CORE-0017= ■
+#2バイトでよろしいでしょうか
+CORE-0018= □
+CORE-0019=Exported successfully.
+CORE-0020=Set Shortcut (.xml)
+CORE-0021=Imported successfully.
+CORE-0022=Restore the initial state?
+CORE-0023=Confirm
+CORE-0024="%s" is currently used in "%s". \n\n
+CORE-0025=Do you want to overwrite?
+CORE-0026=Version Messages
+CORE-0027=<html><body><a='%s'><u><font color='#0000ff'>Download Site</font></u></a></body></html>
+#次の2行は間にバージョン番号が入るものとして訳付けしてあります
+CORE-0028=Has been updated to "Version
+CORE-0029=".
+CORE-0030=Update History
+CORE-0031=You can access other versions, beta versions and the update history from the following site.
+#「※」2バイトでよろしいでしょうか
+CORE-0032=Note: You can open the website from the Help menu after startup.
+CORE-0033=Version Upgrade Notice
+CORE-0034=Table
+CORE-0035=Execute SQL
+CORE-0036=Sample Frame
+CORE-0037=Command
+CORE-0038=Update
+CORE-0039=Edit
+CORE-0040=Add
+CORE-0041=Duplicate
+CORE-0042=Delete
+CORE-0043=Condition
+CORE-0044=Sort
+CORE-0045=Use "setData" to set "TableModel" for "DKEY_DB_TABLE_MODEL".
+CORE-0046=Line
+CORE-0047=Choose
+CORE-0048=For "initialValue" the content of "Array.getArray()" must be entered.
+CORE-0049=The type is different.
+CORE-0050=The type is incorrect.
+CORE-0051=Space
+CORE-0052=[Click]
+CORE-0053=[Right Click]
+CORE-0054=[Drag]
+CORE-0055=[Right Drag]
+CORE-0056=[Mouse Wheel]
+CORE-0057=Data is not ready.
+CORE-0058=Failed
+CORE-0059=ID of desired data:
+CORE-0060=--- Available Creators ---
+CORE-0061= \t: Dependent
+CORE-0062=: Dependent
+CORE-0063=Above message will only be displayed the first time.
+CORE-0064=Some data items have been created and registered twice :
+#SKIP
+CORE-0065=D:\\Document\\ビジネス\\映像制作\\エクササイズガイド\\母\\main.xml
+CORE-0066=Copied to clipboard.
+CORE-0067=<html>Note: Double-byte characters and half-width kana cannot be used.<br>Note: This folder is for temporary cache, and the content of this folder is automatically deleted when Animator terminates.<br>DO NOT save your data in this folder.
+CORE-0068=L2DCacheManager has not been initialized.
+CORE-0069=Choose
+CORE-0070=Generate the following folder? \n\n
+CORE-0071=Failed to generate a folder
+#2バイトでよろしいでしょうか
+CORE-0072=Note:
+CORE-0073=Press
+CORE-0074=Select the folder for saving temporary data.
+CORE-0075=Display Operation
+CORE-0076=Operations for this application cannot be displayed, as it has not been performed "UtSystem.setMainFrame( frame ) ;". @@ComponentViewer#guiInit( )\n
+CORE-0077=Checking Component...
+CORE-0078=Place the cursor over the component that you want to check <br>
+CORE-0079=and then right-click or press ESC. </body></html>
+#SKIP
+CORE-0080=Unusual
+CORE-0081=An error occurred
+CORE-0082=Error
+CORE-0083=An error occurred. Details \n\n\n\n\n\n\n\n\n\naas
+CORE-0084=Details\n\n\naaaaaaaaa
+#___は変数が入ると想定される場所です、ご確認ください
+CORE-0085=Please send the following text to ___  \n\n
+CORE-0086=--- Overview ---\n
+CORE-0087=\n\n--- Details ---\n
+CORE-0088=\n\n--- Stack ---\n
+CORE-0089=Copy Details
+CORE-0090=Details
+CORE-0091=Dragged without "Press" event (highly possibly affected by Alt) @@MouseData\n
+CORE-0092=Illegal State : You have forgotten to call "mouse.mouseDragged()".
+CORE-0093=Conversion should not be necessary for this ID :_
+CORE-0094=Task (progress) stack is in an Illegal State.
+CORE-0095=Task stack is getting closer to 0 :
+CORE-0096=Progress
+CORE-0097=Dummy Operation
+CORE-0098=Input in Progress ...
+CORE-0099=3: Face orientation /10:
+CORE-0100=Untitled
+CORE-0101=Setting
+CORE-0102=<Value>
+CORE-0103="DoubleEditor:EditorModel" and "ValueChangeListener" cannot be used simultaneously.
+CORE-0104=Property
+CORE-0105=Item
+CORE-0106=Value
+CORE-0107=100::Test/200::Hello
+CORE-0108=100::Test/200::Good
+CORE-0109=50::Insert in Front/200::Good
+CORE-0110=120::Insert Behind/200::Good
+#状況が想像つきません。ご確認ください
+CORE-0111=100::Test/300::Behind is Good
+#状況が想像つきません。ご確認ください
+CORE-0112=100::Test/50::Front is Good
+CORE-0113=Name Setting
+CORE-0114=Document//Size//Width
+CORE-0115=Document//Size//Height
+#2バイトでよろしいでしょうか
+CORE-0116=-○
+#2バイトでよろしいでしょうか
+CORE-0117= ●
+#2バイトでよろしいでしょうか
+CORE-0118=-●
+#2バイトでよろしいでしょうか
+CORE-0119= ○-
+#2バイトでよろしいでしょうか
+CORE-0120=-○-
+#2バイトでよろしいでしょうか
+CORE-0121= ●-
+#2バイトでよろしいでしょうか
+CORE-0122=-●-
+CORE-0123=Unnecessary Range.
+CORE-0124=Unable to interpolate Range. "getInterpolated()" must be used instead.
+CORE-0125=The parameter referenced by IRange has not been specified.
+CORE-0126=Range parameter needed when performing interpolation using IRange
+CORE-0127=is not registered.
+#2バイトでよろしいでしょうか
+CORE-0128=～
+CORE-0129=The ID for the target parameter has not been properly initialized for this IRange.
+CORE-0130=Insert All
+CORE-0131=Strange Index :
+CORE-0132=There is another pallet with the same value.
+CORE-0133=This is a dummy and should not be used.
+CORE-0134=Hold the button while moving the mouse. The color of the position will be obtained upon release.
+CORE-0135=Color
+CORE-0136=Hue :
+#2バイトでよろしいでしょうか
+CORE-0137=°
+CORE-0138=Degree of Similarity
+CORE-0139= %  :  Distance
+CORE-0140=  HSL Distance
+CORE-0141=Illegal State : This should be impossible.
+CORE-0142=GIF export is not supported.
+CORE-0143=Stream initialization failed :
+CORE-0144=Illegal State : Files other than gif are not supported
+CORE-0145=Image not registered
+CORE-0146=Zoom In
+CORE-0147=Zoom Out
+CORE-0148=Display All
+CORE-0149=Display Center
+CORE-0150=Base Image
+CORE-0151=Image not initialized
+CORE-0152=Information
+CORE-0153=Center
+CORE-0154=All
+CORE-0155=Full Scale
+CORE-0156=Logical size has not been initialized.
+CORE-0157=must be placed in "JScrollPane."
+CORE-0158=Instead of calling paintComponent(), override it. \n
+CORE-0159=   However, call "preparePaint()" at the top of the subclass "paint()."
+CORE-0160=Image Debugging Frame
+CORE-0161=Use Color Picker
+CORE-0162=Temporary Reflect
+CORE-0163=Rotate Right
+CORE-0164=Rotate Left
+CORE-0165=Scale %6d %%
+CORE-0166=Path interpolation is not possible unless point configuration matches perfectly.
+CORE-0167=The type is different
+CORE-0168=The type is different. (%s==null) != (%s==null)
+CORE-0169=The type is different. a.length(%s) != b.length(%s)
+CORE-0170=The type is different. (a[%d]==null) != (b[%d]==null)
+CORE-0171=Different Type
+CORE-0172=Internal class cannot be closed using this method :
+#「非」+「!」で二重否定が意図されているのであれば「... can be closed using this method.」
+CORE-0173=Non-internal class cannot be closed using this method :
+CORE-0174=Illegal State :_Does Not Exist:
+CORE-0175=The specified sample image file could not be found. \n\n
+CORE-0176=Graffiti
+CORE-0177=There is a path that has not been closed.
+CORE-0178=Illegal State : Trying to close the polygon from
+CORE-0179=Illegal State :_Double that size is always needed.
+CORE-0180=---- InvertTransform : Inversion of the transformation shown below ----
+CORE-0181="LDAffineTransform" is unset
+CORE-0182=This status is not recommended : jp.noids.graphics.UtBezier#getDirectionVector( )
+CORE-0183=Illegal State : A different size image cannot be processed.
+CORE-0184=Illegal State : A different image object is needed.
+CORE-0185=Illegal State : The size does not match.
+CORE-0186=JPEG files
+CORE-0187=GIF files
+CORE-0188=PNG files
+CORE-0189=The specified file already exists\n\n
+CORE-0190=\n\nDo you want to overwrite?
+CORE-0191=Questions
+CORE-0192=Failed to delete the file
+CORE-0193=Overwriting is not supported.
+CORE-0194=Cannot be solved
+CORE-0195=Illegal State : Bit writing mode has not been completed.
+CORE-0196=Illegal State : The previous bit writing has not been completed.
+CORE-0197=Illegal State : Call "startBits()" prior to "writeBits()"\n
+CORE-0198=End with "endBits()"
+CORE-0199=Illegal State : Not in bit write status.
+CORE-0200=<html><head><title>HTML log</title>
+CORE-0201=You have attempted to call twice!
+CORE-0202=PNG format (.png)
+CORE-0203=JPEG format (.jpg)
+CORE-0204=GIF format (.gif)
+CORE-0205=BMP format (.bmp)
+CORE-0206=Recent folders
+CORE-0207=Tools >
+CORE-0208=Open in Explorer
+CORE-0209=The specified format is not supported
+CORE-0210=The specified file already exists, and overwrite is not possible. \n\n
+CORE-0211=Hello, World
+#全角スペースがあります
+CORE-0212=[,\\s\n  ]+
+CORE-0213=
+CORE-0214=
+CORE-0215=URL type shortcuts must have the extension .url.
+#SKIP
+CORE-0216=
+CORE-0217=Parameter Setting
+CORE-0218=Automatic Scroll
+CORE-0219=System Console
+CORE-0220=Clear
+CORE-0221=Attempting to set duplicate callback. 	@jp.noids.ui.consoleJTextPaneOutputStream#addCallback()\n
+CORE-0222=Acquired an event with "ActionCommand" null.
+CORE-0223=is Transferable Not Implemented @@DnDAbstractTreeHandler
+CORE-0224=Select Font
+CORE-0225=Open Font List
+CORE-0226=Save Font List
+CORE-0227=Exit
+CORE-0228=Open the home page
+CORE-0229=Open the Help
+CORE-0230=File
+CORE-0231=Show
+CORE-0232=Help
+CORE-0233=Japanese
+CORE-0234=Incorrect Value "\\:/?*<>\"|" cannot be used.
+CORE-0235=Font Name
+CORE-0236=Rank
+#2バイトでよろしいでしょうか
+CORE-0237=○
+#2バイトでよろしいでしょうか
+CORE-0238=×
+CORE-0239=Character
+#全角スペースがあります
+CORE-0240=10  ,[200   20%],10  ,[300   80%],10   20%
+CORE-0241=Attempting to use "LineLayout" without "setRule()".
+CORE-0242=Attempted to insert more Components than the number specified in the Rule in "LineLayout."
+CORE-0243=Have you forgotten to call "newLine()"? \n
+#全角スペースがあります
+CORE-0244=[ |\\t|  ]+
+CORE-0245=Sample LineLayout
+CORE-0246=Value can be changed by left- or right- dragging.
+CORE-0247=Illegal State : Specify "UtCursor.SW" etc.
+CORE-0248=Sample Palette 1
+CORE-0249=Sample Palette 2
+CORE-0250=Illegal State :_ Call "getContentPane()"
+CORE-0251=Full Screen Dummy
+CORE-0252=Do not acquire using "getContentPane()" in "OkCancelDialog."
+CORE-0253=Set main panel using "setMainPanel()"
+CORE-0254= 
+CORE-0255=Password
+CORE-0256=Different types are mixed together. Types may have been changed in the process of editing JTable etc.
+CORE-0257="RowObject" cannot be acquired from an actual model without "ModelAccessor." Inherit from "ModelAccessor" instead.
+#「Sortableではない実モデルから、___ は値を設定できません」であれば「___ cannot set values from actual models that not sortable.」
+CORE-0258=Values cannot be set from actual models that are not sortable.
+CORE-0259="SortableModel#setupEvent()" is not in place. Always call this before use.
+CORE-0260=Illegal State : Usage may be wrong.
+CORE-0261=Search
+CORE-0262=Search string
+CORE-0263=Replace string
+CORE-0264=   Search (n)
+CORE-0265=Search After Replace (d)
+CORE-0266=   Replace(r)
+CORE-0267=   Close
+CORE-0268=Untitled Process
+CORE-0269=History
+CORE-0270=You have attempted to make group redundantly.
+CORE-0271=System is not in Group mode.
+CORE-0272=Illegal State :_Cache has not been released ::
+CORE-0273=More than 100 items in cache data. @@CacheData\n
+CORE-0274=Input
+CORE-0275=Enter the password 1
+CORE-0276=Enter the password 2
+CORE-0277=<html><body>Could not be opened with Eclipse<br><br> Noids View plugin may not have been launched properly <br><br>This dialog box will close automatically when the plugin is opened.</body></html>
+CORE-0278=Failed to generate
+CORE-0279=File has been moved. \n%s\n
+CORE-0280=Unused file could not be found.
+CORE-0281=Copy destination is identical.
+CORE-0282=Directory cannot be copied here.
+CORE-0283=File Copy
+CORE-0284=jp.noids.util.FileUtil#checkFileName( ) is only implemented on Windows.
+CORE-0285=Put into JScrollPane before calling.
+CORE-0286=--- Previous logs were deleted due to data size. ---\n
+CORE-0287=Failed to get a log file
+CORE-0288=Log
+CORE-0289=degree (expressed in 360 degrees)
+CORE-0290=Types in which m1 and m2 are overwritten is Not Implemented.
+CORE-0291=Property files could not be updated.
+#SKIP
+CORE-0292=D:\\Document\\  \\個人\\サーバ\\INDEX.txt
+CORE-0293=Not Implemented Data Type
+#SKIP
+CORE-0294=C:/Users/nakajo/Desktop/ノワール/noir_touch_winter.mtnb
+CORE-0295=Result :
+CORE-0296=Correct :
+CORE-0297=Memory [ Used %4.2fMB   Reserved %4.2fMB   Available %4.2fMB ]\n
+CORE-0298=Undo
+CORE-0299=Redo
+CORE-0300=Cut
+CORE-0301=Copy
+CORE-0302=Paste
+CORE-0303=Two or more "UndoManager" have been registered.
+CORE-0304=Timer has not started :
+CORE-0305=Illegal State. System must be modified so this state does not arise.
+CORE-0306=--- Breakdown of Affine Transformation ---
+CORE-0307=Relative URLs other than "file:" are unverified. jp.noids.util.UtURL#getRelative( ) :
+#SKIP
+CORE-0308=月日ははくたいの価格にして？\n\n<abc>agoodaflekjazde!!!/
+CORE-0309=Model Output / Form XML (processing time increases if true)
+CORE-0310=Model Output / Debug
+CORE-0311=Incorrect Zip File
+CORE-0312=Import XML file cannot be determined.
+CORE-0313=Breakdown in data structure : xsid=
+CORE-0314= // There is a high probability that loading and outputting orders are out of sequence.
+CORE-0315=XML serializing is not supported :
+CORE-0316= Not Implemented (HashMap entry should be the next)
+CORE-0317=Illegal State : Parent class has not been output first :
+CORE-0318=Illegal State : XsInnerClass should be implemented when outputting internal classes that are not static :
+CORE-0319=Parent object for internal class has not been loaded first.
+CORE-0320=The default constructor for the following class may not have been defined :
+CORE-0321=Attempted to load an item other than "XsSerializable" :
+CORE-0322=Attempting to register redundantly :
+CORE-0323=The abbreviation for "XsSerializable" for the following class has not been registered :
+CORE-0324=When registering, add the following notation to XsDict class. \n
+CORE-0325=The specified tag could not be found.
+CORE-0326=The specified component could not be found :
+CORE-0327=There were no problems.
+CORE-0328=The specified file could not be found :
+CORE-0329=Failed to Convert.
+#「返還」変換と判断しました
+CORE-0330=Shift-JIS could not be read from Groovy for some reason! Batch conversion to UTF-8 is inside the sample collection.
+
+#----------- 2013/04/26(金) -----------
+CORE-0331=Time
+CORE-0332=Tag
+CORE-0333=Message
+CORE-0334=Unsupported os :
+
+#----------- 2013/07/09(火) -----------
+#-- 翻訳不要 --
+CORE-0335=This is inhouse test version.\n\n
+CORE-0336=Startup information is being collected by the server.
+CORE-0337=Launch in In-house Mode
+CORE-0338=This program requires a special license.\n\n
+CORE-0339=Please contact the editor development staff.
+
+CORE-0340=←
+CORE-0341=↑
+CORE-0342=→
+CORE-0343=↓
+
+#-- 下記のフォントは問題なし --
+CORE-0344=HGP創英角Gothic UB
+CORE-0345=MingLiU
+CORE-0346=DF太丸 Gothic
+
+CORE-0347=[Wheel↓]
+CORE-0348=[Wheel↑]
+CORE-0349=Don't show again.
+
+#----------- 2013/11/28(木) -----------
+CORE-0350=name
+CORE-0351=File format error(z05F1)
+CORE-0352=XsDict.updateDict () may not have been called after putShort\n
+
+#----------- 2014/08/29(金) -----------
+\n\n
+CORE-0353=When list is not shown,\nDownload template from below address \nand select file through “Select from files”\n\n
+
+
+
+#----------- 2015/09/15(火) -----------
+CORE-0354=Replace \\ and / to solve mismatch problem @UtXs#writeFile()
+
+#----------- 2016/03/10(木) -----------
+CORE-0355=Tree refresh
+CORE-0356=GUI rebuilding (for development)
+CORE-0357=Show static members
+CORE-0358=Display hash value
+CORE-0359=Open in Eclipse
+CORE-0360=Copy text
+CORE-0361=Cancel

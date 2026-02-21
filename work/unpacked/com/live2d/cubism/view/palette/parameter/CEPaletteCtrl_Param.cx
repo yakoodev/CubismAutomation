@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import com.live2d.type.CInsets?>
+<?import com.live2d.ui.control.CLabel?>
+<?import com.live2d.ui.menu.CMenu?>
+<?import com.live2d.ui.menu.CMenuBar?>
+<?import com.live2d.ui.menu.CMenuItem?>
+<?import com.live2d.ui.container.CSplitPane?>
+<?import com.live2d.ui.menu.CSeparatorMenuItem?>
+<?import com.live2d.ui.container.CSplitPane?>
+<?import com.live2d.ui.container.CBorderPane?>
+<?import com.live2d.ui.container.CHBox?>
+<?import com.live2d.ui.container.CVBox?>
+<?import com.live2d.ui.control.CTextField?>
+<?import com.live2d.ui.menu.CButtonMenu?>
+<?import com.live2d.ui.tree.CTree?>
+<?import com.live2d.type.CColor?>
+<?import com.live2d.type.CFont?>
+
+<CVBox cx:id="root" prefHeight="600.0" prefWidth="900.0" spacing="0"
+       xmlns="http://live2d.com/cgui/0.1.00" xmlns:cx="http://live2d.com/cxml/1">
+  <children>
+<!--
+    <CHBox cx:id="topBar" alignment="CENTER_LEFT" spacing="1" CVBox.vgrow="NEVER">
+      <children>
+        <CHBox alignment="CENTER_LEFT" spacing="1" CHBox.hgrow="ALWAYS">
+        </CHBox>
+        <CButtonMenu prefWidth="40" prefHeight="40" CHBox.hgrow="NEVER" text=">">
+          <items>
+            <CMenuItem text="ソースコードを開く(Debug)" onAction="#openSourceByIDE"/>
+            <CMenuItem text="show parameter list" onAction="#showParameterList"/>
+          </items>
+        </CButtonMenu>
+      </children>
+    </CHBox>
+    -->
+
+    <CSimplePane cx:id="mainContainer" CVBox.vgrow="ALWAYS" >
+
+    </CSimplePane>
+<!--
+    <CHBox cx:id="bottomBar" alignment="CENTER_LEFT" spacing="1" CVBox.vgrow="NEVER" >
+      <children>
+        <CButton text="New" prefHeight="18"/>
+        <CButton text="(Update)" prefHeight="18" onAction="#updateForDebug"/>
+        <CButton text="folder" prefHeight="12" onAction="#newFolder"/>
+        <CButton text="plus new" prefHeight="12" onAction="#newParameter"/>
+        <CButton text="delete" prefHeight="12" onAction="#deleteParameter"/>
+      </children>
+    </CHBox>
+    -->
+
+  </children>
+</CVBox>

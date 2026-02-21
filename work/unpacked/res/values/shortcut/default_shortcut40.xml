@@ -1,0 +1,392 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<shortcut>
+	<mode name="Main">
+		<group tr_name="ファイル" name="##IMAG-0053">
+			<item command="CMD_NEW_MODEL" shortcut="Ctrl+N" />
+			<item command="CMD_NEW_ANIMATION" shortcut="Ctrl+Shift+N" />
+			<item command="CMD_OPEN" shortcut="Ctrl+O" />
+			<item command="CMD_RECENT_FILE_OPEN" shortcut="Ctrl+Shift+O" />
+			<item command="CMD_DEL_TAB_TABBOX" shortcut="Ctrl+W" />
+			<item command="CMD_CLOSE_ALL" />
+			<item command="CMD_SAVE" shortcut="Ctrl+S" />
+			<item command="CMD_SAVE_AS" shortcut="Ctrl+Shift+S" />
+			<item command="CMD_MODELING_TEMPLATE" />
+			<item command="CMD_EXPORT_AS_TEMPLATE" />
+			<item command="CMD_SHOW_VIEWER" />
+			<!-- ========= Export ========= -->
+			<item command="CMD_EXPORT_MODEL_AS_PNG" shortcut="" />
+			<item command="CMD_EXPORT_MODEL_AS_PSD" shortcut="Ctrl+P" />
+			<item command="CMD_EXPORT_SCENE_AS_ANIMATED_GIF" shortcut="" />
+			<item command="CMD_EXPORT_SCENE_AS_PNG" shortcut="Ctrl+I" />
+			<item command="CMD_EXPORT_EMBEDDED_MODEL" shortcut="Ctrl+Alt+S" />
+			<item command="CMD_EXPORT_PHYSICS_SETTINGS" shortcut="" />
+			<item command="CMD_EXPORT_MOTION" shortcut="Ctrl+Alt+Shift+S" />
+			<item command="CMD_EXPORT_SCENE_AS_VIDEO" shortcut="Ctrl+Shift+M" />
+			<!-- ========= Settings ========= -->
+			<item command="CMD_SHOW_CONFIG_DIALOG " shortcut="" />
+			<item command="CMD_KEYBOARD_SHORTCUT_SETTING" shortcut="Ctrl+Alt+Shift+K" />
+			<item command="CMD_EXTERNAL_APP_SETTING " shortcut="" />
+			<item command="CMD_SETTING_BACKGROUND_COLOR" shortcut="" />
+			<item command="CMD_MODELING_STATISTICS" shortcut="" />
+			<item command="CMD_MODEL_SETTING" shortcut="" />
+			<item command="CMD_RESIZE_MODEL_DOCUMENT" shortcut="" />
+			<item command="CMD_EXIT" />
+			<!-- set in Win/Mac setting -->
+		</group>
+		<group tr_name="編集" name="##CORE-0039">
+			<item command="CMD_UNDO" shortcut="Ctrl+Z" />
+			<item command="CMD_REDO" />
+			<!-- set in Win/Mac setting -->
+			<item command="CMD_CUT" shortcut="Ctrl+X" />
+			<item command="CMD_COPY" shortcut="Ctrl+C" />
+			<item command="CMD_PASTE" shortcut="Ctrl+V" />
+			<item command="CMD_DELETE" shortcut="Delete" shortcut2="Backspace" />
+			<item command="CMD_COPY_PARAM_SET" shortcut="" />
+			<item command="CMD_PASTE_PARAM_SET" shortcut="" />
+			<item command="CMD_ESC" shortcut="Escape" />
+			<item command="CMD_SELECT_ALL" shortcut="Ctrl+A" />
+			<item command="CMD_FIND_OBJECT_DIALOG" shortcut="Ctrl+F" />
+		</group>
+		<group tr_name="表示" name="##CUBI-0548">
+			<item command="CMD_GRID_SETTING" shortcut="" />
+			<item command="CMD_SHOW_GUI_GUIDE_FOR_MODELING" shortcut="" />
+			<item command="CMD_SHOW_GUI_GRID" shortcut="" />
+			<item command="CMD_SETTING_GUIDES_MODELING_SETTING" shortcut="" />
+			<item command="CMD_HIGH_LIGHT_DEFORMER_CHILD" shortcut="Ctrl+Shift+D" />
+			　
+			<item command="CMD_SHOW_CHILD_UNDER_WARP_DEFORMER_CTRL_MODE" shortcut="" />
+			<item command="CMD_SHOW_ARTMESH_POINT" shortcut="" />
+			<item command="CMD_HIDE_OBJECT_SELECTION" shortcut="" />
+			<item command="CMD_FOCUS_ON_SELECTED_OBJECTS" shortcut="F" />
+			<item command="CMD_SET_ALL_VIEWS_TO_SAME_DISPLAY_POSITION" shortcut="" />
+			<item command="CMD_SHOW_MODEL_BY_RAW_IMAGE" shortcut="" />
+			<item command="CMD_SHOW_MODEL_BY_TEXTURE_ATLAS" shortcut="" />
+			<item command="CMD_TOGGLE_DISPLAY_BOUNDINGBOX" shortcut="" />
+			<item command="CMD_PREVIEW_ONIONSKIN_MODELER" shortcut="" />
+			<item command="CMD_PREVIEW_ONIONSKIN_ANIMATOR" shortcut="" />
+			<item command="CMD_PREVIEW_ONIONSKIN_FORM_ANIMATION" shortcut="" />
+			<item command="CMD_PREVIEW_MOTIONPATH_ANIMATION" shortcut="" />
+			<item command="CMD_OPEN_MOTIONPATH_SETTING" shortcut="" />
+		</group>
+		<group tr_name="モデリング" name="##CUB3-0832">
+			<!-- ========= Deformer ========= -->
+			<item command="CMD_CREATE_WARP_DEFORMER" shortcut="" />
+			<item command="CMD_CREATE_ROTATION_DEFORMER" shortcut="" />
+			<item command="CMD_SELECT_PARENT_DEFORMER" shortcut="Ctrl+D" />
+			<item command="CMD_SELECT_CHILD_ELEMENTS_OF_DEFORMER" shortcut="Ctrl+Alt+D" />
+			<item command="CMD_DELETE_DEFORMER_AND_CHILDREN" shortcut="Ctrl+Delete" />
+			<item command="CMD_DELETE_DEFORMER_AND_SET_PARAM" shortcut="" />
+			<item command="CMD_INVERSION_OF_MOVEMENT" shortcut="" />
+			<item command="CMD_VALIDATE_DEFORMER_DIALOG" shortcut="" />
+			<!-- ========= ArtPath ========= -->
+			<item command="CMD_CREATE_ART_PATH_INDIVISUALLY" shortcut="" />
+			<item command="CMD_CREATE_ART_PATH_COLLECT" shortcut="" />
+			<item command="CMD_PICK_ART_MESH_COLOR_FOR_ART_PATH" shortcut="" />
+			<item command="CMD_PICK_ART_MESH_ALPHA_FOR_ART_PATH" shortcut="" />
+			<item command="CMD_ESTIMATE_LINE_WIDTH" shortcut="" />
+			<item command="CMD_PICK_ART_MESH_LINE_INFO" shortcut="" />
+			<item command="CMD_CALIBRATE_ART_PATH_CTRL_POINT" shortcut="" />
+			<item command="CMD_ADD_NEAR_CTRL_POINT_FOR_SELECTED_ART_MESH_COUNTER" shortcut="" />
+			<item command="CMD_INSERT_INTER_ART_PATH_POINTS_TO_ALL" shortcut="" />
+			<item command="CMD_INSERT_INTER_ART_PATH_POINTS_TO_SELECTED_POINTS" shortcut="" />
+			<item command="CMD_FIT_ART_MESH_CONTOUR" shortcut="" />
+			<item command="CMD_OPEN_LINE_INFO_PICK_DIALOG" shortcut="" />
+			<item command="CMD_CREATE_CONTROLLER_EXTENSION_BY_ART_PATH" shortcut="" />
+			<item command="CMD_EDIT_MULTIKEY_FOR_ARTPATH" shortcut="" />
+			<item command="CMD_BIND_ART_PATH_POINT_TO_ARTMESH_EXTENSION_TO_ALL" shortcut="" />
+			<item command="CMD_UNBIND_ART_PATH_POINT_TO_ARTMESH_EXTENSION_TO_ALL" shortcut="" />
+			<item command="CMD_BIND_ART_PATH_POINT_TO_ARTMESH_EXTENSION" shortcut="" />
+			<item command="CMD_UNBIND_ART_PATH_POINT_TO_ARTMESH_EXTENSION" shortcut="" />
+			<item command="CMD_EDIT_WIDTH_ART_PATH_CONTROL_POINT_THICKEN" shortcut="" />
+			<item command="CMD_EDIT_WIDTH_ART_PATH_CONTROL_POINT_THIN" shortcut="" />
+			<!-- ========= テクスチャ ========= -->
+			<!-- メッシュ編集関連にもあるためコメントアウト <item command="CMD_START_OR_END_MESH_EDITOR" shortcut="Ctrl+E" /> -->
+			<!--<item command="CMD_START_OR_END_TEXTURE_EDITOR" shortcut="Ctrl+Shift+T" />-->
+			<item command="CMD_TEXTURE_ATLAS" shortcut="Ctrl+T" />
+			<!--<item command="CMD_SET_RAW_IMAGE" shortcut="" />-->
+			<!--<item command="CMD_SET_TEXTURE_ATLAS" shortcut="" />-->
+			<item command="CMD_CHANGE_ARTMESH_INPUT" shortcut="T" />
+			<item command="CMD_GENERATE_RAW_IMAGE_FROM_TEXTURE_ATLAS" shortcut="" />
+			<!-- ========= パラメータ ========= -->
+			<item command="CMD_AUTO_BLEND_4_CORNER" shortcut="Ctrl+4" />
+			<item command="CMD_SET_DEFAULT_PARAMETERS" shortcut="Ctrl+1" />
+			<item command="CMD_SET_SAME_PARAMETERS_TO_ALL_SELECTED" shortcut="" />
+			<item command="CMD_OPEN_PARAMETER_SETTING" shortcut="" />
+			<item command="CMD_SNAP_NEAREST_PARAMETER_KEY" shortcut="" />
+			<item command="CMD_CHANGE_DEFAULT_KEYFORM_LOCKED" shortcut="Ctrl+Shift+1" />
+			<item command="CMD_SHOW_MOTION_SYNC_SETTING_DAILOG" shortcut="" />
+			<item command="CMD_SHOW_EFFECT_SETTING_DIALOG" shortcut="" />
+			<item command="CMD_EDIT_EXTENSION_INTERPOLATION" shortcut="" />
+			<item command="CMD_SELECT_OBJECT_BY_CURRENT_KEY_VALUE" shortcut="" />
+			<item command="CMD_SYNC_PARAMETERS_ACROSS_TABS" shortcut="" />
+			<item command="CMD_VALIDATE_PARAMETER_MAPPING_DIALOG" shortcut="" />
+			<!-- =========  グルー関連  ========= -->
+			<item command="CMD_GLUE_CHANGE_ENABLE" shortcut="" />
+			<!-- =========  スキニング編集関連  ========= -->
+			<item command="CMD_GLUE_SKINNING" shortcut="" />
+			<!--<item command="CMD_MULTI_GLUE_SKINNING" shortcut="" />-->
+			<item command="CMD_DEFORM_PATH_SKINNING" shortcut="" />
+			<item command="CMD_ADD_PARAMETER_FOR_ROTATION_DEFORMER" shortcut="" />
+			<!-- ========= 形状の編集 ========= -->
+			<item command="CMD_MODELING_REFLECTION" shortcut="" />
+			<item command="CMD_RESIZE_ARTMESH_WITH_SCALE" shortcut="" />
+			<item command="CMD_RESTORE_ORIGINAL_SHAPE" shortcut="" />
+			<item command="CMD_CMD_EXPAND_WARPDEFORMER" shortcut="" />
+			<item command="CMD_COPY_SHAPE" shortcut="Ctrl+Shift+C" />
+			<item command="CMD_PASTE_SHAPE" shortcut="Ctrl+Shift+V" />
+			<item command="CMD_BLEND_SHAPE" shortcut="Ctrl+Shift+B" />
+			<item command="CMD_OPEN_PASTE_BLEND_SETTING_DIALOG" shortcut="" />
+			<!-- ========= 一時変形ハンドラー ========= -->
+			<item command="CMD_CREATE_FREE_DEFORM_HANDLER_AS_SCALE_MODE" shortcut="" />
+			<item command="CMD_CREATE_FREE_DEFORM_HANDLER_AS_ROTATE_MODE" shortcut="" />
+			<item command="CMD_CREATE_FREE_DEFORM_HANDLER_AS_FREE_MODE" shortcut="" />
+			<item command="CMD_CREATE_FREE_DEFORM_HANDLER_AS_PERSPECTIVE_MODE" shortcut="" />
+			<item command="CMD_CREATE_FREE_DEFORM_HANDLER_AS_WARP_MODE" shortcut="" />
+			<item command="CMD_CREATE_WARP_HANDLER" shortcut="" />
+			<item command="CMD_TWICE_ROW_WARP_HANDLER" shortcut="" />
+			<item command="CMD_HALF_ROW_WARP_HANDLER" shortcut="" />
+			<item command="CMD_TWICE_COLUMN_WARP_HANDLER" shortcut="" />
+			<item command="CMD_HALF_COLUMN_WARP_HANDLER" shortcut="" />
+			<item command="CMD_CREATE_PATH_HANDLER" shortcut="" />
+			<item command="CMD_DELETE_TEMPORARY_HANDLER" shortcut="" />
+			<item command="CMD_ADD_MORPH_TARGET" shortcut="Alt+M" shortcut2="Alt+Q" />
+			<item command="CMD_REMOVE_MORPH_TARGET" shortcut="Shift+Alt+M" shortcut2="Alt+Shift+Q" />
+			<!-- =========  オブジェクトの表示・ロック切り替え  ========= -->
+			<item command="CMD_SELECTED_OBJECT_UNLOCK" shortcut="Ctrl+2" />
+			<item command="CMD_NOT_SELECTED_OBJECT_LOCK" shortcut="Ctrl+Shift+2" />
+			<item command="CMD_ALL_OBJECT_UNLOCK" shortcut="Ctrl+Alt+2" />
+			<item command="CMD_SELECTED_OBJECT_VISIBLE" shortcut="Ctrl+3" />
+			<item command="CMD_NOT_SELECTED_OBJECT_HIDE" shortcut="Ctrl+Shift+3" />
+			<item command="CMD_ALL_OBJECT_SHOW" shortcut="Ctrl+Alt+3" />
+			<item command="CMD_LOAD_VISIBLE_MAP" shortcut="" />
+			<!-- =========  編集レベル  ========= -->
+			<item command="CMD_EDIT_LEVEL_1" shortcut="1" />
+			<item command="CMD_EDIT_LEVEL_2" shortcut="2" />
+			<item command="CMD_EDIT_LEVEL_3" shortcut="3" />
+			<!-- =========  メッシュ編集関連  ========= -->
+			<item command="CMD_START_OR_END_MESH_EDITOR" shortcut="Ctrl+E" />
+			<item command="CMD_MESH_EDIT_CONNECT_AUTO" shortcut="Ctrl+R" />
+			<item command="CMD_MODELING_REFLECTION_H" shortcut="" />
+			<item command="CMD_MODELING_REFLECTION_V" shortcut="" />
+			<item command="CMD_MODELING_REFLECTION_AXIS_FOR_MESH_EDIT" shortcut="" />
+			<item command="CMD_GLUE_BIND" shortcut="Ctrl+G" />
+			<item command="CMD_GLUE_UNBIND" shortcut="Ctrl+Shift+G" />
+			<item command="CMD_SHOW_VERTEX_INDEX" shortcut="" />
+			<item command="CMD_GENERATE_MESH_IN_MODELING_MODE" shortcut="Ctrl+Shift+A" />
+			<item command="CMD_EDIT_MULTIKEY" shortcut="" />
+			<item command="CMD_EDIT_REVERSE_ALL_KEYS" shortcut="" />
+			<!-- ========= 不明なショートカット  ========= -->
+			<!-- ========= ドキュメント関連のあたらしいビューを開く  ========= -->
+			<!--<item command="CMD_OPEN_VIEW_FOR_DOCUMENT" shortcut="" />-->
+			<!--<item command="CMD_SELECT_OPTIMIZE_TARGET" shortcut="" />-->
+			<!--<item command="CMD_SET_SAME_PARAMETERS_TO_ALL_SELECTED" shortcut="" />-->
+			<!-- =========  メッシュの自動生成（メッシュ編集モード）  ========= -->
+			<!-- ========= 不明なショートカット　ここまで  ========= -->
+		</group>
+		<group tr_name="アニメーション" name="##CUB3-0815">
+			<item command="CMD_RELOAD_MODEL" shortcut="" />
+			<item command="CMD_REPLACE_MODEL" shortcut="" />
+			<item command="CMD_REPLACE_MODEL_RESOURCE" shortcut="" />
+			<item command="CMD_LIPSYNC" shortcut="" />
+			<item command="CMD_ADD_SCENE" shortcut="" />
+			<item command="CMD_CREATE_SCENE_FROM_SOUNDS" shortcut="" />
+			<item command="CMD_BAKE_PHYSICS" shortcut="" />
+			<item command="CMD_PLAY_STOP" shortcut="Enter" />
+			<item command="CMD_MOVE_START" shortcut="Home" />
+			<item command="CMD_MOVE_End" shortcut="End" />
+			<item command="CMD_MOVE_START_WORKSPACE" shortcut="Shift+Home" />
+			<item command="CMD_MOVE_End_WORKSPACE" shortcut="Shift+End" />
+			<item command="CMD_SHOW_FULL_WORKSPACE" shortcut="Shift+F" />
+			<item command="CMD_SET_START_WORKSPACE" shortcut="" />
+			<item command="CMD_SET_END_WORKSPACE" shortcut="" />
+			<item command="CMD_SET_START_TRACK" shortcut="Shift+B" />
+			<item command="CMD_SET_END_TRACK" shortcut="Shift+N" />
+			<item command="CMD_MOVE_TRACK_INDICATOR" shortcut="Shift+M" />
+			<item command="CMD_NEXT_FRAME" shortcut="Page Down" />
+			<item command="CMD_PREV_FRAME" shortcut="Page Up" />
+			<item command="CMD_NEXT_KEYFRAME" shortcut="K" />
+			<item command="CMD_PREV_KEYFRAME" shortcut="J" />
+			<item command="CMD_NEXT_TRACK_KEYFRAME" shortcut="Shift+K" />
+			<item command="CMD_PREV_TRACK_KEYFRAME" shortcut="Shift+J" />
+			<item command="CMD_NEXT_TIMELINE_MARKER" shortcut="Ctrl+K" />
+			<item command="CMD_PREV_TIMELINE_MARKER" shortcut="Ctrl+J" />
+			<item command="CMD_NEXT_ONIONSKIN_MARKER" shortcut="Ctrl+Shift+K" />
+			<item command="CMD_PREV_ONIONSKIN_MARKER" shortcut="Ctrl+Shift+J" />
+			<item command="CMD_SWITCH_EDIT_MODE" shortcut="C" />
+			<item command="CMD_EXPAND_ALL_CONTAINS" shortcut="" />
+			<!-- タイムラインパレットのオプションメニュー項目 -->
+			<item command="CMD_REVERSE_INCLUDE_SHIED_ATTRS" shortcut="" />
+			<item command="CMD_REVERSE_IS_LIGHT_PREVIEW" shortcut="" />
+			<item command="CMD_REVERSE_ENABLE_CLICK_SELECT_ALL_KEYS" shortcut="" />
+			<item command="CMD_REVERSE_ENABLE_SHOW_KEY_FRAMES_VALUE" shortcut="" />
+			<item command="CMD_REVERSE_ENABLE_DISPLAY_ATTRIBUTE_NAME" shortcut="" />
+			<item command="CMD_REVERSE_ENABLE_ALWAYS_RESIZE_HORIZONTAL" shortcut="" />
+			<item command="CMD_REVERSE_ENABLE_ALWAYS_CONTINUOUS_BEZIER" shortcut="" />
+			<item command="CMD_REVERSE_ENABLE_ROUND_VALUE_WITH_SHIFT" shortcut="" />
+			<item command="CMD_REVERSE_ENABLE_AUTO_BEZIER_ON_CURVE_DRAGGING" shortcut="" />
+			<item command="CMD_REVERSE_ENABLE_SNAP_ON_GRAPH_EDITOR" shortcut="" />
+			<!-- フリーズ機能関連項目 -->
+			<item command="CMD_SET_FREEZE_POS" shortcut="" />
+			<item command="CMD_SET_FREEZE_ALL" shortcut="" />
+			<item command="CMD_SET_FREEZE_SELECTED" shortcut="" />
+			<item command="CMD_SET_FREEZE_UNSELECTED" shortcut="" />
+			<item command="CMD_SET_UNFREEZE_ALL" shortcut="" />
+			<item command="CMD_HIDE_PARAMETER_BOOKMARK_LABEL" shortcut="" />
+			<item command="CMD_SHOW_PARAMETER_BOOKMARK_FORM_SELECTED_ATTRIBUTE" shortcut="" />
+			<item command="CMD_REMOVE_LABELS_ON_SELECTED_TRACKS" shortcut="" />
+			<item command="CMD_OPEN_PARAMETER_BOOKMARK_SETTING" shortcut="" />
+			<item command="CMD_SHOW_PARAMETER_BOOKMARK_FOR_TOP_DRAWABLE" shortcut="" />
+			<item command="CMD_SHOW_PARAMETER_BOOKMARK_DRAWABLE_LIST_POPUP" shortcut="" />
+		</group>
+		<group tr_name="フォームアニメーション" name="##CUB3-2425">
+			<item command="CMD_CREATE_FORMANIMATION_KEY" shortcut="" />
+		</group>
+		<group tr_name="ウインドウ" name="##CUBI-0550">
+			<!-- ========= Workspace ========= -->
+			<item command="CMD_CHANGE_WORKSPACE" shortcut="" />
+			<item command="CMD_CHANGE_WORKSPACE_MODELER" shortcut="" />
+			<item command="CMD_CHANGE_WORKSPACE_ANIMATOR" shortcut="" />
+			<item command="CMD_CHANGE_WORKSPACE_FORM_ANIMATION" shortcut="" />
+			<item command="CMD_HIDE_PALETTE" shortcut="" />
+			<item command="CMD_ADD_TAB_TABBOX" shortcut="" />
+			<item command="CMD_MOVE_TAB_PREV" shortcut="" />
+			<item command="CMD_MOVE_TAB_NEXT" shortcut="" />
+			<item command="CMD_RESET_CURRENT_WORKSPACE_LAYOUT" shortcut="" />
+			<item command="CMD_STORE_CURRENT_WORKSPACE_LAYOUT_AS_DEFAULT" shortcut="" />
+			<item command="CMD_WORKSPACE_SETTING" shortcut="" />
+			<item command="CMD_RESET_MAINCANVAS" shortcut="" />
+		</group>
+		<group tr_name="ヘルプ" name="##CUBI-0551">
+			<item command="CMD_OPEN_MANUAL_PAGE" shortcut="" />
+			<item command="CMD_OPEN_HOME_PAGE" shortcut="" />
+			<item command="CMD_OPEN_DOWNLOAD_PAGE" shortcut="" />
+			<item command="CMD_OPEN_SAMPLE_MODEL_PAGE" shortcut="" />
+			<item command="CMD_OPEN_COMMUNITY_PAGE" shortcut="" />
+			<item command="CMD_REGISTER_LICENSE" shortcut="" />
+			<item command="CMD_REVOKE_LICENSE" shortcut="" />
+			<item command="CMD_OPEN_STORE_PAGE" shortcut="" />
+			<item command="CMD_SHOW_USER_OPERATION" shortcut="" />
+			<item command="CMD_OPEN_LOG_FILE" shortcut="" />
+			<item command="CMD_OPEN_BACKUP_DIR" shortcut="" />
+			<item command="CMD_OPEN_ABOUT" shortcut="" />
+		</group>
+		<group tr_name="ツール" name="##CUBI-0515">
+			<item command="CMD_GENERATE_MESH_IN_MESH_EDITOR_MODE" shortcut="" />
+			<item command="CMD_TOOL_MODE_CREATE_ROTATION_DEFORMER" shortcut="" />
+			<item command="CMD_TOOL_MODE_ARROW" shortcut="A" />
+			<item command="CMD_TOOL_MODE_LASSO" shortcut="L" />
+			<item command="CMD_TOOL_MODE_BLUSH_SELECT" shortcut="B" />
+			<item command="CMD_TOOL_MODE_DEFORM_PATH" shortcut="P" />
+			<item command="CMD_TOOL_MODE_DEFORM_BRUSH" shortcut="" />
+			<item command="CMD_TOOL_MODE_GLUE" shortcut="" />
+			<item command="CMD_TOOL_MODE_ARTPATH" shortcut="" />
+			<item command="CMD_CHANGE_MODE" shortcut="" />
+			<item command="CMD_CHANGE_VIEW_VIEWVERTEX" shortcut="Shift+A" />
+			<item command="CMD_CHANGE_VIEW_DEFORMER" shortcut="Shift+D" />
+			<item command="CMD_CHANGE_VIEW_ARTMESH" shortcut="" />
+			<item command="CMD_SOLO" shortcut="S" />
+			<item command="CMD_SELECT_OBJECT_BY_SELECTION" shortcut="" />
+			<item command="CMD_SCREEN_SHOT" shortcut="Ctrl+5" />
+			<item command="CMD_SCREEN_SHOT_VIEW" shortcut="5" />
+			<item command="CMD_SCREEN_SHOT_TO_ARTMESH" shortcut="Ctrl+Shift+5" />
+			<item command="CMD_CAMERA_ZOOM_OUT" shortcut="" />
+			<item command="CMD_CAMERA_ZOOM_IN" shortcut="" />
+			<item command="CMD_CAMERA_SET_SCALE_ONE_BY_ONE" shortcut="" />
+			<item command="CMD_CAMERA_DISPLAY_ALL" shortcut="Ctrl+0" />
+			<item command="CMD_CAMERA_FLIP_HORIZONTALLY_SCREEN" shortcut="R" />
+			<item command="CMD_SETTING_GUIDES_MODELING_ADD_HORIZONTAL" shortcut="" />
+			<item command="CMD_SETTING_GUIDES_MODELING_ADD_VERTICAL" shortcut="" />
+			<item command="CMD_SETTING_GUIDES_MODELING_ADD_HORIZONTAL_AND_VERTICAL" shortcut="" />
+		</group>
+		<group tr_name="パーツのショートカット" name="##CUB3-2184">
+			<item command="CMD_PART_PALETTE_CMD_NEW_PART" shortcut="" />
+			<item command="CMD_PART_PALETTE_CMD_REMOVE_PART" shortcut="" />
+			<item command="CMD_PART_PALETTE_CMD_REMOVE_SELECTED_PART_ONLY" shortcut="" />
+			<item command="CMD_PART_PALETTE_RESTRICT_DRAG_AND_DROP" shortcut="" />
+			<item command="CMD_PART_PALETTE_CMD_SETTING" shortcut="" />
+			<item command="CMD_PART_PALETTE_CMD_REMOVE_ALL_EMPTY_PARTS" shortcut="" />
+			<item command="CMD_PART_PALETTE_CMD_REMOVE_DESCENDANT_EMPTY_PARTS" shortcut="" />
+			<item command="CMD_PART_PALETTE_CMD_REMOVE_ALL_EMPTY_DEFORMERS" shortcut="" />
+			<item command="CMD_PART_PALETTE_CMD_CHANGE_VISIBLE_GUIDE_IMAGE" shortcut="Ctrl+Alt+Shift+3" />
+		</group>
+		<group tr_name="デフォーマのショートカット" name="##COR3-0395">
+			<item command="CMD_DEFORMER_PALETTE_RESTRICT_DRAG_AND_DROP" shortcut="" />
+			<item command="CMD_DEFORMER_PALETTE_DELETE_DESCENDANT_EMPTY_DEFORMERS" shortcut="" />
+		</group>
+		<group tr_name="パラメータのショートカット" name="##CUB3-2187">
+			<item command="CMD_PARAMETER_PALETTE_CLEAR_SELECTION" shortcut="" />
+			<item command="CMD_PARAMETER_PALETTE_SWITCH_COMBINED" shortcut="" />
+			<item command="CMD_PARAMETER_PALETTE_SELECT_PREV_ITEM" shortcut="" />
+			<item command="CMD_PARAMETER_PALETTE_SELECT_NEXT_ITEM" shortcut="" />
+			<item command="CMD_PARAMETER_PALETTE_SELECT_FIRST_KEY" shortcut="" />
+			<item command="CMD_PARAMETER_PALETTE_SELECT_NEXT_KEY" shortcut="" />
+			<item command="CMD_PARAMETER_PALETTE_SELECT_PREV_KEY" shortcut="" />
+			<item command="CMD_PARAMETER_PALETTE_SELECT_LAST_KEY" shortcut="" />
+			<item command="CMD_PARAMETER_PALETTE_SELECT_DEFAULT" shortcut="" />
+			<item command="CMD_PARAMETER_PALETTE_SELECT_FIRST_KEY_SEC" shortcut="" />
+			<item command="CMD_PARAMETER_PALETTE_SELECT_NEXT_KEY_SEC" shortcut="" />
+			<item command="CMD_PARAMETER_PALETTE_SELECT_PREV_KEY_SEC" shortcut="" />
+			<item command="CMD_PARAMETER_PALETTE_SELECT_LAST_KEY_SEC" shortcut="" />
+			<item command="CMD_PARAMETER_PALETTE_ADD_KEY_FORM" shortcut="" />
+			<item command="CMD_PARAMETER_PALETTE_DEL_KEY_FORM" shortcut="" />
+			<item command="CMD_PARAMETER_PALETTE_DELETE_ALL_EMPTY_PARAMETERS" shortcut="" />
+			<item command="CMD_PARAMETER_PALETTE_DELETE_ALL_EMPTY_PARAMETER_GROUPS" shortcut="" />
+			<item command="CMD_PARAMETER_PALETTE_RESTRICT_DRAG_AND_DROP" shortcut="" />
+		</group>
+		<group tr_name="ツール詳細：変形パスツール" name="##CUB3-2634">
+			<item command="CMD_TOOL_MODE_CONTROLLER_CONTROLLER_ADD_CONTROLPOINT" shortcut="" />
+			<item command="CMD_TOOL_MODE_CONTROLLER_CONTROLLER_DELETE_CONTROLPOINT" shortcut="" />
+			<item command="CMD_TOOL_MODE_CONTROLLER_CONTROLLER_DISCONNECT_CONTROLPOINT" shortcut="" />
+			<item command="CMD_TOOL_MODE_CONTROLLER_CONTROLLER_SET_CORNER" shortcut="" />
+		</group>
+		<group tr_name="ツール詳細：グルーツール" name="##CUB3-2635">
+			<item command="CMD_TOOL_MODE_GLUE_WEIGHT_BRUSH_AB" shortcut="" />
+			<item command="CMD_TOOL_MODE_GLUE_WEIGHT_BRUSH_A" shortcut="" />
+			<item command="CMD_TOOL_MODE_GLUE_WEIGHT_BRUSH_B" shortcut="" />
+			<item command="CMD_TOOL_MODE_GLUE_WEIGHT_BRUSH_CLOSER" shortcut="" />
+		</group>
+		<group tr_name="ツール詳細：アートパスツール" name="##CUB3-2636">
+			<item command="CMD_TOOL_MODE_ARTPATH_ADD_ARTPATH_POINT" shortcut="" />
+			<item command="CMD_TOOL_MODE_ARTPATH_DELETE_ARTPATH_POINT" shortcut="" />
+			<item command="CMD_TOOL_MODE_ARTPATH_ADJUST_OPACITY" shortcut="" />
+			<item command="CMD_TOOL_MODE_ARTPATH_ADJUST_WIDTH" shortcut="" />
+			<item command="CMD_TOOL_MODE_ARTPATH_SET_CORNER" shortcut="" />
+			<item command="CMD_TOOL_MODE_ARTPATH_CREATE_WITH_STROKE" shortcut="" />
+			<item command="CMD_TOOL_MODE_ARTPATH_EDIT_WITH_STROKE" shortcut="" />
+			<item command="CMD_TOOL_MODE_ARTPATH_CONNECT_PATH" shortcut="" />
+			<item command="CMD_TOOL_MODE_ARTPATH_CUT_PATH" shortcut="" />
+		</group>
+		<group tr_name="ツール詳細：メッシュ編集モード" name="##CUB3-2637">
+			<item command="CMD_TOOL_MODE_MESH_EDIT_ARROW" shortcut="" />
+			<item command="CMD_TOOL_MODE_MESH_EDIT_POINT_ADD" shortcut="" />
+			<item command="CMD_TOOL_MODE_MESH_EDIT_POINT_REMOVE" shortcut="" />
+			<item command="CMD_TOOL_MODE_MESH_EDIT_ERASER" shortcut="" />
+			<item command="CMD_TOOL_MODE_MESH_EDIT_LASSO" shortcut="" />
+			<item command="CMD_TOOL_MODE_MESH_EDIT_SUBDIVIDE_MESH" shortcut="" />
+			<item command="CMD_TOOL_MODE_MESH_EDIT_STROKE_MESH" shortcut="" />
+			<item command="CMD_STROKE_MESH_EDIT_ADD_WIDTH" shortcut="" />
+			<item command="CMD_STROKE_MESH_EDIT_REDUCE_WIDTH" shortcut="" />
+			<item command="CMD_STROKE_MESH_EDIT_ADD_SEGMENT_NUM" shortcut="" />
+			<item command="CMD_STROKE_MESH_EDIT_REDUCE_SEGMENT_NUM" shortcut="" />
+			<item command="CMD_STROKE_MESH_EDIT_TOGGLE_TYPE" shortcut="" />
+			<item command="CMD_STROKE_MESH_EDIT_ON_END_EDIT" shortcut="Shift+E" />
+			<item command="CMD_MODELING_MERGE_POINTS" shortcut="" />
+			<!--<item command="CMD_TOOL_MODE_MESH_EDIT_EDGE_CONNECT" shortcut="" />-->
+		</group>
+		<group tr_name="一時的なスナップショット" name="##CUB3-1900">
+			<item command="CMD_SAVE_TEMP_SNAP_SHOT_0" shortcut="" />
+			<item command="CMD_SAVE_TEMP_SNAP_SHOT_1" shortcut="" />
+			<item command="CMD_SAVE_TEMP_SNAP_SHOT_2" shortcut="" />
+			<item command="CMD_SAVE_TEMP_SNAP_SHOT_3" shortcut="" />
+			<item command="CMD_SHOW_TEMP_SNAP_SHOT_0" shortcut="" />
+			<item command="CMD_SHOW_TEMP_SNAP_SHOT_1" shortcut="" />
+			<item command="CMD_SHOW_TEMP_SNAP_SHOT_2" shortcut="" />
+			<item command="CMD_SHOW_TEMP_SNAP_SHOT_3" shortcut="" />
+		</group>
+		<group tr_name="ブラシ" name="##CUBI-0435">
+			<item command="CMD_BRUSH_COMMON_SHAPE_PREV" shortcut="" />
+			<item command="CMD_BRUSH_COMMON_SHAPE_NEXT" shortcut="" />
+		</group>
+	</mode>
+</shortcut>
+

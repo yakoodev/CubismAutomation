@@ -1,0 +1,49 @@
+#extension GL_EXT_gpu_shader4 : enable
+
+#if __VERSION__ >= 130
+  #define varying in
+  out vec4 mgl_FragColor;
+  #define texture2D texture
+  #define gl_FragColor mgl_FragColor
+#endif
+
+#ifdef GL_ES
+precision mediump float;
+precision mediump int;
+#endif
+
+varying vec2 		v_texCoord ;
+uniform sampler2D 	s_texture0 ;
+
+uniform sampler2D 	s_mask ;
+uniform vec2 		s_mask_offset ;
+uniform vec2 		s_mask_scale ;
+uniform float		s_mask_min ;
+
+uniform vec4 		baseColor ;
+
+uniform mat4    	hsl_matrix ;
+uniform float		shusen_min ;
+uniform float		shusen_max ;
+
+
+void main (void)
+{
+	// base color & mask
+	vec4 src  = texture2D(s_texture0 , v_texCoord) * baseColor ;
+	vec4 mask = texture2D(s_mask , gl_FragCoord.xy * s_mask_scale + s_mask_offset ) ;
+
+	// HSL color conversion
+	float aa = src.a ;
+	vec4 conv = hsl_matrix * src ;
+	conv = clamp(conv , 0.0 , src.a) ;// color value of pre-multiplied alpha must be lesser than src.a
+	
+	// keep line
+	float light = max( src.r , max(src.g , src.b) ) ;
+	float shusen = 1.0 - smoothstep( shusen_min*aa , shusen_max*aa , light ) ;//min=>1, max=>0
+	conv = shusen*src + (1.0-shusen)*conv ;
+	
+	// calc Color
+	gl_FragColor = conv * max( s_mask_min , mask.r );
+} 
+

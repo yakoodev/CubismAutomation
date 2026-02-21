@@ -1,0 +1,32 @@
+#extension GL_EXT_gpu_shader4 : enable
+
+#if __VERSION__ >= 130
+  #define varying in
+  out vec4 mgl_FragColor;
+  #define texture2D texture
+  #define gl_FragColor mgl_FragColor
+#endif
+
+#ifdef GL_ES
+precision mediump float;
+precision mediump int;
+#endif
+
+varying vec2 		v_texCoord ;
+uniform sampler2D 	s_texture0 ;
+
+uniform sampler2D 	s_mask ;
+uniform vec2 		s_mask_offset ;
+uniform vec2 		s_mask_scale ;
+uniform float		s_mask_min ;
+
+uniform vec4 		baseColor ;
+
+
+void main (void)
+{
+	vec4 src  = texture2D(s_texture0 , v_texCoord) * baseColor ;
+	vec4 mask = texture2D(s_mask , gl_FragCoord.xy * s_mask_scale + s_mask_offset ) ;
+
+	gl_FragColor = src * max( s_mask_min , mask.r );
+} 

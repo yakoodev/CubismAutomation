@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="error" packages="com.live2d.util.log.appender.util">
+  <!-- プロパティ変数定義 -->
+  <Properties>
+    <Property name="console_log_layout">%highlight{%-5level }%style{[ %msg%xEx ]}{ bright} %highlight{at %class{36} (%class{1}.kt:%L) %M()}%n</Property>
+    <Property name="date">%d{yyyy-MM-dd HH:mm:ss.SSS}</Property>
+  </Properties>
+
+  <!-- ログの出力先 -->
+  <Appenders>
+    <Console name="Console" target="SYSTEM_OUT">
+      <ThresholdFilter level="trace" onMatch="ACCEPT" onMismatch="DENY"/>
+      <PatternLayout pattern="${console_log_layout}"/>
+    </Console>
+    <RollingFile name="RollingFile" fileName="${sys:logFilename}"
+                 filePattern="${sys:logsFilePath}/log_%d{yyyyMMddHHmmss}.txt.gz">
+      <PatternLayout pattern="%d{yyyy.MM.dd 'at' HH:mm:ss z} %-5level %class{36} %L %M - %msg%xEx%n" charset="UTF-8"/>
+      <Policies>
+        <SizeBasedTriggeringPolicy size="5 MB" />
+      </Policies>
+      <DefaultRolloverStrategy>
+        <Delete basePath="${sys:logsFilePath}" maxDepth="1">
+          <IfFileName glob="*.txt.gz">
+            <IfAny>
+              <IfAccumulatedFileCount exceeds="10" />
+            </IfAny>
+          </IfFileName>
+        </Delete>
+      </DefaultRolloverStrategy>
+    </RollingFile>
+
+    <!--
+    Log4J2 からのログ出力を、CTextPane に転送するためのアペンダーを定義.
+    アペンダーは、jp.makmorit.tools.util に収容されているクラスを使用します.
+    アトリビュートは以下になります.
+	  name: ロガーの名称（省略不可能）
+	  maxLines: テキストエリアに出力できる最大行数を数値で指定（省略可能）
+	  ignoreExceptions: 発生した例外を無視するかどうかを true or falseで指定（省略可能）
+    通常のレイアウトとフィルターの定義が使用できます.
+    (下記は定義例になります)
+      PatternLayout: 下記のようなフォーマットでログ出力されます.
+        2017-01-28 11:58:36.899 [AWT-EventQueue-0] DEBUG jp.makmorit.tools.helper.CSimpleTextViewerFocusListener - <出力メッセージテキスト>
+      RegexFilter: "送信"という文言で終わるログは出力されません.
+    -->
+
+    <CTextPaneAppender name="CTextPane" maxLines="10000" ignoreExceptions="false">
+      <!--<ThresholdFilter level="trace" onMatch="ACCEPT" onMismatch="DENY"/>-->
+      <PatternLayout pattern="[%-5p] %m%n"/>
+      <!--
+      ・CE-8219 リリース版（PublicInstaller）で出る起動時のJPenエラー対策。
+      JPenのログがINFO扱いで出力されるようになりました。
+      よって、CE-6247などのJPenログの特殊対応コードは不要となり、削除されました。
+
+      ・CE-6630 WindowsPreference初期化時の警告を抑制
+        .*java\.util\.prefs\.WindowsPreferences\s.init.*
+        .*Windows\sRegCreateKeyEx\(\.\.\.\)\sreturned\serror\scode.*
+      -->
+      <RegexFilter regex=".*送信|.*java\.util\.prefs\.WindowsPreferences\s.init.*|.*Windows\sRegCreateKeyEx\(\.\.\.\)\sreturned\serror\scode.*" onMatch="DENY" onMismatch="ACCEPT"/>
+    </CTextPaneAppender>
+
+  </Appenders>
+
+
+  <!-- ログレベル -->
+  <Loggers>
+    <Root level="debug">
+      <AppenderRef ref="Console"/>
+      <AppenderRef ref="CTextPane"/>
+      <AppenderRef ref="RollingFile"/>
+    </Root>
+  </Loggers>
+
+</Configuration>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.live2d.type.CInsets?>
+<?import com.live2d.ui.control.CLabel?>
+<?import com.live2d.ui.menu.CMenu?>
+<?import com.live2d.ui.menu.CMenuBar?>
+<?import com.live2d.ui.menu.CMenuItem?>
+<?import com.live2d.ui.menu.CButtonMenu?>
+<?import com.live2d.ui.container.CSplitPane?>
+<?import com.live2d.ui.menu.CSeparatorMenuItem?>
+<?import com.live2d.ui.container.CSplitPane?>
+<?import com.live2d.ui.container.CBorderPane?>
+<?import com.live2d.ui.container.CHBox?>
+<?import com.live2d.ui.container.CPane?>
+<?import com.live2d.ui.container.CVBox?>
+<?import com.live2d.ui.container.CSpacer?>
+<?import com.live2d.ui.control.CTextField?>
+<?import com.live2d.ui.tree.tree_impl1.CTreeView?>
+<?import com.live2d.ui.window.CFrame?>
+<?import com.live2d.type.CColor?>
+<?import com.live2d.type.CFont?>
+
+<CFrame width="500" height="400" title="About UI Builder"
+         xmlns="http://live2d.com/cgui/0.1.00" xmlns:cx="http://live2d.com/cxml/1">
+    <main>
+        <CVBox cx:id="root" >
+            <children>
+               <CLabel text="UI Builder for Live2D Cubism" cx:id="labelMain" >
+                   <font>
+                       <CFont name="Helvetica Bold" size="24"/>
+                   </font>
+               </CLabel>
+            </children>
+        </CVBox>
+    </main>
+</CFrame>

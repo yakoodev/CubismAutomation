@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import com.live2d.type.CArray?>
+<?import com.live2d.type.CMap?>
+<?import com.live2d.type.CInsets?>
+<?import com.live2d.ui.control.CLabel?>
+<?import com.live2d.ui.menu.CMenu?>
+<?import com.live2d.ui.menu.CMenuBar?>
+<?import com.live2d.ui.menu.CMenuItem?>
+<?import com.live2d.ui.container.CSplitPane?>
+<?import com.live2d.ui.container.CScrollPane?>
+<?import com.live2d.ui.menu.CSeparatorMenuItem?>
+<?import com.live2d.ui.container.CBorderPane?>
+<?import com.live2d.ui.container.CHBox?>
+<?import com.live2d.ui.container.CVBox?>
+<?import com.live2d.ui.container.CSpacer?>
+<?import com.live2d.ui.container.CGridPane?>
+<?import com.live2d.ui.control.CButton?>
+<?import com.live2d.ui.control.CToggleButton?>
+<?import com.live2d.ui.control.CCheckBox?>
+<?import com.live2d.ui.control.CTextField?>
+<?import com.live2d.ui.control.CTextArea?>
+<?import com.live2d.ui.tree.CTree?>
+<?import com.live2d.type.CColor?>
+<?import com.live2d.type.CFont?>
+<?import com.live2d.uibuilder.palette.UBLibraryItem?>
+<!-- <load-icon path="xx" は指定のパスをローダが検索して、見つかればロードしてCIconとして保持する
+     以下に検索パスを設定-->
+<?path %CX_DIR%/?>
+<?path %CURRENT_DIR%res/?>
+<?path %CURRENT_DIR%core/src/res/?>
+<!-- ########### TreeItemを直接初期化する実験 ########### -->
+<CMap xmlns="http://live2d.com/cgui/0.1.00" xmlns:cx="http://live2d.com/cxml/1" tr_name="ライブラリ" name="##CUB3-0683">
+	<items>
+		<CMap tr_name="コンテナ" name="##COR3-0284">
+			<items>
+				<UBLibraryItem name="CBorderPane" className="com.live2d.ui.container.CBorderPane" container="true">
+					<icon>
+						<!-- cx:iconは指定のパスをローダが検索して、見つかればロードしてCIconとして保持する -->
+						<load-icon path="image/icon/uibuilder/CBorderPane.png" width="16" height="16" />
+					</icon>
+				</UBLibraryItem>
+				<UBLibraryItem name="CHBox" className="com.live2d.ui.container.CHBox" container="true">
+					<defaultItem>
+						<CHBox />
+					</defaultItem>
+					<icon>
+						<load-icon path="image/icon/uibuilder/CHBox.png" width="16" height="16" />
+					</icon>
+				</UBLibraryItem>
+				<UBLibraryItem name="CVBox" className="com.live2d.ui.container.CVBox" container="true">
+					<defaultItem>
+						<CVBox />
+					</defaultItem>
+					<icon>
+						<load-icon path="image/icon/uibuilder/CVBox.png" width="16" height="16" />
+					</icon>
+				</UBLibraryItem>
+				<UBLibraryItem name="CGridPane" className="com.live2d.ui.container.CGridPane" container="true">
+					<defaultItem>
+						<CGridPane />
+					</defaultItem>
+					<icon>
+						<load-icon path="image/icon/uibuilder/CGridPane.png" width="16" height="16" />
+					</icon>
+				</UBLibraryItem>
+				<UBLibraryItem name="CSpacer" className="com.live2d.ui.container.CSpacer">
+					<defaultItem>
+						<CSpacer />
+					</defaultItem>
+					<icon>
+						<load-icon path="image/icon/uibuilder/CSpacer.png" width="16" height="16" />
+					</icon>
+				</UBLibraryItem>
+				<UBLibraryItem name="CSplitPane" className="com.live2d.ui.container.CSplitPane" container="true">
+					<defaultItem>
+						<CSplitPane />
+					</defaultItem>
+					<icon>
+						<load-icon path="image/icon/uibuilder/CSplitPane.png" width="16" height="16" />
+					</icon>
+				</UBLibraryItem>
+			</items>
+		</CMap>
+		<CMap tr_name="コントロール" name="##COR3-0285">
+			<items>
+				<UBLibraryItem name="CLabel" className="com.live2d.ui.control.CLabel">
+					<defaultItem>
+						<CLabel text="text" />
+					</defaultItem>
+					<icon>
+						<load-icon path="image/icon/uibuilder/CLabel.png" width="16" height="16" />
+					</icon>
+				</UBLibraryItem>
+				<UBLibraryItem name="CButton" className="com.live2d.ui.control.CButton">
+					<defaultItem>
+						<CButton text="text" />
+					</defaultItem>
+					<icon>
+						<load-icon path="image/icon/uibuilder/CButton.png" width="16" height="16" />
+					</icon>
+				</UBLibraryItem>
+				<UBLibraryItem name="CCheckBox" className="com.live2d.ui.control.CCheckBox">
+					<defaultItem>
+						<CCheckBox text="text" />
+					</defaultItem>
+					<icon>
+						<load-icon path="image/icon/uibuilder/CCheckBox.png" width="16" height="16" />
+					</icon>
+				</UBLibraryItem>
+				<UBLibraryItem name="CColorButton" className="com.live2d.ui.control.CColorButton">
+					<defaultItem>
+						<CColorButton text="text" />
+					</defaultItem>
+					<icon>
+						<load-icon path="image/icon/uibuilder/CButton.png" width="16" height="16" />
+					</icon>
+				</UBLibraryItem>
+				<UBLibraryItem name="CColorChooserButton" className="com.live2d.ui.control.CColorChooserButton">
+					<defaultItem>
+						<CColorChooserButton text="text" />
+					</defaultItem>
+					<icon>
+						<load-icon path="image/icon/uibuilder/CButton.png" width="16" height="16" />
+					</icon>
+				</UBLibraryItem>
+				<UBLibraryItem name="CCustomPaintComponent" className="com.live2d.ui.control.CCustomPaintComponent">
+					<defaultItem>
+						<CCustomPaintComponent text="text" />
+					</defaultItem>
+					<icon>
+						<load-icon path="image/icon/uibuilder/CButton.png" width="16" height="16" />
+					</icon>
+				</UBLibraryItem>
+				<UBLibraryItem name="CTable" className="com.live2d.inspector.simpleInspectors.impl.CTable">
+					<defaultItem>
+						<CTable text="text" />
+					</defaultItem>
+					<icon>
+						<load-icon path="image/icon/uibuilder/CTable.png" width="16" height="16" />
+					</icon>
+				</UBLibraryItem>
+				<UBLibraryItem name="CRadioButton" className="com.live2d.ui.control.CRadioButton">
+					<defaultItem>
+						<CRadioButton text="text" />
+					</defaultItem>
+					<icon>
+						<load-icon path="image/icon/uibuilder/CRadioButton.png" width="16" height="16" />
+					</icon>
+				</UBLibraryItem>
+				<UBLibraryItem name="CSlidableFloat" className="com.live2d.ui.control.CSlidableFloat">
+					<defaultItem>s</defaultItem>
+					<icon>
+						<load-icon path="image/icon/uibuilder/CSlidableFloat.png" width="16" height="16" />
+					</icon>
+				</UBLibraryItem>
+				<UBLibraryItem name="CScrollBar" className="com.live2d.ui.control.CScrollBar">
+					<defaultItem>
+						<CScrollBar text="text" />
+					</defaultItem>
+					<icon>
+						<load-icon path="image/icon/uibuilder/CScrollBar.png" width="16" height="16" />
+					</icon>
+				</UBLibraryItem>
+				<UBLibraryItem name="CSlider" className="com.live2d.ui.control.CSlider">
+					<defaultItem />
+					<icon>
+						<load-icon path="image/icon/uibuilder/CSlider.png" width="16" height="16" />
+					</icon>
+				</UBLibraryItem>
+				<UBLibraryItem name="CComboBox" className="com.live2d.ui.control.CComboBox">
+					<defaultItem>
+						<CComboBox text="text" />
+					</defaultItem>
+					<icon>
+						<load-icon path="image/icon/uibuilder/CComboBox.png" width="16" height="16" />
+					</icon>
+				</UBLibraryItem>
+				<UBLibraryItem name="CSpinner" className="com.live2d.ui.control.CSpinner">
+					<defaultItem />
+					<icon>
+						<load-icon path="image/icon/uibuilder/CSpinner.png" width="16" height="16" />
+					</icon>
+				</UBLibraryItem>
+				<UBLibraryItem name="CToggleButton" className="com.live2d.ui.control.CToggleButton">
+					<defaultItem>
+						<CToggleButton text="text" />
+					</defaultItem>
+					<icon>
+						<load-icon path="image/icon/uibuilder/CButton.png" width="16" height="16" />
+					</icon>
+				</UBLibraryItem>
+				<UBLibraryItem name="CTextField" className="com.live2d.ui.control.CTextField">
+					<defaultItem>
+						<CTextField />
+					</defaultItem>
+					<icon>
+						<load-icon path="image/icon/uibuilder/CTextField.png" width="16" height="16" />
+					</icon>
+				</UBLibraryItem>
+				<UBLibraryItem name="CTextArea" className="com.live2d.ui.control.CTextArea">
+					<defaultItem>
+						<CTextArea />
+					</defaultItem>
+					<icon>
+						<load-icon path="image/icon/uibuilder/CTextArea.png" width="16" height="16" />
+					</icon>
+				</UBLibraryItem>
+			</items>
+		</CMap>
+	</items>
+</CMap>
+

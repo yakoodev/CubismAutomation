@@ -1,0 +1,5 @@
+FLAS-0000=Illegal State : 3 차 베지어는 미리 제거하십시오.
+FLAS-0001=Illegal State :이 클래스는 이전 모드로 플래그를 설정하고 사용하세요.
+FLAS-0002=Illegal State :이 클래스는 새로운 모드로 플래그를 설정하고 사용하세요.
+FLAS-0003=Illegal State : 16 이상의 LineStyle은 정의 할 수 없습니다
+FLAS-0004=Illegal State : 제대로 초기화되지 않았습니다 : \n[

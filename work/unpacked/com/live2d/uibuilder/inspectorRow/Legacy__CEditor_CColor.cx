@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ====================================================================
+    CXファイルの仕様書は [ CX_Document.md ] を参照
+
+    このコメントはユーザ配布前に削除します
+  ==================================================================== -->
+<?import com.live2d.ui.container.CHBox?>
+<?import com.live2d.ui.container.CSpacer?>
+<?import com.live2d.ui.container.CVBox?>
+<?import com.live2d.ui.control.CLabel?>
+<?import com.live2d.ui.control.CTextField?>
+<?import com.live2d.ui.control.CColorChooserButton?>
+<CVBox xmlns="http://live2d.com/cxui/1.0" xmlns:cx="http://live2d.com/cx/1.0" prefHeight="36" prefWidth="-1" spacing="1">
+  <children>
+    <CHBox spacing="6" >
+      <children>
+        <CColorChooserButton prefWidth="24" cx:id="colorChooserBtn" />
+        <CTextField prefWidth="70" name="top"    cx:id="tfARGB" />
+      </children>
+    </CHBox>
+  </children>
+</CVBox>
+

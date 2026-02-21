@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import com.live2d.type.CInsets?>
+<?import com.live2d.ui.container.CBorderPane?>
+<?import com.live2d.ui.container.CHBox?>
+<?import com.live2d.ui.container.CVBox?>
+<?import com.live2d.ui.control.CButton?>
+<?import com.live2d.ui.control.CToggleButton?>
+<CVBox xmlns="http://live2d.com/cxui/1.0" xmlns:cx="http://live2d.com/cx/1.0" prefWidth="444" prefHeight="390">
+	<children>
+		<CHBox CVBox.vgrow="ALWAYS">
+			<children>
+				<CVBox CHBox.hgrow="ALWAYS">
+					<children>
+						<CHBox backgroundColor="#DADADA">
+							<margin>
+								<CInsets top="3" left="3" bottom="3" right="3" />
+							</margin>
+							<children>
+								<CToggleButton text="#-#コンポーネントを探す" cx:id="toggleCheck" onAction="#checkComponent" />
+								<CButton text="#-#リロード" onAction="#reloadComponent" />
+								<CButton text="#-#このツールのソースを開く" onAction="#openSourceByIde" />
+							</children>
+						</CHBox>
+						<CBorderPane cx:id="treeContainer" CVBox.vgrow="ALWAYS" backgroundColor="#E6C142" />
+					</children>
+				</CVBox>
+				<CVBox cx:id="inspectorBox" CHBox.hgrow="ALWAYS" />
+			</children>
+		</CHBox>
+	</children>
+</CVBox>
+

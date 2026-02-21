@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import com.live2d.type.CInsets?>
+<?import com.live2d.ui.control.CLabel?>
+<?import com.live2d.ui.menu.CMenu?>
+<?import com.live2d.ui.menu.CMenuBar?>
+<?import com.live2d.ui.menu.CMenuItem?>
+<?import com.live2d.ui.menu.CCheckMenuItem?>
+<?import com.live2d.ui.container.CSplitPane?>
+<?import com.live2d.ui.menu.CSeparatorMenuItem?>
+<?import com.live2d.ui.container.CSplitPane?>
+<?import com.live2d.ui.container.CBorderPane?>
+<?import com.live2d.ui.container.CHBox?>
+<?import com.live2d.ui.container.CVBox?>
+<?import com.live2d.ui.control.CTextField?>
+<?import com.live2d.ui.control.CIconButton?>
+<?import com.live2d.ui.menu.CButtonMenu?>
+<?import com.live2d.ui.tree.CTree?>
+<?import com.live2d.type.CColor?>
+<?import com.live2d.ui.container.CSpacer?>
+<?import com.live2d.type.CFont?>
+<?import com.live2d.type.CMultiResolutionImageIcon?>
+<CVBox xmlns="http://live2d.com/cgui/0.1.00" xmlns:cx="http://live2d.com/cxml/1" cx:id="root">
+	<children>
+		<CHBox cx:id="topBar">
+			<children>
+				<CIconButton cx:id="sub_tool_glueAB" tr_toolTipText="Glueの重みA : B" toolTipText="##CUB3-0923">
+					<icon>
+						<CMultiResolutionImageIcon path="image/icons/BrushBoth_32x32_Default.png" />
+					</icon>
+				</CIconButton>
+				<CIconButton cx:id="sub_tool_glueA" tr_toolTipText="Glueの重みA" toolTipText="##CUB3-0924">
+					<icon>
+						<CMultiResolutionImageIcon path="image/icons/BrushAddRed_32x32_Default.png" />
+					</icon>
+				</CIconButton>
+				<CIconButton cx:id="sub_tool_glueB" tr_toolTipText="Glueの重みB" toolTipText="##CUB3-0925">
+					<icon>
+						<CMultiResolutionImageIcon path="image/icons/BrushAddGreen_32x32_Default.png" />
+					</icon>
+				</CIconButton>
+				<CIconButton cx:id="sub_tool_glueCloser" tr_toolTipText="Glue吸着" toolTipText="##CUB3-1188">
+					<icon>
+						<CMultiResolutionImageIcon path="image/icons/BrushCombine_32x32_Default.png" />
+					</icon>
+				</CIconButton>
+			</children>
+		</CHBox>
+	</children>
+</CVBox>
+

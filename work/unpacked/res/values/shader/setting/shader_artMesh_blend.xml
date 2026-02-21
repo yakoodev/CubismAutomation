@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<shader language="GLSL" name="ArtMesh Blend">
+
+    <!-- public property
+    ユーザがインスペクタ上で指定できるようにしたいプロパティのみココに記載します。
+    ここに記載がなくても、uniform / in(attribute) / out は自動的に利用できるようになります。
+    -->
+    <properties>
+        <property name="_MainTex" text="Texture" default="red" />
+    </properties>
+    <blend srcColor="ONE" dstColor="ZERO" srcAlpha="ONE" dstAlpha="ZERO" />
+    <cull mode="OFF" />
+    <transparent type="TRANSPARENT" />
+
+    <!-- ======================== Vertex Shader ======================== -->
+    <vertex><![CDATA[
+#version 150
+
+#if __VERSION__ >= 130
+  #define attribute in
+  #define varying out
+#endif
+
+#ifdef GL_ES
+precision mediump float;
+precision mediump int;
+#endif
+
+attribute vec4 	positions;
+attribute vec2 	uvs;
+varying vec2 	v_texCoord;
+
+uniform mat4 worldToCameraMatrix , projectionMatrix , localToWorldMatrix  ;
+
+
+void main(void)
+{
+	gl_Position = projectionMatrix * worldToCameraMatrix * localToWorldMatrix  * positions;
+	v_texCoord = uvs;
+}
+
+
+
+    ]]></vertex>
+    <!-- ======================== Fragment Shader ======================== -->
+    <fragment><![CDATA[
+#version 150
+
+//#extension GL_EXT_gpu_shader4 : enable
+
+#if __VERSION__ >= 130
+#define varying in
+out vec4 mgl_FragColor;
+#define texture2D texture
+#define gl_FragColor mgl_FragColor
+#endif
+
+#ifdef GL_ES
+precision mediump float;
+precision mediump int;
+#endif
+
+#if ${STRAIGHT_TO_PREMULTIPLIED_FLAG}
+#define STRAIGHT_TO_PREMULTIPLIED
+#endif
+
+#if ${CLIPPING_MASK_FLAG}
+#define CLIPPING_MASK
+#endif
+
+#define BLEND_FUNC_ID   ${BLEND_FUNC_ID}
+#define OVERLAP_FUNC_ID ${OVERLAP_FUNC_ID}
+
+#pragma cubism: import("values/shader/modules/sm_blend.frag")
+#pragma cubism: import("values/shader/modules/sm_overlap.frag")
+
+varying vec2 		v_texCoord ;
+uniform sampler2D 	_MainTex ;
+uniform vec2        _MainTex_Scale;
+uniform vec2        _MainTex_Offset;
+uniform vec4 		baseColor ;
+uniform vec4        multiplyColor = vec4(1.0 , 1.0 , 1.0 , 0.0);
+uniform vec4        screenColor = vec4(0.0 , 0.0 , 0.0 , 0.0);
+uniform vec4 		testColor ;//TEST SELECTION
+
+uniform sampler2D   _FramebufferTex ;
+uniform vec2        _FramebufferTex_Offset;
+uniform vec2        _FramebufferTex_Scale;
+
+#ifdef CLIPPING_MASK
+uniform sampler2D   _ClippingMaskTex;
+uniform vec2        clippingMaskScale;
+uniform vec2        clippingMaskOffset;
+uniform float		clippingMaskMin ;
+uniform float       invertClippingMask;
+#endif
+
+void main (void)
+{
+    //------ Cd  (Premultiplied) ------
+    vec4  _tmp1  = texture2D(_FramebufferTex , gl_FragCoord.xy * _FramebufferTex_Scale + _FramebufferTex_Offset ) ;
+    vec3  pCd = _tmp1.rgb ;
+    float Ad = _tmp1.a ;
+
+    vec3  Cd ; // Straight
+    if( abs(Ad) < 0.000001 ) Cd = vec3(0.0f , 0.0f , 0.0f) ;
+    else Cd = pCd / Ad ;
+
+    //------ Cs  (Premultiplied) ------
+    vec4  _tmp2 = texture2D(_MainTex , v_texCoord * _MainTex_Scale + _MainTex_Offset) ;
+
+    // apply multiply color (Straight/PMA)
+    _tmp2.rgb = _tmp2.rgb * multiplyColor.rgb;
+    // apply screen color (PMA)
+    _tmp2.rgb = (_tmp2.rgb + screenColor.rgb * _tmp2.a) - (_tmp2.rgb * screenColor.rgb);
+
+    vec3  pCs = _tmp2.rgb  ;
+    float As = _tmp2.a    ;
+
+    vec3  Cs ; // Straight
+#ifdef STRAIGHT_TO_PREMULTIPLIED
+    Cs = pCs;
+#else
+    if( abs(As) < 0.000001 ) Cs = vec3(0.0f , 0.0f , 0.0f) ;
+    else Cs = pCs / As ;
+#endif
+
+    float clippingMask = 1.0;
+#ifdef CLIPPING_MASK
+    clippingMask = texture2D(_ClippingMaskTex , gl_FragCoord.xy * clippingMaskScale + clippingMaskOffset).r ;
+    clippingMask = max(clippingMaskMin, mix(clippingMask, 1.0f - clippingMask, invertClippingMask));
+#endif
+
+    As  *= baseColor.a * clippingMask ;
+
+    gl_FragColor = overlapColor(blendColor(Cs, Cd), Cs, As, Cd, Ad);
+
+    // cf ShaderMemo.md
+    gl_FragColor = round(gl_FragColor* 255.0f)/255.0f ;
+}
+
+    ]]></fragment>
+
+
+</shader>

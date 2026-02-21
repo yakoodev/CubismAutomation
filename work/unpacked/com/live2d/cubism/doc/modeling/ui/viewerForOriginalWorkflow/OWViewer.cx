@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import com.live2d.type.CFont?>
+<?import com.live2d.type.CInsets?>
+<?import com.live2d.type.CImageIcon?>
+<?import com.live2d.ui.container.CSplitPane?>
+<?import com.live2d.ui.container.CBorderPane?>
+<?import com.live2d.ui.container.CHBox?>
+<?import com.live2d.ui.container.CSpacer?>
+<?import com.live2d.ui.container.CSimplePane?>
+<?import com.live2d.ui.container.CVBox?>
+<?import com.live2d.ui.control.CButton?>
+<?import com.live2d.ui.menu.CDlgMenuItem?>
+<?import com.live2d.ui.control.CToggleButton?>
+<?import com.live2d.ui.control.CLabel?>
+<?import com.live2d.ui.menu.CMenu?>
+<?import com.live2d.ui.menu.CMenuBar?>
+<?import com.live2d.ui.menu.CMenuItem?>
+<?import com.live2d.ui.menu.CSeparatorMenuItem?>
+<?import com.live2d.ui.menu.CCheckMenuItem?>
+<?import com.live2d.ui.window.CFrame?>
+<?import com.live2d.ui.control.CMemoryViewerPanel?>
+<CFrame xmlns="http://live2d.com/cxui/1.0" xmlns:cx="http://live2d.com/cx/1.0" title="Viewer for Legacy(2.1) Workflow" width="1200" height="900" defaultCloseOperation="DISPOSE_ON_CLOSE">
+	<!-- ========= Menu ========= -->
+	<menuBar>
+		<CMenuBar>
+			<menus>
+				<!-- 以下、TOOL TIP のサンプル。<html>をつけることで<br>改行ができるが、エスケープする必要がある。但し、本番ではテキストをIdで置き換え外部定義にするのでエスケープ不要になる予定 -->
+				<CMenu tr_text="ファイル" text="##CUBI-0546">
+					<items>
+						<!--<CMenuItem tr_text="ファイルを開く" text="##CUBI-1100" actionCommand="CMD_OPEN" shortcut="Ctrl+O"/>-->
+						<!--<CMenuItem tr_text="前回開いたファイルを開く" text="##CUB3-0817" cx:id="menuItem_file_recent_file" actionCommand="CMD_RECENT_FILE_OPEN" />-->
+						<CMenu tr_text="追加" text="##CUBI-0994">
+							<items>
+								<CDlgMenuItem tr_text="表情" text="##CUB3-1863" actionCommand="CMD_ADD_EXPR" />
+								<CMenuItem tr_text="ポーズ" text="##CUB3-1864" actionCommand="CMD_ADD_POSE" />
+								<!--<CSeparatorMenuItem/>-->
+								<!--<CMenuItem text="開いているアニメーションからモーションを追加" actionCommand="CMD_ADD_MOTION_BY_SCENE_SOURCE" />-->
+								<!--<CMenuItem text="開いているアニメーションから表情を追加" actionCommand="CMD_ADD_MOTION_FOR_EXPR" />-->
+							</items>
+						</CMenu>
+						<CMenu tr_text="読み込み" text="##CUB3-1865">
+							<items>
+								<CDlgMenuItem tr_text="表情用モーション(motion3.json | exp3.json)" text="##CUB3-1866" actionCommand="CMD_LOAD_MOTION_FOR_EXPR" />
+							</items>
+						</CMenu>
+						<CMenu tr_text="書き出し" text="##CUBI-0080">
+							<items>
+								<!--<CMenuItem text="プロジェクト全体" actionCommand="CMD_EXPORT_PROJECT" />-->
+								<!--<CMenuItem text="2.1風モデル設定ファイル" actionCommand="CMD_EXPORT_MODEL3_JSON" />-->
+								<CDlgMenuItem tr_text="モデル設定(model3.json)" text="##CUB3-1867" actionCommand="CMD_EXPORT_MODEL3_JSON" shortcut="Ctrl+S" />
+								<CDlgMenuItem tr_text="全ての表情モーション" text="##CUB3-1868" actionCommand="CMD_EXPORT_ALL_EXPR" />
+								<CDlgMenuItem tr_text="ポーズ" text="##CUB3-1864" actionCommand="CMD_EXPORT_POSE" />
+							</items>
+						</CMenu>
+						<CSeparatorMenuItem />
+						<CMenu tr_text="設定" text="##CUBI-0839">
+							<items>
+								<CCheckMenuItem tr_text="デフォルトの表情名に拡張子を含める" text="##CUB3-2975" actionCommand="CMD_PUT_FILE_EXTENSION_TO_DEFAULT_EXPR_NAME" cx:id="checkMenu_putFileExtensionToDefaultExprName" />
+								<CCheckMenuItem tr_text="保存・書き出し後に保存先の場所を開く" text="##CUB3-3253" actionCommand="CMD_OPEN_DIRECTORY" cx:id="checkMenu_openDirectory" />
+							</items>
+						</CMenu>
+					</items>
+				</CMenu>
+				<CMenu tr_text="編集" text="##CUBI-0514">
+					<items>
+						<CMenuItem tr_text="パラメータをデフォルト値に戻す" text="##CUB3-1525" actionCommand="CMD_DEFAULT_PARAMETER_VALUE" />
+						<CMenuItem tr_text="モーションの停止" text="##CUB3-1869" actionCommand="CMD_STOP_ANIMATION" />
+						<CDlgMenuItem tr_text="差分比較" text="##CUB3-2070" actionCommand="CMD_CHECK_DIFF" />
+					</items>
+				</CMenu>
+				<CMenu tr_text="表示" text="##CUBI-0548">
+					<items>
+						<CCheckMenuItem tr_text="当たり判定の表示" text="##CUB3-0067" actionCommand="CMD_SHOW_HIT_AREA" cx:id="checkMenu_showHitArea" />
+						<CCheckMenuItem tr_text="ミップマップを有効にする" text="##CUB3-1876" actionCommand="CMD_USE_MIPMAP" cx:id="checkMenu_useMipmap" />
+						<CCheckMenuItem tr_text="背景透過 (β)" text="##CUB3-1870" enabled="true" actionCommand="CMD_TRANSLUCENT_BACKGROUND" cx:id="checkMenu_isTranslucentBackground" />
+						<CDlgMenuItem tr_text="背景色の設定" text="##CUB3-0025" actionCommand="CMD_BACKGROUND_COLOR" />
+						<CCheckMenuItem tr_text="フレームレート表示" text="##CUB3-3096" actionCommand="CMD_SHOW_FRAME_RATE" cx:id="checkMenu_showFrameRate" />
+						<CCheckMenuItem tr_text="イベントを表示" text="##CUB3-3301" actionCommand="CMD_SHOW_EVENT" cx:id="checkMenu_showEvent" />
+					</items>
+				</CMenu>
+				<CMenu tr_text="アニメーション" text="##CUB3-0815">
+					<items>
+						<CCheckMenuItem tr_text="表情を有効にする" text="##CUB3-0072" actionCommand="CMD_USE_EXPRESSION" cx:id="checkMenu_useExpr" />
+						<CCheckMenuItem tr_text="自動目パチ" text="##CUB3-0073" actionCommand="CMD_USE_EYE_BLINK" cx:id="checkMenu_useEyeBlink" />
+						<CCheckMenuItem tr_text="物理演算を有効にする" text="##CUB3-1014" actionCommand="CMD_USE_PHYSICS" cx:id="checkMenu_usePhysics" />
+						<CCheckMenuItem tr_text="ポーズ切り替えを有効にする" text="##CUB3-1871" actionCommand="CMD_USE_POSE" cx:id="checkMenu_usePose" />
+						<CCheckMenuItem tr_text="モーションシンク" text="##CUB3-3467" actionCommand="CMD_USE_MOTIONSYNC" cx:id="checkMenu_useMotionSync" />
+						<CCheckMenuItem tr_text="アイドリングモーション" text="##CUB3-0075" actionCommand="CMD_USE_IDLING_MOTION" cx:id="checkMenu_useIdling" />
+						<CCheckMenuItem tr_text="マウスを追いかける" text="##CUB3-0076" actionCommand="CMD_USE_MOUSE_TRACKING" cx:id="checkMenu_useMouseTracking" />
+						<CCheckMenuItem tr_text="呼吸" text="##CUBI-1238" actionCommand="CMD_USE_BREATHING" cx:id="checkMenu_useBreathing" />
+						<CCheckMenuItem tr_text="パラメータのリピート" text="##CUB3-4343" actionCommand="CMD_ENABLE_PARAMETER_REPEAT" cx:id="checkMenu_enableParameterRepeat" />
+						<CCheckMenuItem tr_text="旧モーション再生方式を使う" text="##CUB3-2859" actionCommand="CMD_USE_OLD_BEZIER_MOTION" cx:id="checkMenu_useOldBezierMotion" />
+						<CCheckMenuItem tr_text="旧フェード方式を使う" text="##CUB3-3651" actionCommand="CMD_USE_OLD_EXPRESSION_MOTION" cx:id="checkMenu_useOldExpressionMotion" />
+						<CSeparatorMenuItem />
+						<CDlgMenuItem tr_text="マウス追従の設定" text="##CUB3-3010" actionCommand="CMD_MOUSE_TRACKING_SETTING" />
+					</items>
+				</CMenu>
+				<CMenu text="" prefWidth="0" name="dummy_menu1" />
+				<!-- メニューとして見せる必要が無いがショートカット（シングルキー含む）を適用したい場合用の隠しメニュー -->
+				<CMenu text="" prefWidth="0">
+					<items>
+						<!-- ツールバー/隠しメニュー -->
+					</items>
+				</CMenu>
+				<CMenu text="#-#   [Debug]" textColor="#DDDDDD" debugOnly="true" />
+			</menus>
+		</CMenuBar>
+	</menuBar>
+	<!-- ========= Content Pane ========= -->
+	<contentPane>
+		<CVBox prefHeight="600" prefWidth="900">
+			<children>
+				<!-- ========= Tool Bar ========= -->
+				<CHBox cx:id="toolBar" prefWidth="-1" prefHeight="38" CVBox.vgrow="NEVER" visible="false">
+					<padding>
+						<CInsets top="7" left="2" bottom="7" right="2" />
+					</padding>
+					<children>
+						<CSpacer prefWidth="10" />
+						<CSimplePane cx:id="toolBar_main" CHBox.hgrow="ALWAYS" />
+						<!--<CSpacer prefHeight="-1" prefWidth="-1"  />-->
+					</children>
+				</CHBox>
+				<!-- ========= Main Area ========= -->
+				<CSimplePane cx:id="mainContainer" prefHeight="-1" prefWidth="-1" CVBox.vgrow="ALWAYS">
+					<!--<center>-->
+					<!--<CSplitPane  orientation="HORIZONTAL">-->
+					<!--<children>-->
+					<!--<CSplitPane orientation="VERTICAL" >-->
+					<!--<children>-->
+					<!--<LWTreeWidget cx:id="treeWidget">-->
+					<!--</LWTreeWidget>-->
+					<!--<LWInspectorContainer cx:id="inspectorContainer">-->
+					<!--</LWInspectorContainer>-->
+					<!--</children>-->
+					<!--</CSplitPane>-->
+					<!--<LWPreviewWidget cx:id="previewWidget">-->
+					<!--</LWPreviewWidget>-->
+					<!--</children>-->
+					<!--</CSplitPane>-->
+					<!--</center>-->
+				</CSimplePane>
+				<!--<CSimplePane cx:id="mainContainer" prefHeight="-1" prefWidth="-1" CVBox.vgrow="ALWAYS" />-->
+				<!-- ========= Status Bar ========= -->
+				<CHBox spacing="5" CVBox.vgrow="NEVER">
+					<padding>
+						<CInsets top="3" left="3" bottom="3" right="3" />
+					</padding>
+					<children>
+						<CLabel cx:id="labelBottomLeft" text="" CHBox.hgrow="ALWAYS" />
+						<CLabel cx:id="labelBottomRight" maxWidth="-1" text="" CHBox.hgrow="NEVER" />
+						<CMemoryViewerPanel />
+					</children>
+				</CHBox>
+			</children>
+		</CVBox>
+	</contentPane>
+</CFrame>
+

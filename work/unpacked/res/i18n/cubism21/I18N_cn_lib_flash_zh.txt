@@ -1,0 +1,5 @@
+FLAS-0000=Illegal State : 提前删除第三维贝塞尔曲线
+FLAS-0001=Illegal State : 在使用此类之前将标志设置为旧模式
+FLAS-0002=Illegal State : 在使用此类之前将标志设置为新模式
+FLAS-0003=Illegal State : 不可以定义16或更多個LineStyles
+FLAS-0004=Illegal State : 未正确初始化 : \n[
