@@ -23,6 +23,7 @@
 - `scripts/31_smoke_project_open_api.ps1`
 - `scripts/32_smoke_jobs_api.ps1`
 - `scripts/33_smoke_jobs_recovery.ps1`
+- `scripts/34_smoke_jobs_admin_api.ps1`
 - `scripts/84_stop_cubism.ps1`
 - `scripts/85_start_cubism.ps1`
 
@@ -127,6 +128,11 @@ powershell -ExecutionPolicy Bypass -File scripts/32_smoke_jobs_api.ps1
 Smoke для Jobs recovery (restart + continuity):
 ```powershell
 powershell -ExecutionPolicy Bypass -File scripts/33_smoke_jobs_recovery.ps1
+```
+
+Smoke для Jobs admin/retention API:
+```powershell
+powershell -ExecutionPolicy Bypass -File scripts/34_smoke_jobs_admin_api.ps1
 ```
 
 Остановить Cubism (graceful close + force fallback):

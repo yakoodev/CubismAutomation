@@ -6,6 +6,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.time.Instant;
+import java.net.URLDecoder;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -115,21 +116,114 @@ public final class CubismJobRunner {
     return new ApiResponse(202, "{\"ok\":true,\"job\":" + jobJson(rec, true) + "}\n");
   }
 
-  public static ApiResponse listJobs() {
+  public static ApiResponse listJobs(String rawQuery) {
     ensureInitialized();
+    String statusFilter = parseQueryParam(rawQuery, "status");
+    String idemFilter = parseQueryParam(rawQuery, "idempotency_key");
+    int limit = (int) parseLongSafe(parseQueryParam(rawQuery, "limit"), 100L);
+    if (limit <= 0) {
+      limit = 1;
+    }
+    if (limit > 500) {
+      limit = 500;
+    }
+
     List<JobRecord> rows = new ArrayList<>(JOBS.values());
     rows.sort((a, b) -> b.id.compareTo(a.id));
     StringBuilder sb = new StringBuilder();
-    sb.append("{\"ok\":true,\"count\":").append(rows.size()).append(",\"jobs\":[");
-    int limit = Math.min(100, rows.size());
-    for (int i = 0; i < limit; i++) {
+    int totalMatched = 0;
+    sb.append("{\"ok\":true,\"count\":");
+    List<String> serialized = new ArrayList<>();
+    for (JobRecord row : rows) {
+      if (statusFilter != null && !statusFilter.isBlank() && !statusFilter.equals(row.status)) {
+        continue;
+      }
+      if (idemFilter != null && !idemFilter.isBlank()) {
+        if (row.idempotencyKey == null || !idemFilter.equals(row.idempotencyKey)) {
+          continue;
+        }
+      }
+      totalMatched++;
+      if (serialized.size() < limit) {
+        serialized.add(jobJson(row, false));
+      }
+    }
+    sb.append(totalMatched).append(",\"jobs\":[");
+    for (int i = 0; i < serialized.size(); i++) {
       if (i > 0) {
         sb.append(',');
       }
-      sb.append(jobJson(rows.get(i), false));
+      sb.append(serialized.get(i));
     }
-    sb.append("]}\n");
+    sb.append("],\"filters\":{\"status\":")
+      .append(statusFilter == null ? "null" : "\"" + esc(statusFilter) + "\"")
+      .append(",\"idempotency_key\":")
+      .append(idemFilter == null ? "null" : "\"" + esc(idemFilter) + "\"")
+      .append(",\"limit\":").append(limit)
+      .append("}}\n");
     return new ApiResponse(200, sb.toString());
+  }
+
+  public static ApiResponse deleteJob(String id) {
+    ensureInitialized();
+    JobRecord rec = JOBS.get(id);
+    if (rec == null) {
+      return new ApiResponse(404, "{\"ok\":false,\"error\":\"no_effect\",\"message\":\"job_not_found\"}\n");
+    }
+    if (!isTerminal(rec.status)) {
+      return new ApiResponse(409, "{\"ok\":false,\"error\":\"job_not_terminal\",\"status\":\"" + esc(rec.status) + "\"}\n");
+    }
+    JOBS.remove(id);
+    IDEM.entrySet().removeIf(e -> id.equals(e.getValue()));
+    persistSnapshot();
+    return new ApiResponse(200, "{\"ok\":true,\"deleted\":1,\"id\":\"" + esc(id) + "\"}\n");
+  }
+
+  public static ApiResponse cleanupJobs(String body) {
+    ensureInitialized();
+    String statusFilter = parseString(body, "status");
+    long beforeMs = parseLong(body, "before_ms", System.currentTimeMillis());
+    int limit = (int) parseLong(body, "limit", 200L);
+    if (limit <= 0) {
+      limit = 1;
+    }
+    if (limit > 5000) {
+      limit = 5000;
+    }
+    List<JobRecord> rows = new ArrayList<>(JOBS.values());
+    rows.sort((a, b) -> Long.compare(recordSortKey(a), recordSortKey(b)));
+
+    int deleted = 0;
+    for (JobRecord rec : rows) {
+      if (deleted >= limit) {
+        break;
+      }
+      if (!isTerminal(rec.status)) {
+        continue;
+      }
+      if (statusFilter != null && !statusFilter.isBlank() && !statusFilter.equals(rec.status)) {
+        continue;
+      }
+      long finishedAtMs = parseInstantMillis(rec.finishedAt);
+      if (finishedAtMs > 0 && finishedAtMs > beforeMs) {
+        continue;
+      }
+      JOBS.remove(rec.id);
+      deleted++;
+    }
+    IDEM.entrySet().removeIf(e -> !JOBS.containsKey(e.getValue()));
+    if (deleted == 0) {
+      return new ApiResponse(409, "{\"ok\":false,\"error\":\"no_effect\",\"deleted\":0}\n");
+    }
+    persistSnapshot();
+    return new ApiResponse(
+      200,
+      "{\"ok\":true,\"deleted\":" + deleted + ",\"remaining\":" + JOBS.size()
+        + ",\"filters\":{\"status\":"
+        + (statusFilter == null ? "null" : "\"" + esc(statusFilter) + "\"")
+        + ",\"before_ms\":" + beforeMs
+        + ",\"limit\":" + limit + "}}\n"
+    );
   }
 
   private static void runJob(JobRecord rec) {
@@ -367,6 +461,24 @@ public final class CubismJobRunner {
     } catch (NumberFormatException e) {
       return fallback;
     }
+  }
+
+  private static String parseQueryParam(String rawQuery, String key) {
+    if (rawQuery == null || rawQuery.isBlank() || key == null || key.isBlank()) {
+      return null;
+    }
+    String[] pairs = rawQuery.split("&");
+    for (String pair : pairs) {
+      int pos = pair.indexOf('=');
+      String k = pos >= 0 ? pair.substring(0, pos) : pair;
+      if (!key.equals(URLDecoder.decode(k, StandardCharsets.UTF_8))) {
+        continue;
+      }
+      String v = pos >= 0 ? pair.substring(pos + 1) : "";
+      String decoded = URLDecoder.decode(v, StandardCharsets.UTF_8);
+      return decoded == null ? null : decoded.trim();
+    }
+    return null;
   }
 
   private static long parseInstantMillis(String instant) {

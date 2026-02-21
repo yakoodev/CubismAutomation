@@ -58,7 +58,7 @@ Write-Host "== Jobs API smoke ==" -ForegroundColor Cyan
 powershell -ExecutionPolicy Bypass -File scripts/85_start_cubism.ps1 -BaseUrl $BaseUrl -WaitSec 160
 
 # happy path + idempotency
-$idemKey = "smoke-jobs-idem-001"
+$idemKey = "smoke-jobs-idem-" + (Get-Date -Format "yyyyMMddHHmmss")
 $create1 = Invoke-HttpJson -Method "POST" -Path "/jobs" -Body '{"action":"noop"}' -Headers @{ "Idempotency-Key" = $idemKey }
 if ($create1.StatusCode -ne 202) { throw "create noop job failed: $($create1.StatusCode) $($create1.Body)" }
 $j1 = $create1.Body | ConvertFrom-Json

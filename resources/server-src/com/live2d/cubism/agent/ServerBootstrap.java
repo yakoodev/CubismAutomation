@@ -203,7 +203,8 @@ public final class ServerBootstrap {
         return;
       }
       if ("GET".equals(method)) {
-        CubismJobRunner.ApiResponse resp = CubismJobRunner.listJobs();
+        String rawQuery = exchange.getRequestURI() == null ? null : exchange.getRequestURI().getRawQuery();
+        CubismJobRunner.ApiResponse resp = CubismJobRunner.listJobs(rawQuery);
         writeJson(exchange, resp.status(), resp.json());
         return;
       }
@@ -213,6 +214,17 @@ public final class ServerBootstrap {
 
     if (path.startsWith("/jobs/")) {
       String tail = path.substring("/jobs/".length());
+      if ("cleanup".equals(tail)) {
+        if (!"POST".equals(method)) {
+          writeJson(exchange, 405, "{\"ok\":false,\"error\":\"method_not_allowed\"}\n");
+          return;
+        }
+        String body = readBody(exchange.getRequestBody());
+        exchange.setAttribute("requestBody", body);
+        CubismJobRunner.ApiResponse resp = CubismJobRunner.cleanupJobs(body);
+        writeJson(exchange, resp.status(), resp.json());
+        return;
+      }
       if (tail.endsWith("/cancel")) {
         if (!"POST".equals(method)) {
           writeJson(exchange, 405, "{\"ok\":false,\"error\":\"method_not_allowed\"}\n");
@@ -224,6 +236,11 @@ public final class ServerBootstrap {
         return;
       }
       if (!"GET".equals(method)) {
+        if ("DELETE".equals(method)) {
+          CubismJobRunner.ApiResponse resp = CubismJobRunner.deleteJob(tail);
+          writeJson(exchange, resp.status(), resp.json());
+          return;
+        }
         writeJson(exchange, 405, "{\"ok\":false,\"error\":\"method_not_allowed\"}\n");
         return;
       }

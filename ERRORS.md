@@ -16,6 +16,7 @@ This document describes stable error codes returned by the Cubism agent API.
 - `not_found`: Target object (mesh/deformer/parameter) is not found.
 - `job_not_found`: Job id is unknown.
 - `job_cannot_cancel`: Job is already terminal and cannot be canceled.
+- `job_not_terminal`: Job cannot be deleted yet because it is still active.
 - `invalid_action`: Unknown job action.
 - `timeout_exceeded`: Job exceeded timeout budget.
 - `recovered_interrupted`: Job was `queued/running` before restart and reconciled to `failed` on recovery.

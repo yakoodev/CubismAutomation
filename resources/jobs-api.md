@@ -7,6 +7,8 @@ Base URL: `http://127.0.0.1:18080`
 - `GET /jobs`
 - `GET /jobs/{id}`
 - `POST /jobs/{id}/cancel`
+- `DELETE /jobs/{id}`
+- `POST /jobs/cleanup`
 
 ## Idempotency
 - Send header `Idempotency-Key` on `POST /jobs`.
@@ -36,6 +38,28 @@ Base URL: `http://127.0.0.1:18080`
   - `queued`/`running` jobs are reconciled to `failed` with error `recovered_interrupted`.
   - Idempotency mapping (`Idempotency-Key`) is restored from snapshot.
 
+## List filters (`GET /jobs`)
+- `status` (e.g. `done`, `failed`, `canceled`, `running`, `queued`)
+- `idempotency_key`
+- `limit` (1..500, default 100)
+
+Example:
+```text
+/jobs?status=done&limit=20
+```
+
+## Admin operations
+- `DELETE /jobs/{id}`:
+  - Deletes only terminal jobs.
+  - Missing/already deleted job returns `no_effect`.
+- `POST /jobs/cleanup`:
+  - Bulk cleanup of terminal jobs.
+  - Body filters:
+    - `status` (optional)
+    - `before_ms` (optional epoch millis, default `now`)
+    - `limit` (optional, default `200`, max `5000`)
+  - If nothing matched, returns `no_effect`.
+
 ## Request examples
 ```json
 {"action":"noop"}
@@ -49,6 +73,10 @@ Base URL: `http://127.0.0.1:18080`
 {"action":"project_open","path":"C:\\path\\to\\model.cmo3","close_current_first":true}
 ```
 
+```json
+{"status":"done","limit":100}
+```
+
 ## Validation script
 ```powershell
 powershell -ExecutionPolicy Bypass -File scripts/32_smoke_jobs_api.ps1
@@ -56,4 +84,8 @@ powershell -ExecutionPolicy Bypass -File scripts/32_smoke_jobs_api.ps1
 
 ```powershell
 powershell -ExecutionPolicy Bypass -File scripts/33_smoke_jobs_recovery.ps1
+```
+
+```powershell
+powershell -ExecutionPolicy Bypass -File scripts/34_smoke_jobs_admin_api.ps1
 ```
