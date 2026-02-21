@@ -1,4 +1,4 @@
-using System.Text;
+﻿using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,18 +17,18 @@ app.MapPost("/api/call", async (ProxyRequest request) =>
         return Results.BadRequest(new { ok = false, error = "path_required" });
     }
 
-    var response = await proxy.CallAsync(request.Method, request.Path, request.Body);
+    var response = await proxy.CallAsync(request.Method, request.Path, request.Body, request.TokenOverride);
     return Results.Json(new
     {
         ok = true,
-        request = new { request.Method, request.Path, request.Body },
+        request = new { request.Method, request.Path, request.Body, request.TokenOverride },
         response = new { response.StatusCode, response.Content }
     });
 });
 
 app.Run("http://127.0.0.1:51888");
 
-record ProxyRequest(string Method, string Path, string? Body);
+record ProxyRequest(string Method, string Path, string? Body, string? TokenOverride);
 
 sealed class CubismProxy(string baseUrl, string token)
 {
@@ -36,14 +36,15 @@ sealed class CubismProxy(string baseUrl, string token)
     private readonly string _baseUrl = baseUrl.TrimEnd('/');
     private readonly string _token = token.Trim();
 
-    public async Task<(int StatusCode, string Content)> CallAsync(string? method, string path, string? body)
+    public async Task<(int StatusCode, string Content)> CallAsync(string? method, string path, string? body, string? tokenOverride)
     {
         var verb = string.IsNullOrWhiteSpace(method) ? "GET" : method.Trim().ToUpperInvariant();
         using var req = new HttpRequestMessage(new HttpMethod(verb), _baseUrl + path);
 
-        if (!string.IsNullOrEmpty(_token))
+        var effectiveToken = string.IsNullOrWhiteSpace(tokenOverride) ? _token : tokenOverride.Trim();
+        if (!string.IsNullOrEmpty(effectiveToken))
         {
-            req.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", _token);
+            req.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", effectiveToken);
         }
 
         if (verb != "GET" && body != null)
@@ -72,10 +73,12 @@ static class Html
     .wrap { max-width:980px; margin:24px auto; padding:0 16px; }
     .card { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:16px; box-shadow:0 2px 10px rgba(16,24,40,.06); }
     h1 { margin:0 0 12px; font-size:24px; }
-    .row { display:flex; gap:8px; flex-wrap:wrap; margin:8px 0; }
+    h2 { margin:14px 0 8px; font-size:17px; }
+    .row { display:flex; gap:8px; flex-wrap:wrap; margin:8px 0; align-items:center; }
     button { border:1px solid #b2ccff; background:#e8f1ff; color:#0b4aba; border-radius:8px; padding:8px 12px; cursor:pointer; }
     button:hover { background:#dbe8ff; }
-    input,textarea { width:100%; border:1px solid var(--line); border-radius:8px; padding:8px; font:inherit; }
+    input,textarea,select { width:100%; border:1px solid var(--line); border-radius:8px; padding:8px; font:inherit; }
+    input,select { max-width:280px; }
     textarea { min-height:90px; }
     .small { color:var(--muted); font-size:13px; margin:6px 0 0; }
     pre { background:#0f172a; color:#e2e8f0; border-radius:10px; padding:12px; min-height:220px; overflow:auto; }
@@ -85,8 +88,14 @@ static class Html
   <div class="wrap">
     <div class="card">
       <h1>Cubism API Console</h1>
-      <div class="small">UI для ручной проверки endpoints и команд.</div>
+      <div class="small">UI для ручной проверки API и startup-автоматизации.</div>
 
+      <h2>Connection</h2>
+      <div class="row">
+        <input id="token" placeholder="Bearer token (optional)" />
+      </div>
+
+      <h2>State/Health</h2>
       <div class="row">
         <button onclick="callApi('GET','/health')">GET /health</button>
         <button onclick="callApi('GET','/version')">GET /version</button>
@@ -96,6 +105,22 @@ static class Html
         <button onclick="callApi('GET','/state/selection')">GET /state/selection</button>
       </div>
 
+      <h2>Startup Flow (090)</h2>
+      <div class="row">
+        <label>License mode:</label>
+        <select id="licenseMode">
+          <option value="free" selected>free</option>
+          <option value="pro">pro</option>
+        </select>
+        <label><input id="createNewModel" type="checkbox" checked /> create_new_model</label>
+        <label>timeout ms:</label>
+        <input id="startupTimeout" value="30000" style="max-width:130px" />
+      </div>
+      <div class="row">
+        <button onclick="startupPrepare()">POST /startup/prepare</button>
+      </div>
+
+      <h2>Commands</h2>
       <div class="row">
         <button onclick="sendCmd('cubism.zoom_in')">zoom_in</button>
         <button onclick="sendCmd('cubism.zoom_out')">zoom_out</button>
@@ -104,6 +129,7 @@ static class Html
         <button onclick="sendCmd('cubism.redo')">redo</button>
       </div>
 
+      <h2>Custom Request</h2>
       <div class="row">
         <input id="path" value="/command" />
       </div>
@@ -120,10 +146,11 @@ static class Html
 
   <script>
     async function callApi(method, path, body=null) {
+      const tokenOverride = document.getElementById('token').value || null;
       const res = await fetch('/api/call', {
         method:'POST',
         headers:{'Content-Type':'application/json'},
-        body: JSON.stringify({ method, path, body })
+        body: JSON.stringify({ method, path, body, tokenOverride })
       });
       const json = await res.json();
       document.getElementById('out').textContent = JSON.stringify(json, null, 2);
@@ -133,6 +160,14 @@ static class Html
     }
     function customPost(){
       callApi('POST', document.getElementById('path').value, document.getElementById('body').value);
+    }
+    function startupPrepare(){
+      const body = JSON.stringify({
+        license_mode: document.getElementById('licenseMode').value,
+        create_new_model: document.getElementById('createNewModel').checked,
+        wait_timeout_ms: parseInt(document.getElementById('startupTimeout').value || '30000', 10)
+      });
+      callApi('POST','/startup/prepare', body);
     }
   </script>
 </body>
